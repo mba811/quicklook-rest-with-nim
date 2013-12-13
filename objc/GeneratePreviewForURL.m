@@ -34,7 +34,12 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
 
 NSData* renderRst(NSURL* url)
 {
-    char *path = (char*)[[url absoluteString] UTF8String];
+    static BOOL did_init = NO;
+    if (!did_init) {
+        NimMain();
+        did_init = YES;
+    }
+    char *path = (char*)[[url path] UTF8String];
     const long long total_bytes = txt_to_rst(path);
 
     NSMutableData *ret = [NSMutableData dataWithLength:total_bytes + 1];

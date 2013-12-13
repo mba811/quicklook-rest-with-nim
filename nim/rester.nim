@@ -84,5 +84,5 @@ proc get_global_html*(output_buffer: pointer) {.exportc.} =
   copyMem(output_buffer, addr(last_conversion[0]), last_conversion.len)
 
 
-when isMainModule:
-  writeFile("out.html", rst_file_to_html("test.rst"))
+#when isMainModule:
+#  writeFile("out.html", rst_file_to_html("test.rst"))
