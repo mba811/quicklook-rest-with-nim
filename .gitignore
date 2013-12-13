@@ -1,9 +1,20 @@
 # Global patterns
+*.diff
+*.mode1v3
+*.orig
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.rej
 *.swp
 .DS_Store
 nimcache/
+project.xcworkspace/
+tags
+xcuserdata/
 
 # Full paths.
+/.vimrc.local
 /nim/generated_nimrod/
 /nim/out.html
 /nim/rester

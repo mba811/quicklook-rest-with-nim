@@ -15,7 +15,18 @@
 		D58AA21C185B23BB00DBEAC7 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA21B185B23BB00DBEAC7 /* GenerateThumbnailForURL.c */; };
 		D58AA21E185B23BB00DBEAC7 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA21D185B23BB00DBEAC7 /* GeneratePreviewForURL.c */; };
 		D58AA220185B23BB00DBEAC7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA21F185B23BB00DBEAC7 /* main.c */; };
+		D58AA231185B82E600DBEAC7 /* generated_nimrod in Resources */ = {isa = PBXBuildFile; fileRef = D58AA230185B82E600DBEAC7 /* generated_nimrod */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D58AA232185B83A300DBEAC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D58AA200185B23BB00DBEAC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D58AA22C185B827500DBEAC7;
+			remoteInfo = "Nimrod rst lib";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D58AA20A185B23BB00DBEAC7 /* QuickLook reStructuredText.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickLook reStructuredText.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +40,10 @@
 		D58AA21D185B23BB00DBEAC7 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
 		D58AA21F185B23BB00DBEAC7 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		D58AA221185B23BB00DBEAC7 /* QuickLook reStructuredText-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickLook reStructuredText-Prefix.pch"; sourceTree = "<group>"; };
+		D58AA228185B823000DBEAC7 /* nimdoc.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; name = nimdoc.cfg; path = nim/nimdoc.cfg; sourceTree = "<group>"; };
+		D58AA229185B823000DBEAC7 /* rester.nim */ = {isa = PBXFileReference; lastKnownFileType = text; name = rester.nim; path = nim/rester.nim; sourceTree = "<group>"; };
+		D58AA22B185B824700DBEAC7 /* xcode_prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = xcode_prebuild.sh; sourceTree = "<group>"; };
+		D58AA230185B82E600DBEAC7 /* generated_nimrod */ = {isa = PBXFileReference; lastKnownFileType = folder; name = generated_nimrod; path = nim/generated_nimrod; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +64,9 @@
 		D58AA1FF185B23BB00DBEAC7 = {
 			isa = PBXGroup;
 			children = (
+				D58AA227185B822100DBEAC7 /* nim */,
 				D58AA215185B23BB00DBEAC7 /* objc */,
+				D58AA22A185B824700DBEAC7 /* scripts */,
 				D58AA20C185B23BB00DBEAC7 /* Frameworks */,
 				D58AA20B185B23BB00DBEAC7 /* Products */,
 			);
@@ -95,6 +112,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D58AA227185B822100DBEAC7 /* nim */ = {
+			isa = PBXGroup;
+			children = (
+				D58AA230185B82E600DBEAC7 /* generated_nimrod */,
+				D58AA228185B823000DBEAC7 /* nimdoc.cfg */,
+				D58AA229185B823000DBEAC7 /* rester.nim */,
+			);
+			name = nim;
+			sourceTree = "<group>";
+		};
+		D58AA22A185B824700DBEAC7 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D58AA22B185B824700DBEAC7 /* xcode_prebuild.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -106,6 +141,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		D58AA22C185B827500DBEAC7 /* Nimrod rst lib */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = D58AA22D185B827500DBEAC7 /* Build configuration list for PBXLegacyTarget "Nimrod rst lib" */;
+			buildPhases = (
+			);
+			buildToolPath = scripts/xcode_prebuild.sh;
+			buildWorkingDirectory = "$(SRCDIR)";
+			dependencies = (
+			);
+			name = "Nimrod rst lib";
+			passBuildSettingsInEnvironment = 1;
+			productName = "Nimrod rst lib";
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
 		D58AA209185B23BB00DBEAC7 /* QuickLook reStructuredText */ = {
@@ -121,6 +173,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D58AA233185B83A300DBEAC7 /* PBXTargetDependency */,
 			);
 			name = "QuickLook reStructuredText";
 			productName = "QuickLook reStructuredText";
@@ -149,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				D58AA209185B23BB00DBEAC7 /* QuickLook reStructuredText */,
+				D58AA22C185B827500DBEAC7 /* Nimrod rst lib */,
 			);
 		};
 /* End PBXProject section */
@@ -159,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58AA21A185B23BB00DBEAC7 /* InfoPlist.strings in Resources */,
+				D58AA231185B82E600DBEAC7 /* generated_nimrod in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +241,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D58AA233185B83A300DBEAC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D58AA22C185B827500DBEAC7 /* Nimrod rst lib */;
+			targetProxy = D58AA232185B83A300DBEAC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D58AA218185B23BB00DBEAC7 /* InfoPlist.strings */ = {
@@ -293,6 +356,33 @@
 			};
 			name = Release;
 		};
+		D58AA22E185B827500DBEAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D58AA22F185B827500DBEAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -310,6 +400,15 @@
 			buildConfigurations = (
 				D58AA225185B23BB00DBEAC7 /* Debug */,
 				D58AA226185B23BB00DBEAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D58AA22D185B827500DBEAC7 /* Build configuration list for PBXLegacyTarget "Nimrod rst lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D58AA22E185B827500DBEAC7 /* Debug */,
+				D58AA22F185B827500DBEAC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
