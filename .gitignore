@@ -15,7 +15,6 @@ xcuserdata/
 
 # Full paths.
 /.vimrc.local
-/nim/generated_nimrod/
 /nim/out.html
 /nim/rester
 /nim/test.rst

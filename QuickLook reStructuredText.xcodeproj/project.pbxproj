@@ -39,10 +39,42 @@
 		D58AA266185B8CA200DBEAC7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA265185B8CA200DBEAC7 /* Cocoa.framework */; };
 		D58AA26B185BBEFE00DBEAC7 /* pure_cgi.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */; };
 		D58AA26C185BBEFE00DBEAC7 /* pure_cookies.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */; };
+		D58AA271185BC12F00DBEAC7 /* posix_posix.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA241185B89B900DBEAC7 /* posix_posix.c */; };
+		D58AA272185BC12F00DBEAC7 /* docutils_highlite.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA23B185B89B900DBEAC7 /* docutils_highlite.c */; };
+		D58AA273185BC12F00DBEAC7 /* docutils_rst.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA23C185B89B900DBEAC7 /* docutils_rst.c */; };
+		D58AA274185BC12F00DBEAC7 /* pure_parseutils.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA246185B89B900DBEAC7 /* pure_parseutils.c */; };
+		D58AA275185BC12F00DBEAC7 /* pure_times.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA24B185B89B900DBEAC7 /* pure_times.c */; };
+		D58AA276185BC12F00DBEAC7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA21F185B23BB00DBEAC7 /* main.c */; };
+		D58AA277185BC12F00DBEAC7 /* docutils_rstgen.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA23E185B89B900DBEAC7 /* docutils_rstgen.c */; };
+		D58AA278185BC12F00DBEAC7 /* docutils_rstast.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA23D185B89B900DBEAC7 /* docutils_rstast.c */; };
+		D58AA279185BC12F00DBEAC7 /* nim_rester.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA23F185B89B900DBEAC7 /* nim_rester.c */; };
+		D58AA27A185BC12F00DBEAC7 /* pure_parsecfg.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA245185B89B900DBEAC7 /* pure_parsecfg.c */; };
+		D58AA27B185BC12F00DBEAC7 /* pure_os.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA244185B89B900DBEAC7 /* pure_os.c */; };
+		D58AA27C185BC12F00DBEAC7 /* pure_streams.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA247185B89B900DBEAC7 /* pure_streams.c */; };
+		D58AA27D185BC12F00DBEAC7 /* pure_lexbase.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA243185B89B900DBEAC7 /* pure_lexbase.c */; };
+		D58AA27E185BC12F00DBEAC7 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D58AA234185B880A00DBEAC7 /* GeneratePreviewForURL.m */; };
+		D58AA27F185BC12F00DBEAC7 /* root_system.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA24D185B89B900DBEAC7 /* root_system.c */; };
+		D58AA280185BC12F00DBEAC7 /* pure_strutils.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA249185B89B900DBEAC7 /* pure_strutils.c */; };
+		D58AA281185BC12F00DBEAC7 /* pure_cgi.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */; };
+		D58AA282185BC12F00DBEAC7 /* pure_strtabs.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA248185B89B900DBEAC7 /* pure_strtabs.c */; };
+		D58AA283185BC12F00DBEAC7 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D58AA235185B880A00DBEAC7 /* GenerateThumbnailForURL.m */; };
+		D58AA284185BC12F00DBEAC7 /* pure_cookies.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */; };
+		D58AA285185BC12F00DBEAC7 /* pure_hashes.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA242185B89B900DBEAC7 /* pure_hashes.c */; };
+		D58AA286185BC12F00DBEAC7 /* pure_subexes.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA24A185B89B900DBEAC7 /* pure_subexes.c */; };
+		D58AA288185BC12F00DBEAC7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA265185B8CA200DBEAC7 /* Cocoa.framework */; };
+		D58AA289185BC12F00DBEAC7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA263185B8C7500DBEAC7 /* WebKit.framework */; };
+		D58AA28A185BC12F00DBEAC7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA213185B23BB00DBEAC7 /* CoreFoundation.framework */; };
+		D58AA28B185BC12F00DBEAC7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA20D185B23BB00DBEAC7 /* QuickLook.framework */; };
+		D58AA28C185BC12F00DBEAC7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA211185B23BB00DBEAC7 /* CoreServices.framework */; };
+		D58AA28D185BC12F00DBEAC7 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA20F185B23BB00DBEAC7 /* ApplicationServices.framework */; };
+		D58AA28F185BC12F00DBEAC7 /* nimbase.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA240185B89B900DBEAC7 /* nimbase.h */; };
+		D58AA290185BC12F00DBEAC7 /* rester.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA24C185B89B900DBEAC7 /* rester.h */; };
+		D58AA291185BC12F00DBEAC7 /* GeneratePreviewForURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA261185B8B7D00DBEAC7 /* GeneratePreviewForURL.h */; };
+		D58AA293185BC12F00DBEAC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D58AA218185B23BB00DBEAC7 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D58AA232185B83A300DBEAC7 /* PBXContainerItemProxy */ = {
+		D58AA26F185BC12F00DBEAC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D58AA200185B23BB00DBEAC7 /* Project object */;
 			proxyType = 1;
@@ -90,6 +122,8 @@
 		D58AA265185B8CA200DBEAC7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cgi.c; sourceTree = "<group>"; };
 		D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cookies.c; sourceTree = "<group>"; };
+		D58AA298185BC12F00DBEAC7 /* QuickLook reStructuredText copy.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickLook reStructuredText copy.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D58AA299185BC12F00DBEAC7 /* QuickLook reStructuredText copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "QuickLook reStructuredText copy-Info.plist"; path = "/Users/gradha/project/nimrod/ql-rest-nim/QuickLook reStructuredText copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +140,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58AA287185BC12F00DBEAC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D58AA288185BC12F00DBEAC7 /* Cocoa.framework in Frameworks */,
+				D58AA289185BC12F00DBEAC7 /* WebKit.framework in Frameworks */,
+				D58AA28A185BC12F00DBEAC7 /* CoreFoundation.framework in Frameworks */,
+				D58AA28B185BC12F00DBEAC7 /* QuickLook.framework in Frameworks */,
+				D58AA28C185BC12F00DBEAC7 /* CoreServices.framework in Frameworks */,
+				D58AA28D185BC12F00DBEAC7 /* ApplicationServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,6 +164,7 @@
 				D58AA22A185B824700DBEAC7 /* scripts */,
 				D58AA20C185B23BB00DBEAC7 /* Frameworks */,
 				D58AA20B185B23BB00DBEAC7 /* Products */,
+				D58AA299185BC12F00DBEAC7 /* QuickLook reStructuredText copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D58AA20A185B23BB00DBEAC7 /* QuickLook reStructuredText.qlgenerator */,
+				D58AA298185BC12F00DBEAC7 /* QuickLook reStructuredText copy.qlgenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,6 +272,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58AA28E185BC12F00DBEAC7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D58AA28F185BC12F00DBEAC7 /* nimbase.h in Headers */,
+				D58AA290185BC12F00DBEAC7 /* rester.h in Headers */,
+				D58AA291185BC12F00DBEAC7 /* GeneratePreviewForURL.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
@@ -256,11 +315,30 @@
 			buildRules = (
 			);
 			dependencies = (
-				D58AA233185B83A300DBEAC7 /* PBXTargetDependency */,
 			);
 			name = "QuickLook reStructuredText";
 			productName = "QuickLook reStructuredText";
 			productReference = D58AA20A185B23BB00DBEAC7 /* QuickLook reStructuredText.qlgenerator */;
+			productType = "com.apple.product-type.bundle";
+		};
+		D58AA26D185BC12F00DBEAC7 /* rebuilder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D58AA295185BC12F00DBEAC7 /* Build configuration list for PBXNativeTarget "rebuilder" */;
+			buildPhases = (
+				D58AA270185BC12F00DBEAC7 /* Sources */,
+				D58AA287185BC12F00DBEAC7 /* Frameworks */,
+				D58AA28E185BC12F00DBEAC7 /* Headers */,
+				D58AA292185BC12F00DBEAC7 /* Resources */,
+				D58AA294185BC12F00DBEAC7 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D58AA26E185BC12F00DBEAC7 /* PBXTargetDependency */,
+			);
+			name = rebuilder;
+			productName = "QuickLook reStructuredText";
+			productReference = D58AA298185BC12F00DBEAC7 /* QuickLook reStructuredText copy.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -286,6 +364,7 @@
 			targets = (
 				D58AA209185B23BB00DBEAC7 /* QuickLook reStructuredText */,
 				D58AA22C185B827500DBEAC7 /* Nimrod rst lib */,
+				D58AA26D185BC12F00DBEAC7 /* rebuilder */,
 			);
 		};
 /* End PBXProject section */
@@ -299,10 +378,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58AA292185BC12F00DBEAC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D58AA293185BC12F00DBEAC7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXRezBuildPhase section */
 		D58AA208185B23BB00DBEAC7 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D58AA294185BC12F00DBEAC7 /* Rez */ = {
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,13 +435,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58AA270185BC12F00DBEAC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D58AA271185BC12F00DBEAC7 /* posix_posix.c in Sources */,
+				D58AA272185BC12F00DBEAC7 /* docutils_highlite.c in Sources */,
+				D58AA273185BC12F00DBEAC7 /* docutils_rst.c in Sources */,
+				D58AA274185BC12F00DBEAC7 /* pure_parseutils.c in Sources */,
+				D58AA275185BC12F00DBEAC7 /* pure_times.c in Sources */,
+				D58AA276185BC12F00DBEAC7 /* main.c in Sources */,
+				D58AA277185BC12F00DBEAC7 /* docutils_rstgen.c in Sources */,
+				D58AA278185BC12F00DBEAC7 /* docutils_rstast.c in Sources */,
+				D58AA279185BC12F00DBEAC7 /* nim_rester.c in Sources */,
+				D58AA27A185BC12F00DBEAC7 /* pure_parsecfg.c in Sources */,
+				D58AA27B185BC12F00DBEAC7 /* pure_os.c in Sources */,
+				D58AA27C185BC12F00DBEAC7 /* pure_streams.c in Sources */,
+				D58AA27D185BC12F00DBEAC7 /* pure_lexbase.c in Sources */,
+				D58AA27E185BC12F00DBEAC7 /* GeneratePreviewForURL.m in Sources */,
+				D58AA27F185BC12F00DBEAC7 /* root_system.c in Sources */,
+				D58AA280185BC12F00DBEAC7 /* pure_strutils.c in Sources */,
+				D58AA281185BC12F00DBEAC7 /* pure_cgi.c in Sources */,
+				D58AA282185BC12F00DBEAC7 /* pure_strtabs.c in Sources */,
+				D58AA283185BC12F00DBEAC7 /* GenerateThumbnailForURL.m in Sources */,
+				D58AA284185BC12F00DBEAC7 /* pure_cookies.c in Sources */,
+				D58AA285185BC12F00DBEAC7 /* pure_hashes.c in Sources */,
+				D58AA286185BC12F00DBEAC7 /* pure_subexes.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D58AA233185B83A300DBEAC7 /* PBXTargetDependency */ = {
+		D58AA26E185BC12F00DBEAC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D58AA22C185B827500DBEAC7 /* Nimrod rst lib */;
-			targetProxy = D58AA232185B83A300DBEAC7 /* PBXContainerItemProxy */;
+			targetProxy = D58AA26F185BC12F00DBEAC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -486,6 +609,32 @@
 			};
 			name = Release;
 		};
+		D58AA296185BC12F00DBEAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
+				INFOPLIST_FILE = "QuickLook reStructuredText copy-Info.plist";
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_NAME = "QuickLook reStructuredText copy";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Debug;
+		};
+		D58AA297185BC12F00DBEAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
+				INFOPLIST_FILE = "QuickLook reStructuredText copy-Info.plist";
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_NAME = "QuickLook reStructuredText copy";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +661,15 @@
 			buildConfigurations = (
 				D58AA22E185B827500DBEAC7 /* Debug */,
 				D58AA22F185B827500DBEAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D58AA295185BC12F00DBEAC7 /* Build configuration list for PBXNativeTarget "rebuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D58AA296185BC12F00DBEAC7 /* Debug */,
+				D58AA297185BC12F00DBEAC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
