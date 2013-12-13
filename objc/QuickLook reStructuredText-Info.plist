@@ -59,5 +59,31 @@
 	<false/>
 	<key>QLThumbnailMinimumSize</key>
 	<real>17</real>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>net.sourceforge.docutils</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://docutils.sourceforge.net</string>
+			<key>UTTypeDescription</key>
+			<string>ReStructured Text document</string>
+			<key>UTTypeIconFile</key>
+			<string>public.text.icns</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>rest</string>
+					<string>rst</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
