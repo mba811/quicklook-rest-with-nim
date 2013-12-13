@@ -13,6 +13,7 @@ What to do for a new public release?
     version/number.
 
 * ``git commit -av`` into the release branch the version number changes.
+* Regenerate the C sources and commit again a separate one.
 * git flow release finish versionname (the tagname is versionname without v).
 * Move closed issues from `future milestone` to the release milestone.
 * Push all to git: ``git push origin master develop --tags``.
