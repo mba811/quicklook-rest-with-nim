@@ -1,0 +1,9 @@
+# Global patterns
+*.swp
+.DS_Store
+nimcache/
+
+# Full paths.
+/nim/out.html
+/nim/rester
+/nim/test.rst
