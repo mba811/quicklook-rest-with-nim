@@ -1,12 +1,14 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
   parsecfg, subexes, strtabs, streams, times
 
-proc loadConfig(filename: string): PStringTable =
+const rest_config = slurp("nimdoc.cfg")
+
+proc loadConfig(): PStringTable =
   result = newStringTable(modeStyleInsensitive)
-  var f = newFileStream(filename, fmRead)
+  var f = newStringStream(rest_config)
   if f != nil:
     var p: TCfgParser
-    open(p, f, filename)
+    open(p, f, "static slurped config")
     while true:
       var e = next(p)
       case e.kind
@@ -22,13 +24,13 @@ proc loadConfig(filename: string): PStringTable =
         echo(e.msg)
     close(p)
   else:
-    echo("cannot open: " & filename)
+    echo("cannot load config from slurped contents")
 
 proc rst_file_to_html(filename: string): string =
-
+  ## Converts a filename with rest content into a string with HTML tags.
   let
     parse_options = {roSupportRawDirective}
-    config = loadConfig("nimdoc.cfg")
+    config = loadConfig()
   var
     GENERATOR: TRstGenerator
     HAS_TOC: bool
