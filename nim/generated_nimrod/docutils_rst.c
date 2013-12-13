@@ -743,7 +743,7 @@ TNimType NTI111109; /* TTokType */
 extern TNimType NTI142; /* string */
 TNimType NTI111113; /* TTokenSeq */
 TNimType NTI111509; /* TSharedState */
-extern TNimType NTI132088; /* set[TRstParseOption] */
+extern TNimType NTI132094; /* set[TRstParseOption] */
 TNimType NTI111507; /* TSubstitution */
 extern TNimType NTI110008; /* PRSTNode */
 TNimType NTI111522; /* seq[TSubstitution] */
@@ -4722,7 +4722,7 @@ NTI111509.flags = 2;
 TMP152[0] = &TMP25[39];
 TMP25[39].kind = 1;
 TMP25[39].offset = offsetof(tsharedstate111509, Options);
-TMP25[39].typ = (&NTI132088);
+TMP25[39].typ = (&NTI132094);
 TMP25[39].name = "options";
 TMP152[1] = &TMP25[40];
 TMP25[40].kind = 1;

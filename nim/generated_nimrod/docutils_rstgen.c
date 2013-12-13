@@ -440,7 +440,7 @@ extern TNimType NTI110008; /* PRSTNode */
 extern TNimType NTI142; /* string */
 TNimType NTI120028; /* seq[TTocEntry] */
 extern TNimType NTI133; /* bool */
-extern TNimType NTI132088; /* set[TRstParseOption] */
+extern TNimType NTI132094; /* set[TRstParseOption] */
 extern TNimType NTI111016; /* TFindFileHandler */
 extern TNimType NTI111014; /* TMsgHandler */
 TNimType NTI120036; /* array[TMetaEnum, string] */
@@ -1677,7 +1677,7 @@ TMP7[13].name = "theIndex";
 TMP100[6] = &TMP7[14];
 TMP7[14].kind = 1;
 TMP7[14].offset = offsetof(trstgenerator120012, Options);
-TMP7[14].typ = (&NTI132088);
+TMP7[14].typ = (&NTI132094);
 TMP7[14].name = "options";
 TMP100[7] = &TMP7[15];
 TMP7[15].kind = 1;
