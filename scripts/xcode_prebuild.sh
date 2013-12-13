@@ -24,9 +24,9 @@ DEST_NIMBASE="nim/${NIMOBJ_DIR}/nimbase.h"
 # Ok, are we out now?
 if [ -d nim ]
 then
-	$PATH_TO_NIMROD c --noMain  --app:lib \
+	$PATH_TO_NIMROD c --noMain  --app:staticlib \
 		--nimcache:"${NIMOBJ_DIR}" --compileOnly \
-		--header --cpu:i386 nim/rester.nim
+		--header nim/rester.nim
 	if [ "${PATH_TO_NIMBASE}" -nt "${DEST_NIMBASE}" ]
 	then
 		echo "Updating nimbase.h"
