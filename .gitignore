@@ -15,6 +15,13 @@ xcuserdata/
 
 # Full paths.
 /.vimrc.local
+/LICENSE.html
+/README.html
+/docindex.html
+/docs/CHANGES.html
+/docs/debugging_quicklook.html
+/docs/release_steps.html
+/nakefile
 /nim/out.html
 /nim/rester
 /nim/test.rst

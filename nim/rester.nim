@@ -1,7 +1,22 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
   parsecfg, subexes, strtabs, streams, times, cgi
 
-const rest_config = slurp("nimdoc.cfg")
+const
+  rest_config = slurp("nimdoc.cfg")
+  versionStr* = "0.2.0" ## Module version as a string.
+  versionInt* = (major: 0, minor: 2, maintenance: 0) ## \
+  ## Module version as an integer tuple.
+  ##
+  ## Major versions changes mean a break in API backwards compatibility, either
+  ## through removal of symbols or modification of their purpose.
+  ##
+  ## Minor version changes can add procs (and maybe default parameters). Minor
+  ## odd versions are development/git/unstable versions. Minor even versions
+  ## are public stable releases.
+  ##
+  ## Maintenance version changes mean I'm not perfect yet despite all the kpop
+  ## I watch.
+
 
 proc loadConfig(): PStringTable =
   result = newStringTable(modeStyleInsensitive)
