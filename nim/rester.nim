@@ -24,7 +24,7 @@ proc loadConfig(filename: string): PStringTable =
   else:
     echo("cannot open: " & filename)
 
-proc doit(filename: string): string =
+proc rst_file_to_html(filename: string): string =
 
   let
     parse_options = {roSupportRawDirective}
@@ -58,5 +58,29 @@ proc doit(filename: string): string =
     "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
     "content", MOD_DESC]
 
+var last_conversion: string
+
+proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
+  ## Converts the input filename.
+  ##
+  ## The conversion is stored in internal global variables. The proc returns
+  ## the number of bytes required to store the generated HTML, which you can
+  ## obtain using the global accessor getHtml passing a pointer to the buffer.
+  ##
+  ## The returned value doesn't include the typical C null terminator.
+  last_conversion = rst_file_to_html($input_filename)
+  result = last_conversion.len
+
+
+proc get_global_html*(output_buffer: pointer) {.exportc.} =
+  ## Copies the result of txt_to_rst into output_buffer.
+  ##
+  ## If output_buffer doesn't contain the bytes returned by txt_to_rst, you
+  ## will pay that dearly!
+  if last_conversion.isNil:
+    quit("Uh oh, wrong API usage")
+  copyMem(output_buffer, addr(last_conversion[0]), last_conversion.len)
+
+
 when isMainModule:
-  writeFile("out.html", doit("test.rst"))
+  writeFile("out.html", rst_file_to_html("test.rst"))
