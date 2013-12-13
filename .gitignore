@@ -4,6 +4,7 @@
 nimcache/
 
 # Full paths.
+/nim/generated_nimrod/
 /nim/out.html
 /nim/rester
 /nim/test.rst
