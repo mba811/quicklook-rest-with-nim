@@ -165,7 +165,7 @@ NIM_BOOL Isdst;
 NimStringDesc* Tzname;
 NI Timezone;
 };
-typedef NimStringDesc* TY132111[8];
+typedef NimStringDesc* TY132117[8];
 struct tcell38448 {
 NI Refcount;
 TNimType* Typ;
@@ -321,10 +321,10 @@ struct trstnodeseq110010 {
   trstnode110012* data[SEQ_DECL_SIZE];
 };
 N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename);
-N_NIMCALL(NimStringDesc*, rstfiletohtml_132117)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, rstfiletohtml_132123)(NimStringDesc* filename);
 static N_INLINE(void, pushSafePoint)(TSafePoint* s);
-N_NIMCALL(NimStringDesc*, dorstfiletohtml_132084)(NimStringDesc* filename);
-N_NIMCALL(tstringtable108610*, loadconfig_132004)(void);
+N_NIMCALL(NimStringDesc*, dorstfiletohtml_132090)(NimStringDesc* filename);
+N_NIMCALL(tstringtable108610*, loadconfig_132010)(void);
 N_NIMCALL(tstringtable108610*, nstnewStringTable)(NU8 mode);
 N_NIMCALL(tstringstream122403*, newstringstream_122492)(NimStringDesc* s);
 N_NIMCALL(void, npcopen)(tcfgparser125612* c, tstream122033* input, NimStringDesc* filename, NI lineoffset);
@@ -336,7 +336,7 @@ N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 N_NIMCALL(void, npcclose)(tcfgparser125612* c);
 N_NIMCALL(NimStringDesc*, readfile_9236)(NimStringDesc* filename);
 N_NIMCALL(void, initrstgenerator_120040)(trstgenerator120012* g, NU8 target, tstringtable108610* config, NimStringDesc* filename, NU8 options, tfindfilehandler111016 findfile, tmsghandler111014 msghandler);
-N_NIMCALL(NimStringDesc*, myfindfile_132094)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, myfindfile_132100)(NimStringDesc* filename);
 N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NIMCALL(void, defaultmsghandler_111603)(NimStringDesc* filename, NI line, NI col, NU8 msgkind, NimStringDesc* arg);
 N_NIMCALL(trstnode110012*, rstparse_116472)(NimStringDesc* text, NimStringDesc* filename, NI line, NI column, NIM_BOOL* hastoc, NU8 options, tfindfilehandler111016 findfile, tmsghandler111014 msghandler);
@@ -558,21 +558,22 @@ STRING_LITERAL(TMP691, "time", 4);
 STRING_LITERAL(TMP692, "HH:MM", 5);
 STRING_LITERAL(TMP693, "content", 7);
 STRING_LITERAL(TMP698, "<html><body><b>Sorry! Error parsing ", 36);
-STRING_LITERAL(TMP699, "</b><p>If possible please report it at <a href=\"https://github."
-"com/gradha/quicklook-rest-with-nimrod/issues\">https://github.com"
-"/gradha/quicklook-rest-with-nimrod/issues</a><p>", 175);
+STRING_LITERAL(TMP699, " with version 0.2.0.</b><p>If possible please report it at <a h"
+"ref=\"https://github.com/gradha/quicklook-rest-with-nimrod/issues"
+"\">https://github.com/gradha/quicklook-rest-with-nimrod/issues</a"
+"><p>", 195);
 STRING_LITERAL(TMP722, " with message \'", 15);
 STRING_LITERAL(TMP723, "\'</p><p>Displaying raw contents of file anyway:</p><p><tt>", 58);
 STRING_LITERAL(TMP725, "\012", 1);
 STRING_LITERAL(TMP726, "<br>", 4);
 STRING_LITERAL(TMP727, "</tt></p></body></html>", 23);
 STRING_LITERAL(TMP728, "Uh oh, wrong API usage", 22);
-NimStringDesc* lastconversion_132132;
+NimStringDesc* lastconversion_132138;
 extern TSafePoint* exchandler_11826;
 extern TNimType NTI125612; /* TCfgParser */
 extern TNimType NTI125606; /* TCfgEvent */
 extern TNimType NTI111006; /* TRstParseOption */
-TNimType NTI132088; /* set[TRstParseOption] */
+TNimType NTI132094; /* set[TRstParseOption] */
 extern TNimType NTI120012; /* TRstGenerator */
 extern TNimType NTI86403; /* TTimeInfo */
 extern E_Base* currexception_11828;
@@ -587,7 +588,7 @@ static N_INLINE(void, pushSafePoint)(TSafePoint* s) {
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
 	memcpy(((NCSTRING) (&(*dest).data[((*dest).Sup.len)- 0])), ((NCSTRING) ((*src).data)), (NI64)((*src).Sup.len + 1));	(*dest).Sup.len += (*src).Sup.len;
 }
-N_NIMCALL(tstringtable108610*, loadconfig_132004)(void) {
+N_NIMCALL(tstringtable108610*, loadconfig_132010)(void) {
 	tstringtable108610* result;
 	tstringstream122403* f;
 	result = 0;
@@ -638,13 +639,13 @@ appendString(LOC10, e.kindU.S3.Value);
 	}	LA1: ;
 	return result;
 }
-N_NIMCALL(NimStringDesc*, myfindfile_132094)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, myfindfile_132100)(NimStringDesc* filename) {
 	NimStringDesc* result;
 	result = 0;
 	result = copyString(((NimStringDesc*) &TMP125));
 	return result;
 }
-N_NIMCALL(NimStringDesc*, dorstfiletohtml_132084)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, dorstfiletohtml_132090)(NimStringDesc* filename) {
 	NimStringDesc* result;
 	NU8 parseoptions;
 	tstringtable108610* config;
@@ -658,15 +659,15 @@ N_NIMCALL(NimStringDesc*, dorstfiletohtml_132084)(NimStringDesc* filename) {
 	NimStringDesc* title;
 	NimStringDesc* LOC2;
 	NimStringDesc* LOC3;
-	TY132111 LOC4;
+	TY132117 LOC4;
 	result = 0;
 	parseoptions = 4;
-	config = loadconfig_132004();
+	config = loadconfig_132010();
 	content = readfile_9236(filename);
 	memset((void*)&generator, 0, sizeof(generator));
 	generator.Sup.m_type = (&NTI120012);
 	hastoc = 0;
-	initrstgenerator_120040(&generator, ((NU8) 0), config, filename, parseoptions, myfindfile_132094, defaultmsghandler_111603);	rst = rstparse_116472(content, filename, 1, 1, &hastoc, parseoptions, NIM_NIL, NIM_NIL);
+	initrstgenerator_120040(&generator, ((NU8) 0), config, filename, parseoptions, myfindfile_132100, defaultmsghandler_111603);	rst = rstparse_116472(content, filename, 1, 1, &hastoc, parseoptions, NIM_NIL, NIM_NIL);
 	result = rawNewString(30000);
 	moddesc = rawNewString(30000);
 	renderrsttoout_120296(&generator, rst, &moddesc);	LOC1 = 0;
@@ -745,14 +746,14 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 static N_INLINE(void, popCurrentException)(void) {
 	asgnRefNoCycle((void**) &currexception_11828, (*currexception_11828).parent);
 }
-N_NIMCALL(NimStringDesc*, rstfiletohtml_132117)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, rstfiletohtml_132123)(NimStringDesc* filename) {
 	NimStringDesc* result;
 	TSafePoint TMP42;
 	result = 0;
 	pushSafePoint(&TMP42);
 	TMP42.status = setjmp(TMP42.context);
 	if (TMP42.status == 0) {
-		result = dorstfiletohtml_132084(filename);
+		result = dorstfiletohtml_132090(filename);
 		popSafePoint();
 	}	else {
 		popSafePoint();
@@ -781,7 +782,7 @@ N_NIMCALL(NimStringDesc*, rstfiletohtml_132117)(NimStringDesc* filename) {
 			LOC8 = xmlencode_130253(msg);
 			LOC9 = 0;
 			LOC9 = nsuReplaceStr(content, ((NimStringDesc*) &TMP725), ((NimStringDesc*) &TMP726));
-			LOC5 = rawNewString(LOC6->Sup.len + LOC7->Sup.len + LOC8->Sup.len + LOC9->Sup.len + 307);
+			LOC5 = rawNewString(LOC6->Sup.len + LOC7->Sup.len + LOC8->Sup.len + LOC9->Sup.len + 327);
 appendString(LOC5, ((NimStringDesc*) &TMP698));
 appendString(LOC5, LOC6);
 appendString(LOC5, ((NimStringDesc*) &TMP699));
@@ -802,15 +803,15 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename) {
 	result = 0;
 	LOC1 = 0;
 	LOC1 = cstrToNimstr(inputfilename);
-	asgnRefNoCycle((void**) &lastconversion_132132, rstfiletohtml_132117(LOC1));
-	result = lastconversion_132132->Sup.len;
+	asgnRefNoCycle((void**) &lastconversion_132138, rstfiletohtml_132123(LOC1));
+	result = lastconversion_132138->Sup.len;
 	return result;
 }
 N_NIMCALL(void, get_global_html)(void* outputbuffer) {
 	{
-		if (!lastconversion_132132 == 0) goto LA3;
+		if (!lastconversion_132138 == 0) goto LA3;
 		quit_74628(((NimStringDesc*) &TMP728), 1);	}	LA3: ;
-	memcpy(outputbuffer, ((void*) (&lastconversion_132132->data[0])), lastconversion_132132->Sup.len);}
+	memcpy(outputbuffer, ((void*) (&lastconversion_132138->data[0])), lastconversion_132138->Sup.len);}
 static N_INLINE(void, initStackBottom)(void) {
 	void* volatile locals;
 	locals = 0;
@@ -864,11 +865,11 @@ N_NOINLINE(void, resterInit)(void) {
 
 N_NOINLINE(void, resterDatInit)(void) {
 static TNimNode TMP5[1];
-NTI132088.size = sizeof(NU8);
-NTI132088.kind = 19;
-NTI132088.base = (&NTI111006);
-NTI132088.flags = 3;
+NTI132094.size = sizeof(NU8);
+NTI132094.kind = 19;
+NTI132094.base = (&NTI111006);
+NTI132094.flags = 3;
 TMP5[0].len = 0; TMP5[0].kind = 0;
-NTI132088.node = &TMP5[0];
+NTI132094.node = &TMP5[0];
 }
 

@@ -88,7 +88,8 @@ proc rst_file_to_html(filename: string): string =
       msg = getCurrentExceptionMsg()
       content = readFile(filename).XMLEncode
     result = "<html><body><b>Sorry! Error parsing " & filename.XMLEncode &
-      """</b><p>If possible please report it at <a href="""" &
+      " with version " & versionStr &
+      """.</b><p>If possible please report it at <a href="""" &
       """https://github.com/gradha/quicklook-rest-with-nimrod/issues">""" &
       "https://github.com/gradha/quicklook-rest-with-nimrod/issues</a>" &
       "<p>" & repr(e).XMLEncode & " with message '" &
