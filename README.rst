@@ -53,7 +53,7 @@ missing directives. Please report them with the issue tracker.
 Changes
 =======
 
-This is version 0.2.0. For a list of changes see the `docs/CHANGES.rst file
+This is version 0.3.1. For a list of changes see the `docs/CHANGES.rst file
 <docs/CHANGES.rst>`_.
 
 
