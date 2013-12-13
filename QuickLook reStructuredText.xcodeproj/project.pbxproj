@@ -49,7 +49,7 @@
 		D58AA1FF185B23BB00DBEAC7 = {
 			isa = PBXGroup;
 			children = (
-				D58AA215185B23BB00DBEAC7 /* QuickLook reStructuredText */,
+				D58AA215185B23BB00DBEAC7 /* objc */,
 				D58AA20C185B23BB00DBEAC7 /* Frameworks */,
 				D58AA20B185B23BB00DBEAC7 /* Products */,
 			);
@@ -74,7 +74,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D58AA215185B23BB00DBEAC7 /* QuickLook reStructuredText */ = {
+		D58AA215185B23BB00DBEAC7 /* objc */ = {
 			isa = PBXGroup;
 			children = (
 				D58AA21B185B23BB00DBEAC7 /* GenerateThumbnailForURL.c */,
@@ -82,7 +82,7 @@
 				D58AA21F185B23BB00DBEAC7 /* main.c */,
 				D58AA216185B23BB00DBEAC7 /* Supporting Files */,
 			);
-			path = "QuickLook reStructuredText";
+			path = objc;
 			sourceTree = "<group>";
 		};
 		D58AA216185B23BB00DBEAC7 /* Supporting Files */ = {
@@ -272,8 +272,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickLook reStructuredText/QuickLook reStructuredText-Prefix.pch";
-				INFOPLIST_FILE = "QuickLook reStructuredText/QuickLook reStructuredText-Info.plist";
+				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
+				INFOPLIST_FILE = "objc/QuickLook reStructuredText-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -285,8 +285,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickLook reStructuredText/QuickLook reStructuredText-Prefix.pch";
-				INFOPLIST_FILE = "QuickLook reStructuredText/QuickLook reStructuredText-Info.plist";
+				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
+				INFOPLIST_FILE = "objc/QuickLook reStructuredText-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -312,6 +312,7 @@
 				D58AA226185B23BB00DBEAC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
