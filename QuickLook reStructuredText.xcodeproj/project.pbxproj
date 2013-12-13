@@ -37,6 +37,8 @@
 		D58AA262185B8B7D00DBEAC7 /* GeneratePreviewForURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA261185B8B7D00DBEAC7 /* GeneratePreviewForURL.h */; };
 		D58AA264185B8C7500DBEAC7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA263185B8C7500DBEAC7 /* WebKit.framework */; };
 		D58AA266185B8CA200DBEAC7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA265185B8CA200DBEAC7 /* Cocoa.framework */; };
+		D58AA26B185BBEFE00DBEAC7 /* pure_cgi.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */; };
+		D58AA26C185BBEFE00DBEAC7 /* pure_cookies.c in Sources */ = {isa = PBXBuildFile; fileRef = D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		D58AA261185B8B7D00DBEAC7 /* GeneratePreviewForURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratePreviewForURL.h; sourceTree = "<group>"; };
 		D58AA263185B8C7500DBEAC7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D58AA265185B8CA200DBEAC7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cgi.c; sourceTree = "<group>"; };
+		D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cookies.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,8 @@
 				D58AA23F185B89B900DBEAC7 /* nim_rester.c */,
 				D58AA240185B89B900DBEAC7 /* nimbase.h */,
 				D58AA241185B89B900DBEAC7 /* posix_posix.c */,
+				D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */,
+				D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */,
 				D58AA242185B89B900DBEAC7 /* pure_hashes.c */,
 				D58AA243185B89B900DBEAC7 /* pure_lexbase.c */,
 				D58AA244185B89B900DBEAC7 /* pure_os.c */,
@@ -326,8 +332,10 @@
 				D58AA236185B880A00DBEAC7 /* GeneratePreviewForURL.m in Sources */,
 				D58AA260185B89B900DBEAC7 /* root_system.c in Sources */,
 				D58AA25C185B89B900DBEAC7 /* pure_strutils.c in Sources */,
+				D58AA26B185BBEFE00DBEAC7 /* pure_cgi.c in Sources */,
 				D58AA25B185B89B900DBEAC7 /* pure_strtabs.c in Sources */,
 				D58AA237185B880A00DBEAC7 /* GenerateThumbnailForURL.m in Sources */,
+				D58AA26C185BBEFE00DBEAC7 /* pure_cookies.c in Sources */,
 				D58AA255185B89B900DBEAC7 /* pure_hashes.c in Sources */,
 				D58AA25D185B89B900DBEAC7 /* pure_subexes.c in Sources */,
 			);

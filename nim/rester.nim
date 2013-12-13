@@ -1,5 +1,5 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
-  parsecfg, subexes, strtabs, streams, times
+  parsecfg, subexes, strtabs, streams, times, cgi
 
 const rest_config = slurp("nimdoc.cfg")
 
@@ -26,11 +26,12 @@ proc loadConfig(): PStringTable =
   else:
     echo("cannot load config from slurped contents")
 
-proc rst_file_to_html(filename: string): string =
+proc do_rst_file_to_html(filename: string): string =
   ## Converts a filename with rest content into a string with HTML tags.
   let
     parse_options = {roSupportRawDirective}
     config = loadConfig()
+    content = readFile(filename)
   var
     GENERATOR: TRstGenerator
     HAS_TOC: bool
@@ -43,7 +44,7 @@ proc rst_file_to_html(filename: string): string =
     myFindFile, rst.defaultMsgHandler)
 
   # Parse the result.
-  var RST = rstParse(readFile(filename), filename, 1, 1, HAS_TOC, parse_options)
+  var RST = rstParse(content, filename, 1, 1, HAS_TOC, parse_options)
   RESULT = newStringOfCap(30_000)
 
   # Render document into HTML chunk.
@@ -59,6 +60,25 @@ proc rst_file_to_html(filename: string): string =
   result = subex(config["doc.file"]) % ["title", title,
     "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
     "content", MOD_DESC]
+
+proc rst_file_to_html(filename: string): string =
+  ## Wrapper over do_rst_file_to_html to catch exceptions.
+  ##
+  ## If something bad happens, it tries to show the error for debugging.
+  try:
+    result = do_rst_file_to_html(filename)
+  except:
+    let
+      e = getCurrentException()
+      msg = getCurrentExceptionMsg()
+      content = readFile(filename).XMLEncode
+    result = "<html><body><b>Sorry! Error parsing " & filename.XMLEncode &
+      """</b><p>If possible please report it at <a href="""" &
+      """https://github.com/gradha/quicklook-rest-with-nimrod/issues">""" &
+      "https://github.com/gradha/quicklook-rest-with-nimrod/issues</a>" &
+      "<p>" & repr(e).XMLEncode & " with message '" &
+      msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
+      "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
 
 var last_conversion: string
 
