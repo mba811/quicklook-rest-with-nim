@@ -1,9 +1,6 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
-  parsecfg, subexes, strtabs, streams
+  parsecfg, subexes, strtabs, streams, times
 
-#proc doit(filename: string): string =
-#  result = rstToHtml(readFile(filename),
-#    {roSupportRawDirective}, rstgen.defaultConfig())
 proc loadConfig(filename: string): PStringTable =
   result = newStringTable(modeStyleInsensitive)
   var f = newFileStream(filename, fmRead)
@@ -25,7 +22,7 @@ proc loadConfig(filename: string): PStringTable =
         echo(e.msg)
     close(p)
   else:
-    echo("cannot open: " & paramStr(1))
+    echo("cannot open: " & filename)
 
 proc doit(filename: string): string =
 
@@ -52,14 +49,14 @@ proc doit(filename: string): string =
   GENERATOR.renderRstToOut(RST, MOD_DESC)
   #GENERATOR.modDesc = toRope(MOD_DESC)
 
+  let last_mod = getGMTime(filename.getLastModificationTime())
+  var title = GENERATOR.meta[metaTitle]
+  #if title.len < 1: title = filename.split_path.tail
+
   # Now finish by adding header, CSS and stuff.
-  result = subex(config["doc.file"]) % ["title", "My title",
-    "date", "the date", "time", "the time ins econds", "content", MOD_DESC]
-  #let bodyname = "doc.body_no_toc"
-  #content = ropeFormatNamedVars(getConfigVar(bodyname), ["title",
-  #    "tableofcontents", "moduledesc", "date", "time", "content"],
-  #    [title.toRope, toc, d.modDesc, toRope(getDateStr()),
-  #    toRope(getClockStr()), code])
+  result = subex(config["doc.file"]) % ["title", title,
+    "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
+    "content", MOD_DESC]
 
 when isMainModule:
   writeFile("out.html", doit("test.rst"))
