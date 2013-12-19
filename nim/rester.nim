@@ -1,5 +1,5 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
-  parsecfg, subexes, strtabs, streams, times, cgi
+  parsecfg, subexes, strtabs, streams, times, cgi, logging
 
 const
   rest_config = slurp("nimdoc.cfg")
@@ -21,6 +21,7 @@ type
   Global_state = object
     config: PStringTable ## HTML rendering configuration, nil unless loaded.
     last_c_conversion: string ## Modified by the exported C API procs.
+    base_dir: string ## Used by the find files function.
 
 var G: Global_state
 
@@ -41,17 +42,19 @@ proc loadConfig(): PStringTable =
       of cfgKeyValuePair:
         result[e.key] = e.value
       of cfgOption:
-        echo("command: " & e.key & ": " & e.value)
+        warn("command: " & e.key & ": " & e.value)
       of cfgError:
-        echo(e.msg)
+        error(e.msg)
     close(p)
   else:
-    echo("cannot load config from slurped contents")
+    error("cannot load config from slurped contents")
 
 proc rst_file_to_html*(filename: string): string =
   ## Converts a filename with rest content into a string with HTML tags.
   ##
   ## If there is any problem with the parsing, an exception could be thrown.
+  ## Note that this proc depends on global variables, you can't run safely
+  ## multiple instances of it.
   let
     parse_options = {roSupportRawDirective}
     content = readFile(filename)
@@ -61,18 +64,36 @@ proc rst_file_to_html*(filename: string): string =
 
   # Was the global configuration already loaded?
   if isNil(G.config):
+    when not defined(release):
+      var f = newFileLogger("/tmp/rester.log")
+      f.fmtStr = verboseFmtStr
+      handlers.add(newConsoleLogger())
+      handlers.add(f)
+      info("Initiating global log for debugging")
     G.config = loadConfig()
   assert (not isNil(G.config))
 
+  G.base_dir = filename.split_path().head
+
   proc myFindFile(filename: string): string =
-    # we don't find any files in online mode:
-    result = ""
+    debug("Asking for '" & filename & "'")
+    debug("Global is '" & G.base_dir & "'")
+    if G.base_dir.len > 0:
+      result = G.base_dir / filename
+      if result.exists_file:
+        debug("Returning '" & result & "'")
+        return
+    if filename.exists_file:
+      result = filename
+    else:
+      result = ""
 
   GENERATOR.initRstGenerator(outHtml, G.config, filename, parse_options,
     myFindFile, rst.defaultMsgHandler)
 
   # Parse the result.
-  var RST = rstParse(content, filename, 1, 1, HAS_TOC, parse_options)
+  var RST = rstParse(content, filename, 1, 1, HAS_TOC,
+    parse_options, myFindFile)
   RESULT = newStringOfCap(30_000)
 
   # Render document into HTML chunk.

@@ -71,6 +71,8 @@
 		D58AA290185BC12F00DBEAC7 /* rester.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA24C185B89B900DBEAC7 /* rester.h */; };
 		D58AA291185BC12F00DBEAC7 /* GeneratePreviewForURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D58AA261185B8B7D00DBEAC7 /* GeneratePreviewForURL.h */; };
 		D58AA293185BC12F00DBEAC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D58AA218185B23BB00DBEAC7 /* InfoPlist.strings */; };
+		D5CBEC1518639C4100ACFB44 /* nim_logging.c in Sources */ = {isa = PBXBuildFile; fileRef = D5CBEC1418639C4100ACFB44 /* nim_logging.c */; };
+		D5CBEC1618639C6800ACFB44 /* nim_logging.c in Sources */ = {isa = PBXBuildFile; fileRef = D5CBEC1418639C4100ACFB44 /* nim_logging.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,7 @@
 		D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cookies.c; sourceTree = "<group>"; };
 		D58AA298185BC12F00DBEAC7 /* QuickLook reStructuredText copy.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickLook reStructuredText copy.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AA299185BC12F00DBEAC7 /* QuickLook reStructuredText copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "QuickLook reStructuredText copy-Info.plist"; path = "/Users/gradha/project/nimrod/ql-rest-nim/QuickLook reStructuredText copy-Info.plist"; sourceTree = "<absolute>"; };
+		D5CBEC1418639C4100ACFB44 /* nim_logging.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nim_logging.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +240,7 @@
 				D58AA23C185B89B900DBEAC7 /* docutils_rst.c */,
 				D58AA23D185B89B900DBEAC7 /* docutils_rstast.c */,
 				D58AA23E185B89B900DBEAC7 /* docutils_rstgen.c */,
+				D5CBEC1418639C4100ACFB44 /* nim_logging.c */,
 				D58AA23F185B89B900DBEAC7 /* nim_rester.c */,
 				D58AA240185B89B900DBEAC7 /* nimbase.h */,
 				D58AA241185B89B900DBEAC7 /* posix_posix.c */,
@@ -432,6 +436,7 @@
 				D58AA26C185BBEFE00DBEAC7 /* pure_cookies.c in Sources */,
 				D58AA255185B89B900DBEAC7 /* pure_hashes.c in Sources */,
 				D58AA25D185B89B900DBEAC7 /* pure_subexes.c in Sources */,
+				D5CBEC1518639C4100ACFB44 /* nim_logging.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +466,7 @@
 				D58AA284185BC12F00DBEAC7 /* pure_cookies.c in Sources */,
 				D58AA285185BC12F00DBEAC7 /* pure_hashes.c in Sources */,
 				D58AA286185BC12F00DBEAC7 /* pure_subexes.c in Sources */,
+				D5CBEC1618639C6800ACFB44 /* nim_logging.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
