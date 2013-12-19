@@ -58,11 +58,23 @@ everything goes well you should see an HTML preview. Note that this version of
 the software is incomplete, and some files might not render for example due to
 missing directives. Please report them with the issue tracker.
 
+Binary installation
+-------------------
+
+If you trust binaries and random strangers on the internet, you can go to
+`https://github.com/gradha/quicklook-rest-with-nimrod/releases
+<https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_ and download
+any of the ``.zip`` files attached to a specific release. They contain just the
+plugin which you can move to ``~/Library/QuickLook``. After that, run
+``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you should be
+able to see ``.rst`` files as rendered HTML.
+
 Changes
 =======
 
 This is version 0.3.1. For a list of changes see the `docs/CHANGES.rst file
-<docs/CHANGES.rst>`_.
+<docs/CHANGES.rst>`_. The software is not complete, expect bugs and `report
+them <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
 
 Plans for the future
@@ -70,8 +82,8 @@ Plans for the future
 
 * Support for all `reST directives
   <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_.
-* More automatic install.
-* Binary install.
+* More automatic install from within Xcode.
+* Binary install through DMG files.
 * Customizable CSS for previewed HTML.
 
 
