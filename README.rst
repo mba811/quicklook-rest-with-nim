@@ -19,9 +19,17 @@ versions for two reasons:
 1. Python installations are very brittle, any change in python or its packages
    can make rendering stop. Instead, this plugin is statically compiled, no
    changes on your system should break it.
-2. Performance. Processing this very readme file with python on my machine
-   takes 1.2 seconds, but 0.05 seconds with nimrod (as measured once from the
-   command line in a non reproducible test). Do believe me, python is slow.
+2. .. image:: docs/python_stahp_300.jpg
+      :align: right
+
+   Performance. Processing this very readme file with python on my machine
+   takes 0.5 seconds, but 0.02 seconds with nimrod (as measured from the
+   command line in a non reproducible test). Do believe me, python is slow,
+   maybe you should `stop using it <http://knowyourmeme.com/memes/stahp>`_ and
+   pick a better language.  By the way, the animal on the right is Nimrod's
+   mascot, a `badass honey badger
+   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_. Nimrod doesn't care about
+   your Python being slow and eats it fearlessly.
 
 
 License
