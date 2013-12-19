@@ -10,15 +10,6 @@ proc rst2html(filename: string): bool =
   if output.len > 0:
     writeFile(filename.changeFileExt("html"), output)
     result = true
-  #var d: TRstGenerator
-  #initRstGenerator(d, outHtml, config, filename,
-  #  {roSupportRawDirective}, nil, rst.defaultMsgHandler)
-  #var
-  #  dummyHasToc = false
-  #  rst = rstParse(s, filename, 0, 1, dummyHasToc, options)
-  #  result = ""
-  #renderRstToOut(d, rst, result)
-  #writeFile(filename.changeFileExt("html"), result)
 
 proc change_rst_links_to_html(html_file: string) =
   ## Opens the file, iterates hrefs and changes them to .html if they are .rst.
