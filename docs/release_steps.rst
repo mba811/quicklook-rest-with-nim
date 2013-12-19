@@ -17,6 +17,16 @@ What to do for a new public release?
 * git flow release finish versionname (the tagname is versionname without v).
 * Move closed issues from `future milestone` to the release milestone.
 * Push all to git: ``git push origin master develop --tags``.
+* Open Xcode project.
+
+  * Build the ``Nimrod rst lib`` target, make sure git doesn't show changes,
+    otherwise the previous C sources generation step failed.
+  * Build the ``Quicklook reStructuredText`` target.
+  * Select the product and reveal it in Finder.
+  * Compress into a zip the binary.
+  * Attach the binary to the appropriate release at
+    `https://github.com/gradha/quicklook-rest-with-nimrod/releases
+    <https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_.
 * Increase version numbers, at least maintenance (stable version + 0.1.1):
 
   * Modify `../README.rst <../README.rst>`_.
