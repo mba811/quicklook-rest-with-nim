@@ -17,8 +17,15 @@ const
   ## Maintenance version changes mean I'm not perfect yet despite all the kpop
   ## I watch.
 
+type
+  Global_state = object
+    config: PStringTable ## HTML rendering configuration, nil unless loaded.
+    last_c_conversion: string ## Modified by the exported C API procs.
+
+var G: Global_state
 
 proc loadConfig(): PStringTable =
+  ## Parses the configuration and retuns it as a PStringTable.
   result = newStringTable(modeStyleInsensitive)
   var f = newStringStream(rest_config)
   if f != nil:
@@ -41,21 +48,27 @@ proc loadConfig(): PStringTable =
   else:
     echo("cannot load config from slurped contents")
 
-proc do_rst_file_to_html(filename: string): string =
+proc rst_file_to_html*(filename: string): string =
   ## Converts a filename with rest content into a string with HTML tags.
+  ##
+  ## If there is any problem with the parsing, an exception could be thrown.
   let
     parse_options = {roSupportRawDirective}
-    config = loadConfig()
     content = readFile(filename)
   var
     GENERATOR: TRstGenerator
     HAS_TOC: bool
 
+  # Was the global configuration already loaded?
+  if isNil(G.config):
+    G.config = loadConfig()
+  assert (not isNil(G.config))
+
   proc myFindFile(filename: string): string =
     # we don't find any files in online mode:
     result = ""
 
-  GENERATOR.initRstGenerator(outHtml, config, filename, parse_options,
+  GENERATOR.initRstGenerator(outHtml, G.config, filename, parse_options,
     myFindFile, rst.defaultMsgHandler)
 
   # Parse the result.
@@ -72,16 +85,17 @@ proc do_rst_file_to_html(filename: string): string =
   #if title.len < 1: title = filename.split_path.tail
 
   # Now finish by adding header, CSS and stuff.
-  result = subex(config["doc.file"]) % ["title", title,
+  result = subex(G.config["doc.file"]) % ["title", title,
     "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
     "content", MOD_DESC]
 
-proc rst_file_to_html(filename: string): string =
-  ## Wrapper over do_rst_file_to_html to catch exceptions.
+proc safe_rst_file_to_html*(filename: string): string =
+  ## Wrapper over rst_file_to_html to catch exceptions.
   ##
-  ## If something bad happens, it tries to show the error for debugging.
+  ## If something bad happens, it tries to show the error for debugging but
+  ## still returns a sort of valid HTML embedded code.
   try:
-    result = do_rst_file_to_html(filename)
+    result = rst_file_to_html(filename)
   except:
     let
       e = getCurrentException()
@@ -96,8 +110,6 @@ proc rst_file_to_html(filename: string): string =
       msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
       "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
 
-var last_conversion: string
-
 proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
   ## Converts the input filename.
   ##
@@ -106,8 +118,10 @@ proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
   ## obtain using the global accessor getHtml passing a pointer to the buffer.
   ##
   ## The returned value doesn't include the typical C null terminator.
-  last_conversion = rst_file_to_html($input_filename)
-  result = last_conversion.len
+  ##
+  ## This proc is mainly for the C api.
+  G.last_c_conversion = safe_rst_file_to_html($input_filename)
+  result = G.last_c_conversion.len
 
 
 proc get_global_html*(output_buffer: pointer) {.exportc.} =
@@ -115,9 +129,11 @@ proc get_global_html*(output_buffer: pointer) {.exportc.} =
   ##
   ## If output_buffer doesn't contain the bytes returned by txt_to_rst, you
   ## will pay that dearly!
-  if last_conversion.isNil:
+  ##
+  ## This proc is mainly for the C api.
+  if G.last_c_conversion.isNil:
     quit("Uh oh, wrong API usage")
-  copyMem(output_buffer, addr(last_conversion[0]), last_conversion.len)
+  copyMem(output_buffer, addr(G.last_c_conversion[0]), G.last_c_conversion.len)
 
 
 #when isMainModule:
