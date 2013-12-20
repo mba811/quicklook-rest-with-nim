@@ -2,7 +2,7 @@
 Quicklook reST with Nimrod changes log
 ======================================
 
-v0.3.1, ????-??-??
+v0.2.1, 2013-12-20
 ------------------
 
 * `Added stahp meme to docs

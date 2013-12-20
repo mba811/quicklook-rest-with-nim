@@ -129,7 +129,7 @@ tgcstat40414 Stat;
 };
 typedef NimStringDesc* TY84052[1];
 typedef NU8 tcharset80604[32];
-typedef NI tlevelmap111505[256];
+typedef NI tlevelmap112505[256];
 typedef NI TY21018[8];
 struct tpagedesc38456 {
 tpagedesc38456* Next;
@@ -178,6 +178,9 @@ struct tfreecell21028 {
 tfreecell21028* Next;
 NI Zerofield;
 };
+N_NIMCALL(NimStringDesc*, nimIntToStr)(NI x);
+static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c);
+static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI cap);
 N_NIMCALL(void, nsuAddf)(NimStringDesc** s, NimStringDesc* formatstr, NimStringDesc** a, NI aLen0);
@@ -189,7 +192,6 @@ static N_INLINE(tcell38448*, usrtocell_41839)(void* usr);
 static N_INLINE(void, rtladdzct_43402)(tcell38448* c);
 N_NOINLINE(void, addzct_41815)(tcellseq38464* s, tcell38448* c);
 N_NIMCALL(void, raiseException)(E_Base* e, NCSTRING ename);
-static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
 N_NIMCALL(NI, findnormalized_83804)(NimStringDesc* x, NimStringDesc** inarray, NI inarrayLen0);
@@ -197,22 +199,76 @@ N_NIMCALL(NI, nsuCmpIgnoreStyle)(NimStringDesc* a, NimStringDesc* b);
 N_NIMCALL(NIM_CHAR, nsuToLowerChar)(NIM_CHAR c);
 N_NIMCALL(NimStringDesc*, copyStrLast)(NimStringDesc* s, NI start_67023, NI last);
 N_NIMCALL(NimStringDesc*, copyStrLast)(NimStringDesc* s, NI first, NI last);
-N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, NI* number, NI start);
+N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, unsigned int* number, NI start);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
 N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, mnewString)(NI len);
 N_NIMCALL(NimStringDesc*, mnewString)(NI len);
 N_NIMCALL(void, preprocesssub_82479)(NimStringDesc* sub, NI* a);
-N_NIMCALL(NI, findaux_82517)(NimStringDesc* s, NimStringDesc* sub, NI start, tlevelmap111505 a);
+N_NIMCALL(NI, findaux_82517)(NimStringDesc* s, NimStringDesc* sub, NI start, tlevelmap112505 a);
 N_NIMCALL(NimStringDesc*, copyStr)(NimStringDesc* s, NI start);
 N_NIMCALL(NimStringDesc*, copyStr)(NimStringDesc* s, NI first);
-STRING_LITERAL(TMP79, "invalid format string", 21);
-STRING_LITERAL(TMP124, "invalid integer: ", 17);
-STRING_LITERAL(TMP724, "", 0);
-extern TNimType NTI83830; /* ref EInvalidValue */
+STRING_LITERAL(TMP78, "invalid format string", 21);
+STRING_LITERAL(TMP158, "invalid integer: ", 17);
+STRING_LITERAL(TMP750, "", 0);
+extern TNimType NTI16201; /* ref EInvalidValue */
 extern TNimType NTI1053; /* EInvalidValue */
 extern tgcheap40416 gch_40444;
 
+N_NIMCALL(NIM_CHAR, nsuToLowerChar)(NIM_CHAR c) {
+	NIM_CHAR result;
+	result = 0;
+	{
+		if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA3;
+		result = ((NIM_CHAR) (((NI) ((NI64)(((NI) (((NU8)(c)))) + 32)))));
+	}	goto LA1;
+	LA3: ;
+	{
+		result = c;
+	}	LA1: ;
+	return result;
+}
+static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c) {
+	(*dest).data[((*dest).Sup.len)- 0] = c;
+	(*dest).data[((NI64)((*dest).Sup.len + 1))- 0] = 0;
+	(*dest).Sup.len += 1;
+}
+static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
+	memcpy(((NCSTRING) (&(*dest).data[((*dest).Sup.len)- 0])), ((NCSTRING) ((*src).data)), (NI64)((*src).Sup.len + 1));	(*dest).Sup.len += (*src).Sup.len;
+}
+N_NIMCALL(NimStringDesc*, nsuIntToStr)(NI x, NI minchars) {
+	NimStringDesc* result;
+	NI i_81717;
+	NI HEX3Atmp_81719;
+	NI res_81721;
+	result = 0;
+	result = nimIntToStr((NI64)abs(x));
+	i_81717 = 0;
+	HEX3Atmp_81719 = 0;
+	HEX3Atmp_81719 = (NI64)(minchars - result->Sup.len);
+	res_81721 = 1;
+	while (1) {
+		NimStringDesc* LOC2;
+		if (!(res_81721 <= HEX3Atmp_81719)) goto LA1;
+		i_81717 = res_81721;
+		LOC2 = 0;
+		LOC2 = rawNewString(result->Sup.len + 1);
+appendChar(LOC2, 48);
+appendString(LOC2, result);
+		result = LOC2;
+		res_81721 += 1;
+	} LA1: ;
+	{
+		NimStringDesc* LOC7;
+		if (!(x < 0)) goto LA5;
+		LOC7 = 0;
+		LOC7 = rawNewString(result->Sup.len + 1);
+appendChar(LOC7, 45);
+appendString(LOC7, result);
+		result = LOC7;
+	}	LA5: ;
+	return result;
+}
 static N_INLINE(tcell38448*, usrtocell_41839)(void* usr) {
 	tcell38448* result;
 	result = 0;
@@ -233,28 +289,12 @@ N_NOINLINE(void, invalidformatstring_83825)(void) {
 	einvalidvalue1053* e_83829;
 	NimStringDesc* LOC1;
 	e_83829 = 0;
-	e_83829 = (einvalidvalue1053*) newObj((&NTI83830), sizeof(einvalidvalue1053));
+	e_83829 = (einvalidvalue1053*) newObj((&NTI16201), sizeof(einvalidvalue1053));
 	(*e_83829).Sup.Sup.Sup.m_type = (&NTI1053);
 	LOC1 = 0;
-	LOC1 = (*e_83829).Sup.Sup.message; (*e_83829).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP79));
+	LOC1 = (*e_83829).Sup.Sup.message; (*e_83829).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP78));
 	if (LOC1) nimGCunrefNoCycle(LOC1);
 	raiseException((E_Base*)e_83829, "EInvalidValue");
-}
-static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
-	memcpy(((NCSTRING) (&(*dest).data[((*dest).Sup.len)- 0])), ((NCSTRING) ((*src).data)), (NI64)((*src).Sup.len + 1));	(*dest).Sup.len += (*src).Sup.len;
-}
-N_NIMCALL(NIM_CHAR, nsuToLowerChar)(NIM_CHAR c) {
-	NIM_CHAR result;
-	result = 0;
-	{
-		if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA3;
-		result = ((NIM_CHAR) (((NI) ((NI64)(((NI) (((NU8)(c)))) + 32)))));
-	}	goto LA1;
-	LA3: ;
-	{
-		result = c;
-	}	LA1: ;
-	return result;
 }
 N_NIMCALL(NI, nsuCmpIgnoreStyle)(NimStringDesc* a, NimStringDesc* b) {
 	NI result;
@@ -508,11 +548,11 @@ N_NIMCALL(NI, nsuParseInt)(NimStringDesc* s) {
 		LA4: ;
 		if (!LOC3) goto LA5;
 		e_81734 = 0;
-		e_81734 = (einvalidvalue1053*) newObj((&NTI83830), sizeof(einvalidvalue1053));
+		e_81734 = (einvalidvalue1053*) newObj((&NTI16201), sizeof(einvalidvalue1053));
 		(*e_81734).Sup.Sup.Sup.m_type = (&NTI1053);
 		LOC7 = 0;
 		LOC7 = rawNewString(s->Sup.len + 17);
-appendString(LOC7, ((NimStringDesc*) &TMP124));
+appendString(LOC7, ((NimStringDesc*) &TMP158));
 appendString(LOC7, s);
 		asgnRefNoCycle((void**) &(*e_81734).Sup.Sup.message, LOC7);
 		raiseException((E_Base*)e_81734, "EInvalidValue");
@@ -687,7 +727,7 @@ N_NIMCALL(void, preprocesssub_82479)(NimStringDesc* sub, NI* a) {
 		res_82511 += 1;
 	} LA2: ;
 }
-N_NIMCALL(NI, findaux_82517)(NimStringDesc* s, NimStringDesc* sub, NI start, tlevelmap111505 a) {
+N_NIMCALL(NI, findaux_82517)(NimStringDesc* s, NimStringDesc* sub, NI start, tlevelmap112505 a) {
 	NI result;
 	NI m;
 	NI n;
@@ -726,11 +766,11 @@ N_NIMCALL(NI, findaux_82517)(NimStringDesc* s, NimStringDesc* sub, NI start, tle
 }
 N_NIMCALL(NimStringDesc*, nsuReplaceStr)(NimStringDesc* s, NimStringDesc* sub, NimStringDesc* by) {
 	NimStringDesc* result;
-	tlevelmap111505 a;
+	tlevelmap112505 a;
 	NI i;
 	NimStringDesc* LOC7;
 	result = 0;
-	result = copyString(((NimStringDesc*) &TMP724));
+	result = copyString(((NimStringDesc*) &TMP750));
 	preprocesssub_82479(sub, a);	i = 0;
 	while (1) {
 		NI j;
