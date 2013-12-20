@@ -25,3 +25,5 @@ xcuserdata/
 /nim/out.html
 /nim/rester
 /nim/test.rst
+/tests/include/*.html
+/tests/include/test_include

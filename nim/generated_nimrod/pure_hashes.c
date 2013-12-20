@@ -14,10 +14,10 @@ struct NimStringDesc {
   TGenericSeq Sup;
 TY611 data;
 };
-static N_INLINE(NI, HEX21HEX26_106008)(NI h, NI val);
-static N_INLINE(NI, HEX21HEX24_106031)(NI h);
+static N_INLINE(NI, HEX21HEX26_107008)(NI h, NI val);
+static N_INLINE(NI, HEX21HEX24_107031)(NI h);
 
-static N_INLINE(NI, HEX21HEX26_106008)(NI h, NI val) {
+static N_INLINE(NI, HEX21HEX26_107008)(NI h, NI val) {
 	NI result;
 	result = 0;
 	result = (NI)((NU64)(h) + (NU64)(val));
@@ -25,7 +25,7 @@ static N_INLINE(NI, HEX21HEX26_106008)(NI h, NI val) {
 	result = (NI)(result ^ (NI)((NU64)(result) >> (NU64)(6)));
 	return result;
 }
-static N_INLINE(NI, HEX21HEX24_106031)(NI h) {
+static N_INLINE(NI, HEX21HEX24_107031)(NI h) {
 	NI result;
 	result = 0;
 	result = (NI)((NU64)(h) + (NU64)((NI)((NU64)(h) << (NU64)(3))));
@@ -33,72 +33,72 @@ static N_INLINE(NI, HEX21HEX24_106031)(NI h) {
 	result = (NI)((NU64)(result) + (NU64)((NI)((NU64)(result) << (NU64)(15))));
 	return result;
 }
-N_NIMCALL(NI, hash_106827)(NimStringDesc* x) {
+N_NIMCALL(NI, hash_107827)(NimStringDesc* x) {
 	NI result;
 	NI h;
-	NI i_106841;
-	NI HEX3Atmp_106850;
-	NI res_106852;
+	NI i_107841;
+	NI HEX3Atmp_107850;
+	NI res_107852;
 	result = 0;
 	h = 0;
-	i_106841 = 0;
-	HEX3Atmp_106850 = 0;
-	HEX3Atmp_106850 = (NI64)(x->Sup.len - 1);
-	res_106852 = 0;
+	i_107841 = 0;
+	HEX3Atmp_107850 = 0;
+	HEX3Atmp_107850 = (NI64)(x->Sup.len - 1);
+	res_107852 = 0;
 	while (1) {
-		if (!(res_106852 <= HEX3Atmp_106850)) goto LA1;
-		i_106841 = res_106852;
-		h = HEX21HEX26_106008(h, ((NI) (((NU8)(x->data[i_106841])))));
-		res_106852 += 1;
+		if (!(res_107852 <= HEX3Atmp_107850)) goto LA1;
+		i_107841 = res_107852;
+		h = HEX21HEX26_107008(h, ((NI) (((NU8)(x->data[i_107841])))));
+		res_107852 += 1;
 	} LA1: ;
-	result = HEX21HEX24_106031(h);
+	result = HEX21HEX24_107031(h);
 	return result;
 }
-N_NIMCALL(NI, hashignorecase_106925)(NimStringDesc* x) {
+N_NIMCALL(NI, hashignorecase_107925)(NimStringDesc* x) {
 	NI result;
 	NI h;
-	NI i_106939;
-	NI HEX3Atmp_106984;
-	NI res_106986;
+	NI i_107939;
+	NI HEX3Atmp_107984;
+	NI res_107986;
 	result = 0;
 	h = 0;
-	i_106939 = 0;
-	HEX3Atmp_106984 = 0;
-	HEX3Atmp_106984 = (NI64)(x->Sup.len - 1);
-	res_106986 = 0;
+	i_107939 = 0;
+	HEX3Atmp_107984 = 0;
+	HEX3Atmp_107984 = (NI64)(x->Sup.len - 1);
+	res_107986 = 0;
 	while (1) {
 		NIM_CHAR c;
-		if (!(res_106986 <= HEX3Atmp_106984)) goto LA1;
-		i_106939 = res_106986;
-		c = x->data[i_106939];
+		if (!(res_107986 <= HEX3Atmp_107984)) goto LA1;
+		i_107939 = res_107986;
+		c = x->data[i_107939];
 		{
 			if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA4;
 			c = ((NIM_CHAR) (((NI) ((NI64)(((NI) (((NU8)(c)))) + 32)))));
 		}		LA4: ;
-		h = HEX21HEX26_106008(h, ((NI) (((NU8)(c)))));
-		res_106986 += 1;
+		h = HEX21HEX26_107008(h, ((NI) (((NU8)(c)))));
+		res_107986 += 1;
 	} LA1: ;
-	result = HEX21HEX24_106031(h);
+	result = HEX21HEX24_107031(h);
 	return result;
 }
-N_NIMCALL(NI, hashignorestyle_106857)(NimStringDesc* x) {
+N_NIMCALL(NI, hashignorestyle_107857)(NimStringDesc* x) {
 	NI result;
 	NI h;
-	NI i_106871;
-	NI HEX3Atmp_106917;
-	NI res_106919;
+	NI i_107871;
+	NI HEX3Atmp_107917;
+	NI res_107919;
 	result = 0;
 	h = 0;
-	i_106871 = 0;
-	HEX3Atmp_106917 = 0;
-	HEX3Atmp_106917 = (NI64)(x->Sup.len - 1);
-	res_106919 = 0;
+	i_107871 = 0;
+	HEX3Atmp_107917 = 0;
+	HEX3Atmp_107917 = (NI64)(x->Sup.len - 1);
+	res_107919 = 0;
 	while (1) {
-		if (!(res_106919 <= HEX3Atmp_106917)) goto LA1;
-		i_106871 = res_106919;
+		if (!(res_107919 <= HEX3Atmp_107917)) goto LA1;
+		i_107871 = res_107919;
 		{
 			NIM_CHAR c;
-			c = x->data[i_106871];
+			c = x->data[i_107871];
 			{
 				if (!((NU8)(c) == (NU8)(95))) goto LA5;
 				goto LA2;
@@ -107,11 +107,11 @@ N_NIMCALL(NI, hashignorestyle_106857)(NimStringDesc* x) {
 				if (!(((NU8)(c)) >= ((NU8)(65)) && ((NU8)(c)) <= ((NU8)(90)))) goto LA9;
 				c = ((NIM_CHAR) (((NI) ((NI64)(((NI) (((NU8)(c)))) + 32)))));
 			}			LA9: ;
-			h = HEX21HEX26_106008(h, ((NI) (((NU8)(c)))));
+			h = HEX21HEX26_107008(h, ((NI) (((NU8)(c)))));
 		} LA2: ;
-		res_106919 += 1;
+		res_107919 += 1;
 	} LA1: ;
-	result = HEX21HEX24_106031(h);
+	result = HEX21HEX24_107031(h);
 	return result;
 }N_NOINLINE(void, purehashesInit)(void) {
 }

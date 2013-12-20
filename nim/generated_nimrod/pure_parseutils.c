@@ -191,7 +191,7 @@ static N_INLINE(tcell38448*, usrtocell_41839)(void* usr);
 static N_INLINE(void, rtladdzct_43402)(tcell38448* c);
 N_NOINLINE(void, addzct_41815)(tcellseq38464* s, tcell38448* c);
 N_NIMCALL(void, raiseException)(E_Base* e, NCSTRING ename);
-STRING_LITERAL(TMP123, "overflow", 8);
+STRING_LITERAL(TMP157, "overflow", 8);
 extern TNimType NTI16801; /* ref EOverflow */
 extern TNimType NTI1045; /* EOverflow */
 extern tgcheap40416 gch_40444;
@@ -264,29 +264,29 @@ N_NIMCALL(NI, rawparseint_78173)(NimStringDesc* s, NI64* b, NI start) {
 	LA6: ;
 	LA1: ;
 	{
-		NI64 TMP121;
-		NI TMP122;
+		NI64 TMP155;
+		NI TMP156;
 		if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA10;
 		(*b) = 0;
 		while (1) {
-			NI64 TMP118;
-			NI TMP119;
-			NI64 TMP120;
+			NI64 TMP152;
+			NI TMP153;
+			NI64 TMP154;
 			if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA12;
-			TMP118 = mulInt64((*b), 10);
-			TMP119 = subInt(((NI) (((NU8)(s->data[i])))), 48);
-			TMP120 = subInt64((NI64)(TMP118), ((NI64) ((NI64)(TMP119))));
-			(*b) = (NI64)(TMP120);
+			TMP152 = mulInt64((*b), 10);
+			TMP153 = subInt(((NI) (((NU8)(s->data[i])))), 48);
+			TMP154 = subInt64((NI64)(TMP152), ((NI64) ((NI64)(TMP153))));
+			(*b) = (NI64)(TMP154);
 			i = addInt(i, 1);
 			while (1) {
 				if (!((NU8)(s->data[i]) == (NU8)(95))) goto LA13;
 				i = addInt(i, 1);
 			} LA13: ;
 		} LA12: ;
-		TMP121 = mulInt64((*b), sign);
-		(*b) = (NI64)(TMP121);
-		TMP122 = subInt(i, start);
-		result = (NI64)(TMP122);
+		TMP155 = mulInt64((*b), sign);
+		(*b) = (NI64)(TMP155);
+		TMP156 = subInt(i, start);
+		result = (NI64)(TMP156);
 	}	LA10: ;
 	return result;
 }
@@ -315,7 +315,7 @@ static N_INLINE(void, nimGCunrefNoCycle)(void* p) {
 		if (!((NU64)((*c).Refcount) < (NU64)(8))) goto LA3;
 		rtladdzct_43402(c);	}	LA3: ;
 }
-N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, NI* number, NI start) {
+N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, unsigned int* number, NI start) {
 	NI result;
 	NI64 res;
 	result = 0;
@@ -341,7 +341,7 @@ N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, NI* number, NI start) {
 		e_78296 = (EOverflow*) newObj((&NTI16801), sizeof(EOverflow));
 		(*e_78296).Sup.Sup.Sup.Sup.m_type = (&NTI1045);
 		LOC9 = 0;
-		LOC9 = (*e_78296).Sup.Sup.Sup.message; (*e_78296).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP123));
+		LOC9 = (*e_78296).Sup.Sup.Sup.message; (*e_78296).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP157));
 		if (LOC9) nimGCunrefNoCycle(LOC9);
 		raiseException((E_Base*)e_78296, "EOverflow");
 	}	goto LA1;

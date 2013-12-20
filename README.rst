@@ -17,11 +17,52 @@ somehow started from the `markdown quick look plugin
 versions for two reasons:
 
 1. Python installations are very brittle, any change in python or its packages
-   can make rendering stop. Instead, this plugin is statically compiled, no
-   changes on your system should break it.
-2. Performance. Processing this very readme file with python on my machine
-   takes 1.2 seconds, but 0.05 seconds with nimrod (as measured once from the
-   command line in a non reproducible test). Do believe me, python is slow.
+   can make rendering stop. The last three MacOSX updates broke my python
+   programs and required fetching newer versions from the internet. That's not
+   a very good way to treat users. Instead, this plugin is statically compiled,
+   no changes on your system should break it.
+2. .. image:: docs/python_stahp_300.jpg
+      :align: right
+
+   Performance. Processing this very readme file with python on my machine
+   takes 0.5 seconds, but 0.02 seconds with nimrod (as measured from the
+   command line in a non reproducible test). Do believe me, python is slow,
+   maybe you should `stop using it <http://knowyourmeme.com/memes/stahp>`_ and
+   pick a better language.  By the way, the animal on the right is Nimrod's
+   mascot, a `badass honey badger
+   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_. Nimrod doesn't care about
+   your Python being slow and eats it fearlessly.
+
+
+The MarkDown Conspiracy
+=======================
+
+Have you noticed that markdown seems present in just about everywhere? On the
+other hand, rst not so much. Why, I wonder? Let's check github for the existing
+`qlrest plugins <https://github.com/cluther/qlrest>`_. So I go to
+`https://github.com <https://github.com>`_ and type in the search box
+**qlrest**:
+
+.. image:: docs/qlrest_matches.png
+   :align: center
+
+Huh? Weird. How come there is no match for other qlrest repositories? Maybe a
+search for **qlmark** won't work?
+
+.. image:: docs/qlmark_matches.png
+   :align: center
+
+Ah, that's interesting. So markdown is found, but rest not. Well, that's
+clearly it, Mulder told me it's a conspiracy against the rst format. Other
+arguments like the rst implementation being python rather than C, or the spec
+sucking, pale in comparison with Big Brother not allowing you even to *think*
+in rst.
+
+Madness.
+
+Digression: you can view gihub on mobile devices but the *desktop* version
+can't resize below 1000px width. That's another conspiracy there waiting to be
+uncovered… the conspiracy of web designers who suck…
 
 
 License
@@ -50,20 +91,34 @@ everything goes well you should see an HTML preview. Note that this version of
 the software is incomplete, and some files might not render for example due to
 missing directives. Please report them with the issue tracker.
 
+Binary installation
+-------------------
+
+If you trust binaries and random strangers on the internet, you can go to
+`https://github.com/gradha/quicklook-rest-with-nimrod/releases
+<https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_ and download
+any of the ``.zip`` files attached to a specific release. They contain just the
+plugin which you can move to ``~/Library/QuickLook``. After that, run
+``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you should be
+able to see ``.rst`` files as rendered HTML.
+
 Changes
 =======
 
-This is version 0.2.0. For a list of changes see the `docs/CHANGES.rst file
-<docs/CHANGES.rst>`_.
+This is version 0.2.1. For a list of changes see the `docs/CHANGES.rst file
+<docs/CHANGES.rst>`_. The software is not complete, expect bugs and `report
+them <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
 
 Plans for the future
 ====================
 
 * Support for all `reST directives
-  <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_.
-* More automatic install.
-* Binary install.
+  <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_. Also known
+  as "yeah it doesn't adhere to the spec fully but that's because the spec
+  sucks".
+* More automatic install from within Xcode.
+* Binary install through DMG files.
 * Customizable CSS for previewed HTML.
 
 
