@@ -105,7 +105,7 @@ able to see ``.rst`` files as rendered HTML.
 Changes
 =======
 
-This is version 0.2.1. For a list of changes see the `docs/CHANGES.rst file
+This is version 0.3.2. For a list of changes see the `docs/CHANGES.rst file
 <docs/CHANGES.rst>`_. The software is not complete, expect bugs and `report
 them <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
