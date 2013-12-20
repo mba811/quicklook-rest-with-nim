@@ -5,7 +5,7 @@
 #include "nimbase.h"
 
 #include <string.h>
-typedef struct tstringtable108610 tstringtable108610;
+typedef struct tstringtable109610 tstringtable109610;
 typedef struct tcell38448 tcell38448;
 typedef struct TNimType TNimType;
 typedef struct tcellseq38464 tcellseq38464;
@@ -24,8 +24,8 @@ typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct TNimObject TNimObject;
 typedef struct TNimNode TNimNode;
-typedef struct tkeyvaluepairseq108608 tkeyvaluepairseq108608;
-typedef struct tkeyvaluepair108606 tkeyvaluepair108606;
+typedef struct tkeyvaluepairseq109608 tkeyvaluepairseq109608;
+typedef struct TY86506 TY86506;
 typedef struct tbasechunk21036 tbasechunk21036;
 typedef struct tfreecell21028 tfreecell21028;
 struct tcell38448 {
@@ -106,14 +106,14 @@ TY889 marker;
 struct TNimObject {
 TNimType* m_type;
 };
-struct tkeyvaluepair108606 {
+struct TY86506 {
 NimStringDesc* Field0;
 NimStringDesc* Field1;
 };
-struct tstringtable108610 {
+struct tstringtable109610 {
   TNimObject Sup;
 NI Counter;
-tkeyvaluepairseq108608* Data;
+tkeyvaluepairseq109608* Data;
 NU8 Mode;
 };
 typedef NI TY21018[8];
@@ -172,9 +172,9 @@ struct tfreecell21028 {
 tfreecell21028* Next;
 NI Zerofield;
 };
-struct tkeyvaluepairseq108608 {
+struct tkeyvaluepairseq109608 {
   TGenericSeq Sup;
-  tkeyvaluepair108606 data[SEQ_DECL_SIZE];
+  TY86506 data[SEQ_DECL_SIZE];
 };
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
 static N_INLINE(tcell38448*, usrtocell_41839)(void* usr);
@@ -182,15 +182,15 @@ static N_INLINE(void, rtladdzct_43402)(tcell38448* c);
 N_NOINLINE(void, addzct_41815)(tcellseq38464* s, tcell38448* c);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI cap);
-static N_INLINE(void, addxmlchar_130246)(NimStringDesc** dest, NIM_CHAR c);
+static N_INLINE(void, addxmlchar_131246)(NimStringDesc** dest, NIM_CHAR c);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
-STRING_LITERAL(TMP694, "&amp;", 5);
-STRING_LITERAL(TMP695, "&lt;", 4);
-STRING_LITERAL(TMP696, "&gt;", 4);
-STRING_LITERAL(TMP697, "&quot;", 6);
-tstringtable108610* gcookies_130788;
+STRING_LITERAL(TMP720, "&amp;", 5);
+STRING_LITERAL(TMP721, "&lt;", 4);
+STRING_LITERAL(TMP722, "&gt;", 4);
+STRING_LITERAL(TMP723, "&quot;", 6);
+tstringtable109610* gcookies_131788;
 extern tgcheap40416 gch_40444;
 
 static N_INLINE(tcell38448*, usrtocell_41839)(void* usr) {
@@ -222,27 +222,27 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
 	memcpy(((NCSTRING) (&(*dest).data[((*dest).Sup.len)- 0])), ((NCSTRING) ((*src).data)), (NI64)((*src).Sup.len + 1));	(*dest).Sup.len += (*src).Sup.len;
 }
-static N_INLINE(void, addxmlchar_130246)(NimStringDesc** dest, NIM_CHAR c) {
+static N_INLINE(void, addxmlchar_131246)(NimStringDesc** dest, NIM_CHAR c) {
 	switch (((NU8)(c))) {
 	case 38:
 	{
 		(*dest) = resizeString((*dest), 5);
-appendString((*dest), ((NimStringDesc*) &TMP694));
+appendString((*dest), ((NimStringDesc*) &TMP720));
 	}	break;
 	case 60:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP695));
+appendString((*dest), ((NimStringDesc*) &TMP721));
 	}	break;
 	case 62:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP696));
+appendString((*dest), ((NimStringDesc*) &TMP722));
 	}	break;
 	case 34:
 	{
 		(*dest) = resizeString((*dest), 6);
-appendString((*dest), ((NimStringDesc*) &TMP697));
+appendString((*dest), ((NimStringDesc*) &TMP723));
 	}	break;
 	default:
 	{
@@ -250,25 +250,25 @@ appendString((*dest), ((NimStringDesc*) &TMP697));
 	}	break;
 	}
 }
-N_NIMCALL(NimStringDesc*, xmlencode_130253)(NimStringDesc* s) {
+N_NIMCALL(NimStringDesc*, xmlencode_131253)(NimStringDesc* s) {
 	NimStringDesc* result;
-	NI i_130266;
-	NI HEX3Atmp_130268;
-	NI res_130270;
+	NI i_131266;
+	NI HEX3Atmp_131268;
+	NI res_131270;
 	result = 0;
 	result = rawNewString((NI64)(s->Sup.len + (NI)((NU64)(s->Sup.len) >> (NU64)(2))));
-	i_130266 = 0;
-	HEX3Atmp_130268 = 0;
-	HEX3Atmp_130268 = (NI64)(s->Sup.len - 1);
-	res_130270 = 0;
+	i_131266 = 0;
+	HEX3Atmp_131268 = 0;
+	HEX3Atmp_131268 = (NI64)(s->Sup.len - 1);
+	res_131270 = 0;
 	while (1) {
-		if (!(res_130270 <= HEX3Atmp_130268)) goto LA1;
-		i_130266 = res_130270;
-		addxmlchar_130246(&result, s->data[i_130266]);		res_130270 += 1;
+		if (!(res_131270 <= HEX3Atmp_131268)) goto LA1;
+		i_131266 = res_131270;
+		addxmlchar_131246(&result, s->data[i_131266]);		res_131270 += 1;
 	} LA1: ;
 	return result;
 }N_NOINLINE(void, purecgiInit)(void) {
-	asgnRefNoCycle((void**) &gcookies_130788, NIM_NIL);
+	asgnRefNoCycle((void**) &gcookies_131788, NIM_NIL);
 }
 
 N_NOINLINE(void, purecgiDatInit)(void) {
