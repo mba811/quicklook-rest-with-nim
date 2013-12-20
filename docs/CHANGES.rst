@@ -11,6 +11,8 @@ v0.3.1, ????-??-??
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/6>`_.
 * `Use github releases for binaries
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/2>`_.
+* `Noted down conspiracy against rst format
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/4>`_.
 
 v0.2.0, 2013-12-14
 ------------------

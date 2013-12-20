@@ -17,8 +17,10 @@ somehow started from the `markdown quick look plugin
 versions for two reasons:
 
 1. Python installations are very brittle, any change in python or its packages
-   can make rendering stop. Instead, this plugin is statically compiled, no
-   changes on your system should break it.
+   can make rendering stop. The last three MacOSX updates broke my python
+   programs and required fetching newer versions from the internet. That's not
+   a very good way to treat users. Instead, this plugin is statically compiled,
+   no changes on your system should break it.
 2. .. image:: docs/python_stahp_300.jpg
       :align: right
 
@@ -30,6 +32,37 @@ versions for two reasons:
    mascot, a `badass honey badger
    <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_. Nimrod doesn't care about
    your Python being slow and eats it fearlessly.
+
+
+The MarkDown Conspiracy
+=======================
+
+Have you noticed that markdown seems present in just about everywhere? On the
+other hand, rst not so much. Why, I wonder? Let's check github for the existing
+`qlrest plugins <https://github.com/cluther/qlrest>`_. So I go to
+`https://github.com <https://github.com>`_ and type in the search box
+**qlrest**:
+
+.. image:: docs/qlrest_matches.png
+   :align: center
+
+Huh? Weird. How come there is no match for other qlrest repositories? Maybe a
+search for **qlmark** won't work?
+
+.. image:: docs/qlmark_matches.png
+   :align: center
+
+Ah, that's interesting. So markdown is found, but rest not. Well, that's
+clearly it, Mulder told me it's a conspiracy against the rst format. Other
+arguments like the rst implementation being python rather than C, or the spec
+sucking, pale in comparison with Big Brother not allowing you even to *think*
+in rst.
+
+Madness.
+
+Digression: you can view gihub on mobile devices but the *desktop* version
+can't resize below 1000px width. That's another conspiracy there waiting to be
+uncovered… the conspiracy of web designers who suck…
 
 
 License
@@ -81,7 +114,9 @@ Plans for the future
 ====================
 
 * Support for all `reST directives
-  <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_.
+  <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_. Also known
+  as "yeah it doesn't adhere to the spec fully but that's because the spec
+  sucks".
 * More automatic install from within Xcode.
 * Binary install through DMG files.
 * Customizable CSS for previewed HTML.
