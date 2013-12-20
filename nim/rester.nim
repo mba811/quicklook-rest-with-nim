@@ -3,8 +3,8 @@ import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
 
 const
   rest_config = slurp("nimdoc.cfg")
-  versionStr* = "0.3.1" ## Module version as a string.
-  versionInt* = (major: 0, minor: 3, maintenance: 1) ## \
+  versionStr* = "0.2.1" ## Module version as a string.
+  versionInt* = (major: 0, minor: 2, maintenance: 1) ## \
   ## Module version as an integer tuple.
   ##
   ## Major versions changes mean a break in API backwards compatibility, either
