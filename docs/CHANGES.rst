@@ -5,7 +5,8 @@ Quicklook reST with Nimrod changes log
 v0.3.2, ????-??-??
 ------------------
 
-* Nothing yet.
+* `Added support for .nim files
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/15>`_.
 
 v0.2.1, 2013-12-20
 ------------------
