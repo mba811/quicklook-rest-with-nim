@@ -49,15 +49,14 @@ proc loadConfig(): PStringTable =
   else:
     error("cannot load config from slurped contents")
 
-proc rst_file_to_html*(filename: string): string =
-  ## Converts a filename with rest content into a string with HTML tags.
+proc rst_string_to_html*(content, filename: string): string =
+  ## Converts a content named filename into a string with HTML tags.
   ##
   ## If there is any problem with the parsing, an exception could be thrown.
   ## Note that this proc depends on global variables, you can't run safely
   ## multiple instances of it.
   let
     parse_options = {roSupportRawDirective}
-    content = readFile(filename)
   var
     GENERATOR: TRstGenerator
     HAS_TOC: bool
@@ -110,6 +109,16 @@ proc rst_file_to_html*(filename: string): string =
     "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
     "content", MOD_DESC]
 
+
+proc rst_file_to_html*(filename: string): string =
+  ## Converts a filename with rest content into a string with HTML tags.
+  ##
+  ## If there is any problem with the parsing, an exception could be thrown.
+  ## Note that this proc depends on global variables, you can't run safely
+  ## multiple instances of it.
+  return rst_string_to_html(readFile(filename), filename)
+
+
 proc safe_rst_file_to_html*(filename: string): string =
   ## Wrapper over rst_file_to_html to catch exceptions.
   ##
@@ -131,6 +140,21 @@ proc safe_rst_file_to_html*(filename: string): string =
       msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
       "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
 
+proc nim_file_to_html*(filename: string): string =
+  ## Puts filename into a code block and renders like rst file.
+  ##
+  ## This proc always works, since even empty code blocks should render (as
+  ## empty HTML), and there should be no content escaping problems.
+  let
+    name = filename.splitFile.name
+    title_symbols = repeatChar(name.len, '=')
+    length = 1000 + int(filename.getFileSize)
+  var source = newStringOfCap(length)
+  source = "$1\n$2\n$1\n.. code-block:: nimrod\n  " % [title_symbols, name]
+  source.add(readFile(filename).replace("\n", "\n  "))
+  result = rst_string_to_html(source, filename)
+
+
 proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
   ## Converts the input filename.
   ##
@@ -141,7 +165,13 @@ proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
   ## The returned value doesn't include the typical C null terminator.
   ##
   ## This proc is mainly for the C api.
-  G.last_c_conversion = safe_rst_file_to_html($input_filename)
+  assert (not input_filename.isNil)
+  let filename = $input_filename
+  case filename.splitFile.ext
+  of ".nim":
+    G.last_c_conversion = nim_file_to_html(filename)
+  else:
+    G.last_c_conversion = safe_rst_file_to_html(filename)
   result = G.last_c_conversion.len
 
 
