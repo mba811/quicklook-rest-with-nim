@@ -13,6 +13,7 @@
 			<array>
 				<string>net.sourceforge.docutils</string>
 				<string>org.vim.rst-file</string>
+				<string>org.nimrod-lang.nim</string>
 			</array>
 		</dict>
 	</array>
@@ -82,6 +83,29 @@
 				<array>
 					<string>rest</string>
 					<string>rst</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.nimrod-lang.nim</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://nimrod-lang.org/</string>
+			<key>UTTypeDescription</key>
+			<string>Nimrod source file</string>
+			<key>UTTypeIconFile</key>
+			<string>public.text.icns</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+				<string>public.utf8-plain-text</string>
+				<string>public.source-code</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>nim</string>
 				</array>
 			</dict>
 		</dict>

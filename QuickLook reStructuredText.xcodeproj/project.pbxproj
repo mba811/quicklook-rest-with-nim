@@ -125,7 +125,6 @@
 		D58AA269185BBEFE00DBEAC7 /* pure_cgi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cgi.c; sourceTree = "<group>"; };
 		D58AA26A185BBEFE00DBEAC7 /* pure_cookies.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pure_cookies.c; sourceTree = "<group>"; };
 		D58AA298185BC12F00DBEAC7 /* QuickLook reStructuredText copy.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickLook reStructuredText copy.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D58AA299185BC12F00DBEAC7 /* QuickLook reStructuredText copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "QuickLook reStructuredText copy-Info.plist"; path = "/Users/gradha/project/nimrod/ql-rest-nim/QuickLook reStructuredText copy-Info.plist"; sourceTree = "<absolute>"; };
 		D5CBEC1418639C4100ACFB44 /* nim_logging.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nim_logging.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +166,6 @@
 				D58AA22A185B824700DBEAC7 /* scripts */,
 				D58AA20C185B23BB00DBEAC7 /* Frameworks */,
 				D58AA20B185B23BB00DBEAC7 /* Products */,
-				D58AA299185BC12F00DBEAC7 /* QuickLook reStructuredText copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -621,7 +619,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
-				INFOPLIST_FILE = "QuickLook reStructuredText copy-Info.plist";
+				INFOPLIST_FILE = "objc/QuickLook reStructuredText-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "QuickLook reStructuredText copy";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -634,7 +632,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "objc/QuickLook reStructuredText-Prefix.pch";
-				INFOPLIST_FILE = "QuickLook reStructuredText copy-Info.plist";
+				INFOPLIST_FILE = "objc/QuickLook reStructuredText-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "QuickLook reStructuredText copy";
 				WRAPPER_EXTENSION = qlgenerator;
