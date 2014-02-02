@@ -2,7 +2,7 @@ import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
   parsecfg, subexes, strtabs, streams, times, cgi, logging
 
 const
-  rest_config = slurp("nimdoc.cfg")
+  rest_default_config = slurp("nimdoc.cfg")
   versionStr* = "0.3.3" ## Module version as a string.
   versionInt* = (major: 0, minor: 3, maintenance: 3) ## \
   ## Module version as an integer tuple.
@@ -25,29 +25,50 @@ type
 
 var G: Global_state
 
-proc loadConfig(): PStringTable =
+proc loadConfig(mem_string: string): PStringTable =
   ## Parses the configuration and retuns it as a PStringTable.
+  ##
+  ## If something goes wrong, will likely raise an exception. Otherwise it
+  ## always return a valid object.
   result = newStringTable(modeStyleInsensitive)
-  var f = newStringStream(rest_config)
-  if f != nil:
-    var p: TCfgParser
-    open(p, f, "static slurped config")
-    while true:
-      var e = next(p)
-      case e.kind
-      of cfgEof:
-        break
-      of cfgSectionStart:   ## a ``[section]`` has been parsed
-        nil
-      of cfgKeyValuePair:
-        result[e.key] = e.value
-      of cfgOption:
-        warn("command: " & e.key & ": " & e.value)
-      of cfgError:
-        error(e.msg)
-    close(p)
-  else:
-    error("cannot load config from slurped contents")
+  var f = newStringStream(mem_string)
+  if f.isNil: raise newException(EInvalidValue, "cannot stream string")
+
+  var p: TCfgParser
+  open(p, f, "static slurped config")
+  while true:
+    var e = next(p)
+    case e.kind
+    of cfgEof:
+      break
+    of cfgSectionStart:   ## a ``[section]`` has been parsed
+      nil
+    of cfgKeyValuePair:
+      result[e.key] = e.value
+    of cfgOption:
+      warn("command: " & e.key & ": " & e.value)
+    of cfgError:
+      error(e.msg)
+      raise newException(EInvalidValue, e.msg)
+  close(p)
+
+proc change_rst_options*(options: string): bool {.raises: [].} =
+  ## Changes the current global options.
+  ##
+  ## If you pass nil, or the configuration you pass is invalid and raises some
+  ## parsing exception, the proc will modify the global options to sane
+  ## defaults. Otherwise future calls to rst parsing will use the new
+  ## templates. See rstgen.defaultConfig() for information on this.
+  ##
+  ## Returns true if `options` was set successfully.
+  try:
+    G.config = loadConfig(options)
+    result = true
+  except EInvalidValue, E_Base:
+    try: error("Setting default rst options")
+    except: discard
+    try: G.config = loadConfig(rest_default_config)
+    except: discard
 
 proc rst_string_to_html*(content, filename: string): string =
   ## Converts a content named filename into a string with HTML tags.
@@ -69,7 +90,7 @@ proc rst_string_to_html*(content, filename: string): string =
       handlers.add(newConsoleLogger())
       handlers.add(f)
       info("Initiating global log for debugging")
-    G.config = loadConfig()
+    G.config = loadConfig(rest_default_config)
   assert (not isNil(G.config))
 
   G.base_dir = filename.split_path().head
