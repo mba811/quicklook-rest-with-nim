@@ -16,7 +16,7 @@ What to do for a new public release?
 * Regenerate the C sources and commit again a separate one.
 * git flow release finish versionname (the tagname is versionname without v).
 * Move closed issues from `future milestone` to the release milestone.
-* Push all to git: ``git push origin master develop --tags``.
+* Push all to git: ``git push origin stable develop --tags``.
 * Open Xcode project.
 
   * Build the ``Nimrod rst lib`` target, make sure git doesn't show changes,

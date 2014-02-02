@@ -89,7 +89,8 @@ logout/reboot/whatever.
 Now you can press space on ``rst`` or ``rest`` files from the Finder and if
 everything goes well you should see an HTML preview. Note that this version of
 the software is incomplete, and some files might not render for example due to
-missing directives. Please report them with the issue tracker.
+missing directives. Please report them with the `issue tracker
+<https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
 Binary installation
 -------------------
@@ -126,11 +127,9 @@ Git branches
 ============
 
 This project uses the `git-flow branching model
-<https://github.com/nvie/gitflow>`_. Which means the ``master`` default branch
-doesn't *see* much movement, development happens in another branch like
-``develop``. Most people will be fine using the ``master`` branch, but if you
-want to contribute something please check out first the ``develop`` branch and
-do pull requests against that.
+<https://github.com/nvie/gitflow>`_. Stable releases are tracked in the
+``stable`` branch. Development happens in the default ``develop`` branch. If
+you want to make a pull request, do it against ``develop``.
 
 
 Feedback

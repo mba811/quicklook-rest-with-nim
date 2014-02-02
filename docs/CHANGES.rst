@@ -9,6 +9,8 @@ v0.3.3, ????-??-??
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/15>`_.
 * `Added external API to change templates at runtime
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/22>`_.
+* `Updated git-flow notice about stable branch
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/23>`_.
 
 v0.2.1, 2013-12-20
 ------------------
