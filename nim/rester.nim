@@ -60,10 +60,16 @@ proc change_rst_options*(options: string): bool {.raises: [].} =
   ## defaults. Otherwise future calls to rst parsing will use the new
   ## templates. See rstgen.defaultConfig() for information on this.
   ##
-  ## Returns true if `options` was set successfully.
+  ## Returns true if `options` was set successfully, false otherwise. Note that
+  ## if you are passing nil to reset the options this proc always returns
+  ## false.
   try:
-    G.config = loadConfig(options)
-    result = true
+    # Select the correct configuration.
+    let o = if options.isNil: rest_default_config else: options
+    G.config = loadConfig(o)
+    # But report success only if a valid config was passed in.
+    if not options.isNil:
+      result = true
   except EInvalidValue, E_Base:
     try: error("Setting default rst options")
     except: discard
