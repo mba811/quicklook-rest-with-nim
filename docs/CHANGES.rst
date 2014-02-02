@@ -2,7 +2,7 @@
 Quicklook reST with Nimrod changes log
 ======================================
 
-v0.3.2, ????-??-??
+v0.3.3, ????-??-??
 ------------------
 
 * `Added support for .nim files
