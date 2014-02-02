@@ -7,6 +7,8 @@ v0.3.3, ????-??-??
 
 * `Added support for .nim files
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/15>`_.
+* `Added external API to change templates at runtime
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/22>`_.
 
 v0.2.1, 2013-12-20
 ------------------
