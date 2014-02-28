@@ -114,7 +114,7 @@ If you know, please tell me!
 Changes
 =======
 
-This is development version 0.3.3. For a list of changes see the
+This is stable version 0.4.0. For a list of changes see the
 `docs/CHANGES.rst file <docs/CHANGES.rst>`_. The software is not complete,
 expect bugs and `report them
 <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
