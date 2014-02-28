@@ -52,7 +52,7 @@ proc loadConfig(mem_string: string): PStringTable =
       raise newException(EInvalidValue, e.msg)
   close(p)
 
-proc change_rst_options*(options: string): bool {.raises: [].} =
+proc change_rst_options*(options: string): bool {.discardable, raises: [].} =
   ## Changes the current global options.
   ##
   ## If you pass nil, or the configuration you pass is invalid and raises some
