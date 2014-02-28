@@ -34,8 +34,9 @@ What to do for a new public release?
   * Build the ``Nimrod rst lib`` target, make sure git doesn't show changes,
     otherwise the previous C sources generation step failed. `Beware of the
     environ`.
-  * Build the ``Quicklook reStructuredText`` target.
-  * Select the product and reveal it in Finder.
+  * Archive the ``Quicklook reStructuredText`` target.
+  * Using the organizer reveal the archive's contents and search the QuickLook
+    plugin.
   * Compress into a zip the binary.
   * Attach the binary to the appropriate release at
     `https://github.com/gradha/quicklook-rest-with-nimrod/releases
