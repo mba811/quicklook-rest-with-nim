@@ -209,8 +209,8 @@ N_NIMCALL(NimStringDesc*, copyStr)(NimStringDesc* s, NI first);
 N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, unsigned int* number, NI start);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
 STRING_LITERAL(TMP78, "invalid format string", 21);
-STRING_LITERAL(TMP95, "", 0);
-STRING_LITERAL(TMP164, "invalid integer: ", 17);
+STRING_LITERAL(TMP97, "", 0);
+STRING_LITERAL(TMP165, "invalid integer: ", 17);
 extern TNimType NTI17401; /* ref EInvalidValue */
 extern TNimType NTI1253; /* EInvalidValue */
 extern tgcheap42016 gch_42044;
@@ -630,7 +630,7 @@ N_NIMCALL(NimStringDesc*, nsuReplaceStr)(NimStringDesc* s, NimStringDesc* sub, N
 	NI i;
 	NimStringDesc* LOC7;
 	result = 0;
-	result = copyString(((NimStringDesc*) &TMP95));
+	result = copyString(((NimStringDesc*) &TMP97));
 	preprocesssub_85694(sub, a);
 	i = 0;
 	while (1) {
@@ -728,7 +728,7 @@ N_NIMCALL(NI, nsuParseInt)(NimStringDesc* s) {
 		(*e_84819).Sup.Sup.Sup.m_type = (&NTI1253);
 		LOC7 = 0;
 		LOC7 = rawNewString(s->Sup.len + 17);
-appendString(LOC7, ((NimStringDesc*) &TMP164));
+appendString(LOC7, ((NimStringDesc*) &TMP165));
 appendString(LOC7, s);
 		asgnRefNoCycle((void**) &(*e_84819).Sup.Sup.message, LOC7);
 		raiseException((E_Base*)e_84819, "EInvalidValue");

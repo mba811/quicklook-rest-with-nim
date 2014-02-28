@@ -6,27 +6,28 @@
 
 #include <string.h>
 
-#include <sys/time.h>
-
 #include <setjmp.h>
 
+#include <sys/time.h>
+
 #include <stdio.h>
-typedef struct globalstate140011 globalstate140011;
+typedef struct globalstate140012 globalstate140012;
 typedef struct tstringtable113610 tstringtable113610;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct TY103885 TY103885;
-typedef struct trstgenerator127012 trstgenerator127012;
+typedef struct E_Base E_Base;
 typedef struct TNimObject TNimObject;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
+typedef struct TSafePoint TSafePoint;
+typedef struct trstgenerator127012 trstgenerator127012;
 typedef struct TY127028 TY127028;
 typedef struct ttocentry127008 ttocentry127008;
 typedef struct trstnode115012 trstnode115012;
 typedef struct tstringstream129435 tstringstream129435;
 typedef struct einvalidvalue1253 einvalidvalue1253;
 typedef struct esynch1229 esynch1229;
-typedef struct E_Base E_Base;
 typedef struct tcell40090 tcell40090;
 typedef struct tcellseq40106 tcellseq40106;
 typedef struct tgcheap42016 tgcheap42016;
@@ -47,7 +48,6 @@ typedef struct ttoken132610 ttoken132610;
 typedef struct tcfgevent132606 tcfgevent132606;
 typedef struct TY89506 TY89506;
 typedef struct ttimeinfo89403 ttimeinfo89403;
-typedef struct TSafePoint TSafePoint;
 typedef struct tlogger139024 tlogger139024;
 typedef struct trollingfilelogger139030 trollingfilelogger139030;
 typedef struct tfilelogger139028 tfilelogger139028;
@@ -65,7 +65,7 @@ struct NimStringDesc {
   TGenericSeq Sup;
 TY613 data;
 };
-struct globalstate140011 {
+struct globalstate140012 {
 tstringtable113610* Config;
 NimStringDesc* Lastcconversion;
 NimStringDesc* Basedir;
@@ -75,7 +75,6 @@ NimStringDesc* Field0;
 NimStringDesc* Field1;
 NimStringDesc* Field2;
 };
-typedef NimStringDesc* TY140702[2];
 typedef N_NIMCALL_PTR(void, TY1089) (void* p, NI op);
 struct TNimType {
 NI size;
@@ -88,6 +87,24 @@ TY1089 marker;
 };
 struct TNimObject {
 TNimType* m_type;
+};
+struct E_Base {
+  TNimObject Sup;
+E_Base* parent;
+NCSTRING name;
+NimStringDesc* message;
+NimStringDesc* trace;
+};
+typedef struct {
+N_NIMCALL_PTR(NIM_BOOL, ClPrc) (E_Base* e, void* ClEnv);
+void* ClEnv;
+} TY11426;
+struct TSafePoint {
+TSafePoint* prev;
+NI status;
+jmp_buf context;
+NIM_BOOL hasRaiseAction;
+TY11426 raiseAction;
 };
 struct ttocentry127008 {
 trstnode115012* N;
@@ -118,13 +135,6 @@ TNimType* typ;
 NCSTRING name;
 NI len;
 TNimNode** sons;
-};
-struct E_Base {
-  TNimObject Sup;
-E_Base* parent;
-NCSTRING name;
-NimStringDesc* message;
-NimStringDesc* trace;
 };
 struct esynch1229 {
   E_Base Sup;
@@ -221,7 +231,7 @@ struct {NimStringDesc* Msg;
 } S4;
 } kindU;
 };
-typedef NimStringDesc* TY140176[1];
+typedef NimStringDesc* TY140177[1];
 struct TY89506 {
 NimStringDesc* Field0;
 NimStringDesc* Field1;
@@ -241,17 +251,6 @@ NimStringDesc* Tzname;
 NI Timezone;
 };
 typedef NimStringDesc* TY140664[8];
-typedef struct {
-N_NIMCALL_PTR(NIM_BOOL, ClPrc) (E_Base* e, void* ClEnv);
-void* ClEnv;
-} TY11426;
-struct TSafePoint {
-TSafePoint* prev;
-NI status;
-jmp_buf context;
-NIM_BOOL hasRaiseAction;
-TY11426 raiseAction;
-};
 struct tstringtable113610 {
   TNimObject Sup;
 NI Counter;
@@ -369,19 +368,18 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename);
 N_NIMCALL(NimStringDesc*, cstrToNimstr)(NCSTRING str);
 N_NIMCALL(void, nossplitFile)(NimStringDesc* path, TY103885* Result);
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b);
-N_NIMCALL(NimStringDesc*, nimfiletohtml_140691)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, nimfiletohtml_140692)(NimStringDesc* filename);
+static N_INLINE(void, pushSafePoint)(TSafePoint* s);
 N_NIMCALL(NimStringDesc*, nsuRepeatChar)(NI count, NIM_CHAR c);
 N_NIMCALL(NI64, nosgetFileSize)(NimStringDesc* file);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI cap);
-N_NIMCALL(NimStringDesc*, nsuFormatOpenArray)(NimStringDesc* formatstr, NimStringDesc** a, NI aLen0);
-N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
+static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, nsuReplaceStr)(NimStringDesc* s, NimStringDesc* sub, NimStringDesc* by);
 N_NIMCALL(NimStringDesc*, readfile_10240)(NimStringDesc* filename);
-static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
-N_NIMCALL(NimStringDesc*, rststringtohtml_140306)(NimStringDesc* content, NimStringDesc* filename);
-N_NIMCALL(tstringtable113610*, loadconfig_140019)(NimStringDesc* memstring);
+N_NIMCALL(NimStringDesc*, rststringtohtml_140307)(NimStringDesc* content, NimStringDesc* filename);
+N_NIMCALL(tstringtable113610*, loadconfig_140020)(NimStringDesc* memstring);
 N_NIMCALL(tstringtable113610*, nstnewStringTable)(NU8 mode);
 N_NIMCALL(tstringstream129435*, newstringstream_129536)(NimStringDesc* s);
 N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
@@ -403,6 +401,7 @@ N_NIMCALL(void, initrstgenerator_127040)(trstgenerator127012* g, NU8 target, tst
 N_NIMCALL(NimStringDesc*, myfindfile_140601)(NimStringDesc* filename);
 N_NIMCALL(NimStringDesc*, HEX2F_103673)(NimStringDesc* head, NimStringDesc* tail);
 N_NIMCALL(NIM_BOOL, nosexistsFile)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NIMCALL(void, defaultmsghandler_116803)(NimStringDesc* filename, NI line, NI col, NU8 msgkind, NimStringDesc* arg);
 N_NIMCALL(trstnode115012*, rstparse_122542)(NimStringDesc* text, NimStringDesc* filename, NI line, NI column, NIM_BOOL* hastoc, NU8 options, tfindfilehandler116016 findfile, tmsghandler116014 msghandler);
 N_NIMCALL(void, renderrsttoout_127329)(trstgenerator127012* d, trstnode115012* n, NimStringDesc** result);
@@ -412,19 +411,18 @@ N_NIMCALL(NimStringDesc*, nfrmtFormatOpenArray)(NimStringDesc* formatstr, NimStr
 N_NIMCALL(NimStringDesc*, subex_135519)(NimStringDesc* s);
 N_NIMCALL(NimStringDesc*, nstGet)(tstringtable113610* t, NimStringDesc* key);
 N_NIMCALL(NimStringDesc*, format_91395)(ttimeinfo89403* info, NimStringDesc* f);
-N_NIMCALL(NimStringDesc*, saferstfiletohtml_140676)(NimStringDesc* filename);
-static N_INLINE(void, pushSafePoint)(TSafePoint* s);
-N_NIMCALL(NimStringDesc*, rstfiletohtml_140670)(NimStringDesc* filename);
 static N_INLINE(void, popSafePoint)(void);
+N_NIMCALL(NIM_BOOL, isObj)(TNimType* obj, TNimType* subclass);
 static N_INLINE(E_Base*, getCurrentException)(void);
-static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_76235)(void);
-N_NIMCALL(NimStringDesc*, xmlencode_137271)(NimStringDesc* s);
-N_NIMCALL(NimStringDesc*, reprAny)(void* p_74003, TNimType* typ);
 static N_INLINE(void, popCurrentException)(void);
 N_NIMCALL(void, reraiseException)(void);
+N_NIMCALL(NimStringDesc*, saferstfiletohtml_140676)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, rstfiletohtml_140670)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, xmlencode_137271)(NimStringDesc* s);
+static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_76235)(void);
+N_NIMCALL(NimStringDesc*, reprAny)(void* p_74003, TNimType* typ);
 N_NIMCALL(void, get_global_html)(void* outputbuffer);
 N_NIMCALL(void, quit_77030)(NimStringDesc* errormsg, NI errorcode);
-N_NIMCALL(NIM_BOOL, isObj)(TNimType* obj, TNimType* subclass);
 N_NIMCALL(void, log_139266)(trollingfilelogger139030* l, NU8 level, NimStringDesc* frmt, NimStringDesc** args, NI argsLen0);
 N_NIMCALL(void, log_139150)(tfilelogger139028* l, NU8 level, NimStringDesc* frmt, NimStringDesc** args, NI argsLen0);
 N_NIMCALL(void, log_139124)(tconsolelogger139026* l, NU8 level, NimStringDesc* frmt, NimStringDesc** args, NI argsLen0);
@@ -472,14 +470,14 @@ N_NOINLINE(void, nimloggingDatInit)(void);
 N_NOINLINE(void, resterInit)(void);
 N_NOINLINE(void, resterDatInit)(void);
 STRING_LITERAL(TMP85, ".nim", 4);
-STRING_LITERAL(TMP94, "$1\012$2\012$1\012.. code-block:: nimrod\012  ", 34);
-STRING_LITERAL(TMP101, "\012", 1);
-STRING_LITERAL(TMP102, "\012  ", 3);
-STRING_LITERAL(TMP128, "cannot stream string", 20);
-STRING_LITERAL(TMP143, "static slurped config", 21);
-STRING_LITERAL(TMP152, "command: ", 9);
-STRING_LITERAL(TMP153, ": ", 2);
-STRING_LITERAL(TMP154, "# This is the config file for the documentation generator.\012# (c"
+STRING_LITERAL(TMP95, "\012", 1);
+STRING_LITERAL(TMP96, "\012.. code-block:: nimrod\012  ", 26);
+STRING_LITERAL(TMP103, "\012  ", 3);
+STRING_LITERAL(TMP129, "cannot stream string", 20);
+STRING_LITERAL(TMP144, "static slurped config", 21);
+STRING_LITERAL(TMP153, "command: ", 9);
+STRING_LITERAL(TMP154, ": ", 2);
+STRING_LITERAL(TMP155, "# This is the config file for the documentation generator.\012# (c"
 ") 2012 Andreas Rumpf\012# Feel free to edit the templates as you ne"
 "ed.\012\012split.item.toc = \"20\"  \012# too long entries in the table of "
 "contents wrap around\012# after this number of characters\012\012doc.sect"
@@ -621,31 +619,39 @@ STRING_LITERAL(TMP154, "# This is the config file for the documentation generato
 "\012\012</style>\012\012</head>\012<body>\012<div class=\"document\" id=\"documentId\""
 ">\012<h1 class=\"title\">$title</h1>\012$content\012<small>Last modified: $"
 "date $time UTC</small>\012</div>\012</body>\012</html>\012\"\"\"\012", 9073);
-STRING_LITERAL(TMP165, "Asking for \'", 12);
-STRING_LITERAL(TMP166, "\'", 1);
-STRING_LITERAL(TMP167, "Global is \'", 11);
-STRING_LITERAL(TMP168, "Returning \'", 11);
-STRING_LITERAL(TMP169, "", 0);
-STRING_LITERAL(TMP667, "doc.file", 8);
-STRING_LITERAL(TMP668, "title", 5);
-STRING_LITERAL(TMP669, "date", 4);
-STRING_LITERAL(TMP722, "yyyy-MM-dd", 10);
-STRING_LITERAL(TMP723, "time", 4);
-STRING_LITERAL(TMP724, "HH:MM", 5);
-STRING_LITERAL(TMP725, "content", 7);
-STRING_LITERAL(TMP731, "<html><body><b>Sorry! Error parsing ", 36);
-STRING_LITERAL(TMP732, " with version 0.3.3.</b><p>If possible please report it at <a h"
+STRING_LITERAL(TMP166, "Asking for \'", 12);
+STRING_LITERAL(TMP167, "\'", 1);
+STRING_LITERAL(TMP168, "Global is \'", 11);
+STRING_LITERAL(TMP169, "Returning \'", 11);
+STRING_LITERAL(TMP170, "", 0);
+STRING_LITERAL(TMP668, "doc.file", 8);
+STRING_LITERAL(TMP669, "title", 5);
+STRING_LITERAL(TMP670, "date", 4);
+STRING_LITERAL(TMP723, "yyyy-MM-dd", 10);
+STRING_LITERAL(TMP724, "time", 4);
+STRING_LITERAL(TMP725, "HH:MM", 5);
+STRING_LITERAL(TMP726, "content", 7);
+STRING_LITERAL(TMP727, "<html><body><h1>Error for ", 26);
+STRING_LITERAL(TMP728, "</h1></body></html>", 19);
+STRING_LITERAL(TMP729, "<html><body><h1>OS error for ", 29);
+STRING_LITERAL(TMP730, "<html><body><h1>I/O error for ", 30);
+STRING_LITERAL(TMP731, "<html><body><h1>Out of memory!</h1></body></html>", 49);
+STRING_LITERAL(TMP738, "Could not read ", 15);
+STRING_LITERAL(TMP739, "!!!", 3);
+STRING_LITERAL(TMP740, "<html><body><b>Sorry! Error parsing ", 36);
+STRING_LITERAL(TMP741, " with version 0.4.0.</b><p>If possible please report it at <a h"
 "ref=\"https://github.com/gradha/quicklook-rest-with-nimrod/issues"
 "\">https://github.com/gradha/quicklook-rest-with-nimrod/issues</a"
 "><p>", 195);
-STRING_LITERAL(TMP755, " with message \'", 15);
-STRING_LITERAL(TMP756, "\'</p><p>Displaying raw contents of file anyway:</p><p><tt>", 58);
-STRING_LITERAL(TMP757, "<br>", 4);
-STRING_LITERAL(TMP758, "</tt></p></body></html>", 23);
-STRING_LITERAL(TMP759, "Uh oh, wrong API usage", 22);
-globalstate140011 g_140016;
+STRING_LITERAL(TMP764, " with message \'", 15);
+STRING_LITERAL(TMP765, "\'</p><p>Displaying raw contents of file anyway:</p><p><tt>", 58);
+STRING_LITERAL(TMP766, "<br>", 4);
+STRING_LITERAL(TMP767, "</tt></p></body></html>", 23);
+STRING_LITERAL(TMP768, "Uh oh, wrong API usage", 22);
+globalstate140012 g_140017;
+extern TSafePoint* exchandler_12838;
 extern TNimType NTI116006; /* TRstParseOption */
-TNimType NTI140311; /* set[TRstParseOption] */
+TNimType NTI140312; /* set[TRstParseOption] */
 extern TNimType NTI127012; /* TRstGenerator */
 extern TNimType NTI17401; /* ref EInvalidValue */
 extern TNimType NTI1253; /* EInvalidValue */
@@ -654,8 +660,11 @@ extern TNimType NTI132612; /* TCfgParser */
 extern TNimType NTI132606; /* TCfgEvent */
 extern NU8 level_139293;
 extern TNimType NTI89403; /* TTimeInfo */
-extern TSafePoint* exchandler_12838;
+extern TNimType NTI1225; /* E_Base */
 extern E_Base* currexception_12840;
+extern TNimType NTI1235; /* EOS */
+extern TNimType NTI1233; /* EIO */
+extern TNimType NTI1257; /* EOutOfMemory */
 extern TNimType NTI6416; /* ref E_Base */
 extern TNimType NTI139030; /* TRollingFileLogger */
 extern TNimType NTI139028; /* TFileLogger */
@@ -698,6 +707,12 @@ static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b) {
 	return result;
 }
 
+static N_INLINE(void, pushSafePoint)(TSafePoint* s) {
+	(*s).hasRaiseAction = NIM_FALSE;
+	(*s).prev = exchandler_12838;
+	exchandler_12838 = s;
+}
+
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
 	memcpy(((NCSTRING) (&(*dest).data[((*dest).Sup.len)- 0])), ((NCSTRING) ((*src).data)), (NI64)((*src).Sup.len + 1));
 	(*dest).Sup.len += (*src).Sup.len;
@@ -725,7 +740,7 @@ static N_INLINE(void, nimGCunrefNoCycle)(void* p) {
 	LA3: ;
 }
 
-N_NIMCALL(tstringtable113610*, loadconfig_140019)(NimStringDesc* memstring) {
+N_NIMCALL(tstringtable113610*, loadconfig_140020)(NimStringDesc* memstring) {
 	tstringtable113610* result;
 	tstringstream129435* f;
 	tcfgparser132612 p;
@@ -733,28 +748,28 @@ N_NIMCALL(tstringtable113610*, loadconfig_140019)(NimStringDesc* memstring) {
 	result = nstnewStringTable(((NU8) 2));
 	f = newstringstream_129536(memstring);
 	{
-		einvalidvalue1253* e_140036;
+		einvalidvalue1253* e_140037;
 		NimStringDesc* LOC5;
 		if (!f == 0) goto LA3;
-		e_140036 = 0;
-		e_140036 = (einvalidvalue1253*) newObj((&NTI17401), sizeof(einvalidvalue1253));
-		(*e_140036).Sup.Sup.Sup.m_type = (&NTI1253);
+		e_140037 = 0;
+		e_140037 = (einvalidvalue1253*) newObj((&NTI17401), sizeof(einvalidvalue1253));
+		(*e_140037).Sup.Sup.Sup.m_type = (&NTI1253);
 		LOC5 = 0;
-		LOC5 = (*e_140036).Sup.Sup.message; (*e_140036).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP128));
+		LOC5 = (*e_140037).Sup.Sup.message; (*e_140037).Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP129));
 		if (LOC5) nimGCunrefNoCycle(LOC5);
-		raiseException((E_Base*)e_140036, "EInvalidValue");
+		raiseException((E_Base*)e_140037, "EInvalidValue");
 	}
 	LA3: ;
 	memset((void*)&p, 0, sizeof(p));
 	p.Sup.Sup.m_type = (&NTI132612);
-	npcopen(&p, &f->Sup, ((NimStringDesc*) &TMP143), 0);
+	npcopen(&p, &f->Sup, ((NimStringDesc*) &TMP144), 0);
 	while (1) {
-		tcfgevent132606 e_140057;
-		chckNil((void*)&e_140057);
-		memset((void*)&e_140057, 0, sizeof(e_140057));
-		e_140057.Sup.m_type = (&NTI132606);
-		npcnext(&p, &e_140057);
-		switch (e_140057.Kind) {
+		tcfgevent132606 e_140058;
+		chckNil((void*)&e_140058);
+		memset((void*)&e_140058, 0, sizeof(e_140058));
+		e_140058.Sup.m_type = (&NTI132606);
+		npcnext(&p, &e_140058);
+		switch (e_140058.Kind) {
 		case ((NU8) 0):
 		{
 			goto LA6;
@@ -766,21 +781,21 @@ N_NIMCALL(tstringtable113610*, loadconfig_140019)(NimStringDesc* memstring) {
 		break;
 		case ((NU8) 2):
 		{
-			nstPut(result, e_140057.kindU.S3.Key, e_140057.kindU.S3.Value);
+			nstPut(result, e_140058.kindU.S3.Key, e_140058.kindU.S3.Value);
 		}
 		break;
 		case ((NU8) 3):
 		{
 			{
 				NimStringDesc* LOC15;
-				TY140176 LOC16;
+				TY140177 LOC16;
 				if (!(level_139293 <= ((NU8) 3))) goto LA13;
 				LOC15 = 0;
-				LOC15 = rawNewString(e_140057.kindU.S3.Key->Sup.len + e_140057.kindU.S3.Value->Sup.len + 11);
-appendString(LOC15, ((NimStringDesc*) &TMP152));
-appendString(LOC15, e_140057.kindU.S3.Key);
+				LOC15 = rawNewString(e_140058.kindU.S3.Key->Sup.len + e_140058.kindU.S3.Value->Sup.len + 11);
 appendString(LOC15, ((NimStringDesc*) &TMP153));
-appendString(LOC15, e_140057.kindU.S3.Value);
+appendString(LOC15, e_140058.kindU.S3.Key);
+appendString(LOC15, ((NimStringDesc*) &TMP154));
+appendString(LOC15, e_140058.kindU.S3.Value);
 				memset((void*)LOC16, 0, sizeof(LOC16));
 				logloop_139319(((NU8) 3), LOC15, LOC16, 0);
 			}
@@ -789,22 +804,22 @@ appendString(LOC15, e_140057.kindU.S3.Value);
 		break;
 		case ((NU8) 4):
 		{
-			einvalidvalue1253* e_140246;
+			einvalidvalue1253* e_140247;
 			NimStringDesc* LOC23;
 			{
-				TY140176 LOC22;
+				TY140177 LOC22;
 				if (!(level_139293 <= ((NU8) 4))) goto LA20;
 				memset((void*)LOC22, 0, sizeof(LOC22));
-				logloop_139319(((NU8) 4), e_140057.kindU.S4.Msg, LOC22, 0);
+				logloop_139319(((NU8) 4), e_140058.kindU.S4.Msg, LOC22, 0);
 			}
 			LA20: ;
-			e_140246 = 0;
-			e_140246 = (einvalidvalue1253*) newObj((&NTI17401), sizeof(einvalidvalue1253));
-			(*e_140246).Sup.Sup.Sup.m_type = (&NTI1253);
+			e_140247 = 0;
+			e_140247 = (einvalidvalue1253*) newObj((&NTI17401), sizeof(einvalidvalue1253));
+			(*e_140247).Sup.Sup.Sup.m_type = (&NTI1253);
 			LOC23 = 0;
-			LOC23 = (*e_140246).Sup.Sup.message; (*e_140246).Sup.Sup.message = copyStringRC1(e_140057.kindU.S4.Msg);
+			LOC23 = (*e_140247).Sup.Sup.message; (*e_140247).Sup.Sup.message = copyStringRC1(e_140058.kindU.S4.Msg);
 			if (LOC23) nimGCunrefNoCycle(LOC23);
-			raiseException((E_Base*)e_140246, "EInvalidValue");
+			raiseException((E_Base*)e_140247, "EInvalidValue");
 		}
 		break;
 		}
@@ -841,33 +856,33 @@ N_NIMCALL(NimStringDesc*, myfindfile_140601)(NimStringDesc* filename) {
 	result = 0;
 	{
 		NimStringDesc* LOC5;
-		TY140176 LOC6;
+		TY140177 LOC6;
 		if (!(level_139293 <= ((NU8) 1))) goto LA3;
 		LOC5 = 0;
 		LOC5 = rawNewString(filename->Sup.len + 13);
-appendString(LOC5, ((NimStringDesc*) &TMP165));
-appendString(LOC5, filename);
 appendString(LOC5, ((NimStringDesc*) &TMP166));
+appendString(LOC5, filename);
+appendString(LOC5, ((NimStringDesc*) &TMP167));
 		memset((void*)LOC6, 0, sizeof(LOC6));
 		logloop_139319(((NU8) 1), LOC5, LOC6, 0);
 	}
 	LA3: ;
 	{
 		NimStringDesc* LOC11;
-		TY140176 LOC12;
+		TY140177 LOC12;
 		if (!(level_139293 <= ((NU8) 1))) goto LA9;
 		LOC11 = 0;
-		LOC11 = rawNewString(g_140016.Basedir->Sup.len + 12);
+		LOC11 = rawNewString(g_140017.Basedir->Sup.len + 12);
+appendString(LOC11, ((NimStringDesc*) &TMP168));
+appendString(LOC11, g_140017.Basedir);
 appendString(LOC11, ((NimStringDesc*) &TMP167));
-appendString(LOC11, g_140016.Basedir);
-appendString(LOC11, ((NimStringDesc*) &TMP166));
 		memset((void*)LOC12, 0, sizeof(LOC12));
 		logloop_139319(((NU8) 1), LOC11, LOC12, 0);
 	}
 	LA9: ;
 	{
-		if (!(0 < g_140016.Basedir->Sup.len)) goto LA15;
-		result = HEX2F_103673(g_140016.Basedir, filename);
+		if (!(0 < g_140017.Basedir->Sup.len)) goto LA15;
+		result = HEX2F_103673(g_140017.Basedir, filename);
 		{
 			NIM_BOOL LOC19;
 			LOC19 = 0;
@@ -875,13 +890,13 @@ appendString(LOC11, ((NimStringDesc*) &TMP166));
 			if (!LOC19) goto LA20;
 			{
 				NimStringDesc* LOC26;
-				TY140176 LOC27;
+				TY140177 LOC27;
 				if (!(level_139293 <= ((NU8) 1))) goto LA24;
 				LOC26 = 0;
 				LOC26 = rawNewString(result->Sup.len + 12);
-appendString(LOC26, ((NimStringDesc*) &TMP168));
+appendString(LOC26, ((NimStringDesc*) &TMP169));
 appendString(LOC26, result);
-appendString(LOC26, ((NimStringDesc*) &TMP166));
+appendString(LOC26, ((NimStringDesc*) &TMP167));
 				memset((void*)LOC27, 0, sizeof(LOC27));
 				logloop_139319(((NU8) 1), LOC26, LOC27, 0);
 			}
@@ -901,14 +916,14 @@ appendString(LOC26, ((NimStringDesc*) &TMP166));
 	goto LA28;
 	LA31: ;
 	{
-		result = copyString(((NimStringDesc*) &TMP169));
+		result = copyString(((NimStringDesc*) &TMP170));
 	}
 	LA28: ;
 	BeforeRet: ;
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, rststringtohtml_140306)(NimStringDesc* content, NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, rststringtohtml_140307)(NimStringDesc* content, NimStringDesc* filename) {
 	NimStringDesc* result;
 	NU8 parseoptions;
 	trstgenerator127012 generator;
@@ -929,16 +944,16 @@ N_NIMCALL(NimStringDesc*, rststringtohtml_140306)(NimStringDesc* content, NimStr
 	generator.Sup.m_type = (&NTI127012);
 	hastoc = 0;
 	{
-		if (!g_140016.Config == 0) goto LA3;
-		asgnRefNoCycle((void**) &g_140016.Config, loadconfig_140019(((NimStringDesc*) &TMP154)));
+		if (!g_140017.Config == 0) goto LA3;
+		asgnRefNoCycle((void**) &g_140017.Config, loadconfig_140020(((NimStringDesc*) &TMP155)));
 	}
 	LA3: ;
 	memset((void*)&LOC5, 0, sizeof(LOC5));
 	nossplitPath(filename, &LOC5);
 	LOC6 = 0;
-	LOC6 = g_140016.Basedir; g_140016.Basedir = copyStringRC1(LOC5.Field0);
+	LOC6 = g_140017.Basedir; g_140017.Basedir = copyStringRC1(LOC5.Field0);
 	if (LOC6) nimGCunrefNoCycle(LOC6);
-	initrstgenerator_127040(&generator, ((NU8) 0), g_140016.Config, filename, parseoptions, myfindfile_140601, defaultmsghandler_116803);
+	initrstgenerator_127040(&generator, ((NU8) 0), g_140017.Config, filename, parseoptions, myfindfile_140601, defaultmsghandler_116803);
 	rst = rstparse_122542(content, filename, 1, 1, &hastoc, parseoptions, myfindfile_140601, NIM_NIL);
 	result = rawNewString(30000);
 	moddesc = rawNewString(30000);
@@ -951,71 +966,19 @@ N_NIMCALL(NimStringDesc*, rststringtohtml_140306)(NimStringDesc* content, NimStr
 	getgmtime_89445(LOC7, &lastmod);
 	title = copyString(generator.Meta[(((NU8) 1))- 0]);
 	LOC8 = 0;
-	LOC8 = nstGet(g_140016.Config, ((NimStringDesc*) &TMP667));
+	LOC8 = nstGet(g_140017.Config, ((NimStringDesc*) &TMP668));
 	LOC9 = 0;
 	LOC9 = subex_135519(LOC8);
 	memset((void*)LOC10, 0, sizeof(LOC10));
-	LOC10[0] = copyString(((NimStringDesc*) &TMP668));
+	LOC10[0] = copyString(((NimStringDesc*) &TMP669));
 	LOC10[1] = copyString(title);
-	LOC10[2] = copyString(((NimStringDesc*) &TMP669));
-	LOC10[3] = format_91395(&lastmod, ((NimStringDesc*) &TMP722));
-	LOC10[4] = copyString(((NimStringDesc*) &TMP723));
-	LOC10[5] = format_91395(&lastmod, ((NimStringDesc*) &TMP724));
-	LOC10[6] = copyString(((NimStringDesc*) &TMP725));
+	LOC10[2] = copyString(((NimStringDesc*) &TMP670));
+	LOC10[3] = format_91395(&lastmod, ((NimStringDesc*) &TMP723));
+	LOC10[4] = copyString(((NimStringDesc*) &TMP724));
+	LOC10[5] = format_91395(&lastmod, ((NimStringDesc*) &TMP725));
+	LOC10[6] = copyString(((NimStringDesc*) &TMP726));
 	LOC10[7] = copyString(moddesc);
 	result = nfrmtFormatOpenArray(LOC9, LOC10, 8);
-	return result;
-}
-
-N_NIMCALL(NimStringDesc*, nimfiletohtml_140691)(NimStringDesc* filename) {
-	NimStringDesc* result;
-	NimStringDesc* name;
-	TY103885 LOC1;
-	NimStringDesc* titlesymbols;
-	NI length;
-	NI64 LOC2;
-	NimStringDesc* source;
-	TY140702 LOC3;
-	NimStringDesc* LOC4;
-	NimStringDesc* LOC5;
-	result = 0;
-	memset((void*)&LOC1, 0, sizeof(LOC1));
-	nossplitFile(filename, &LOC1);
-	name = LOC1.Field1;
-	titlesymbols = nsuRepeatChar(name->Sup.len, 61);
-	LOC2 = 0;
-	LOC2 = nosgetFileSize(filename);
-	length = (NI64)(1000 + ((NI) (LOC2)));
-	source = rawNewString(length);
-	memset((void*)LOC3, 0, sizeof(LOC3));
-	LOC3[0] = copyString(titlesymbols);
-	LOC3[1] = copyString(name);
-	source = nsuFormatOpenArray(((NimStringDesc*) &TMP94), LOC3, 2);
-	LOC4 = 0;
-	LOC4 = readfile_10240(filename);
-	LOC5 = 0;
-	LOC5 = nsuReplaceStr(LOC4, ((NimStringDesc*) &TMP101), ((NimStringDesc*) &TMP102));
-	source = resizeString(source, LOC5->Sup.len + 0);
-appendString(source, LOC5);
-	result = rststringtohtml_140306(source, filename);
-	return result;
-}
-
-static N_INLINE(void, pushSafePoint)(TSafePoint* s) {
-	(*s).hasRaiseAction = NIM_FALSE;
-	(*s).prev = exchandler_12838;
-	exchandler_12838 = s;
-}
-
-N_NIMCALL(NimStringDesc*, rstfiletohtml_140670)(NimStringDesc* filename) {
-	NimStringDesc* result;
-	NimStringDesc* LOC1;
-	result = 0;
-	LOC1 = 0;
-	LOC1 = readfile_10240(filename);
-	result = rststringtohtml_140306(LOC1, filename);
-	goto BeforeRet;
-	BeforeRet: ;
 	return result;
 }
 
@@ -1030,6 +993,109 @@ static N_INLINE(E_Base*, getCurrentException)(void) {
 	return result;
 }
 
+static N_INLINE(void, popCurrentException)(void) {
+	asgnRefNoCycle((void**) &currexception_12840, (*currexception_12840).parent);
+}
+
+N_NIMCALL(NimStringDesc*, nimfiletohtml_140692)(NimStringDesc* filename) {
+	NimStringDesc* result;
+	TSafePoint TMP86;
+	result = 0;
+	pushSafePoint(&TMP86);
+	TMP86.status = setjmp(TMP86.context);
+	if (TMP86.status == 0) {
+		NimStringDesc* volatile name;
+		TY103885 LOC2;
+		NimStringDesc* volatile titlesymbols;
+		NI volatile length;
+		NI64 LOC3;
+		NimStringDesc* volatile source;
+		NimStringDesc* LOC4;
+		NimStringDesc* LOC5;
+		NimStringDesc* LOC6;
+		memset((void*)&LOC2, 0, sizeof(LOC2));
+		nossplitFile(filename, &LOC2);
+		name = LOC2.Field1;
+		titlesymbols = nsuRepeatChar(name->Sup.len, 61);
+		LOC3 = 0;
+		LOC3 = nosgetFileSize(filename);
+		length = (NI64)(1000 + ((NI) (LOC3)));
+		source = rawNewString(length);
+		LOC4 = 0;
+		LOC4 = rawNewString(titlesymbols->Sup.len + name->Sup.len + titlesymbols->Sup.len + 28);
+appendString(LOC4, titlesymbols);
+appendString(LOC4, ((NimStringDesc*) &TMP95));
+appendString(LOC4, name);
+appendString(LOC4, ((NimStringDesc*) &TMP95));
+appendString(LOC4, titlesymbols);
+appendString(LOC4, ((NimStringDesc*) &TMP96));
+		source = LOC4;
+		LOC5 = 0;
+		LOC5 = readfile_10240(filename);
+		LOC6 = 0;
+		LOC6 = nsuReplaceStr(LOC5, ((NimStringDesc*) &TMP95), ((NimStringDesc*) &TMP103));
+		source = resizeString(source, LOC6->Sup.len + 0);
+appendString(source, LOC6);
+		result = rststringtohtml_140307(source, filename);
+		popSafePoint();
+	}
+	else {
+		popSafePoint();
+		if (isObj(getCurrentException()->Sup.m_type, (&NTI1225))) {
+			NimStringDesc* LOC9;
+			TMP86.status = 0;
+			LOC9 = 0;
+			LOC9 = rawNewString(filename->Sup.len + 45);
+appendString(LOC9, ((NimStringDesc*) &TMP727));
+appendString(LOC9, filename);
+appendString(LOC9, ((NimStringDesc*) &TMP728));
+			result = LOC9;
+			popCurrentException();
+		}
+		else 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1235))) {
+			NimStringDesc* LOC11;
+			TMP86.status = 0;
+			LOC11 = 0;
+			LOC11 = rawNewString(filename->Sup.len + 48);
+appendString(LOC11, ((NimStringDesc*) &TMP729));
+appendString(LOC11, filename);
+appendString(LOC11, ((NimStringDesc*) &TMP728));
+			result = LOC11;
+			popCurrentException();
+		}
+		else 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1233))) {
+			NimStringDesc* LOC13;
+			TMP86.status = 0;
+			LOC13 = 0;
+			LOC13 = rawNewString(filename->Sup.len + 49);
+appendString(LOC13, ((NimStringDesc*) &TMP730));
+appendString(LOC13, filename);
+appendString(LOC13, ((NimStringDesc*) &TMP728));
+			result = LOC13;
+			popCurrentException();
+		}
+		else 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1257))) {
+			TMP86.status = 0;
+			result = copyString(((NimStringDesc*) &TMP731));
+			popCurrentException();
+		}
+	}
+	if (TMP86.status != 0) reraiseException();
+	return result;
+}
+
+N_NIMCALL(NimStringDesc*, rstfiletohtml_140670)(NimStringDesc* filename) {
+	NimStringDesc* result;
+	NimStringDesc* LOC1;
+	result = 0;
+	LOC1 = 0;
+	LOC1 = readfile_10240(filename);
+	result = rststringtohtml_140307(LOC1, filename);
+	goto BeforeRet;
+	BeforeRet: ;
+	return result;
+}
+
 static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_76235)(void) {
 	NimStringDesc* result;
 	E_Base* e;
@@ -1037,7 +1103,7 @@ static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_76235)(void) {
 	e = getCurrentException();
 	{
 		if (!(e == NIM_NIL)) goto LA3;
-		result = copyString(((NimStringDesc*) &TMP169));
+		result = copyString(((NimStringDesc*) &TMP170));
 	}
 	goto LA1;
 	LA3: ;
@@ -1050,62 +1116,80 @@ static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_76235)(void) {
 	return result;
 }
 
-static N_INLINE(void, popCurrentException)(void) {
-	asgnRefNoCycle((void**) &currexception_12840, (*currexception_12840).parent);
-}
-
 N_NIMCALL(NimStringDesc*, saferstfiletohtml_140676)(NimStringDesc* filename) {
 	NimStringDesc* result;
-	TSafePoint TMP726;
+	TSafePoint TMP732;
 	result = 0;
-	pushSafePoint(&TMP726);
-	TMP726.status = setjmp(TMP726.context);
-	if (TMP726.status == 0) {
+	pushSafePoint(&TMP732);
+	TMP732.status = setjmp(TMP732.context);
+	if (TMP732.status == 0) {
 		result = rstfiletohtml_140670(filename);
 		popSafePoint();
 	}
 	else {
 		popSafePoint();
 		{
+			NimStringDesc* volatile content;
+			TSafePoint TMP733;
 			E_Base* volatile e;
 			NimStringDesc* volatile msg;
-			NimStringDesc* volatile content;
-			NimStringDesc* LOC4;
-			NimStringDesc* LOC5;
-			NimStringDesc* LOC6;
-			NimStringDesc* LOC7;
-			NimStringDesc* LOC8;
 			NimStringDesc* LOC9;
-			TMP726.status = 0;
+			NimStringDesc* LOC10;
+			NimStringDesc* LOC11;
+			NimStringDesc* LOC12;
+			NimStringDesc* LOC13;
+			TMP732.status = 0;
+			content = 0;
+			pushSafePoint(&TMP733);
+			TMP733.status = setjmp(TMP733.context);
+			if (TMP733.status == 0) {
+				NimStringDesc* LOC5;
+				LOC5 = 0;
+				LOC5 = readfile_10240(filename);
+				content = xmlencode_137271(LOC5);
+				popSafePoint();
+			}
+			else {
+				popSafePoint();
+				if (isObj(getCurrentException()->Sup.m_type, (&NTI1225))) {
+					NimStringDesc* LOC8;
+					TMP733.status = 0;
+					LOC8 = 0;
+					LOC8 = rawNewString(filename->Sup.len + 18);
+appendString(LOC8, ((NimStringDesc*) &TMP738));
+appendString(LOC8, filename);
+appendString(LOC8, ((NimStringDesc*) &TMP739));
+					content = LOC8;
+					popCurrentException();
+				}
+			}
+			if (TMP733.status != 0) reraiseException();
 			e = getCurrentException();
 			msg = getcurrentexceptionmsg_76235();
-			LOC4 = 0;
-			LOC4 = readfile_10240(filename);
-			content = xmlencode_137271(LOC4);
-			LOC5 = 0;
-			LOC6 = 0;
-			LOC6 = xmlencode_137271(filename);
-			LOC7 = 0;
-			LOC7 = xmlencode_137271(reprAny(e, (&NTI6416)));
-			LOC8 = 0;
-			LOC8 = xmlencode_137271(msg);
 			LOC9 = 0;
-			LOC9 = nsuReplaceStr(content, ((NimStringDesc*) &TMP101), ((NimStringDesc*) &TMP757));
-			LOC5 = rawNewString(LOC6->Sup.len + LOC7->Sup.len + LOC8->Sup.len + LOC9->Sup.len + 327);
-appendString(LOC5, ((NimStringDesc*) &TMP731));
-appendString(LOC5, LOC6);
-appendString(LOC5, ((NimStringDesc*) &TMP732));
-appendString(LOC5, LOC7);
-appendString(LOC5, ((NimStringDesc*) &TMP755));
-appendString(LOC5, LOC8);
-appendString(LOC5, ((NimStringDesc*) &TMP756));
-appendString(LOC5, LOC9);
-appendString(LOC5, ((NimStringDesc*) &TMP758));
-			result = LOC5;
+			LOC10 = 0;
+			LOC10 = xmlencode_137271(filename);
+			LOC11 = 0;
+			LOC11 = xmlencode_137271(reprAny(e, (&NTI6416)));
+			LOC12 = 0;
+			LOC12 = xmlencode_137271(msg);
+			LOC13 = 0;
+			LOC13 = nsuReplaceStr(content, ((NimStringDesc*) &TMP95), ((NimStringDesc*) &TMP766));
+			LOC9 = rawNewString(LOC10->Sup.len + LOC11->Sup.len + LOC12->Sup.len + LOC13->Sup.len + 327);
+appendString(LOC9, ((NimStringDesc*) &TMP740));
+appendString(LOC9, LOC10);
+appendString(LOC9, ((NimStringDesc*) &TMP741));
+appendString(LOC9, LOC11);
+appendString(LOC9, ((NimStringDesc*) &TMP764));
+appendString(LOC9, LOC12);
+appendString(LOC9, ((NimStringDesc*) &TMP765));
+appendString(LOC9, LOC13);
+appendString(LOC9, ((NimStringDesc*) &TMP767));
+			result = LOC9;
 			popCurrentException();
 		}
 	}
-	if (TMP726.status != 0) reraiseException();
+	if (TMP732.status != 0) reraiseException();
 	return result;
 }
 
@@ -1121,25 +1205,25 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename) {
 	goto LA3;
 	LA2: ;
 	{
-		asgnRefNoCycle((void**) &g_140016.Lastcconversion, nimfiletohtml_140691(filename));
+		asgnRefNoCycle((void**) &g_140017.Lastcconversion, nimfiletohtml_140692(filename));
 	}
 	goto LA4;
 	LA3: ;
 	{
-		asgnRefNoCycle((void**) &g_140016.Lastcconversion, saferstfiletohtml_140676(filename));
+		asgnRefNoCycle((void**) &g_140017.Lastcconversion, saferstfiletohtml_140676(filename));
 	}
 	LA4: ;
-	result = g_140016.Lastcconversion->Sup.len;
+	result = g_140017.Lastcconversion->Sup.len;
 	return result;
 }
 
 N_NIMCALL(void, get_global_html)(void* outputbuffer) {
 	{
-		if (!g_140016.Lastcconversion == 0) goto LA3;
-		quit_77030(((NimStringDesc*) &TMP759), 1);
+		if (!g_140017.Lastcconversion == 0) goto LA3;
+		quit_77030(((NimStringDesc*) &TMP768), 1);
 	}
 	LA3: ;
-	memcpy(outputbuffer, ((void*) (&g_140016.Lastcconversion->data[0])), g_140016.Lastcconversion->Sup.len);
+	memcpy(outputbuffer, ((void*) (&g_140017.Lastcconversion->data[0])), g_140017.Lastcconversion->Sup.len);
 }
 
 N_NIMCALL(void, log_139121)(tlogger139024* l, NU8 level, NimStringDesc* frmt, NimStringDesc** args, NI argsLen0) {
@@ -1232,11 +1316,11 @@ N_NOINLINE(void, resterInit)(void) {
 
 N_NOINLINE(void, resterDatInit)(void) {
 static TNimNode TMP5[1];
-NTI140311.size = sizeof(NU8);
-NTI140311.kind = 19;
-NTI140311.base = (&NTI116006);
-NTI140311.flags = 3;
+NTI140312.size = sizeof(NU8);
+NTI140312.kind = 19;
+NTI140312.base = (&NTI116006);
+NTI140312.flags = 3;
 TMP5[0].len = 0; TMP5[0].kind = 0;
-NTI140311.node = &TMP5[0];
+NTI140312.node = &TMP5[0];
 }
 

@@ -251,64 +251,63 @@ NIM_CONST TY90050 weekdays_90049 = {((NU8) 6),
 ((NU8) 5)}
 ;
 STRING_LITERAL(TMP73, "UTC", 3);
-STRING_LITERAL(TMP670, "", 0);
-STRING_LITERAL(TMP671, "d", 1);
-STRING_LITERAL(TMP672, "dd", 2);
-STRING_LITERAL(TMP673, "ddd", 3);
-STRING_LITERAL(TMP674, "dddd", 4);
-STRING_LITERAL(TMP675, "h", 1);
-STRING_LITERAL(TMP676, "hh", 2);
-STRING_LITERAL(TMP677, "H", 1);
-STRING_LITERAL(TMP678, "HH", 2);
-STRING_LITERAL(TMP679, "m", 1);
-STRING_LITERAL(TMP680, "mm", 2);
-STRING_LITERAL(TMP681, "M", 1);
-STRING_LITERAL(TMP682, "MM", 2);
-STRING_LITERAL(TMP683, "MMM", 3);
-STRING_LITERAL(TMP684, "MMMM", 4);
-STRING_LITERAL(TMP685, "s", 1);
-STRING_LITERAL(TMP686, "ss", 2);
-STRING_LITERAL(TMP687, "t", 1);
-STRING_LITERAL(TMP688, "tt", 2);
-STRING_LITERAL(TMP689, "y", 1);
-STRING_LITERAL(TMP690, "yy", 2);
-STRING_LITERAL(TMP691, "yyy", 3);
-STRING_LITERAL(TMP692, "yyyy", 4);
-STRING_LITERAL(TMP693, "yyyyy", 5);
-STRING_LITERAL(TMP694, "z", 1);
-STRING_LITERAL(TMP695, "zz", 2);
-STRING_LITERAL(TMP696, "zzz", 3);
-STRING_LITERAL(TMP697, "ZZZ", 3);
-STRING_LITERAL(TMP698, "0", 1);
-STRING_LITERAL(TMP699, "Monday", 6);
-STRING_LITERAL(TMP700, "Tuesday", 7);
-STRING_LITERAL(TMP701, "Wednesday", 9);
-STRING_LITERAL(TMP702, "Thursday", 8);
-STRING_LITERAL(TMP703, "Friday", 6);
-STRING_LITERAL(TMP704, "Saturday", 8);
-STRING_LITERAL(TMP705, "Sunday", 6);
-NIM_CONST TY91228 lookup_91227 = {((NimStringDesc*) &TMP699),
-((NimStringDesc*) &TMP700),
+STRING_LITERAL(TMP671, "", 0);
+STRING_LITERAL(TMP672, "d", 1);
+STRING_LITERAL(TMP673, "dd", 2);
+STRING_LITERAL(TMP674, "ddd", 3);
+STRING_LITERAL(TMP675, "dddd", 4);
+STRING_LITERAL(TMP676, "h", 1);
+STRING_LITERAL(TMP677, "hh", 2);
+STRING_LITERAL(TMP678, "H", 1);
+STRING_LITERAL(TMP679, "HH", 2);
+STRING_LITERAL(TMP680, "m", 1);
+STRING_LITERAL(TMP681, "mm", 2);
+STRING_LITERAL(TMP682, "M", 1);
+STRING_LITERAL(TMP683, "MM", 2);
+STRING_LITERAL(TMP684, "MMM", 3);
+STRING_LITERAL(TMP685, "MMMM", 4);
+STRING_LITERAL(TMP686, "s", 1);
+STRING_LITERAL(TMP687, "ss", 2);
+STRING_LITERAL(TMP688, "t", 1);
+STRING_LITERAL(TMP689, "tt", 2);
+STRING_LITERAL(TMP690, "y", 1);
+STRING_LITERAL(TMP691, "yy", 2);
+STRING_LITERAL(TMP692, "yyy", 3);
+STRING_LITERAL(TMP693, "yyyy", 4);
+STRING_LITERAL(TMP694, "yyyyy", 5);
+STRING_LITERAL(TMP695, "z", 1);
+STRING_LITERAL(TMP696, "zz", 2);
+STRING_LITERAL(TMP697, "zzz", 3);
+STRING_LITERAL(TMP698, "ZZZ", 3);
+STRING_LITERAL(TMP699, "0", 1);
+STRING_LITERAL(TMP700, "Monday", 6);
+STRING_LITERAL(TMP701, "Tuesday", 7);
+STRING_LITERAL(TMP702, "Wednesday", 9);
+STRING_LITERAL(TMP703, "Thursday", 8);
+STRING_LITERAL(TMP704, "Friday", 6);
+STRING_LITERAL(TMP705, "Saturday", 8);
+STRING_LITERAL(TMP706, "Sunday", 6);
+NIM_CONST TY91228 lookup_91227 = {((NimStringDesc*) &TMP700),
 ((NimStringDesc*) &TMP701),
 ((NimStringDesc*) &TMP702),
 ((NimStringDesc*) &TMP703),
 ((NimStringDesc*) &TMP704),
-((NimStringDesc*) &TMP705)}
+((NimStringDesc*) &TMP705),
+((NimStringDesc*) &TMP706)}
 ;
-STRING_LITERAL(TMP706, "January", 7);
-STRING_LITERAL(TMP707, "February", 8);
-STRING_LITERAL(TMP708, "March", 5);
-STRING_LITERAL(TMP709, "April", 5);
-STRING_LITERAL(TMP710, "May", 3);
-STRING_LITERAL(TMP711, "June", 4);
-STRING_LITERAL(TMP712, "July", 4);
-STRING_LITERAL(TMP713, "August", 6);
-STRING_LITERAL(TMP714, "September", 9);
-STRING_LITERAL(TMP715, "October", 7);
-STRING_LITERAL(TMP716, "November", 8);
-STRING_LITERAL(TMP717, "December", 8);
-NIM_CONST TY91239 lookup_91238 = {((NimStringDesc*) &TMP706),
-((NimStringDesc*) &TMP707),
+STRING_LITERAL(TMP707, "January", 7);
+STRING_LITERAL(TMP708, "February", 8);
+STRING_LITERAL(TMP709, "March", 5);
+STRING_LITERAL(TMP710, "April", 5);
+STRING_LITERAL(TMP711, "May", 3);
+STRING_LITERAL(TMP712, "June", 4);
+STRING_LITERAL(TMP713, "July", 4);
+STRING_LITERAL(TMP714, "August", 6);
+STRING_LITERAL(TMP715, "September", 9);
+STRING_LITERAL(TMP716, "October", 7);
+STRING_LITERAL(TMP717, "November", 8);
+STRING_LITERAL(TMP718, "December", 8);
+NIM_CONST TY91239 lookup_91238 = {((NimStringDesc*) &TMP707),
 ((NimStringDesc*) &TMP708),
 ((NimStringDesc*) &TMP709),
 ((NimStringDesc*) &TMP710),
@@ -318,12 +317,13 @@ NIM_CONST TY91239 lookup_91238 = {((NimStringDesc*) &TMP706),
 ((NimStringDesc*) &TMP714),
 ((NimStringDesc*) &TMP715),
 ((NimStringDesc*) &TMP716),
-((NimStringDesc*) &TMP717)}
+((NimStringDesc*) &TMP717),
+((NimStringDesc*) &TMP718)}
 ;
-STRING_LITERAL(TMP718, "PM", 2);
-STRING_LITERAL(TMP719, "AM", 2);
-STRING_LITERAL(TMP720, ":00", 3);
-STRING_LITERAL(TMP721, "Invalid format string: ", 23);
+STRING_LITERAL(TMP719, "PM", 2);
+STRING_LITERAL(TMP720, "AM", 2);
+STRING_LITERAL(TMP721, ":00", 3);
+STRING_LITERAL(TMP722, "Invalid format string: ", 23);
 extern TNimType NTI1209; /* TObject */
 TNimType NTI89403; /* TTimeInfo */
 extern TNimType NTI105; /* int */
@@ -647,70 +647,70 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 N_NIMCALL(void, formattoken_91245)(ttimeinfo89403* info, NimStringDesc* token, NimStringDesc** buf) {
 	switch (hashString(token) & 31) {
 	case 0: 
-if (eqStrings(token, ((NimStringDesc*) &TMP670))) goto LA28;
+if (eqStrings(token, ((NimStringDesc*) &TMP671))) goto LA28;
 break;
 	case 1: 
-if (eqStrings(token, ((NimStringDesc*) &TMP680))) goto LA10;
+if (eqStrings(token, ((NimStringDesc*) &TMP681))) goto LA10;
 break;
 	case 5: 
-if (eqStrings(token, ((NimStringDesc*) &TMP671))) goto LA1;
+if (eqStrings(token, ((NimStringDesc*) &TMP672))) goto LA1;
 break;
 	case 6: 
-if (eqStrings(token, ((NimStringDesc*) &TMP688))) goto LA18;
+if (eqStrings(token, ((NimStringDesc*) &TMP689))) goto LA18;
 break;
 	case 7: 
-if (eqStrings(token, ((NimStringDesc*) &TMP697))) goto LA27;
+if (eqStrings(token, ((NimStringDesc*) &TMP698))) goto LA27;
 break;
 	case 8: 
-if (eqStrings(token, ((NimStringDesc*) &TMP689))) goto LA19;
+if (eqStrings(token, ((NimStringDesc*) &TMP690))) goto LA19;
 break;
 	case 10: 
-if (eqStrings(token, ((NimStringDesc*) &TMP675))) goto LA5;
-if (eqStrings(token, ((NimStringDesc*) &TMP681))) goto LA11;
-if (eqStrings(token, ((NimStringDesc*) &TMP682))) goto LA12;
-if (eqStrings(token, ((NimStringDesc*) &TMP686))) goto LA16;
-if (eqStrings(token, ((NimStringDesc*) &TMP690))) goto LA20;
+if (eqStrings(token, ((NimStringDesc*) &TMP676))) goto LA5;
+if (eqStrings(token, ((NimStringDesc*) &TMP682))) goto LA11;
+if (eqStrings(token, ((NimStringDesc*) &TMP683))) goto LA12;
+if (eqStrings(token, ((NimStringDesc*) &TMP687))) goto LA16;
+if (eqStrings(token, ((NimStringDesc*) &TMP691))) goto LA20;
 break;
 	case 12: 
-if (eqStrings(token, ((NimStringDesc*) &TMP683))) goto LA13;
+if (eqStrings(token, ((NimStringDesc*) &TMP684))) goto LA13;
 break;
 	case 14: 
-if (eqStrings(token, ((NimStringDesc*) &TMP696))) goto LA26;
+if (eqStrings(token, ((NimStringDesc*) &TMP697))) goto LA26;
 break;
 	case 15: 
-if (eqStrings(token, ((NimStringDesc*) &TMP674))) goto LA4;
-if (eqStrings(token, ((NimStringDesc*) &TMP687))) goto LA17;
+if (eqStrings(token, ((NimStringDesc*) &TMP675))) goto LA4;
+if (eqStrings(token, ((NimStringDesc*) &TMP688))) goto LA17;
 break;
 	case 20: 
-if (eqStrings(token, ((NimStringDesc*) &TMP693))) goto LA23;
+if (eqStrings(token, ((NimStringDesc*) &TMP694))) goto LA23;
 break;
 	case 21: 
-if (eqStrings(token, ((NimStringDesc*) &TMP672))) goto LA2;
-if (eqStrings(token, ((NimStringDesc*) &TMP679))) goto LA9;
+if (eqStrings(token, ((NimStringDesc*) &TMP673))) goto LA2;
+if (eqStrings(token, ((NimStringDesc*) &TMP680))) goto LA9;
 break;
 	case 22: 
-if (eqStrings(token, ((NimStringDesc*) &TMP685))) goto LA15;
-if (eqStrings(token, ((NimStringDesc*) &TMP695))) goto LA25;
+if (eqStrings(token, ((NimStringDesc*) &TMP686))) goto LA15;
+if (eqStrings(token, ((NimStringDesc*) &TMP696))) goto LA25;
 break;
 	case 24: 
-if (eqStrings(token, ((NimStringDesc*) &TMP677))) goto LA7;
+if (eqStrings(token, ((NimStringDesc*) &TMP678))) goto LA7;
 break;
 	case 25: 
-if (eqStrings(token, ((NimStringDesc*) &TMP678))) goto LA8;
+if (eqStrings(token, ((NimStringDesc*) &TMP679))) goto LA8;
 break;
 	case 28: 
-if (eqStrings(token, ((NimStringDesc*) &TMP684))) goto LA14;
+if (eqStrings(token, ((NimStringDesc*) &TMP685))) goto LA14;
 break;
 	case 29: 
-if (eqStrings(token, ((NimStringDesc*) &TMP691))) goto LA21;
+if (eqStrings(token, ((NimStringDesc*) &TMP692))) goto LA21;
 break;
 	case 30: 
-if (eqStrings(token, ((NimStringDesc*) &TMP694))) goto LA24;
+if (eqStrings(token, ((NimStringDesc*) &TMP695))) goto LA24;
 break;
 	case 31: 
-if (eqStrings(token, ((NimStringDesc*) &TMP673))) goto LA3;
-if (eqStrings(token, ((NimStringDesc*) &TMP676))) goto LA6;
-if (eqStrings(token, ((NimStringDesc*) &TMP692))) goto LA22;
+if (eqStrings(token, ((NimStringDesc*) &TMP674))) goto LA3;
+if (eqStrings(token, ((NimStringDesc*) &TMP677))) goto LA6;
+if (eqStrings(token, ((NimStringDesc*) &TMP693))) goto LA22;
 break;
 	}
 	goto LA29;
@@ -729,7 +729,7 @@ appendString((*buf), LOC32);
 		{
 			if (!(((NI) ((*info).Monthday)) < 10)) goto LA36;
 			(*buf) = resizeString((*buf), 1);
-appendString((*buf), ((NimStringDesc*) &TMP698));
+appendString((*buf), ((NimStringDesc*) &TMP699));
 		}
 		LA36: ;
 		LOC38 = 0;
@@ -941,13 +941,13 @@ appendString((*buf), LOC101);
 		{
 			if (!(12 <= ((NI) ((*info).Hour)))) goto LA111;
 			(*buf) = resizeString((*buf), 2);
-appendString((*buf), ((NimStringDesc*) &TMP718));
+appendString((*buf), ((NimStringDesc*) &TMP719));
 		}
 		goto LA109;
 		LA111: ;
 		{
 			(*buf) = resizeString((*buf), 2);
-appendString((*buf), ((NimStringDesc*) &TMP719));
+appendString((*buf), ((NimStringDesc*) &TMP720));
 		}
 		LA109: ;
 	}
@@ -1174,7 +1174,7 @@ appendString((*buf), LOC187);
 			}
 			LA194: ;
 			atindex = (NI64)((*buf)->Sup.len - (NI64)(LOC192->Sup.len - LOC193));
-			insert_78601(buf, ((NimStringDesc*) &TMP698), atindex);
+			insert_78601(buf, ((NimStringDesc*) &TMP699), atindex);
 		}
 		LA190: ;
 	}
@@ -1190,7 +1190,7 @@ appendString((*buf), LOC187);
 		LOC201 = nimIntToStr(hrs);
 		LOC200 = rawNewString(LOC201->Sup.len + 3);
 appendString(LOC200, LOC201);
-appendString(LOC200, ((NimStringDesc*) &TMP720));
+appendString(LOC200, ((NimStringDesc*) &TMP721));
 		(*buf) = resizeString((*buf), LOC200->Sup.len + 0);
 appendString((*buf), LOC200);
 		{
@@ -1204,7 +1204,7 @@ appendString((*buf), LOC200);
 			LOC207 = nimIntToStr(hrs);
 			LOC206 = rawNewString(LOC207->Sup.len + 3);
 appendString(LOC206, LOC207);
-appendString(LOC206, ((NimStringDesc*) &TMP720));
+appendString(LOC206, ((NimStringDesc*) &TMP721));
 			LOC208 = 0;
 			{
 				if (!(hrs < 0)) goto LA211;
@@ -1217,7 +1217,7 @@ appendString(LOC206, ((NimStringDesc*) &TMP720));
 			}
 			LA209: ;
 			atindex = (NI64)((*buf)->Sup.len - (NI64)(LOC206->Sup.len - LOC208));
-			insert_78601(buf, ((NimStringDesc*) &TMP698), atindex);
+			insert_78601(buf, ((NimStringDesc*) &TMP699), atindex);
 		}
 		LA204: ;
 	}
@@ -1241,7 +1241,7 @@ appendString((*buf), (*info).Tzname);
 		(*e_91372).Sup.Sup.Sup.m_type = (&NTI1253);
 		LOC217 = 0;
 		LOC217 = rawNewString(token->Sup.len + 23);
-appendString(LOC217, ((NimStringDesc*) &TMP721));
+appendString(LOC217, ((NimStringDesc*) &TMP722));
 appendString(LOC217, token);
 		asgnRefNoCycle((void**) &(*e_91372).Sup.Sup.message, LOC217);
 		raiseException((E_Base*)e_91372, "EInvalidValue");
@@ -1254,9 +1254,9 @@ N_NIMCALL(NimStringDesc*, format_91395)(ttimeinfo89403* info, NimStringDesc* f) 
 	NI i;
 	NimStringDesc* currentf;
 	result = 0;
-	result = copyString(((NimStringDesc*) &TMP670));
+	result = copyString(((NimStringDesc*) &TMP671));
 	i = 0;
-	currentf = copyString(((NimStringDesc*) &TMP670));
+	currentf = copyString(((NimStringDesc*) &TMP671));
 	while (1) {
 		switch (((NU8)(f->data[i]))) {
 		case 32:
@@ -1272,7 +1272,7 @@ N_NIMCALL(NimStringDesc*, format_91395)(ttimeinfo89403* info, NimStringDesc* f) 
 		case 44:
 		{
 			formattoken_91245(info, currentf, &result);
-			currentf = copyString(((NimStringDesc*) &TMP670));
+			currentf = copyString(((NimStringDesc*) &TMP671));
 			{
 				if (!((NU8)(f->data[i]) == (NU8)(0))) goto LA5;
 				goto LA1;
@@ -1318,7 +1318,7 @@ N_NIMCALL(NimStringDesc*, format_91395)(ttimeinfo89403* info, NimStringDesc* f) 
 			{
 				formattoken_91245(info, currentf, &result);
 				i -= 1;
-				currentf = copyString(((NimStringDesc*) &TMP670));
+				currentf = copyString(((NimStringDesc*) &TMP671));
 			}
 			LA16: ;
 		}
@@ -1358,7 +1358,7 @@ static char* NIM_CONST TMP71[7] = {
 "dFri", 
 "dSat", 
 "dSun"};
-static TNimNode* TMP108[2];
+static TNimNode* TMP109[2];
 static TNimNode TMP15[36];
 NTI89403.size = sizeof(ttimeinfo89403);
 NTI89403.kind = 17;
@@ -1473,17 +1473,17 @@ NTI89506.size = sizeof(TY89506);
 NTI89506.kind = 18;
 NTI89506.base = 0;
 NTI89506.flags = 2;
-TMP108[0] = &TMP15[34];
+TMP109[0] = &TMP15[34];
 TMP15[34].kind = 1;
 TMP15[34].offset = offsetof(TY89506, Field0);
 TMP15[34].typ = (&NTI142);
 TMP15[34].name = "Field0";
-TMP108[1] = &TMP15[35];
+TMP109[1] = &TMP15[35];
 TMP15[35].kind = 1;
 TMP15[35].offset = offsetof(TY89506, Field1);
 TMP15[35].typ = (&NTI142);
 TMP15[35].name = "Field1";
-TMP15[33].len = 2; TMP15[33].kind = 2; TMP15[33].sons = &TMP108[0];
+TMP15[33].len = 2; TMP15[33].kind = 2; TMP15[33].sons = &TMP109[0];
 NTI89506.node = &TMP15[33];
 }
 

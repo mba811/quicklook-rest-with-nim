@@ -184,7 +184,7 @@ tfreecell22228* Next;
 NI Zerofield;
 };
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
-N_NIMCALL(void, TMP127)(void* p, NI op);
+N_NIMCALL(void, TMP128)(void* p, NI op);
 N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
 N_NIMCALL(NimStringDesc*, copyStringRC1)(NimStringDesc* src);
 static N_INLINE(void, nimGCunrefNoCycle)(void* p);
@@ -199,7 +199,7 @@ N_NIMCALL(NI, ssgetposition_129467)(tstream129037* s_129469);
 N_NIMCALL(NI, ssreaddata_129474)(tstream129037* s_129476, void* buffer, NI buflen);
 N_NIMCALL(void, sswritedata_129504)(tstream129037* s_129506, void* buffer, NI buflen);
 N_NIMCALL(NimStringDesc*, setLengthStr)(NimStringDesc* s, NI newlen);
-N_NIMCALL(void, TMP130)(void* p, NI op);
+N_NIMCALL(void, TMP131)(void* p, NI op);
 extern TNimType NTI1209; /* TObject */
 TNimType NTI129037; /* TStream */
 TNimType NTI129038; /* proc (PStream) */
@@ -215,7 +215,7 @@ extern TNimType NTI105; /* int */
 TNimType NTI129433; /* PStringStream */
 extern tgcheap42016 gch_42044;
 TNimType NTI129035; /* PStream */
-N_NIMCALL(void, TMP127)(void* p, NI op) {
+N_NIMCALL(void, TMP128)(void* p, NI op) {
 	tstringstream129435* a;
 	a = (tstringstream129435*)p;
 	nimGCvisit((void*)(*a).Data, op);
@@ -325,7 +325,7 @@ N_NIMCALL(tstringstream129435*, newstringstream_129536)(NimStringDesc* s) {
 	(*result).Sup.Writedataimpl = sswritedata_129504;
 	return result;
 }
-N_NIMCALL(void, TMP130)(void* p, NI op) {
+N_NIMCALL(void, TMP131)(void* p, NI op) {
 	tstream129037* a;
 	a = (tstream129037*)p;
 }
@@ -348,14 +348,14 @@ N_NOINLINE(void, purestreamsInit)(void) {
 }
 
 N_NOINLINE(void, purestreamsDatInit)(void) {
-static TNimNode* TMP125[7];
-static TNimNode* TMP126[2];
+static TNimNode* TMP126[7];
+static TNimNode* TMP127[2];
 static TNimNode TMP34[11];
 NTI129037.size = sizeof(tstream129037);
 NTI129037.kind = 17;
 NTI129037.base = (&NTI1209);
 NTI129037.flags = 3;
-TMP125[0] = &TMP34[1];
+TMP126[0] = &TMP34[1];
 NTI129038.size = sizeof(TY129038);
 NTI129038.kind = 25;
 NTI129038.base = 0;
@@ -364,7 +364,7 @@ TMP34[1].kind = 1;
 TMP34[1].offset = offsetof(tstream129037, Closeimpl);
 TMP34[1].typ = (&NTI129038);
 TMP34[1].name = "closeImpl";
-TMP125[1] = &TMP34[2];
+TMP126[1] = &TMP34[2];
 NTI129042.size = sizeof(TY129042);
 NTI129042.kind = 25;
 NTI129042.base = 0;
@@ -373,7 +373,7 @@ TMP34[2].kind = 1;
 TMP34[2].offset = offsetof(tstream129037, Atendimpl);
 TMP34[2].typ = (&NTI129042);
 TMP34[2].name = "atEndImpl";
-TMP125[2] = &TMP34[3];
+TMP126[2] = &TMP34[3];
 NTI129046.size = sizeof(TY129046);
 NTI129046.kind = 25;
 NTI129046.base = 0;
@@ -382,7 +382,7 @@ TMP34[3].kind = 1;
 TMP34[3].offset = offsetof(tstream129037, Setpositionimpl);
 TMP34[3].typ = (&NTI129046);
 TMP34[3].name = "setPositionImpl";
-TMP125[3] = &TMP34[4];
+TMP126[3] = &TMP34[4];
 NTI129051.size = sizeof(TY129051);
 NTI129051.kind = 25;
 NTI129051.base = 0;
@@ -391,7 +391,7 @@ TMP34[4].kind = 1;
 TMP34[4].offset = offsetof(tstream129037, Getpositionimpl);
 TMP34[4].typ = (&NTI129051);
 TMP34[4].name = "getPositionImpl";
-TMP125[4] = &TMP34[5];
+TMP126[4] = &TMP34[5];
 NTI129055.size = sizeof(TY129055);
 NTI129055.kind = 25;
 NTI129055.base = 0;
@@ -400,7 +400,7 @@ TMP34[5].kind = 1;
 TMP34[5].offset = offsetof(tstream129037, Readdataimpl);
 TMP34[5].typ = (&NTI129055);
 TMP34[5].name = "readDataImpl";
-TMP125[5] = &TMP34[6];
+TMP126[5] = &TMP34[6];
 NTI129061.size = sizeof(TY129061);
 NTI129061.kind = 25;
 NTI129061.base = 0;
@@ -409,7 +409,7 @@ TMP34[6].kind = 1;
 TMP34[6].offset = offsetof(tstream129037, Writedataimpl);
 TMP34[6].typ = (&NTI129061);
 TMP34[6].name = "writeDataImpl";
-TMP125[6] = &TMP34[7];
+TMP126[6] = &TMP34[7];
 NTI129067.size = sizeof(TY129067);
 NTI129067.kind = 25;
 NTI129067.base = 0;
@@ -418,33 +418,33 @@ TMP34[7].kind = 1;
 TMP34[7].offset = offsetof(tstream129037, Flushimpl);
 TMP34[7].typ = (&NTI129067);
 TMP34[7].name = "flushImpl";
-TMP34[0].len = 7; TMP34[0].kind = 2; TMP34[0].sons = &TMP125[0];
+TMP34[0].len = 7; TMP34[0].kind = 2; TMP34[0].sons = &TMP126[0];
 NTI129037.node = &TMP34[0];
 NTI129435.size = sizeof(tstringstream129435);
 NTI129435.kind = 17;
 NTI129435.base = (&NTI129037);
 NTI129435.flags = 2;
-TMP126[0] = &TMP34[9];
+TMP127[0] = &TMP34[9];
 TMP34[9].kind = 1;
 TMP34[9].offset = offsetof(tstringstream129435, Data);
 TMP34[9].typ = (&NTI142);
 TMP34[9].name = "data";
-TMP126[1] = &TMP34[10];
+TMP127[1] = &TMP34[10];
 TMP34[10].kind = 1;
 TMP34[10].offset = offsetof(tstringstream129435, Pos);
 TMP34[10].typ = (&NTI105);
 TMP34[10].name = "pos";
-TMP34[8].len = 2; TMP34[8].kind = 2; TMP34[8].sons = &TMP126[0];
+TMP34[8].len = 2; TMP34[8].kind = 2; TMP34[8].sons = &TMP127[0];
 NTI129435.node = &TMP34[8];
 NTI129433.size = sizeof(tstringstream129435*);
 NTI129433.kind = 22;
 NTI129433.base = (&NTI129435);
 NTI129433.flags = 2;
-NTI129433.marker = TMP127;
+NTI129433.marker = TMP128;
 NTI129035.size = sizeof(tstream129037*);
 NTI129035.kind = 22;
 NTI129035.base = (&NTI129037);
 NTI129035.flags = 2;
-NTI129035.marker = TMP130;
+NTI129035.marker = TMP131;
 }
 
