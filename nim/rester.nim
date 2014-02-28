@@ -1,6 +1,9 @@
 import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
   parsecfg, subexes, strtabs, streams, times, cgi, logging
 
+## Part of `quicklook-rest-with-nimrod
+## <https://github.com/gradha/quicklook-rest-with-nimrod>`_.
+
 const
   rest_default_config = slurp("nimdoc.cfg")
   versionStr* = "0.3.3" ## Module version as a string.

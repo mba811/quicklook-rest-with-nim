@@ -1,10 +1,11 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
   rester
 
+const rester_src = "nim"/"rester.nim"
+
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
     "docs"/"CHANGES", "LICENSE", "README", "docindex"]
-
 proc rst2html(filename: string): bool =
   let output = safe_rst_file_to_html(filename)
   if output.len > 0:
@@ -20,7 +21,7 @@ proc change_rst_links_to_html(html_file: string) =
     let href = a.attrs["href"]
     if not href.isNil:
       let (dir, filename, ext) = splitFile(href)
-      if cmpIgnoreCase(ext, ".rst") == 0:
+      if ext == ".rst" or ext == ".nim":
         a.attrs["href"] = dir / filename & ".html"
         DID_CHANGE = true
 
@@ -61,6 +62,9 @@ task "doc", "Generates export API docs for for the modules":
     else:
       change_rst_links_to_html(html_file)
       echo rst_file & " -> " & html_file
+
+  if not shell("nimrod doc", rester_src):
+    quit("Could not generate HTML API doc for " & rester_src)
   echo "All done"
 
 task "check_doc", "Validates rst format for a subset of documentation":

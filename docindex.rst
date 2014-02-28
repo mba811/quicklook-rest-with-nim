@@ -13,3 +13,7 @@ files you need to run ``nake doc`` at the root of the project:
   * `docs/CHANGES.rst <docs/CHANGES.rst>`_.
   * `docs/debugging_quicklook.rst <docs/debugging_quicklook.rst>`_.
   * `docs/release_steps.rst <docs/release_steps.rst>`_ (only git version).
+
+* API:
+
+  * `nim/rester.nim <nim/rester.nim>`_.
