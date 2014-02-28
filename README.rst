@@ -1,5 +1,5 @@
 ==========================
-Quicklook reST with Nimrod
+QuickLook reST with Nimrod
 ==========================
 
 `Quick Look <https://en.wikipedia.org/wiki/QuickLook>`_ is a quick preview
@@ -7,12 +7,12 @@ feature developed by Apple. `ReST, or reStructuredText
 <http://docutils.sourceforge.net>`_ is a text processing system for
 transforming plaintext documentation into other formats. `Nimrod is a
 programming language <http://nimrod-code.org>`_. And now that I've introduced
-everybody, this project is a fusion of all of them to provide a reST quicklook
+everybody, this project is a fusion of all of them to provide a reST QuickLook
 viewer implemented in Nimrod.
 
 There are alternative python implementations like
 `https://github.com/cluther/qlrest <https://github.com/cluther/qlrest>`_, which
-somehow started from the `markdown quick look plugin
+somehow started from the `markdown QuickLook plugin
 <https://github.com/toland/qlmarkdown>`_. However I dislike the python
 versions for two reasons:
 
@@ -80,7 +80,7 @@ From source code
 Check out the repository and open the project file with Xcode. The project has
 been tested on MacOSX 10.8 and Xcode 5.0.2. You don't need anything else, since
 the project includes the pre generated C files by Nimrod. Simply select the
-quicklook target and build it. Once built, right click on the
+QuickLook target and build it. Once built, right click on the
 ``Product->QuickLook reStructuredText.qlgenerator`` and select ``Show in
 Finder``. Now you can move that plugin somewhere useful, like
 ``~/Library/QuickLook`` and run ``qlmanage -r`` to reset Quick Look or
@@ -101,14 +101,23 @@ If you trust binaries and random strangers on the internet, you can go to
 any of the ``.zip`` files attached to a specific release. They contain just the
 plugin which you can move to ``~/Library/QuickLook``. After that, run
 ``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you should be
-able to see ``.rst`` files as rendered HTML.
+able to see ``.rst`` and ``.nim`` files as rendered HTML.
+
+The plugin should work on all MacOSX versions since Snow Leopard (10.6), though
+on Snow Leopard it seems to have threading issues where the first attempt to
+display the file will show a processing spinner forever and won't show the
+actual rendered version until you close the QuickLook window and open it again.
+The plugin is forced to run on the main thread, so I don't know what's wrong.
+If you know, please tell me!
+
 
 Changes
 =======
 
-This is version 0.3.3. For a list of changes see the `docs/CHANGES.rst file
-<docs/CHANGES.rst>`_. The software is not complete, expect bugs and `report
-them <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
+This is development version 0.3.3. For a list of changes see the
+`docs/CHANGES.rst file <docs/CHANGES.rst>`_. The software is not complete,
+expect bugs and `report them
+<https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
 
 Plans for the future

@@ -17,7 +17,14 @@ What to do for a new public release?
     version/number.
 
 * ``git commit -av`` into the release branch the version number changes.
-* Regenerate the C sources and commit again a separate one.
+* Regenerate the C sources:
+
+  * Make sure the `environ global variable access
+    <https://github.com/gradha/quicklook-rest-with-nimrod/issues/27>`_ is done
+    correctly, either by patching Nimrod's ``os`` module or updating to a newer
+    version which doesn't have the issue.
+  * Commit regenerated sources as separate commit.
+
 * ``git flow release finish versionname`` (the tagname is versionname without
   v).
 * Move closed issues to the release milestone.
@@ -25,7 +32,8 @@ What to do for a new public release?
 * Open Xcode project.
 
   * Build the ``Nimrod rst lib`` target, make sure git doesn't show changes,
-    otherwise the previous C sources generation step failed.
+    otherwise the previous C sources generation step failed. `Beware of the
+    environ`.
   * Build the ``Quicklook reStructuredText`` target.
   * Select the product and reveal it in Finder.
   * Compress into a zip the binary.
