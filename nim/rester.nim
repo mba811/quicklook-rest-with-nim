@@ -146,7 +146,7 @@ proc rst_file_to_html*(filename: string): string =
   return rst_string_to_html(readFile(filename), filename)
 
 
-proc safe_rst_file_to_html*(filename: string): string =
+proc safe_rst_file_to_html*(filename: string): string {.raises: [].} =
   ## Wrapper over rst_file_to_html to catch exceptions.
   ##
   ## If something bad happens, it tries to show the error for debugging but
@@ -154,10 +154,12 @@ proc safe_rst_file_to_html*(filename: string): string =
   try:
     result = rst_file_to_html(filename)
   except:
+    var content: string
+    try: content = readFile(filename).XMLEncode
+    except E_Base: content = "Could not read " & filename & "!!!"
     let
       e = getCurrentException()
       msg = getCurrentExceptionMsg()
-      content = readFile(filename).XMLEncode
     result = "<html><body><b>Sorry! Error parsing " & filename.XMLEncode &
       " with version " & versionStr &
       """.</b><p>If possible please report it at <a href="""" &
@@ -167,29 +169,42 @@ proc safe_rst_file_to_html*(filename: string): string =
       msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
       "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
 
-proc nim_file_to_html*(filename: string): string =
+proc nim_file_to_html*(filename: string): string {.raises: [].} =
   ## Puts filename into a code block and renders like rst file.
   ##
   ## This proc always works, since even empty code blocks should render (as
   ## empty HTML), and there should be no content escaping problems.
-  let
-    name = filename.splitFile.name
-    title_symbols = repeatChar(name.len, '=')
-    length = 1000 + int(filename.getFileSize)
-  var source = newStringOfCap(length)
-  source = "$1\n$2\n$1\n.. code-block:: nimrod\n  " % [title_symbols, name]
-  source.add(readFile(filename).replace("\n", "\n  "))
-  result = rst_string_to_html(source, filename)
+  try:
+    let
+      name = filename.splitFile.name
+      title_symbols = repeatChar(name.len, '=')
+      length = 1000 + int(filename.getFileSize)
+    var source = newStringOfCap(length)
+    source = title_symbols & "\n" & name & "\n" & title_symbols &
+      "\n.. code-block:: nimrod\n  "
+    source.add(readFile(filename).replace("\n", "\n  "))
+    result = rst_string_to_html(source, filename)
+  except E_Base:
+    result = "<html><body><h1>Error for " & filename & "</h1></body></html>"
+  except EOS:
+    result = "<html><body><h1>OS error for " & filename & "</h1></body></html>"
+  except EIO:
+    result = "<html><body><h1>I/O error for " & filename & "</h1></body></html>"
+  except EOutOfMemory:
+    result = """<html><body><h1>Out of memory!</h1></body></html>"""
 
 
-proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
+proc txt_to_rst*(input_filename: cstring): int {.exportc, raises: [].}=
   ## Converts the input filename.
   ##
   ## The conversion is stored in internal global variables. The proc returns
   ## the number of bytes required to store the generated HTML, which you can
   ## obtain using the global accessor getHtml passing a pointer to the buffer.
   ##
-  ## The returned value doesn't include the typical C null terminator.
+  ## The returned value doesn't include the typical C null terminator. If there
+  ## are problems, an internal error text may be returned so it can be
+  ## displayed to the end user. As such, it is impossible to know the
+  ## success/failure based on the returned value.
   ##
   ## This proc is mainly for the C api.
   assert (not input_filename.isNil)
@@ -202,7 +217,7 @@ proc txt_to_rst*(input_filename: cstring): int {.exportc.}=
   result = G.last_c_conversion.len
 
 
-proc get_global_html*(output_buffer: pointer) {.exportc.} =
+proc get_global_html*(output_buffer: pointer) {.exportc, raises: [].} =
   ## Copies the result of txt_to_rst into output_buffer.
   ##
   ## If output_buffer doesn't contain the bytes returned by txt_to_rst, you
