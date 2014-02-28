@@ -326,7 +326,7 @@ N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(NI, len_115083)(trstnode115012* n);
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b);
 N_NIMCALL(NI, nsuCmpIgnoreStyle)(NimStringDesc* a, NimStringDesc* b);
-N_NIMCALL(NimStringDesc*, getenv_106425)(NimStringDesc* key);
+N_NIMCALL(NimStringDesc*, getenv_106424)(NimStringDesc* key);
 N_NIMCALL(trstnode115012*, newrstnode_115141)(NU8 kind, NimStringDesc* s);
 N_NIMCALL(void, rstmessage_116971)(trstparser116669* p, NU8 msgkind, NimStringDesc* arg);
 N_NIMCALL(trstnode115012*, findref_117392)(trstparser116669* p, NimStringDesc* key);
@@ -1585,7 +1585,7 @@ N_NIMCALL(trstnode115012*, resolvesubs_122481)(trstparser116669* p, trstnode1150
 			NimStringDesc* key;
 			NimStringDesc* e;
 			key = addnodes_116052(n);
-			e = getenv_106425(key);
+			e = getenv_106424(key);
 			{
 				if (!!(((e) && (e)->Sup.len == 0))) goto LA13;
 				result = newrstnode_115141(((NU8) 64), e);

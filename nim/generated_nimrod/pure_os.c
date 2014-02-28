@@ -21,6 +21,8 @@
 #include <sys/types.h>
 
 #include <sys/time.h>
+
+#include <crt_externs.h>
 typedef struct TY105805 TY105805;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
@@ -238,8 +240,8 @@ N_NIMCALL(NimStringDesc*, nosjoinPath)(NimStringDesc* head, NimStringDesc* tail)
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c);
-N_NIMCALL(NI, findenvvar_106403)(NimStringDesc* key);
-N_NIMCALL(void, getenvvarsc_106002)(void);
+N_NIMCALL(NI, findenvvar_106402)(NimStringDesc* key);
+N_NIMCALL(void, getenvvarsc_106004)(void);
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
 N_NIMCALL(void, TMP206)(void* p, NI op);
 N_NIMCALL(void*, newSeqRC1)(TNimType* typ, NI len);
@@ -253,7 +255,6 @@ STRING_LITERAL(TMP58, "", 0);
 STRING_LITERAL(TMP60, "unknown OS error", 16);
 NIM_BOOL envcomputed_105804;
 TY105805* environment_105806;
-extern NCSTRING* environ;
 extern int cmdCount;
 extern NCSTRING* cmdLine;
 extern TNimType NTI101412; /* ref EOS */
@@ -623,65 +624,70 @@ N_NIMCALL(void, TMP206)(void* p, NI op) {
 	}
 }
 
-N_NIMCALL(void, getenvvarsc_106002)(void) {
+N_NIMCALL(void, getenvvarsc_106004)(void) {
 	{
+		NCSTRING* genv;
+		NCSTRING** LOC5;
 		NI i;
 		if (!!(envcomputed_105804)) goto LA3;
 		if (environment_105806) nimGCunrefNoCycle(environment_105806);
 		environment_105806 = (TY105805*) newSeqRC1((&NTI105805), 0);
+		LOC5 = 0;
+		LOC5 = _NSGetEnviron();
+		genv = (*LOC5);
 		i = 0;
 		while (1) {
-			NimStringDesc* LOC10;
 			NimStringDesc* LOC11;
+			NimStringDesc* LOC12;
 			{
-				if (!(environ[(i)- 0] == NIM_NIL)) goto LA8;
-				goto LA5;
+				if (!(genv[(i)- 0] == NIM_NIL)) goto LA9;
+				goto LA6;
 			}
-			LA8: ;
-			LOC10 = 0;
-			LOC10 = cstrToNimstr(environ[(i)- 0]);
-			environment_105806 = (TY105805*) incrSeq(&(environment_105806)->Sup, sizeof(NimStringDesc*));
+			LA9: ;
 			LOC11 = 0;
-			LOC11 = environment_105806->data[environment_105806->Sup.len-1]; environment_105806->data[environment_105806->Sup.len-1] = copyStringRC1(LOC10);
-			if (LOC11) nimGCunrefNoCycle(LOC11);
+			LOC11 = cstrToNimstr(genv[(i)- 0]);
+			environment_105806 = (TY105805*) incrSeq(&(environment_105806)->Sup, sizeof(NimStringDesc*));
+			LOC12 = 0;
+			LOC12 = environment_105806->data[environment_105806->Sup.len-1]; environment_105806->data[environment_105806->Sup.len-1] = copyStringRC1(LOC11);
+			if (LOC12) nimGCunrefNoCycle(LOC12);
 			i += 1;
-		} LA5: ;
+		} LA6: ;
 		envcomputed_105804 = NIM_TRUE;
 	}
 	LA3: ;
 }
 
-N_NIMCALL(NI, findenvvar_106403)(NimStringDesc* key) {
+N_NIMCALL(NI, findenvvar_106402)(NimStringDesc* key) {
 	NI result;
 	NimStringDesc* temp;
 	NimStringDesc* LOC1;
-	NI i_106417;
-	NI HEX3Atmp_106418;
-	NI res_106420;
+	NI i_106416;
+	NI HEX3Atmp_106417;
+	NI res_106419;
 	result = 0;
-	getenvvarsc_106002();
+	getenvvarsc_106004();
 	LOC1 = 0;
 	LOC1 = rawNewString(key->Sup.len + 1);
 appendString(LOC1, key);
 appendChar(LOC1, 61);
 	temp = LOC1;
-	i_106417 = 0;
-	HEX3Atmp_106418 = 0;
-	HEX3Atmp_106418 = (environment_105806->Sup.len-1);
-	res_106420 = 0;
+	i_106416 = 0;
+	HEX3Atmp_106417 = 0;
+	HEX3Atmp_106417 = (environment_105806->Sup.len-1);
+	res_106419 = 0;
 	while (1) {
-		if (!(res_106420 <= HEX3Atmp_106418)) goto LA2;
-		i_106417 = res_106420;
+		if (!(res_106419 <= HEX3Atmp_106417)) goto LA2;
+		i_106416 = res_106419;
 		{
 			NIM_BOOL LOC5;
 			LOC5 = 0;
-			LOC5 = nsuStartsWith(environment_105806->data[i_106417], temp);
+			LOC5 = nsuStartsWith(environment_105806->data[i_106416], temp);
 			if (!LOC5) goto LA6;
-			result = i_106417;
+			result = i_106416;
 			goto BeforeRet;
 		}
 		LA6: ;
-		res_106420 += 1;
+		res_106419 += 1;
 	} LA2: ;
 	result = -1;
 	goto BeforeRet;
@@ -689,11 +695,11 @@ appendChar(LOC1, 61);
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, getenv_106425)(NimStringDesc* key) {
+N_NIMCALL(NimStringDesc*, getenv_106424)(NimStringDesc* key) {
 	NimStringDesc* result;
 	NI i;
 	result = 0;
-	i = findenvvar_106403(key);
+	i = findenvvar_106402(key);
 	{
 		NI LOC5;
 		if (!(0 <= i)) goto LA3;
