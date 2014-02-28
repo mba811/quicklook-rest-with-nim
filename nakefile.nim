@@ -63,7 +63,7 @@ task "doc", "Generates export API docs for for the modules":
       change_rst_links_to_html(html_file)
       echo rst_file & " -> " & html_file
 
-  if not shell("nimrod doc", rester_src):
+  if not shell("nimrod doc --verbosity:0", rester_src):
     quit("Could not generate HTML API doc for " & rester_src)
   echo "All done"
 
