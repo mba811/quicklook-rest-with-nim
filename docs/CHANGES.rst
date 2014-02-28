@@ -13,8 +13,10 @@ v0.3.3, ????-??-??
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/23>`_.
 * `Fixed binary compatibility due to global environ variable
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/27>`_.
-* `Made change_rst_options discardable
+* `Made change_rst_options() discardable
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/24>`_.
+* `Avoids raising exceptions in C API calls
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/28>`_.
 
 v0.2.1, 2013-12-20
 ------------------
