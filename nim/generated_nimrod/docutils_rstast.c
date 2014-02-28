@@ -166,8 +166,8 @@ struct trstnodeseq115010 {
   trstnode115012* data[SEQ_DECL_SIZE];
 };
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
-N_NIMCALL(void, TMP119)(void* p, NI op);
 N_NIMCALL(void, TMP120)(void* p, NI op);
+N_NIMCALL(void, TMP121)(void* p, NI op);
 N_NIMCALL(trstnode115012*, newrstnode_115099)(NU8 kind);
 N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
 static N_INLINE(void, nimGCunrefNoCycle)(void* p);
@@ -186,7 +186,7 @@ extern TNimType NTI105; /* int */
 TNimType NTI115010; /* TRstNodeSeq */
 TNimType NTI115008; /* PRstNode */
 extern tgcheap42016 gch_42044;
-N_NIMCALL(void, TMP119)(void* p, NI op) {
+N_NIMCALL(void, TMP120)(void* p, NI op) {
 	trstnodeseq115010* a;
 	NI LOC1;
 	a = (trstnodeseq115010*)p;
@@ -195,7 +195,7 @@ N_NIMCALL(void, TMP119)(void* p, NI op) {
 	nimGCvisit((void*)a->data[LOC1], op);
 	}
 }
-N_NIMCALL(void, TMP120)(void* p, NI op) {
+N_NIMCALL(void, TMP121)(void* p, NI op) {
 	trstnode115012* a;
 	a = (trstnode115012*)p;
 	nimGCvisit((void*)(*a).Text, op);
@@ -298,10 +298,10 @@ N_NOINLINE(void, docutilsrstastInit)(void) {
 }
 
 N_NOINLINE(void, docutilsrstastDatInit)(void) {
-static TNimNode* TMP115[4];
-static TNimNode* TMP116[65];
-NI TMP118;
-static char* NIM_CONST TMP117[65] = {
+static TNimNode* TMP116[4];
+static TNimNode* TMP117[65];
+NI TMP119;
+static char* NIM_CONST TMP118[65] = {
 "rnInner", 
 "rnHeadline", 
 "rnOverline", 
@@ -372,49 +372,49 @@ NTI115012.size = sizeof(trstnode115012);
 NTI115012.kind = 18;
 NTI115012.base = 0;
 NTI115012.flags = 2;
-TMP115[0] = &TMP23[1];
+TMP116[0] = &TMP23[1];
 NTI115006.size = sizeof(NU8);
 NTI115006.kind = 14;
 NTI115006.base = 0;
 NTI115006.flags = 3;
-for (TMP118 = 0; TMP118 < 65; TMP118++) {
-TMP23[TMP118+2].kind = 1;
-TMP23[TMP118+2].offset = TMP118;
-TMP23[TMP118+2].name = TMP117[TMP118];
-TMP116[TMP118] = &TMP23[TMP118+2];
+for (TMP119 = 0; TMP119 < 65; TMP119++) {
+TMP23[TMP119+2].kind = 1;
+TMP23[TMP119+2].offset = TMP119;
+TMP23[TMP119+2].name = TMP118[TMP119];
+TMP117[TMP119] = &TMP23[TMP119+2];
 }
-TMP23[67].len = 65; TMP23[67].kind = 2; TMP23[67].sons = &TMP116[0];
+TMP23[67].len = 65; TMP23[67].kind = 2; TMP23[67].sons = &TMP117[0];
 NTI115006.node = &TMP23[67];
 TMP23[1].kind = 1;
 TMP23[1].offset = offsetof(trstnode115012, Kind);
 TMP23[1].typ = (&NTI115006);
 TMP23[1].name = "kind";
-TMP115[1] = &TMP23[68];
+TMP116[1] = &TMP23[68];
 TMP23[68].kind = 1;
 TMP23[68].offset = offsetof(trstnode115012, Text);
 TMP23[68].typ = (&NTI142);
 TMP23[68].name = "text";
-TMP115[2] = &TMP23[69];
+TMP116[2] = &TMP23[69];
 TMP23[69].kind = 1;
 TMP23[69].offset = offsetof(trstnode115012, Level);
 TMP23[69].typ = (&NTI105);
 TMP23[69].name = "level";
-TMP115[3] = &TMP23[70];
+TMP116[3] = &TMP23[70];
 NTI115010.size = sizeof(trstnodeseq115010*);
 NTI115010.kind = 24;
 NTI115010.base = (&NTI115008);
 NTI115010.flags = 2;
-NTI115010.marker = TMP119;
+NTI115010.marker = TMP120;
 TMP23[70].kind = 1;
 TMP23[70].offset = offsetof(trstnode115012, Sons);
 TMP23[70].typ = (&NTI115010);
 TMP23[70].name = "sons";
-TMP23[0].len = 4; TMP23[0].kind = 2; TMP23[0].sons = &TMP115[0];
+TMP23[0].len = 4; TMP23[0].kind = 2; TMP23[0].sons = &TMP116[0];
 NTI115012.node = &TMP23[0];
 NTI115008.size = sizeof(trstnode115012*);
 NTI115008.kind = 22;
 NTI115008.base = (&NTI115012);
 NTI115008.flags = 2;
-NTI115008.marker = TMP120;
+NTI115008.marker = TMP121;
 }
 

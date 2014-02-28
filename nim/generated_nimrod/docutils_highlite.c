@@ -73,91 +73,90 @@ N_NIMCALL(NI, generalstrlit_124789)(tgeneraltokenizer123008* g, NI position);
 N_NIMCALL(void, csharpnexttoken_126042)(tgeneraltokenizer123008* g);
 N_NIMCALL(void, cnexttoken_126016)(tgeneraltokenizer123008* g);
 N_NIMCALL(void, javanexttoken_126055)(tgeneraltokenizer123008* g);
-STRING_LITERAL(TMP430, "none", 4);
-STRING_LITERAL(TMP431, "Nimrod", 6);
-STRING_LITERAL(TMP432, "C++", 3);
-STRING_LITERAL(TMP433, "C#", 2);
-STRING_LITERAL(TMP434, "C", 1);
-STRING_LITERAL(TMP435, "Java", 4);
-NIM_CONST TY123058 sourcelanguagetostr_123057 = {((NimStringDesc*) &TMP430),
-((NimStringDesc*) &TMP431),
+STRING_LITERAL(TMP431, "none", 4);
+STRING_LITERAL(TMP432, "Nimrod", 6);
+STRING_LITERAL(TMP433, "C++", 3);
+STRING_LITERAL(TMP434, "C#", 2);
+STRING_LITERAL(TMP435, "C", 1);
+STRING_LITERAL(TMP436, "Java", 4);
+NIM_CONST TY123058 sourcelanguagetostr_123057 = {((NimStringDesc*) &TMP431),
 ((NimStringDesc*) &TMP432),
 ((NimStringDesc*) &TMP433),
 ((NimStringDesc*) &TMP434),
-((NimStringDesc*) &TMP435)}
+((NimStringDesc*) &TMP435),
+((NimStringDesc*) &TMP436)}
 ;
-STRING_LITERAL(TMP442, "", 0);
-STRING_LITERAL(TMP443, "addr", 4);
-STRING_LITERAL(TMP444, "and", 3);
-STRING_LITERAL(TMP445, "as", 2);
-STRING_LITERAL(TMP446, "asm", 3);
-STRING_LITERAL(TMP447, "atomic", 6);
-STRING_LITERAL(TMP448, "bind", 4);
-STRING_LITERAL(TMP449, "block", 5);
-STRING_LITERAL(TMP450, "break", 5);
-STRING_LITERAL(TMP451, "case", 4);
-STRING_LITERAL(TMP452, "cast", 4);
-STRING_LITERAL(TMP453, "const", 5);
-STRING_LITERAL(TMP454, "continue", 8);
-STRING_LITERAL(TMP455, "converter", 9);
-STRING_LITERAL(TMP456, "discard", 7);
-STRING_LITERAL(TMP457, "distinct", 8);
-STRING_LITERAL(TMP458, "div", 3);
-STRING_LITERAL(TMP459, "do", 2);
-STRING_LITERAL(TMP460, "elif", 4);
-STRING_LITERAL(TMP461, "else", 4);
-STRING_LITERAL(TMP462, "end", 3);
-STRING_LITERAL(TMP463, "enum", 4);
-STRING_LITERAL(TMP464, "except", 6);
-STRING_LITERAL(TMP465, "export", 6);
-STRING_LITERAL(TMP466, "finally", 7);
-STRING_LITERAL(TMP467, "for", 3);
-STRING_LITERAL(TMP468, "from", 4);
-STRING_LITERAL(TMP469, "generic", 7);
-STRING_LITERAL(TMP470, "if", 2);
-STRING_LITERAL(TMP471, "import", 6);
-STRING_LITERAL(TMP472, "in", 2);
-STRING_LITERAL(TMP473, "include", 7);
-STRING_LITERAL(TMP474, "interface", 9);
-STRING_LITERAL(TMP475, "is", 2);
-STRING_LITERAL(TMP476, "isnot", 5);
-STRING_LITERAL(TMP477, "iterator", 8);
-STRING_LITERAL(TMP478, "lambda", 6);
-STRING_LITERAL(TMP479, "let", 3);
-STRING_LITERAL(TMP480, "macro", 5);
-STRING_LITERAL(TMP481, "method", 6);
-STRING_LITERAL(TMP482, "mixin", 5);
-STRING_LITERAL(TMP483, "mod", 3);
-STRING_LITERAL(TMP484, "nil", 3);
-STRING_LITERAL(TMP485, "not", 3);
-STRING_LITERAL(TMP486, "notin", 5);
-STRING_LITERAL(TMP487, "object", 6);
-STRING_LITERAL(TMP488, "of", 2);
-STRING_LITERAL(TMP489, "or", 2);
-STRING_LITERAL(TMP490, "out", 3);
-STRING_LITERAL(TMP491, "proc", 4);
-STRING_LITERAL(TMP492, "ptr", 3);
-STRING_LITERAL(TMP493, "raise", 5);
-STRING_LITERAL(TMP494, "ref", 3);
-STRING_LITERAL(TMP495, "return", 6);
-STRING_LITERAL(TMP496, "shared", 6);
-STRING_LITERAL(TMP497, "shl", 3);
-STRING_LITERAL(TMP498, "shr", 3);
-STRING_LITERAL(TMP499, "static", 6);
-STRING_LITERAL(TMP500, "template", 8);
-STRING_LITERAL(TMP501, "try", 3);
-STRING_LITERAL(TMP502, "tuple", 5);
-STRING_LITERAL(TMP503, "type", 4);
-STRING_LITERAL(TMP504, "using", 5);
-STRING_LITERAL(TMP505, "var", 3);
-STRING_LITERAL(TMP506, "when", 4);
-STRING_LITERAL(TMP507, "while", 5);
-STRING_LITERAL(TMP508, "with", 4);
-STRING_LITERAL(TMP509, "without", 7);
-STRING_LITERAL(TMP510, "xor", 3);
-STRING_LITERAL(TMP511, "yield", 5);
-NIM_CONST TY123068 nimrodkeywords_123067 = {((NimStringDesc*) &TMP443),
-((NimStringDesc*) &TMP444),
+STRING_LITERAL(TMP443, "", 0);
+STRING_LITERAL(TMP444, "addr", 4);
+STRING_LITERAL(TMP445, "and", 3);
+STRING_LITERAL(TMP446, "as", 2);
+STRING_LITERAL(TMP447, "asm", 3);
+STRING_LITERAL(TMP448, "atomic", 6);
+STRING_LITERAL(TMP449, "bind", 4);
+STRING_LITERAL(TMP450, "block", 5);
+STRING_LITERAL(TMP451, "break", 5);
+STRING_LITERAL(TMP452, "case", 4);
+STRING_LITERAL(TMP453, "cast", 4);
+STRING_LITERAL(TMP454, "const", 5);
+STRING_LITERAL(TMP455, "continue", 8);
+STRING_LITERAL(TMP456, "converter", 9);
+STRING_LITERAL(TMP457, "discard", 7);
+STRING_LITERAL(TMP458, "distinct", 8);
+STRING_LITERAL(TMP459, "div", 3);
+STRING_LITERAL(TMP460, "do", 2);
+STRING_LITERAL(TMP461, "elif", 4);
+STRING_LITERAL(TMP462, "else", 4);
+STRING_LITERAL(TMP463, "end", 3);
+STRING_LITERAL(TMP464, "enum", 4);
+STRING_LITERAL(TMP465, "except", 6);
+STRING_LITERAL(TMP466, "export", 6);
+STRING_LITERAL(TMP467, "finally", 7);
+STRING_LITERAL(TMP468, "for", 3);
+STRING_LITERAL(TMP469, "from", 4);
+STRING_LITERAL(TMP470, "generic", 7);
+STRING_LITERAL(TMP471, "if", 2);
+STRING_LITERAL(TMP472, "import", 6);
+STRING_LITERAL(TMP473, "in", 2);
+STRING_LITERAL(TMP474, "include", 7);
+STRING_LITERAL(TMP475, "interface", 9);
+STRING_LITERAL(TMP476, "is", 2);
+STRING_LITERAL(TMP477, "isnot", 5);
+STRING_LITERAL(TMP478, "iterator", 8);
+STRING_LITERAL(TMP479, "lambda", 6);
+STRING_LITERAL(TMP480, "let", 3);
+STRING_LITERAL(TMP481, "macro", 5);
+STRING_LITERAL(TMP482, "method", 6);
+STRING_LITERAL(TMP483, "mixin", 5);
+STRING_LITERAL(TMP484, "mod", 3);
+STRING_LITERAL(TMP485, "nil", 3);
+STRING_LITERAL(TMP486, "not", 3);
+STRING_LITERAL(TMP487, "notin", 5);
+STRING_LITERAL(TMP488, "object", 6);
+STRING_LITERAL(TMP489, "of", 2);
+STRING_LITERAL(TMP490, "or", 2);
+STRING_LITERAL(TMP491, "out", 3);
+STRING_LITERAL(TMP492, "proc", 4);
+STRING_LITERAL(TMP493, "ptr", 3);
+STRING_LITERAL(TMP494, "raise", 5);
+STRING_LITERAL(TMP495, "ref", 3);
+STRING_LITERAL(TMP496, "return", 6);
+STRING_LITERAL(TMP497, "shared", 6);
+STRING_LITERAL(TMP498, "shl", 3);
+STRING_LITERAL(TMP499, "shr", 3);
+STRING_LITERAL(TMP500, "static", 6);
+STRING_LITERAL(TMP501, "template", 8);
+STRING_LITERAL(TMP502, "try", 3);
+STRING_LITERAL(TMP503, "tuple", 5);
+STRING_LITERAL(TMP504, "type", 4);
+STRING_LITERAL(TMP505, "using", 5);
+STRING_LITERAL(TMP506, "var", 3);
+STRING_LITERAL(TMP507, "when", 4);
+STRING_LITERAL(TMP508, "while", 5);
+STRING_LITERAL(TMP509, "with", 4);
+STRING_LITERAL(TMP510, "without", 7);
+STRING_LITERAL(TMP511, "xor", 3);
+STRING_LITERAL(TMP512, "yield", 5);
+NIM_CONST TY123068 nimrodkeywords_123067 = {((NimStringDesc*) &TMP444),
 ((NimStringDesc*) &TMP445),
 ((NimStringDesc*) &TMP446),
 ((NimStringDesc*) &TMP447),
@@ -224,69 +223,69 @@ NIM_CONST TY123068 nimrodkeywords_123067 = {((NimStringDesc*) &TMP443),
 ((NimStringDesc*) &TMP508),
 ((NimStringDesc*) &TMP509),
 ((NimStringDesc*) &TMP510),
-((NimStringDesc*) &TMP511)}
+((NimStringDesc*) &TMP511),
+((NimStringDesc*) &TMP512)}
 ;
-static NIM_CONST tcharset83604 TMP512 = {
+static NIM_CONST tcharset83604 TMP513 = {
 0x00, 0x00, 0x00, 0x00, 0x72, 0xEC, 0x00, 0xF4,
 0x01, 0x00, 0x00, 0x50, 0x00, 0x00, 0x00, 0x50,
 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
 ;
-STRING_LITERAL(TMP514, "auto", 4);
-STRING_LITERAL(TMP515, "catch", 5);
-STRING_LITERAL(TMP516, "char", 4);
-STRING_LITERAL(TMP517, "class", 5);
-STRING_LITERAL(TMP518, "default", 7);
-STRING_LITERAL(TMP519, "delete", 6);
-STRING_LITERAL(TMP520, "double", 6);
-STRING_LITERAL(TMP521, "extern", 6);
-STRING_LITERAL(TMP522, "float", 5);
-STRING_LITERAL(TMP523, "friend", 6);
-STRING_LITERAL(TMP524, "goto", 4);
-STRING_LITERAL(TMP525, "inline", 6);
-STRING_LITERAL(TMP526, "int", 3);
-STRING_LITERAL(TMP527, "long", 4);
-STRING_LITERAL(TMP528, "new", 3);
-STRING_LITERAL(TMP529, "operator", 8);
-STRING_LITERAL(TMP530, "private", 7);
-STRING_LITERAL(TMP531, "protected", 9);
-STRING_LITERAL(TMP532, "public", 6);
-STRING_LITERAL(TMP533, "register", 8);
-STRING_LITERAL(TMP534, "short", 5);
-STRING_LITERAL(TMP535, "signed", 6);
-STRING_LITERAL(TMP536, "sizeof", 6);
-STRING_LITERAL(TMP537, "struct", 6);
-STRING_LITERAL(TMP538, "switch", 6);
-STRING_LITERAL(TMP539, "this", 4);
-STRING_LITERAL(TMP540, "throw", 5);
-STRING_LITERAL(TMP541, "typedef", 7);
-STRING_LITERAL(TMP542, "union", 5);
-STRING_LITERAL(TMP543, "unsigned", 8);
-STRING_LITERAL(TMP544, "virtual", 7);
-STRING_LITERAL(TMP545, "void", 4);
-STRING_LITERAL(TMP546, "volatile", 8);
-NIM_CONST TY126034 TMP513 = {((NimStringDesc*) &TMP446),
-((NimStringDesc*) &TMP514),
-((NimStringDesc*) &TMP450),
-((NimStringDesc*) &TMP451),
+STRING_LITERAL(TMP515, "auto", 4);
+STRING_LITERAL(TMP516, "catch", 5);
+STRING_LITERAL(TMP517, "char", 4);
+STRING_LITERAL(TMP518, "class", 5);
+STRING_LITERAL(TMP519, "default", 7);
+STRING_LITERAL(TMP520, "delete", 6);
+STRING_LITERAL(TMP521, "double", 6);
+STRING_LITERAL(TMP522, "extern", 6);
+STRING_LITERAL(TMP523, "float", 5);
+STRING_LITERAL(TMP524, "friend", 6);
+STRING_LITERAL(TMP525, "goto", 4);
+STRING_LITERAL(TMP526, "inline", 6);
+STRING_LITERAL(TMP527, "int", 3);
+STRING_LITERAL(TMP528, "long", 4);
+STRING_LITERAL(TMP529, "new", 3);
+STRING_LITERAL(TMP530, "operator", 8);
+STRING_LITERAL(TMP531, "private", 7);
+STRING_LITERAL(TMP532, "protected", 9);
+STRING_LITERAL(TMP533, "public", 6);
+STRING_LITERAL(TMP534, "register", 8);
+STRING_LITERAL(TMP535, "short", 5);
+STRING_LITERAL(TMP536, "signed", 6);
+STRING_LITERAL(TMP537, "sizeof", 6);
+STRING_LITERAL(TMP538, "struct", 6);
+STRING_LITERAL(TMP539, "switch", 6);
+STRING_LITERAL(TMP540, "this", 4);
+STRING_LITERAL(TMP541, "throw", 5);
+STRING_LITERAL(TMP542, "typedef", 7);
+STRING_LITERAL(TMP543, "union", 5);
+STRING_LITERAL(TMP544, "unsigned", 8);
+STRING_LITERAL(TMP545, "virtual", 7);
+STRING_LITERAL(TMP546, "void", 4);
+STRING_LITERAL(TMP547, "volatile", 8);
+NIM_CONST TY126034 TMP514 = {((NimStringDesc*) &TMP447),
 ((NimStringDesc*) &TMP515),
+((NimStringDesc*) &TMP451),
+((NimStringDesc*) &TMP452),
 ((NimStringDesc*) &TMP516),
 ((NimStringDesc*) &TMP517),
-((NimStringDesc*) &TMP453),
-((NimStringDesc*) &TMP454),
 ((NimStringDesc*) &TMP518),
+((NimStringDesc*) &TMP454),
+((NimStringDesc*) &TMP455),
 ((NimStringDesc*) &TMP519),
-((NimStringDesc*) &TMP459),
 ((NimStringDesc*) &TMP520),
-((NimStringDesc*) &TMP461),
-((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP460),
 ((NimStringDesc*) &TMP521),
+((NimStringDesc*) &TMP462),
+((NimStringDesc*) &TMP464),
 ((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP467),
 ((NimStringDesc*) &TMP523),
+((NimStringDesc*) &TMP468),
 ((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP470),
 ((NimStringDesc*) &TMP525),
+((NimStringDesc*) &TMP471),
 ((NimStringDesc*) &TMP526),
 ((NimStringDesc*) &TMP527),
 ((NimStringDesc*) &TMP528),
@@ -295,278 +294,278 @@ NIM_CONST TY126034 TMP513 = {((NimStringDesc*) &TMP446),
 ((NimStringDesc*) &TMP531),
 ((NimStringDesc*) &TMP532),
 ((NimStringDesc*) &TMP533),
-((NimStringDesc*) &TMP495),
 ((NimStringDesc*) &TMP534),
+((NimStringDesc*) &TMP496),
 ((NimStringDesc*) &TMP535),
 ((NimStringDesc*) &TMP536),
-((NimStringDesc*) &TMP499),
 ((NimStringDesc*) &TMP537),
-((NimStringDesc*) &TMP538),
 ((NimStringDesc*) &TMP500),
+((NimStringDesc*) &TMP538),
 ((NimStringDesc*) &TMP539),
-((NimStringDesc*) &TMP540),
 ((NimStringDesc*) &TMP501),
+((NimStringDesc*) &TMP540),
 ((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP502),
 ((NimStringDesc*) &TMP542),
 ((NimStringDesc*) &TMP543),
 ((NimStringDesc*) &TMP544),
 ((NimStringDesc*) &TMP545),
 ((NimStringDesc*) &TMP546),
-((NimStringDesc*) &TMP507)}
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP508)}
 ;
-STRING_LITERAL(TMP548, "abstract", 8);
-STRING_LITERAL(TMP549, "base", 4);
-STRING_LITERAL(TMP550, "bool", 4);
-STRING_LITERAL(TMP551, "byte", 4);
-STRING_LITERAL(TMP552, "checked", 7);
-STRING_LITERAL(TMP553, "decimal", 7);
-STRING_LITERAL(TMP554, "delegate", 8);
-STRING_LITERAL(TMP555, "event", 5);
-STRING_LITERAL(TMP556, "explicit", 8);
-STRING_LITERAL(TMP557, "false", 5);
-STRING_LITERAL(TMP558, "fixed", 5);
-STRING_LITERAL(TMP559, "foreach", 7);
-STRING_LITERAL(TMP560, "implicit", 8);
-STRING_LITERAL(TMP561, "internal", 8);
-STRING_LITERAL(TMP562, "lock", 4);
-STRING_LITERAL(TMP563, "namespace", 9);
-STRING_LITERAL(TMP564, "null", 4);
-STRING_LITERAL(TMP565, "override", 8);
-STRING_LITERAL(TMP566, "params", 6);
-STRING_LITERAL(TMP567, "readonly", 8);
-STRING_LITERAL(TMP568, "sbyte", 5);
-STRING_LITERAL(TMP569, "sealed", 6);
-STRING_LITERAL(TMP570, "stackalloc", 10);
-STRING_LITERAL(TMP571, "string", 6);
-STRING_LITERAL(TMP572, "true", 4);
-STRING_LITERAL(TMP573, "typeof", 6);
-STRING_LITERAL(TMP574, "uint", 4);
-STRING_LITERAL(TMP575, "ulong", 5);
-STRING_LITERAL(TMP576, "unchecked", 9);
-STRING_LITERAL(TMP577, "unsafe", 6);
-STRING_LITERAL(TMP578, "ushort", 6);
-NIM_CONST TY126047 TMP547 = {((NimStringDesc*) &TMP548),
-((NimStringDesc*) &TMP445),
-((NimStringDesc*) &TMP549),
+STRING_LITERAL(TMP549, "abstract", 8);
+STRING_LITERAL(TMP550, "base", 4);
+STRING_LITERAL(TMP551, "bool", 4);
+STRING_LITERAL(TMP552, "byte", 4);
+STRING_LITERAL(TMP553, "checked", 7);
+STRING_LITERAL(TMP554, "decimal", 7);
+STRING_LITERAL(TMP555, "delegate", 8);
+STRING_LITERAL(TMP556, "event", 5);
+STRING_LITERAL(TMP557, "explicit", 8);
+STRING_LITERAL(TMP558, "false", 5);
+STRING_LITERAL(TMP559, "fixed", 5);
+STRING_LITERAL(TMP560, "foreach", 7);
+STRING_LITERAL(TMP561, "implicit", 8);
+STRING_LITERAL(TMP562, "internal", 8);
+STRING_LITERAL(TMP563, "lock", 4);
+STRING_LITERAL(TMP564, "namespace", 9);
+STRING_LITERAL(TMP565, "null", 4);
+STRING_LITERAL(TMP566, "override", 8);
+STRING_LITERAL(TMP567, "params", 6);
+STRING_LITERAL(TMP568, "readonly", 8);
+STRING_LITERAL(TMP569, "sbyte", 5);
+STRING_LITERAL(TMP570, "sealed", 6);
+STRING_LITERAL(TMP571, "stackalloc", 10);
+STRING_LITERAL(TMP572, "string", 6);
+STRING_LITERAL(TMP573, "true", 4);
+STRING_LITERAL(TMP574, "typeof", 6);
+STRING_LITERAL(TMP575, "uint", 4);
+STRING_LITERAL(TMP576, "ulong", 5);
+STRING_LITERAL(TMP577, "unchecked", 9);
+STRING_LITERAL(TMP578, "unsafe", 6);
+STRING_LITERAL(TMP579, "ushort", 6);
+NIM_CONST TY126047 TMP548 = {((NimStringDesc*) &TMP549),
+((NimStringDesc*) &TMP446),
 ((NimStringDesc*) &TMP550),
-((NimStringDesc*) &TMP450),
 ((NimStringDesc*) &TMP551),
 ((NimStringDesc*) &TMP451),
-((NimStringDesc*) &TMP515),
-((NimStringDesc*) &TMP516),
 ((NimStringDesc*) &TMP552),
+((NimStringDesc*) &TMP452),
+((NimStringDesc*) &TMP516),
 ((NimStringDesc*) &TMP517),
-((NimStringDesc*) &TMP453),
-((NimStringDesc*) &TMP454),
 ((NimStringDesc*) &TMP553),
 ((NimStringDesc*) &TMP518),
+((NimStringDesc*) &TMP454),
+((NimStringDesc*) &TMP455),
 ((NimStringDesc*) &TMP554),
-((NimStringDesc*) &TMP459),
-((NimStringDesc*) &TMP520),
-((NimStringDesc*) &TMP461),
-((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP519),
 ((NimStringDesc*) &TMP555),
-((NimStringDesc*) &TMP556),
+((NimStringDesc*) &TMP460),
 ((NimStringDesc*) &TMP521),
+((NimStringDesc*) &TMP462),
+((NimStringDesc*) &TMP464),
+((NimStringDesc*) &TMP556),
 ((NimStringDesc*) &TMP557),
-((NimStringDesc*) &TMP466),
-((NimStringDesc*) &TMP558),
 ((NimStringDesc*) &TMP522),
+((NimStringDesc*) &TMP558),
 ((NimStringDesc*) &TMP467),
 ((NimStringDesc*) &TMP559),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP523),
+((NimStringDesc*) &TMP468),
 ((NimStringDesc*) &TMP560),
-((NimStringDesc*) &TMP472),
-((NimStringDesc*) &TMP526),
-((NimStringDesc*) &TMP474),
+((NimStringDesc*) &TMP525),
+((NimStringDesc*) &TMP471),
 ((NimStringDesc*) &TMP561),
+((NimStringDesc*) &TMP473),
+((NimStringDesc*) &TMP527),
 ((NimStringDesc*) &TMP475),
 ((NimStringDesc*) &TMP562),
-((NimStringDesc*) &TMP527),
+((NimStringDesc*) &TMP476),
 ((NimStringDesc*) &TMP563),
 ((NimStringDesc*) &TMP528),
 ((NimStringDesc*) &TMP564),
-((NimStringDesc*) &TMP487),
 ((NimStringDesc*) &TMP529),
-((NimStringDesc*) &TMP490),
 ((NimStringDesc*) &TMP565),
-((NimStringDesc*) &TMP566),
+((NimStringDesc*) &TMP488),
 ((NimStringDesc*) &TMP530),
+((NimStringDesc*) &TMP491),
+((NimStringDesc*) &TMP566),
+((NimStringDesc*) &TMP567),
 ((NimStringDesc*) &TMP531),
 ((NimStringDesc*) &TMP532),
-((NimStringDesc*) &TMP567),
-((NimStringDesc*) &TMP494),
-((NimStringDesc*) &TMP495),
+((NimStringDesc*) &TMP533),
 ((NimStringDesc*) &TMP568),
+((NimStringDesc*) &TMP495),
+((NimStringDesc*) &TMP496),
 ((NimStringDesc*) &TMP569),
-((NimStringDesc*) &TMP534),
-((NimStringDesc*) &TMP536),
 ((NimStringDesc*) &TMP570),
-((NimStringDesc*) &TMP499),
-((NimStringDesc*) &TMP571),
+((NimStringDesc*) &TMP535),
 ((NimStringDesc*) &TMP537),
+((NimStringDesc*) &TMP571),
+((NimStringDesc*) &TMP500),
+((NimStringDesc*) &TMP572),
 ((NimStringDesc*) &TMP538),
 ((NimStringDesc*) &TMP539),
 ((NimStringDesc*) &TMP540),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP501),
+((NimStringDesc*) &TMP541),
 ((NimStringDesc*) &TMP573),
+((NimStringDesc*) &TMP502),
 ((NimStringDesc*) &TMP574),
 ((NimStringDesc*) &TMP575),
 ((NimStringDesc*) &TMP576),
 ((NimStringDesc*) &TMP577),
 ((NimStringDesc*) &TMP578),
-((NimStringDesc*) &TMP504),
-((NimStringDesc*) &TMP544),
+((NimStringDesc*) &TMP579),
+((NimStringDesc*) &TMP505),
 ((NimStringDesc*) &TMP545),
 ((NimStringDesc*) &TMP546),
-((NimStringDesc*) &TMP507)}
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP508)}
 ;
-STRING_LITERAL(TMP580, "_Bool", 5);
-STRING_LITERAL(TMP581, "_Complex", 8);
-STRING_LITERAL(TMP582, "_Imaginary", 10);
-STRING_LITERAL(TMP583, "restrict", 8);
-NIM_CONST TY126021 TMP579 = {((NimStringDesc*) &TMP580),
-((NimStringDesc*) &TMP581),
+STRING_LITERAL(TMP581, "_Bool", 5);
+STRING_LITERAL(TMP582, "_Complex", 8);
+STRING_LITERAL(TMP583, "_Imaginary", 10);
+STRING_LITERAL(TMP584, "restrict", 8);
+NIM_CONST TY126021 TMP580 = {((NimStringDesc*) &TMP581),
 ((NimStringDesc*) &TMP582),
-((NimStringDesc*) &TMP514),
-((NimStringDesc*) &TMP450),
+((NimStringDesc*) &TMP583),
+((NimStringDesc*) &TMP515),
 ((NimStringDesc*) &TMP451),
-((NimStringDesc*) &TMP516),
-((NimStringDesc*) &TMP453),
+((NimStringDesc*) &TMP452),
+((NimStringDesc*) &TMP517),
 ((NimStringDesc*) &TMP454),
-((NimStringDesc*) &TMP518),
-((NimStringDesc*) &TMP459),
-((NimStringDesc*) &TMP520),
-((NimStringDesc*) &TMP461),
-((NimStringDesc*) &TMP463),
+((NimStringDesc*) &TMP455),
+((NimStringDesc*) &TMP519),
+((NimStringDesc*) &TMP460),
 ((NimStringDesc*) &TMP521),
+((NimStringDesc*) &TMP462),
+((NimStringDesc*) &TMP464),
 ((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP467),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP523),
+((NimStringDesc*) &TMP468),
 ((NimStringDesc*) &TMP525),
+((NimStringDesc*) &TMP471),
 ((NimStringDesc*) &TMP526),
 ((NimStringDesc*) &TMP527),
-((NimStringDesc*) &TMP533),
-((NimStringDesc*) &TMP583),
-((NimStringDesc*) &TMP495),
+((NimStringDesc*) &TMP528),
 ((NimStringDesc*) &TMP534),
+((NimStringDesc*) &TMP584),
+((NimStringDesc*) &TMP496),
 ((NimStringDesc*) &TMP535),
 ((NimStringDesc*) &TMP536),
-((NimStringDesc*) &TMP499),
 ((NimStringDesc*) &TMP537),
+((NimStringDesc*) &TMP500),
 ((NimStringDesc*) &TMP538),
-((NimStringDesc*) &TMP541),
+((NimStringDesc*) &TMP539),
 ((NimStringDesc*) &TMP542),
 ((NimStringDesc*) &TMP543),
-((NimStringDesc*) &TMP545),
+((NimStringDesc*) &TMP544),
 ((NimStringDesc*) &TMP546),
-((NimStringDesc*) &TMP507)}
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP508)}
 ;
-STRING_LITERAL(TMP585, "assert", 6);
-STRING_LITERAL(TMP586, "boolean", 7);
-STRING_LITERAL(TMP587, "extends", 7);
-STRING_LITERAL(TMP588, "final", 5);
-STRING_LITERAL(TMP589, "implements", 10);
-STRING_LITERAL(TMP590, "instanceof", 10);
-STRING_LITERAL(TMP591, "native", 6);
-STRING_LITERAL(TMP592, "package", 7);
-STRING_LITERAL(TMP593, "strictfp", 8);
-STRING_LITERAL(TMP594, "super", 5);
-STRING_LITERAL(TMP595, "synchronized", 12);
-STRING_LITERAL(TMP596, "throws", 6);
-STRING_LITERAL(TMP597, "transient", 9);
-NIM_CONST TY126060 TMP584 = {((NimStringDesc*) &TMP548),
-((NimStringDesc*) &TMP585),
+STRING_LITERAL(TMP586, "assert", 6);
+STRING_LITERAL(TMP587, "boolean", 7);
+STRING_LITERAL(TMP588, "extends", 7);
+STRING_LITERAL(TMP589, "final", 5);
+STRING_LITERAL(TMP590, "implements", 10);
+STRING_LITERAL(TMP591, "instanceof", 10);
+STRING_LITERAL(TMP592, "native", 6);
+STRING_LITERAL(TMP593, "package", 7);
+STRING_LITERAL(TMP594, "strictfp", 8);
+STRING_LITERAL(TMP595, "super", 5);
+STRING_LITERAL(TMP596, "synchronized", 12);
+STRING_LITERAL(TMP597, "throws", 6);
+STRING_LITERAL(TMP598, "transient", 9);
+NIM_CONST TY126060 TMP585 = {((NimStringDesc*) &TMP549),
 ((NimStringDesc*) &TMP586),
-((NimStringDesc*) &TMP450),
-((NimStringDesc*) &TMP551),
+((NimStringDesc*) &TMP587),
 ((NimStringDesc*) &TMP451),
-((NimStringDesc*) &TMP515),
+((NimStringDesc*) &TMP552),
+((NimStringDesc*) &TMP452),
 ((NimStringDesc*) &TMP516),
 ((NimStringDesc*) &TMP517),
-((NimStringDesc*) &TMP453),
-((NimStringDesc*) &TMP454),
 ((NimStringDesc*) &TMP518),
-((NimStringDesc*) &TMP459),
-((NimStringDesc*) &TMP520),
-((NimStringDesc*) &TMP461),
-((NimStringDesc*) &TMP463),
-((NimStringDesc*) &TMP587),
-((NimStringDesc*) &TMP557),
+((NimStringDesc*) &TMP454),
+((NimStringDesc*) &TMP455),
+((NimStringDesc*) &TMP519),
+((NimStringDesc*) &TMP460),
+((NimStringDesc*) &TMP521),
+((NimStringDesc*) &TMP462),
+((NimStringDesc*) &TMP464),
 ((NimStringDesc*) &TMP588),
-((NimStringDesc*) &TMP466),
-((NimStringDesc*) &TMP522),
-((NimStringDesc*) &TMP467),
-((NimStringDesc*) &TMP524),
-((NimStringDesc*) &TMP470),
+((NimStringDesc*) &TMP558),
 ((NimStringDesc*) &TMP589),
+((NimStringDesc*) &TMP467),
+((NimStringDesc*) &TMP523),
+((NimStringDesc*) &TMP468),
+((NimStringDesc*) &TMP525),
 ((NimStringDesc*) &TMP471),
 ((NimStringDesc*) &TMP590),
-((NimStringDesc*) &TMP526),
-((NimStringDesc*) &TMP474),
-((NimStringDesc*) &TMP527),
+((NimStringDesc*) &TMP472),
 ((NimStringDesc*) &TMP591),
+((NimStringDesc*) &TMP527),
+((NimStringDesc*) &TMP475),
 ((NimStringDesc*) &TMP528),
-((NimStringDesc*) &TMP564),
 ((NimStringDesc*) &TMP592),
-((NimStringDesc*) &TMP530),
+((NimStringDesc*) &TMP529),
+((NimStringDesc*) &TMP565),
+((NimStringDesc*) &TMP593),
 ((NimStringDesc*) &TMP531),
 ((NimStringDesc*) &TMP532),
-((NimStringDesc*) &TMP495),
-((NimStringDesc*) &TMP534),
-((NimStringDesc*) &TMP499),
-((NimStringDesc*) &TMP593),
+((NimStringDesc*) &TMP533),
+((NimStringDesc*) &TMP496),
+((NimStringDesc*) &TMP535),
+((NimStringDesc*) &TMP500),
 ((NimStringDesc*) &TMP594),
-((NimStringDesc*) &TMP538),
 ((NimStringDesc*) &TMP595),
 ((NimStringDesc*) &TMP539),
-((NimStringDesc*) &TMP540),
 ((NimStringDesc*) &TMP596),
+((NimStringDesc*) &TMP540),
+((NimStringDesc*) &TMP541),
 ((NimStringDesc*) &TMP597),
-((NimStringDesc*) &TMP572),
-((NimStringDesc*) &TMP501),
-((NimStringDesc*) &TMP545),
+((NimStringDesc*) &TMP598),
+((NimStringDesc*) &TMP573),
+((NimStringDesc*) &TMP502),
 ((NimStringDesc*) &TMP546),
-((NimStringDesc*) &TMP507)}
+((NimStringDesc*) &TMP547),
+((NimStringDesc*) &TMP508)}
 ;
-STRING_LITERAL(TMP600, "Eof", 3);
-STRING_LITERAL(TMP601, "None", 4);
-STRING_LITERAL(TMP602, "Whitespace", 10);
-STRING_LITERAL(TMP603, "DecNumber", 9);
-STRING_LITERAL(TMP604, "BinNumber", 9);
-STRING_LITERAL(TMP605, "HexNumber", 9);
-STRING_LITERAL(TMP606, "OctNumber", 9);
-STRING_LITERAL(TMP607, "FloatNumber", 11);
-STRING_LITERAL(TMP608, "Identifier", 10);
-STRING_LITERAL(TMP609, "Keyword", 7);
-STRING_LITERAL(TMP610, "StringLit", 9);
-STRING_LITERAL(TMP611, "LongStringLit", 13);
-STRING_LITERAL(TMP612, "CharLit", 7);
-STRING_LITERAL(TMP613, "EscapeSequence", 14);
-STRING_LITERAL(TMP614, "Operator", 8);
-STRING_LITERAL(TMP615, "Punctuation", 11);
-STRING_LITERAL(TMP616, "Comment", 7);
-STRING_LITERAL(TMP617, "LongComment", 11);
-STRING_LITERAL(TMP618, "RegularExpression", 17);
-STRING_LITERAL(TMP619, "TagStart", 8);
-STRING_LITERAL(TMP620, "TagEnd", 6);
-STRING_LITERAL(TMP621, "Key", 3);
-STRING_LITERAL(TMP622, "Value", 5);
-STRING_LITERAL(TMP623, "RawData", 7);
-STRING_LITERAL(TMP624, "Assembler", 9);
-STRING_LITERAL(TMP625, "Preprocessor", 12);
-STRING_LITERAL(TMP626, "Directive", 9);
-STRING_LITERAL(TMP627, "Command", 7);
-STRING_LITERAL(TMP628, "Rule", 4);
-STRING_LITERAL(TMP629, "Hyperlink", 9);
-STRING_LITERAL(TMP630, "Label", 5);
-STRING_LITERAL(TMP631, "Reference", 9);
-STRING_LITERAL(TMP632, "Other", 5);
-NIM_CONST TY123063 tokenclasstostr_123062 = {((NimStringDesc*) &TMP600),
-((NimStringDesc*) &TMP601),
+STRING_LITERAL(TMP601, "Eof", 3);
+STRING_LITERAL(TMP602, "None", 4);
+STRING_LITERAL(TMP603, "Whitespace", 10);
+STRING_LITERAL(TMP604, "DecNumber", 9);
+STRING_LITERAL(TMP605, "BinNumber", 9);
+STRING_LITERAL(TMP606, "HexNumber", 9);
+STRING_LITERAL(TMP607, "OctNumber", 9);
+STRING_LITERAL(TMP608, "FloatNumber", 11);
+STRING_LITERAL(TMP609, "Identifier", 10);
+STRING_LITERAL(TMP610, "Keyword", 7);
+STRING_LITERAL(TMP611, "StringLit", 9);
+STRING_LITERAL(TMP612, "LongStringLit", 13);
+STRING_LITERAL(TMP613, "CharLit", 7);
+STRING_LITERAL(TMP614, "EscapeSequence", 14);
+STRING_LITERAL(TMP615, "Operator", 8);
+STRING_LITERAL(TMP616, "Punctuation", 11);
+STRING_LITERAL(TMP617, "Comment", 7);
+STRING_LITERAL(TMP618, "LongComment", 11);
+STRING_LITERAL(TMP619, "RegularExpression", 17);
+STRING_LITERAL(TMP620, "TagStart", 8);
+STRING_LITERAL(TMP621, "TagEnd", 6);
+STRING_LITERAL(TMP622, "Key", 3);
+STRING_LITERAL(TMP623, "Value", 5);
+STRING_LITERAL(TMP624, "RawData", 7);
+STRING_LITERAL(TMP625, "Assembler", 9);
+STRING_LITERAL(TMP626, "Preprocessor", 12);
+STRING_LITERAL(TMP627, "Directive", 9);
+STRING_LITERAL(TMP628, "Command", 7);
+STRING_LITERAL(TMP629, "Rule", 4);
+STRING_LITERAL(TMP630, "Hyperlink", 9);
+STRING_LITERAL(TMP631, "Label", 5);
+STRING_LITERAL(TMP632, "Reference", 9);
+STRING_LITERAL(TMP633, "Other", 5);
+NIM_CONST TY123063 tokenclasstostr_123062 = {((NimStringDesc*) &TMP601),
 ((NimStringDesc*) &TMP602),
 ((NimStringDesc*) &TMP603),
 ((NimStringDesc*) &TMP604),
@@ -597,7 +596,8 @@ NIM_CONST TY123063 tokenclasstostr_123062 = {((NimStringDesc*) &TMP600),
 ((NimStringDesc*) &TMP629),
 ((NimStringDesc*) &TMP630),
 ((NimStringDesc*) &TMP631),
-((NimStringDesc*) &TMP632)}
+((NimStringDesc*) &TMP632),
+((NimStringDesc*) &TMP633)}
 ;
 extern TNimType NTI1209; /* TObject */
 TNimType NTI123008; /* TGeneralTokenizer */
@@ -880,7 +880,7 @@ N_NIMCALL(void, nimnexttoken_123754)(tgeneraltokenizer123008* g) {
 		case 128 ... 255:
 		{
 			NimStringDesc* id;
-			id = copyString(((NimStringDesc*) &TMP442));
+			id = copyString(((NimStringDesc*) &TMP443));
 			while (1) {
 				if (!(((NU8)((*g).Buf[pos])) >= ((NU8)(48)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(57)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(65)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(90)) || ((NU8)((*g).Buf[pos])) == ((NU8)(95)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(97)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(122)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(128)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(255)))) goto LA29;
 				id = addChar(id, (*g).Buf[pos]);
@@ -1165,10 +1165,10 @@ N_NIMCALL(void, nimnexttoken_123754)(tgeneraltokenizer123008* g) {
 		default:
 		{
 			{
-				if (!((TMP512[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA110;
+				if (!((TMP513[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA110;
 				(*g).Kind = ((NU8) 14);
 				while (1) {
-					if (!((TMP512[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA112;
+					if (!((TMP513[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA112;
 					pos += 1;
 				} LA112: ;
 			}
@@ -1538,7 +1538,7 @@ N_NIMCALL(void, clikenexttoken_125034)(tgeneraltokenizer123008* g, NimStringDesc
 		case 128 ... 255:
 		{
 			NimStringDesc* id;
-			id = copyString(((NimStringDesc*) &TMP442));
+			id = copyString(((NimStringDesc*) &TMP443));
 			while (1) {
 				if (!(((NU8)((*g).Buf[pos])) >= ((NU8)(65)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(90)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(97)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(122)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(48)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(57)) || ((NU8)((*g).Buf[pos])) == ((NU8)(95)) || ((NU8)((*g).Buf[pos])) >= ((NU8)(128)) && ((NU8)((*g).Buf[pos])) <= ((NU8)(255)))) goto LA65;
 				id = addChar(id, (*g).Buf[pos]);
@@ -1691,10 +1691,10 @@ N_NIMCALL(void, clikenexttoken_125034)(tgeneraltokenizer123008* g, NimStringDesc
 		default:
 		{
 			{
-				if (!((TMP512[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA113;
+				if (!((TMP513[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA113;
 				(*g).Kind = ((NU8) 14);
 				while (1) {
-					if (!((TMP512[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA115;
+					if (!((TMP513[((NU8)((*g).Buf[pos]))/8] &(1<<(((NU8)((*g).Buf[pos]))%8)))!=0)) goto LA115;
 					pos += 1;
 				} LA115: ;
 			}
@@ -1725,19 +1725,19 @@ N_NIMCALL(void, clikenexttoken_125034)(tgeneraltokenizer123008* g, NimStringDesc
 }
 
 N_NIMCALL(void, cppnexttoken_126029)(tgeneraltokenizer123008* g) {
-	clikenexttoken_125034(g, TMP513, 48, 1);
+	clikenexttoken_125034(g, TMP514, 48, 1);
 }
 
 N_NIMCALL(void, csharpnexttoken_126042)(tgeneraltokenizer123008* g) {
-	clikenexttoken_125034(g, TMP547, 77, 1);
+	clikenexttoken_125034(g, TMP548, 77, 1);
 }
 
 N_NIMCALL(void, cnexttoken_126016)(tgeneraltokenizer123008* g) {
-	clikenexttoken_125034(g, TMP579, 37, 1);
+	clikenexttoken_125034(g, TMP580, 37, 1);
 }
 
 N_NIMCALL(void, javanexttoken_126055)(tgeneraltokenizer123008* g) {
-	clikenexttoken_125034(g, TMP584, 53, 0);
+	clikenexttoken_125034(g, TMP585, 53, 0);
 }
 
 N_NIMCALL(void, getnexttoken_126069)(tgeneraltokenizer123008* g, NU8 lang) {
@@ -1780,10 +1780,10 @@ N_NOINLINE(void, docutilshighliteInit)(void) {
 }
 
 N_NOINLINE(void, docutilshighliteDatInit)(void) {
-static TNimNode* TMP438[6];
-static TNimNode* TMP439[33];
-NI TMP441;
-static char* NIM_CONST TMP440[33] = {
+static TNimNode* TMP439[6];
+static TNimNode* TMP440[33];
+NI TMP442;
+static char* NIM_CONST TMP441[33] = {
 "gtEof", 
 "gtNone", 
 "gtWhitespace", 
@@ -1822,49 +1822,49 @@ NTI123008.size = sizeof(tgeneraltokenizer123008);
 NTI123008.kind = 17;
 NTI123008.base = (&NTI1209);
 NTI123008.flags = 3;
-TMP438[0] = &TMP27[1];
+TMP439[0] = &TMP27[1];
 NTI123006.size = sizeof(NU8);
 NTI123006.kind = 14;
 NTI123006.base = 0;
 NTI123006.flags = 3;
-for (TMP441 = 0; TMP441 < 33; TMP441++) {
-TMP27[TMP441+2].kind = 1;
-TMP27[TMP441+2].offset = TMP441;
-TMP27[TMP441+2].name = TMP440[TMP441];
-TMP439[TMP441] = &TMP27[TMP441+2];
+for (TMP442 = 0; TMP442 < 33; TMP442++) {
+TMP27[TMP442+2].kind = 1;
+TMP27[TMP442+2].offset = TMP442;
+TMP27[TMP442+2].name = TMP441[TMP442];
+TMP440[TMP442] = &TMP27[TMP442+2];
 }
-TMP27[35].len = 33; TMP27[35].kind = 2; TMP27[35].sons = &TMP439[0];
+TMP27[35].len = 33; TMP27[35].kind = 2; TMP27[35].sons = &TMP440[0];
 NTI123006.node = &TMP27[35];
 TMP27[1].kind = 1;
 TMP27[1].offset = offsetof(tgeneraltokenizer123008, Kind);
 TMP27[1].typ = (&NTI123006);
 TMP27[1].name = "kind";
-TMP438[1] = &TMP27[36];
+TMP439[1] = &TMP27[36];
 TMP27[36].kind = 1;
 TMP27[36].offset = offsetof(tgeneraltokenizer123008, Start);
 TMP27[36].typ = (&NTI105);
 TMP27[36].name = "start";
-TMP438[2] = &TMP27[37];
+TMP439[2] = &TMP27[37];
 TMP27[37].kind = 1;
 TMP27[37].offset = offsetof(tgeneraltokenizer123008, Length);
 TMP27[37].typ = (&NTI105);
 TMP27[37].name = "length";
-TMP438[3] = &TMP27[38];
+TMP439[3] = &TMP27[38];
 TMP27[38].kind = 1;
 TMP27[38].offset = offsetof(tgeneraltokenizer123008, Buf);
 TMP27[38].typ = (&NTI144);
 TMP27[38].name = "buf";
-TMP438[4] = &TMP27[39];
+TMP439[4] = &TMP27[39];
 TMP27[39].kind = 1;
 TMP27[39].offset = offsetof(tgeneraltokenizer123008, Pos);
 TMP27[39].typ = (&NTI105);
 TMP27[39].name = "pos";
-TMP438[5] = &TMP27[40];
+TMP439[5] = &TMP27[40];
 TMP27[40].kind = 1;
 TMP27[40].offset = offsetof(tgeneraltokenizer123008, State);
 TMP27[40].typ = (&NTI123006);
 TMP27[40].name = "state";
-TMP27[0].len = 6; TMP27[0].kind = 2; TMP27[0].sons = &TMP438[0];
+TMP27[0].len = 6; TMP27[0].kind = 2; TMP27[0].sons = &TMP439[0];
 NTI123008.node = &TMP27[0];
 }
 

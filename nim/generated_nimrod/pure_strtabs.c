@@ -175,8 +175,8 @@ struct tkeyvaluepairseq113608 {
   TY89506 data[SEQ_DECL_SIZE];
 };
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
-N_NIMCALL(void, TMP109)(void* p, NI op);
-N_NIMCALL(void, TMP113)(void* p, NI op);
+N_NIMCALL(void, TMP110)(void* p, NI op);
+N_NIMCALL(void, TMP114)(void* p, NI op);
 N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
 static N_INLINE(void, nimGCunrefNoCycle)(void* p);
 static N_INLINE(tcell40090*, usrtocell_43442)(void* usr);
@@ -200,7 +200,7 @@ N_NIMCALL(void*, newSeq)(TNimType* typ, NI len);
 N_NIMCALL(void, rawinsert_113868)(tstringtable113610* t, tkeyvaluepairseq113608** data, NimStringDesc* key, NimStringDesc* val);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
 N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
-STRING_LITERAL(TMP156, "", 0);
+STRING_LITERAL(TMP157, "", 0);
 extern TNimType NTI1209; /* TObject */
 TNimType NTI113610; /* TStringTable */
 extern TNimType NTI105; /* int */
@@ -209,7 +209,7 @@ TNimType NTI113608; /* TKeyValuePairSeq */
 TNimType NTI113604; /* TStringTableMode */
 TNimType NTI113612; /* PStringTable */
 extern tgcheap42016 gch_42044;
-N_NIMCALL(void, TMP109)(void* p, NI op) {
+N_NIMCALL(void, TMP110)(void* p, NI op) {
 	tkeyvaluepairseq113608* a;
 	NI LOC1;
 	a = (tkeyvaluepairseq113608*)p;
@@ -219,7 +219,7 @@ N_NIMCALL(void, TMP109)(void* p, NI op) {
 	nimGCvisit((void*)a->data[LOC1].Field1, op);
 	}
 }
-N_NIMCALL(void, TMP113)(void* p, NI op) {
+N_NIMCALL(void, TMP114)(void* p, NI op) {
 	tstringtable113610* a;
 	a = (tstringtable113610*)p;
 	nimGCvisit((void*)(*a).Data, op);
@@ -470,7 +470,7 @@ N_NIMCALL(NimStringDesc*, nstGet)(tstringtable113610* t, NimStringDesc* key) {
 	goto LA1;
 	LA3: ;
 	{
-		result = copyString(((NimStringDesc*) &TMP156));
+		result = copyString(((NimStringDesc*) &TMP157));
 	}
 	LA1: ;
 	return result;
@@ -479,10 +479,10 @@ N_NOINLINE(void, purestrtabsInit)(void) {
 }
 
 N_NOINLINE(void, purestrtabsDatInit)(void) {
-static TNimNode* TMP107[3];
-static TNimNode* TMP110[3];
-NI TMP112;
-static char* NIM_CONST TMP111[3] = {
+static TNimNode* TMP108[3];
+static TNimNode* TMP111[3];
+NI TMP113;
+static char* NIM_CONST TMP112[3] = {
 "modeCaseSensitive", 
 "modeCaseInsensitive", 
 "modeStyleInsensitive"};
@@ -491,44 +491,44 @@ NTI113610.size = sizeof(tstringtable113610);
 NTI113610.kind = 17;
 NTI113610.base = (&NTI1209);
 NTI113610.flags = 2;
-TMP107[0] = &TMP21[1];
+TMP108[0] = &TMP21[1];
 TMP21[1].kind = 1;
 TMP21[1].offset = offsetof(tstringtable113610, Counter);
 TMP21[1].typ = (&NTI105);
 TMP21[1].name = "counter";
-TMP107[1] = &TMP21[2];
+TMP108[1] = &TMP21[2];
 NTI113608.size = sizeof(tkeyvaluepairseq113608*);
 NTI113608.kind = 24;
 NTI113608.base = (&NTI89506);
 NTI113608.flags = 2;
-NTI113608.marker = TMP109;
+NTI113608.marker = TMP110;
 TMP21[2].kind = 1;
 TMP21[2].offset = offsetof(tstringtable113610, Data);
 TMP21[2].typ = (&NTI113608);
 TMP21[2].name = "data";
-TMP107[2] = &TMP21[3];
+TMP108[2] = &TMP21[3];
 NTI113604.size = sizeof(NU8);
 NTI113604.kind = 14;
 NTI113604.base = 0;
 NTI113604.flags = 3;
-for (TMP112 = 0; TMP112 < 3; TMP112++) {
-TMP21[TMP112+4].kind = 1;
-TMP21[TMP112+4].offset = TMP112;
-TMP21[TMP112+4].name = TMP111[TMP112];
-TMP110[TMP112] = &TMP21[TMP112+4];
+for (TMP113 = 0; TMP113 < 3; TMP113++) {
+TMP21[TMP113+4].kind = 1;
+TMP21[TMP113+4].offset = TMP113;
+TMP21[TMP113+4].name = TMP112[TMP113];
+TMP111[TMP113] = &TMP21[TMP113+4];
 }
-TMP21[7].len = 3; TMP21[7].kind = 2; TMP21[7].sons = &TMP110[0];
+TMP21[7].len = 3; TMP21[7].kind = 2; TMP21[7].sons = &TMP111[0];
 NTI113604.node = &TMP21[7];
 TMP21[3].kind = 1;
 TMP21[3].offset = offsetof(tstringtable113610, Mode);
 TMP21[3].typ = (&NTI113604);
 TMP21[3].name = "mode";
-TMP21[0].len = 3; TMP21[0].kind = 2; TMP21[0].sons = &TMP107[0];
+TMP21[0].len = 3; TMP21[0].kind = 2; TMP21[0].sons = &TMP108[0];
 NTI113610.node = &TMP21[0];
 NTI113612.size = sizeof(tstringtable113610*);
 NTI113612.kind = 22;
 NTI113612.base = (&NTI113610);
 NTI113612.flags = 2;
-NTI113612.marker = TMP113;
+NTI113612.marker = TMP114;
 }
 

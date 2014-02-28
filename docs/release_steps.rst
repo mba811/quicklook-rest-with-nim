@@ -11,9 +11,9 @@ What to do for a new public release?
 * ``git flow release start versionname`` (versionname without v).
 * Update version numbers:
 
-  * Modify `../README.rst <../README.rst>`_ (s/development/stable/).
-  * Modify `../nim/rester.nim <../nim/rester.nim>`_.
-  * Update `CHANGES.rst <CHANGES.rst>`_ with list of changes and
+  * Modify `README.rst <../README.rst>`_ (s/development/stable/).
+  * Modify `nim/rester.nim <../nim/rester.nim>`_.
+  * Update `docs/CHANGES.rst <CHANGES.rst>`_ with list of changes and
     version/number.
 
 * ``git commit -av`` into the release branch the version number changes.
@@ -42,9 +42,9 @@ What to do for a new public release?
     <https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_.
 * Increase version numbers, at least maintenance (stable version + 0.0.1):
 
-  * Modify `../README.rst <../README.rst>`_.
-  * Modify `../nim/rester.nim <../nim/rester.nim>`_.
-  * Add to `CHANGES.rst <CHANGES.rst>`_ development version with unknown
+  * Modify `README.rst <../README.rst>`_.
+  * Modify `nim/rester.nim <../nim/rester.nim>`_.
+  * Add to `docs/CHANGES.rst <CHANGES.rst>`_ development version with unknown
     date.
 
 * ``git commit -av`` into ``master`` with *Bumps version numbers for

@@ -239,53 +239,53 @@ N_NOINLINE(void, purelexbaseInit)(void) {
 }
 
 N_NOINLINE(void, purelexbaseDatInit)(void) {
-static TNimNode* TMP129[8];
+static TNimNode* TMP130[8];
 static TNimNode TMP32[9];
 NTI130008.size = sizeof(tbaselexer130008);
 NTI130008.kind = 17;
 NTI130008.base = (&NTI1209);
 NTI130008.flags = 2;
-TMP129[0] = &TMP32[1];
+TMP130[0] = &TMP32[1];
 TMP32[1].kind = 1;
 TMP32[1].offset = offsetof(tbaselexer130008, Bufpos);
 TMP32[1].typ = (&NTI105);
 TMP32[1].name = "bufpos";
-TMP129[1] = &TMP32[2];
+TMP130[1] = &TMP32[2];
 TMP32[2].kind = 1;
 TMP32[2].offset = offsetof(tbaselexer130008, Buf);
 TMP32[2].typ = (&NTI144);
 TMP32[2].name = "buf";
-TMP129[2] = &TMP32[3];
+TMP130[2] = &TMP32[3];
 TMP32[3].kind = 1;
 TMP32[3].offset = offsetof(tbaselexer130008, Buflen);
 TMP32[3].typ = (&NTI105);
 TMP32[3].name = "bufLen";
-TMP129[3] = &TMP32[4];
+TMP130[3] = &TMP32[4];
 TMP32[4].kind = 1;
 TMP32[4].offset = offsetof(tbaselexer130008, Input);
 TMP32[4].typ = (&NTI129035);
 TMP32[4].name = "input";
-TMP129[4] = &TMP32[5];
+TMP130[4] = &TMP32[5];
 TMP32[5].kind = 1;
 TMP32[5].offset = offsetof(tbaselexer130008, Linenumber);
 TMP32[5].typ = (&NTI105);
 TMP32[5].name = "lineNumber";
-TMP129[5] = &TMP32[6];
+TMP130[5] = &TMP32[6];
 TMP32[6].kind = 1;
 TMP32[6].offset = offsetof(tbaselexer130008, Sentinel);
 TMP32[6].typ = (&NTI105);
 TMP32[6].name = "sentinel";
-TMP129[6] = &TMP32[7];
+TMP130[6] = &TMP32[7];
 TMP32[7].kind = 1;
 TMP32[7].offset = offsetof(tbaselexer130008, Linestart);
 TMP32[7].typ = (&NTI105);
 TMP32[7].name = "lineStart";
-TMP129[7] = &TMP32[8];
+TMP130[7] = &TMP32[8];
 TMP32[8].kind = 1;
 TMP32[8].offset = offsetof(tbaselexer130008, Fileopened);
 TMP32[8].typ = (&NTI133);
 TMP32[8].name = "fileOpened";
-TMP32[0].len = 8; TMP32[0].kind = 2; TMP32[0].sons = &TMP129[0];
+TMP32[0].len = 8; TMP32[0].kind = 2; TMP32[0].sons = &TMP130[0];
 NTI130008.node = &TMP32[0];
 }
 

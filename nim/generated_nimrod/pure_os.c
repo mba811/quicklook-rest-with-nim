@@ -243,7 +243,7 @@ static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c);
 N_NIMCALL(NI, findenvvar_106402)(NimStringDesc* key);
 N_NIMCALL(void, getenvvarsc_106004)(void);
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
-N_NIMCALL(void, TMP206)(void* p, NI op);
+N_NIMCALL(void, TMP207)(void* p, NI op);
 N_NIMCALL(void*, newSeqRC1)(TNimType* typ, NI len);
 N_NIMCALL(TGenericSeq*, incrSeq)(TGenericSeq* seq, NI elemsize);
 N_NIMCALL(NIM_BOOL, nsuStartsWith)(NimStringDesc* s, NimStringDesc* prefix);
@@ -614,7 +614,7 @@ N_NIMCALL(NIM_BOOL, nosexistsFile)(NimStringDesc* filename) {
 	BeforeRet: ;
 	return result;
 }
-N_NIMCALL(void, TMP206)(void* p, NI op) {
+N_NIMCALL(void, TMP207)(void* p, NI op) {
 	TY105805* a;
 	NI LOC1;
 	a = (TY105805*)p;
@@ -877,6 +877,6 @@ NTI105805.size = sizeof(TY105805*);
 NTI105805.kind = 24;
 NTI105805.base = (&NTI142);
 NTI105805.flags = 2;
-NTI105805.marker = TMP206;
+NTI105805.marker = TMP207;
 }
 

@@ -191,7 +191,7 @@ static N_INLINE(tcell40090*, usrtocell_43442)(void* usr);
 static N_INLINE(void, rtladdzct_45002)(tcell40090* c);
 N_NOINLINE(void, addzct_43418)(tcellseq40106* s, tcell40090* c);
 N_NIMCALL(void, raiseException)(E_Base* e, NCSTRING ename);
-STRING_LITERAL(TMP163, "overflow", 8);
+STRING_LITERAL(TMP164, "overflow", 8);
 extern TNimType NTI18001; /* ref EOverflow */
 extern TNimType NTI1245; /* EOverflow */
 extern tgcheap42016 gch_42044;
@@ -278,29 +278,29 @@ N_NIMCALL(NI, rawparseint_81309)(NimStringDesc* s, NI64* b, NI start) {
 	LA6: ;
 	LA1: ;
 	{
-		NI64 TMP161;
-		NI TMP162;
+		NI64 TMP162;
+		NI TMP163;
 		if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA10;
 		(*b) = 0;
 		while (1) {
-			NI64 TMP158;
-			NI TMP159;
-			NI64 TMP160;
+			NI64 TMP159;
+			NI TMP160;
+			NI64 TMP161;
 			if (!(((NU8)(s->data[i])) >= ((NU8)(48)) && ((NU8)(s->data[i])) <= ((NU8)(57)))) goto LA12;
-			TMP158 = mulInt64((*b), 10);
-			TMP159 = subInt(((NI) (((NU8)(s->data[i])))), 48);
-			TMP160 = subInt64((NI64)(TMP158), ((NI64) ((NI64)(TMP159))));
-			(*b) = (NI64)(TMP160);
+			TMP159 = mulInt64((*b), 10);
+			TMP160 = subInt(((NI) (((NU8)(s->data[i])))), 48);
+			TMP161 = subInt64((NI64)(TMP159), ((NI64) ((NI64)(TMP160))));
+			(*b) = (NI64)(TMP161);
 			i = addInt(i, 1);
 			while (1) {
 				if (!((NU8)(s->data[i]) == (NU8)(95))) goto LA13;
 				i = addInt(i, 1);
 			} LA13: ;
 		} LA12: ;
-		TMP161 = mulInt64((*b), sign);
-		(*b) = (NI64)(TMP161);
-		TMP162 = subInt(i, start);
-		result = (NI64)(TMP162);
+		TMP162 = mulInt64((*b), sign);
+		(*b) = (NI64)(TMP162);
+		TMP163 = subInt(i, start);
+		result = (NI64)(TMP163);
 	}
 	LA10: ;
 	return result;
@@ -364,7 +364,7 @@ N_NIMCALL(NI, npuParseInt)(NimStringDesc* s, unsigned int* number, NI start) {
 		e_81460 = (EOverflow*) newObj((&NTI18001), sizeof(EOverflow));
 		(*e_81460).Sup.Sup.Sup.Sup.m_type = (&NTI1245);
 		LOC9 = 0;
-		LOC9 = (*e_81460).Sup.Sup.Sup.message; (*e_81460).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP163));
+		LOC9 = (*e_81460).Sup.Sup.Sup.message; (*e_81460).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TMP164));
 		if (LOC9) nimGCunrefNoCycle(LOC9);
 		raiseException((E_Base*)e_81460, "EOverflow");
 	}

@@ -186,10 +186,10 @@ static N_INLINE(void, addxmlchar_137264)(NimStringDesc** dest, NIM_CHAR c);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
-STRING_LITERAL(TMP727, "&amp;", 5);
-STRING_LITERAL(TMP728, "&lt;", 4);
-STRING_LITERAL(TMP729, "&gt;", 4);
-STRING_LITERAL(TMP730, "&quot;", 6);
+STRING_LITERAL(TMP734, "&amp;", 5);
+STRING_LITERAL(TMP735, "&lt;", 4);
+STRING_LITERAL(TMP736, "&gt;", 4);
+STRING_LITERAL(TMP737, "&quot;", 6);
 tstringtable113610* gcookies_137885;
 extern tgcheap42016 gch_42044;
 
@@ -237,25 +237,25 @@ static N_INLINE(void, addxmlchar_137264)(NimStringDesc** dest, NIM_CHAR c) {
 	case 38:
 	{
 		(*dest) = resizeString((*dest), 5);
-appendString((*dest), ((NimStringDesc*) &TMP727));
+appendString((*dest), ((NimStringDesc*) &TMP734));
 	}
 	break;
 	case 60:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP728));
+appendString((*dest), ((NimStringDesc*) &TMP735));
 	}
 	break;
 	case 62:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP729));
+appendString((*dest), ((NimStringDesc*) &TMP736));
 	}
 	break;
 	case 34:
 	{
 		(*dest) = resizeString((*dest), 6);
-appendString((*dest), ((NimStringDesc*) &TMP730));
+appendString((*dest), ((NimStringDesc*) &TMP737));
 	}
 	break;
 	default:
