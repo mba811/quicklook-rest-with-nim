@@ -24,7 +24,7 @@ DEST_NIMBASE="nim/${NIMOBJ_DIR}/nimbase.h"
 # Ok, are we out now?
 if [ -d nim ]
 then
-	$PATH_TO_NIMROD c --noMain  --app:staticlib \
+	$PATH_TO_NIMROD c --noMain \
 		--nimcache:"${NIMOBJ_DIR}" --compileOnly \
 		--header -d:release nim/rester.nim
 	if [ "${PATH_TO_NIMBASE}" -nt "${DEST_NIMBASE}" ]
