@@ -1,5 +1,6 @@
 # Global patterns
 *.diff
+*.exe
 *.mode1v3
 *.orig
 *.pbxuser
@@ -24,6 +25,7 @@ xcuserdata/
 /nakefile
 /nim/out.html
 /nim/rester
+/nim/rester.html
 /nim/test.rst
 /tests/include/*.html
 /tests/include/test_include
