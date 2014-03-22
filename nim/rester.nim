@@ -45,7 +45,7 @@ proc loadConfig(mem_string: string): PStringTable =
     of cfgEof:
       break
     of cfgSectionStart:   ## a ``[section]`` has been parsed
-      nil
+      discard
     of cfgKeyValuePair:
       result[e.key] = e.value
     of cfgOption:
