@@ -1,11 +1,19 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
   rester
 
-const rester_src = "nim"/"rester.nim"
+const
+  rester_src = "nim"/"rester.nim"
+  public_name = "QuickLook reStructuredText"
+  dist_dir = "dist"
+  xarchive_ext = ".xcarchive"
+  environ_c_file = "nim"/"generated_nimrod"/"stdlib_os.c"
 
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
     "docs"/"CHANGES", "LICENSE", "README", "docindex"]
+  xcodebuild_exe = "xcodebuild".find_exe
+  dest_archive = "build"
+
 proc rst2html(filename: string): bool =
   let output = safe_rst_file_to_html(filename)
   if output.len > 0:
@@ -82,6 +90,27 @@ proc clean() =
       path.removeFile()
 
 
+proc dist() =
+  ## Builds the distribution files.
+  # Verify that environ patch is present in C source code.
+  assert environ_c_file.read_file.find("_NSGetEnviron") > 0
+
+  assert xcodebuild_exe.len > 0, "No xcodebuild command found"
+  echo "Building archive…"
+  let dest_archive = dist_dir/public_name & xarchive_ext
+  dest_archive.remove_dir
+  dist_dir.create_dir
+
+  # Build archive. From http://stackoverflow.com/a/20905823/172690.
+  let output = exec_process(xcodebuild_exe, args = ["archive",
+    "-scheme", public_name, "-archivePath", dest_archive],
+      options = {poStdErrToStdOut, poEchoCmd})
+  if output.find("ARCHIVE SUCCEEDED") < 0:
+    quit("Error building archive\n\n" & output)
+  doAssert dest_archive.exists_dir, output
+
+  echo "Did make it"
+
 task "doc", "Generates export API docs for for the modules":
   doc()
   echo "All done"
@@ -93,3 +122,7 @@ task "check_doc", "Validates rst format for a subset of documentation":
 task "clean", "Removes temporal files, mainly":
   clean()
   echo "All files cleaned"
+
+task "dist", "Build distribution packages for GitHub":
+  dist()
+  echo "Distribution files produced"
