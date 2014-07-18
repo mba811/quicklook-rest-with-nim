@@ -2,7 +2,7 @@
 Quicklook reST with Nimrod changes log
 ======================================
 
-v0.4.1, ????-??-??
+v0.4.2, 2014-07-18
 ------------------
 
 * `Added support for code directive

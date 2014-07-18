@@ -6,8 +6,8 @@ import grst/rstgen, os, grst/rst, strutils,
 
 const
   rest_default_config = slurp("embedded_nimdoc.cfg")
-  versionStr* = "0.4.1" ## Module version as a string.
-  versionInt* = (major: 0, minor: 4, maintenance: 1) ## \
+  versionStr* = "0.4.2" ## Module version as a string.
+  versionInt* = (major: 0, minor: 4, maintenance: 2) ## \
   ## Module version as an integer tuple.
   ##
   ## Major versions changes mean a break in API backwards compatibility, either
