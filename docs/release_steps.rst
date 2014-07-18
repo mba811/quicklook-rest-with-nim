@@ -1,10 +1,9 @@
-====================================
-What to do for a new public release?
-====================================
+========================================
+QuickLook reST with Nimrod release steps
+========================================
 
-* Create new milestone with version number. The version number for stable
-  releases has to have an even minor and maintenance value and always greater
-  than the development version number.
+* Create new milestone with version number (``vXXX``) at
+  https://github.com/gradha/quicklook-rest-with-nimrod/issues/milestones.
 * Create new dummy issue `Release versionname` and assign to that milestone.
 * Annotate the release issue with the Nimrod commit used to compile sources,
   and Xcode version too.
@@ -23,24 +22,25 @@ What to do for a new public release?
     <https://github.com/gradha/quicklook-rest-with-nimrod/issues/27>`_ is done
     correctly, either by patching Nimrod's ``os`` module or updating to a newer
     version which doesn't have the issue.
-  * Commit regenerated sources as separate commit.
+  * Commit regenerated sources as separate commit if needed.
 
 * ``git flow release finish versionname`` (the tagname is versionname without
-  v).
+  v). When specifying the tag message, copy and paste a text version of the
+  changes log into the message. Add rst item markers.
 * Move closed issues to the release milestone.
-* Push all to git: ``git push origin master stable --tags``.
-* Open Xcode project.
+* Prepare distribution binaries:
 
+  * Open Xcode project.
   * Build the ``Nimrod rst lib`` target, make sure git doesn't show changes,
     otherwise the previous C sources generation step failed. `Beware of the
     environ`.
-  * Archive the ``Quicklook reStructuredText`` target.
-  * Using the organizer reveal the archive's contents and search the QuickLook
-    plugin.
-  * Compress into a zip the binary.
+  * Close Xcode and run ``nake dist`` to build distribution zip files.
+  * Push all to git: ``git push origin master stable --tags``.
   * Attach the binary to the appropriate release at
     `https://github.com/gradha/quicklook-rest-with-nimrod/releases
-    <https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_.
+    <https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_. Describe
+    the release with the command line info containing md5 checksums.
+
 * Increase version numbers, at least maintenance (stable version + 0.0.1):
 
   * Modify `README.rst <../README.rst>`_.
@@ -50,6 +50,7 @@ What to do for a new public release?
 
 * ``git commit -av`` into ``master`` with *Bumps version numbers for
   development version. Refs #release issue*.
-* Close the dummy release issue.
+* ``git push origin master stable --tags``.
+* Close the dummy release issue and related milestone.
 * Announce at `http://forum.nimrod-lang.org/t/317
   <http://forum.nimrod-lang.org/t/317>`_.

@@ -1,6 +1,6 @@
-===================
-Documentation index
-===================
+==============================================
+QuickLook reST with Nimrod documentation index
+==============================================
 
 Available documentation files for `Quicklook reST with Nimrod
 <https://github.com/gradha/quicklook-rest-with-nimrod>`_. To obtain these HTML

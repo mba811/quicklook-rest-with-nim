@@ -1,5 +1,5 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester
+  rester, md5
 
 const
   rester_src = "nim"/"rester.nim"
@@ -155,8 +155,18 @@ proc dist() =
       zip_base.extract_filename], options = exec_options)
   doAssert exists_file(dist_dir/zip_name)
 
-  echo "Did make it"
   discard exec_cmd("open " & dist_dir)
+
+  echo """
+
+Add the following notes to the release info:
+
+[See the changes log](https://github.com/gradha/quicklook-rest-with-nimrod/blob/v$1/docs/CHANGES.rst).
+
+Binary MD5 checksums:""" % [rester.version_str]
+  for filename in walk_files(dist_dir/"*.zip"):
+    let v = filename.read_file.get_md5
+    echo "* ``", v, "`` ", filename.extract_filename
 
 
 task "doc", "Generates export API docs for for the modules":
@@ -173,4 +183,3 @@ task "clean", "Removes temporal files, mainly":
 
 task "dist", "Build distribution packages for GitHub":
   dist()
-  echo "Distribution files produced"
