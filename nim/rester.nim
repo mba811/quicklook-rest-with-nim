@@ -149,6 +149,40 @@ proc rst_file_to_html*(filename: string): string =
   return rst_string_to_html(readFile(filename), filename)
 
 
+proc add_pre_number_lines(content: string): string =
+  ## Takes all the content and prefixes with number lines.
+  ##
+  ## The prefixing is done with plain text characters, right aligned, so this
+  ## presumes the text will be formated with monospaced font inside some <pre>
+  ## tag.
+  let
+    max_lines = 1 + content.count_lines
+    width = len($max_lines)
+  result = new_string_of_cap(content.len + width * max_lines)
+  var
+    I = 0
+    LINE = 1
+  result.add(align($LINE, width))
+  result.add(" ")
+
+  while I < content.len - 1:
+    result.add(content[I])
+    case content[I]
+    of new_lines:
+      if content[I] == '\c' and content[I+1] == '\l': inc I
+      LINE.inc
+      result.add(align($LINE, width))
+      result.add(" ")
+    else: discard
+    inc I
+
+  # Last character.
+  if content[<content.len] in new_lines:
+    discard
+  else:
+    result.add(content[<content.len])
+
+
 proc safe_rst_file_to_html*(filename: string): string {.raises: [].} =
   ## Wrapper over rst_file_to_html to catch exceptions.
   ##
@@ -170,7 +204,8 @@ proc safe_rst_file_to_html*(filename: string): string {.raises: [].} =
       "https://github.com/gradha/quicklook-rest-with-nimrod/issues</a>" &
       "<p>" & repr(e).XMLEncode & " with message '" &
       msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
-      "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
+      "<p><pre>" & content.add_pre_number_lines.replace("\n", "<br>") &
+      "</pre></p></body></html>"
 
 proc nim_file_to_html*(filename: string): string {.raises: [].} =
   ## Puts filename into a code block and renders like rst file.

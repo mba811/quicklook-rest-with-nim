@@ -6,8 +6,9 @@ This should be a code block in Nimrod:
 
 .. code-block:: nimrod
     echo "Hey nimrod!"
-    # Blah blah
-    echo "Cool, right?"
+    if a < b:
+        # Blah blah
+        echo "Cool, right?"
 
 This should render as C:
 
