@@ -92,7 +92,7 @@ method log*(L: ref TLogger, level: TLevel,
             frmt: string, args: varargs[string, `$`]) =
   ## override this method in custom loggers. Default implementation does
   ## nothing.
-  nil
+  discard
 
 method log*(L: ref TConsoleLogger, level: TLevel,
             frmt: string, args: varargs[string, `$`]) =
@@ -104,8 +104,8 @@ method log*(L: ref TFileLogger, level: TLevel,
 
 proc defaultFilename*(): string =
   ## returns the default filename for a logger
-  var (path, name, ext) = splitFile(getAppFilename())
-  result = changeFileExt(path / name & "_" & getDateStr(), "log")
+  let a = splitFile(getAppFilename())
+  result = changeFileExt(a.dir / a.name & "_" & getDateStr(), "log")
 
 
 
@@ -125,7 +125,7 @@ proc newFileLogger*(filename = defaultFilename(),
 
 # ------
 
-proc readLogLines(logger : ref TRollingFileLogger) = nil
+proc readLogLines(logger : ref TRollingFileLogger) = discard
   #f.readLine # TODO read all lines, update curLine
 
 

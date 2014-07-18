@@ -1,13 +1,13 @@
-import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
+import grst/rstgen, os, grst/rst, strutils,
   parsecfg, subexes, strtabs, streams, times, cgi, logging
 
 ## Part of `quicklook-rest-with-nimrod
 ## <https://github.com/gradha/quicklook-rest-with-nimrod>`_.
 
 const
-  rest_default_config = slurp("nimdoc.cfg")
-  versionStr* = "0.4.0" ## Module version as a string.
-  versionInt* = (major: 0, minor: 4, maintenance: 0) ## \
+  rest_default_config = slurp("embedded_nimdoc.cfg")
+  versionStr* = "0.4.2" ## Module version as a string.
+  versionInt* = (major: 0, minor: 4, maintenance: 2) ## \
   ## Module version as an integer tuple.
   ##
   ## Major versions changes mean a break in API backwards compatibility, either
@@ -45,7 +45,7 @@ proc loadConfig(mem_string: string): PStringTable =
     of cfgEof:
       break
     of cfgSectionStart:   ## a ``[section]`` has been parsed
-      nil
+      discard
     of cfgKeyValuePair:
       result[e.key] = e.value
     of cfgOption:
@@ -130,13 +130,20 @@ proc rst_string_to_html*(content, filename: string): string =
   GENERATOR.renderRstToOut(RST, MOD_DESC)
   #GENERATOR.modDesc = toRope(MOD_DESC)
 
-  let last_mod = getGMTime(filename.getLastModificationTime())
+  let
+    last_mod = filename.getLastModificationTime
+    last_mod_local = last_mod.getLocalTime
+    last_mod_gmt = last_mod.getGMTime
   var title = GENERATOR.meta[metaTitle]
   #if title.len < 1: title = filename.split_path.tail
 
   # Now finish by adding header, CSS and stuff.
   result = subex(G.config["doc.file"]) % ["title", title,
-    "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
+    "date", last_mod_gmt.format("yyyy-MM-dd"),
+    "time", last_mod_gmt.format("HH:mm"),
+    "local_date", last_mod_local.format("yyyy-MM-dd"),
+    "local_time", last_mod_local.format("HH:mm"),
+    "fileTime", $(int(last_mod_local.timeInfoToTime) * 1000),
     "content", MOD_DESC]
 
 
@@ -147,6 +154,40 @@ proc rst_file_to_html*(filename: string): string =
   ## Note that this proc depends on global variables, you can't run safely
   ## multiple instances of it.
   return rst_string_to_html(readFile(filename), filename)
+
+
+proc add_pre_number_lines(content: string): string =
+  ## Takes all the content and prefixes with number lines.
+  ##
+  ## The prefixing is done with plain text characters, right aligned, so this
+  ## presumes the text will be formated with monospaced font inside some <pre>
+  ## tag.
+  let
+    max_lines = 1 + content.count_lines
+    width = len($max_lines)
+  result = new_string_of_cap(content.len + width * max_lines)
+  var
+    I = 0
+    LINE = 1
+  result.add(align($LINE, width))
+  result.add(" ")
+
+  while I < content.len - 1:
+    result.add(content[I])
+    case content[I]
+    of new_lines:
+      if content[I] == '\c' and content[I+1] == '\l': inc I
+      LINE.inc
+      result.add(align($LINE, width))
+      result.add(" ")
+    else: discard
+    inc I
+
+  # Last character.
+  if content[<content.len] in new_lines:
+    discard
+  else:
+    result.add(content[<content.len])
 
 
 proc safe_rst_file_to_html*(filename: string): string {.raises: [].} =
@@ -170,7 +211,8 @@ proc safe_rst_file_to_html*(filename: string): string {.raises: [].} =
       "https://github.com/gradha/quicklook-rest-with-nimrod/issues</a>" &
       "<p>" & repr(e).XMLEncode & " with message '" &
       msg.XMLEncode & "'</p><p>Displaying raw contents of file anyway:</p>" &
-      "<p><tt>" & content.replace("\n", "<br>") & "</tt></p></body></html>"
+      "<p><pre>" & content.add_pre_number_lines.replace("\n", "<br>") &
+      "</pre></p></body></html>"
 
 proc nim_file_to_html*(filename: string): string {.raises: [].} =
   ## Puts filename into a code block and renders like rst file.
