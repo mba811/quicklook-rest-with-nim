@@ -28,3 +28,22 @@ Now comes a standard directive block:
 
     10 print "awesome"
     20 goto 10
+
+Trailing space code block?
+
+.. code::
+    :number-lines:
+
+    10 print "awesome"
+    20 goto 10
+    
+    
+    
+    
+
+One line?
+
+.. code:: c
+    :number-lines:
+
+    // Forever alone

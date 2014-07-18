@@ -63,6 +63,11 @@ type
   
   PDoc = var TRstGenerator ## Alias to type less.
 
+  CodeBlockParams = object ## Stores code block params.
+    numberLines: bool ## True if the renderer has to show line numbers.
+    startLine: int ## The starting line of the code block, by default 1.
+
+
 proc initRstGenerator*(g: var TRstGenerator, target: TOutputTarget,
                        config: PStringTable, filename: string,
                        options: TRstParseOptions,
@@ -761,25 +766,46 @@ proc renderSmiley(d: PDoc, n: PRstNode, result: var string) =
         height="17" hspace="2" vspace="2" />""",
     "\\includegraphics{$1}", [n.text])
   
-type
-  CodeBlockParams = object
-    line: int
-    number_lines: bool
-
 proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
+  ## Parses useful fields which can appear before a code block.
   case n.getArgument.toLower
   of "number-lines":
-    params.number_lines = true
+    params.numberLines = true
+    # See if the field has a parameter specifying a different line than 1.
     var number: int
     if parseInt(n.getFieldValue, number) > 0:
-      params.line = number
+      params.startLine = number
   else:
     d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getFieldValue)
 
 proc parseCodeBlockParams(d: PDoc, n: PRstNode): CodeBlockParams =
+  ## Iterates over all code block fields and returns processed params.
   assert n.kind == rnFieldList
-  result.line = 1
+  result.startLine = 1
   for son in n.sons: d.parseCodeBlockField(son, result)
+
+proc buildLinesHTMLTable(params: CodeBlockParams, code: string):
+    tuple[beginTable, endTable: string] =
+  ## Returns the necessary tags to start/end a code block in HTML.
+  ##
+  ## If the numberLines has not been used, the tags will default to a simple
+  ## <pre> pair. Otherwise it will build a table and insert an initial column
+  ## with all the line numbers, which requires you to pass the `code` to detect
+  ## how many lines have to be generated (and starting at which point!).
+  if not params.numberLines:
+    result = ("<pre>", "</pre>")
+    return
+
+  var codeLines = code.strip(leading = false).countLines
+  assert codeLines > 0
+  result.beginTable = """<table><tbody><tr><td class="blob-line-nums"><pre>"""
+  var line = params.startLine
+  while codeLines > 0:
+    result.beginTable.add($line & "\n")
+    line.inc
+    codeLines.dec
+  result.beginTable.add("</pre></td><td><pre>")
+  result.endTable = "</pre></td></tr></tbody></table>"
 
 proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
   if n.sons[2] == nil: return
@@ -793,10 +819,13 @@ proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
     lang = langNone         # default language
   else:
     lang = getSourceLanguage(langstr)
-  
-  dispA(d.target, result, "<pre>", "\\begin{rstpre}\n", [])
+
+  let (blockStart, blockEnd) = params.buildLinesHTMLTable(m.text)
+
+  dispA(d.target, result, blockStart, "\\begin{rstpre}\n", [])
   if lang == langNone:
-    d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, langstr)
+    if len(langstr) > 0:
+      d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, langstr)
     result.add(m.text)
   else:
     var g: TGeneralTokenizer
@@ -812,8 +841,8 @@ proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
           esc(d.target, substr(m.text, g.start, g.length+g.start-1)),
           tokenClassToStr[g.kind]])
     deinitGeneralTokenizer(g)
-  dispA(d.target, result, "</pre>", "\n\\end{rstpre}\n")
-  
+  dispA(d.target, result, blockEnd, "\n\\end{rstpre}\n")
+
 proc renderContainer(d: PDoc, n: PRstNode, result: var string) = 
   var tmp = ""
   renderRstToOut(d, n.sons[2], tmp)
