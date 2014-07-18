@@ -1,4 +1,4 @@
-import packages/docutils/rstgen, os, packages/docutils/rst, strutils,
+import grst/rstgen, os, grst/rst, strutils,
   parsecfg, subexes, strtabs, streams, times, cgi, logging
 
 ## Part of `quicklook-rest-with-nimrod
