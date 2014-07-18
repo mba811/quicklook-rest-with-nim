@@ -768,7 +768,8 @@ proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
   var langstr = strip(getArgument(n))
   var lang: TSourceLanguage
   if langstr == "":
-    lang = langNimrod         # default language
+    #lang = langNimrod         # default language
+    lang = langNone         # default language
   else:
     lang = getSourceLanguage(langstr)
   
