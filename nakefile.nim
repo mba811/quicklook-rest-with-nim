@@ -13,10 +13,12 @@ const
   zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
   xcodebuild_exe = "xcodebuild"
   zip_exe = "zip"
+  quick_readme = "docs"/"dist"/"readme.rst"
 
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
-    "docs"/"CHANGES", "LICENSE", "README", "docindex"]
+    "docs"/"CHANGES", "LICENSE", "README", "docindex",
+    quick_readme.change_file_ext("")]
 
 proc copyDirWithPermissions*(source, dest: string) =
   ## Copies a directory from `source` to `dest`. If this fails, `EOS` is raised.
@@ -143,6 +145,11 @@ proc dist() =
     dest_generator)
   doAssert dest_generator.exists_dir
 
+  # Generate instructions.
+  let quick_readme_html = quick_readme.rst_file_to_html
+  write_file(zip_base/"readme.html", quick_readme_html)
+
+  # Archive.
   with_dir dist_dir:
     discard exec_process(zip_exe, args = ["-9r", zip_name,
       zip_base.extract_filename], options = exec_options)
