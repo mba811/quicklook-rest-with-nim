@@ -710,7 +710,7 @@ STRING_LITERAL(TMP765, "<html><body><h1>Out of memory!</h1></body></html>", 49);
 STRING_LITERAL(TMP772, "Could not read ", 15);
 STRING_LITERAL(TMP773, "!!!", 3);
 STRING_LITERAL(TMP774, "<html><body><b>Sorry! Error parsing ", 36);
-STRING_LITERAL(TMP775, " with version 0.4.1.</b><p>If possible please report it at <a h"
+STRING_LITERAL(TMP775, " with version 0.4.2.</b><p>If possible please report it at <a h"
 "ref=\"https://github.com/gradha/quicklook-rest-with-nimrod/issues"
 "\">https://github.com/gradha/quicklook-rest-with-nimrod/issues</a"
 "><p>", 195);
