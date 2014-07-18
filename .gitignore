@@ -18,9 +18,11 @@ xcuserdata/
 /.vimrc.local
 /LICENSE.html
 /README.html
+/dist/
 /docindex.html
 /docs/CHANGES.html
 /docs/debugging_quicklook.html
+/docs/dist/readme.html
 /docs/release_steps.html
 /nakefile
 /nim/out.html

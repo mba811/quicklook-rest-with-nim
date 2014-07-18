@@ -37,7 +37,7 @@ versions for two reasons:
 The MarkDown Conspiracy
 =======================
 
-Have you noticed that markdown seems present in just about everywhere? On the
+Have you noticed that markdown seems present just about everywhere? On the
 other hand, rst not so much. Why, I wonder? Let's check github for the existing
 `qlrest plugins <https://github.com/cluther/qlrest>`_. So I go to
 `https://github.com <https://github.com>`_ and type in the search box

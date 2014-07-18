@@ -1,11 +1,37 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester
+  rester, md5
 
-const rester_src = "nim"/"rester.nim"
+const
+  rester_src = "nim"/"rester.nim"
+  public_name = "QuickLook reStructuredText"
+  dist_dir = "dist"
+  xarchive_ext = ".xcarchive"
+  environ_c_file = "nim"/"generated_nimrod"/"stdlib_os.c"
+  zip_base = dist_dir/"quicklook-rest-with-nimrod-" & rester.version_str
+  xarchive_generator_path =
+    "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
+  zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
+  xcodebuild_exe = "xcodebuild"
+  zip_exe = "zip"
+  quick_readme = "docs"/"dist"/"readme.rst"
 
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
-    "docs"/"CHANGES", "LICENSE", "README", "docindex"]
+    "docs"/"CHANGES", "LICENSE", "README", "docindex",
+    quick_readme.change_file_ext("")]
+
+proc copyDirWithPermissions*(source, dest: string) =
+  ## Copies a directory from `source` to `dest`. If this fails, `EOS` is raised.
+  createDir(dest)
+  for kind, path in walkDir(source):
+    var noSource = path.substr(source.len()+1)
+    case kind
+    of pcFile:
+      copyFileWithPermissions(path, dest / noSource)
+    of pcDir:
+      copyDirWithPermissions(path, dest / noSource)
+    else: discard
+
 proc rst2html(filename: string): bool =
   let output = safe_rst_file_to_html(filename)
   if output.len > 0:
@@ -53,7 +79,7 @@ iterator all_rst_files(): tuple[src, dest: string] =
     r.dest = rst_name & ".html"
     yield r
 
-task "doc", "Generates export API docs for for the modules":
+proc doc() =
   # Generate html files from the rst docs.
   for rst_file, html_file in all_rst_files():
     if not html_file.needs_refresh(rst_file): continue
@@ -65,9 +91,8 @@ task "doc", "Generates export API docs for for the modules":
 
   if not shell("nimrod doc --verbosity:0", rester_src):
     quit("Could not generate HTML API doc for " & rester_src)
-  echo "All done"
 
-task "check_doc", "Validates rst format for a subset of documentation":
+proc check_doc() =
   for rst_file, html_file in all_rst_files():
     echo "Testing ", rst_file
     let (output, exit) = execCmdEx("rst2html.py " & rst_file & " > /dev/null")
@@ -75,9 +100,86 @@ task "check_doc", "Validates rst format for a subset of documentation":
       echo "Failed python processing of " & rst_file
       echo output
 
-task "clean", "Removes temporal files, mainly":
+proc clean() =
   for path in walkDirRec("."):
     let (dir, name, ext) = splitFile(path)
     if ext == ".html":
       echo "Removing ", path
       path.removeFile()
+
+
+proc dist() =
+  ## Builds the distribution files.
+  # Verify that environ patch is present in C source code.
+  assert environ_c_file.read_file.find("_NSGetEnviron") > 0
+
+  assert xcodebuild_exe.len > 0, "No xcodebuild command found"
+  echo "Building archive…"
+  let dest_archive = dist_dir/public_name &
+    "-v" & rester.version_str & xarchive_ext
+  dist_dir.remove_dir
+  dist_dir.create_dir
+
+  # Build archive. From http://stackoverflow.com/a/20905823/172690.
+  let
+    exec_options = {poStdErrToStdOut, poUsePath, poEchoCmd}
+    output = exec_process(xcodebuild_exe, args = ["archive",
+      "-scheme", public_name, "-archivePath", dest_archive],
+      options = exec_options)
+  if output.find("ARCHIVE SUCCEEDED") < 0:
+    quit("Error building archive\n\n" & output)
+  doAssert dest_archive.exists_dir, output
+  doAssert exists_dir(dest_archive/xarchive_generator_path)
+
+  # Package xarchive into a zip.
+  let zip_xarchive = public_name & xarchive_ext & ".zip"
+  with_dir dist_dir:
+    discard exec_process(zip_exe, args = ["-9r", zip_xarchive,
+      dest_archive.extract_filename], options = exec_options)
+  doAssert exists_file(dist_dir/zip_xarchive)
+
+  # Prepare zip directory.
+  zip_base.create_dir
+  let dest_generator = zip_base/extract_filename(xarchive_generator_path)
+  copy_dir_with_permissions(dest_archive/xarchive_generator_path,
+    dest_generator)
+  doAssert dest_generator.exists_dir
+
+  # Generate instructions.
+  let quick_readme_html = quick_readme.rst_file_to_html
+  write_file(zip_base/"readme.html", quick_readme_html)
+
+  # Archive.
+  with_dir dist_dir:
+    discard exec_process(zip_exe, args = ["-9r", zip_name,
+      zip_base.extract_filename], options = exec_options)
+  doAssert exists_file(dist_dir/zip_name)
+
+  discard exec_cmd("open " & dist_dir)
+
+  echo """
+
+Add the following notes to the release info:
+
+[See the changes log](https://github.com/gradha/quicklook-rest-with-nimrod/blob/v$1/docs/CHANGES.rst).
+
+Binary MD5 checksums:""" % [rester.version_str]
+  for filename in walk_files(dist_dir/"*.zip"):
+    let v = filename.read_file.get_md5
+    echo "* ``", v, "`` ", filename.extract_filename
+
+
+task "doc", "Generates export API docs for for the modules":
+  doc()
+  echo "All done"
+
+task "check_doc", "Validates rst format for a subset of documentation":
+  check_doc()
+  echo "All docs checked"
+
+task "clean", "Removes temporal files, mainly":
+  clean()
+  echo "All files cleaned"
+
+task "dist", "Build distribution packages for GitHub":
+  dist()
