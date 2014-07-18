@@ -24,7 +24,7 @@
 ## generate `LaTeX documents <https://en.wikipedia.org/wiki/LaTeX>`_ too.
 
 import strutils, os, hashes, strtabs, rstast, rst, highlite, tables, sequtils,
-  algorithm
+  algorithm, parseutils
 
 const
   HtmlExt = "html"
@@ -761,8 +761,29 @@ proc renderSmiley(d: PDoc, n: PRstNode, result: var string) =
         height="17" hspace="2" vspace="2" />""",
     "\\includegraphics{$1}", [n.text])
   
+type
+  CodeBlockParams = object
+    line: int
+    number_lines: bool
+
+proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
+  case n.getArgument.toLower
+  of "number-lines":
+    params.number_lines = true
+    var number: int
+    if parseInt(n.getFieldValue, number) > 0:
+      params.line = number
+  else:
+    d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getFieldValue)
+
+proc parseCodeBlockParams(d: PDoc, n: PRstNode): CodeBlockParams =
+  assert n.kind == rnFieldList
+  result.line = 1
+  for son in n.sons: d.parseCodeBlockField(son, result)
+
 proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
   if n.sons[2] == nil: return
+  var params = d.parseCodeBlockParams(n.sons[1])
   var m = n.sons[2].sons[0]
   assert m.kind == rnLeaf
   var langstr = strip(getArgument(n))

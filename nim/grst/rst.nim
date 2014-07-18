@@ -39,7 +39,8 @@ type
     meInvalidDirective,
     mwRedefinitionOfLabel,
     mwUnknownSubstitution,
-    mwUnsupportedLanguage
+    mwUnsupportedLanguage,
+    mwUnsupportedField
   
   TMsgHandler* = proc (filename: string, line, col: int, msgKind: TMsgKind,
                        arg: string) {.nimcall.} ## what to do in case of an error
@@ -55,7 +56,8 @@ const
     meInvalidDirective: "invalid directive: '$1'",
     mwRedefinitionOfLabel: "redefinition of label '$1'", 
     mwUnknownSubstitution: "unknown substitution '$1'",
-    mwUnsupportedLanguage: "language '$1' not supported"
+    mwUnsupportedLanguage: "language '$1' not supported",
+    mwUnsupportedField: "field '$1' not supported"
   ]
 
 proc rstnodeToRefname*(n: PRstNode): string
@@ -908,6 +910,18 @@ proc parseFields(p: var TRstParser): PRstNode =
       else: 
         break 
   
+proc getFieldValue*(n: PRstNode): string =
+  ## Returns the value of a specific ``rnField`` node.
+  ##
+  ## This proc will assert if the node is not of the expected type. The empty
+  ## string will be returned as a minimum. Any value in the rst will be
+  ## stripped form leading/trailing whitespace.
+  assert n.kind == rnField
+  assert n.len == 2
+  assert n.sons[0].kind == rnFieldName
+  assert n.sons[1].kind == rnFieldBody
+  result = addNodes(n.sons[1]).strip
+
 proc getFieldValue(n: PRstNode, fieldname: string): string = 
   result = ""
   if n.sons[1] == nil: return 
