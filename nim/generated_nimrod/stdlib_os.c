@@ -21,6 +21,9 @@
 #include <sys/types.h>
 
 #include <sys/time.h>
+
+#include <crt_externs.h>
+
 typedef struct TY113211 TY113211;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
@@ -254,7 +257,6 @@ STRING_LITERAL(TMP70, "", 0);
 STRING_LITERAL(TMP72, "unknown OS error", 16);
 NIM_BOOL envcomputed_113210;
 TY113211* environment_113212;
-extern NCSTRING* environ;
 extern int cmdCount;
 extern NCSTRING* cmdLine;
 extern TNimType NTI108412; /* ref EOS */
@@ -641,6 +643,7 @@ N_NIMCALL(void, getenvvarsc_113402)(void) {
 		if (environment_113212) nimGCunrefNoCycle(environment_113212);
 		environment_113212 = (TY113211*) newSeqRC1((&NTI113211), 0);
 		i = 0;
+		char **environ = _NSGetEnviron();
 		while (1) {
 			NimStringDesc* LOC10;
 			NimStringDesc* LOC11;
