@@ -53,7 +53,7 @@ iterator all_rst_files(): tuple[src, dest: string] =
     r.dest = rst_name & ".html"
     yield r
 
-task "doc", "Generates export API docs for for the modules":
+proc doc() =
   # Generate html files from the rst docs.
   for rst_file, html_file in all_rst_files():
     if not html_file.needs_refresh(rst_file): continue
@@ -65,9 +65,8 @@ task "doc", "Generates export API docs for for the modules":
 
   if not shell("nimrod doc --verbosity:0", rester_src):
     quit("Could not generate HTML API doc for " & rester_src)
-  echo "All done"
 
-task "check_doc", "Validates rst format for a subset of documentation":
+proc check_doc() =
   for rst_file, html_file in all_rst_files():
     echo "Testing ", rst_file
     let (output, exit) = execCmdEx("rst2html.py " & rst_file & " > /dev/null")
@@ -75,9 +74,22 @@ task "check_doc", "Validates rst format for a subset of documentation":
       echo "Failed python processing of " & rst_file
       echo output
 
-task "clean", "Removes temporal files, mainly":
+proc clean() =
   for path in walkDirRec("."):
     let (dir, name, ext) = splitFile(path)
     if ext == ".html":
       echo "Removing ", path
       path.removeFile()
+
+
+task "doc", "Generates export API docs for for the modules":
+  doc()
+  echo "All done"
+
+task "check_doc", "Validates rst format for a subset of documentation":
+  check_doc()
+  echo "All docs checked"
+
+task "clean", "Removes temporal files, mainly":
+  clean()
+  echo "All files cleaned"
