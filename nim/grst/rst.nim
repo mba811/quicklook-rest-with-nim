@@ -850,13 +850,13 @@ proc parseComment(p: var TRstParser): PRstNode =
 
 type 
   TDirKind = enum             # must be ordered alphabetically!
-    dkNone, dkAuthor, dkAuthors, dkCodeBlock, dkContainer, dkContents,
+    dkNone, dkAuthor, dkAuthors, dkCode, dkCodeBlock, dkContainer, dkContents,
     dkFigure, dkImage, dkInclude, dkIndex, dkRaw, dkTitle
 
 const 
-  DirIds: array[0..11, string] = ["", "author", "authors", "code-block", 
-    "container", "contents", "figure", "image", "include", "index", "raw", 
-    "title"]
+  DirIds: array[0..12, string] = ["", "author", "authors", "code",
+    "code-block", "container", "contents", "figure", "image", "include",
+    "index", "raw", "title"]
 
 proc getDirKind(s: string): TDirKind = 
   let i = find(DirIds, s)
@@ -1566,7 +1566,7 @@ proc parseDotDot(p: var TRstParser): PRstNode =
         result = dirRaw(p)
       else:
         rstMessage(p, meInvalidDirective, d)
-    of dkCodeBlock: result = dirCodeBlock(p)
+    of dkCode, dkCodeBlock: result = dirCodeBlock(p)
     of dkIndex: result = dirIndex(p)
     else: rstMessage(p, meInvalidDirective, d)
     popInd(p)

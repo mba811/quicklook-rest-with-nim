@@ -2,7 +2,7 @@
 Hello code blocks!
 ==================
 
-This should be a code block in Nimrod:
+This should be a `code block`:code: in Nimrod:
 
 .. code-block:: nimrod
     echo "Hey nimrod!"
@@ -19,6 +19,6 @@ This should render as C:
 
 Now comes a standard directive block:
 
-.. code::
+.. code:: basic
     10 print "awesome"
     20 goto 10
