@@ -130,13 +130,20 @@ proc rst_string_to_html*(content, filename: string): string =
   GENERATOR.renderRstToOut(RST, MOD_DESC)
   #GENERATOR.modDesc = toRope(MOD_DESC)
 
-  let last_mod = getGMTime(filename.getLastModificationTime())
+  let
+    last_mod = filename.getLastModificationTime
+    last_mod_local = last_mod.getLocalTime
+    last_mod_gmt = last_mod.getGMTime
   var title = GENERATOR.meta[metaTitle]
   #if title.len < 1: title = filename.split_path.tail
 
   # Now finish by adding header, CSS and stuff.
   result = subex(G.config["doc.file"]) % ["title", title,
-    "date", last_mod.format("yyyy-MM-dd"), "time", last_mod.format("HH:MM"),
+    "date", last_mod_gmt.format("yyyy-MM-dd"),
+    "time", last_mod_gmt.format("HH:mm"),
+    "local_date", last_mod_local.format("yyyy-MM-dd"),
+    "local_time", last_mod_local.format("HH:mm"),
+    "fileTime", $(int(last_mod_local.timeInfoToTime) * 1000),
     "content", MOD_DESC]
 
 

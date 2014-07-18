@@ -158,6 +158,7 @@ NI Recgclock;
 tmemregion26010 Region;
 tgcstat45614 Stat;
 };
+typedef NI8 TY96473[7];
 typedef NI TY25220[8];
 struct  tpagedesc43719  {
 tpagedesc43719* Next;
@@ -241,6 +242,8 @@ static N_INLINE(tcell43711*, usrtocell_47246)(void* usr);
 static N_INLINE(void, rtladdzct_48804)(tcell43711* c);
 N_NOINLINE(void, addzct_47217)(tcellseq43727* s, tcell43711* c);
 N_NIMCALL(void, raiseException)(E_Base* e, NCSTRING ename);
+N_NIMCALL(void, genericAssign)(void* dest, void* src, TNimType* mt);
+N_NIMCALL(struct tm, timeinfototm_96468)(ttimeinfo95805* t);
 NIM_CONST TY96452 weekdays_96451 = {((NU8) 6),
 ((NU8) 0),
 ((NU8) 1),
@@ -323,6 +326,14 @@ STRING_LITERAL(TMP750, "PM", 2);
 STRING_LITERAL(TMP751, "AM", 2);
 STRING_LITERAL(TMP752, ":00", 3);
 STRING_LITERAL(TMP753, "Invalid format string: ", 23);
+NIM_CONST TY96473 weekdays_96472 = {((NI8) 1),
+((NI8) 2),
+((NI8) 3),
+((NI8) 4),
+((NI8) 5),
+((NI8) 6),
+((NI8) 0)}
+;
 extern TNimType NTI2811; /* TObject */
 TNimType NTI95805; /* TTimeInfo */
 extern TNimType NTI112; /* int */
@@ -1327,6 +1338,46 @@ N_NIMCALL(NimStringDesc*, format_97821)(ttimeinfo95805* info, NimStringDesc* f) 
 		}
 		i += 1;
 	} LA1: ;
+	return result;
+}
+
+N_NIMCALL(struct tm, timeinfototm_96468)(ttimeinfo95805* t) {
+	struct tm result;
+	NI LOC1;
+	memset((void*)&result, 0, sizeof(result));
+	result.tm_sec = ((int) ((*t).Second));
+	result.tm_min = ((int) ((*t).Minute));
+	result.tm_hour = ((int) ((*t).Hour));
+	result.tm_mday = ((int) ((*t).Monthday));
+	result.tm_mon = ((int) ((*t).Month));
+	result.tm_year = ((int) ((NI64)(((NI) ((*t).Year)) - 1900)));
+	result.tm_wday = ((int) (weekdays_96472[((*t).Weekday)- 0]));
+	result.tm_yday = ((int) ((*t).Yearday));
+	LOC1 = 0;
+	{
+		if (!(*t).Isdst) goto LA4;
+		LOC1 = 1;
+	}
+	goto LA2;
+	LA4: ;
+	{
+		LOC1 = 0;
+	}
+	LA2: ;
+	result.tm_isdst = ((int) (LOC1));
+	return result;
+}
+
+N_NIMCALL(time_t, timeinfototime_95859)(ttimeinfo95805* timeinfo) {
+	time_t result;
+	ttimeinfo95805 ctimeinfo;
+	struct tm LOC1;
+	result = 0;
+	genericAssign((void*)&ctimeinfo, (void*)timeinfo, (&NTI95805));
+	LOC1 = timeinfototm_96468(&ctimeinfo);
+	result = mktime(&LOC1);
+	goto BeforeRet;
+	BeforeRet: ;
 	return result;
 }
 N_NOINLINE(void, stdlib_timesInit)(void) {

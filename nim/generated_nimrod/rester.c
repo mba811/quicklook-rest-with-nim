@@ -263,7 +263,7 @@ NIM_BOOL Isdst;
 NimStringDesc* Tzname;
 NI Timezone;
 };
-typedef NimStringDesc* TY190666[8];
+typedef NimStringDesc* TY190669[14];
 struct  tstringtable122812  {
   TNimObject Sup;
 NI Counter;
@@ -385,7 +385,7 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename);
 N_NIMCALL(NimStringDesc*, cstrToNimstr)(NCSTRING str);
 N_NIMCALL(void, nossplitFile)(NimStringDesc* path, TY110960* Result);
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b);
-N_NIMCALL(NimStringDesc*, nimfiletohtml_190799)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, nimfiletohtml_190803)(NimStringDesc* filename);
 static N_INLINE(void, pushSafePoint)(TSafePoint* s);
 N_NIMCALL(NimStringDesc*, nsuRepeatChar)(NI count, NIM_CHAR c);
 N_NIMCALL(NI64, nosgetFileSize)(NimStringDesc* file);
@@ -427,26 +427,28 @@ N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NIMCALL(void, defaultmsghandler_148807)(NimStringDesc* filename, NI line, NI col, NU8 msgkind, NimStringDesc* arg);
 N_NIMCALL(trstnode147011*, rstparse_155356)(NimStringDesc* text, NimStringDesc* filename, NI line, NI column, NIM_BOOL* hastoc, NU8 options, tfindfilehandler148023 findfile, tmsghandler148021 msghandler);
 N_NIMCALL(void, renderrsttoout_172543)(trstgenerator172016* d, trstnode147011* n, NimStringDesc** result);
-N_NIMCALL(void, getgmtime_95853)(time_t t, ttimeinfo95805* Result);
 N_NIMCALL(time_t, nosgetLastModificationTime)(NimStringDesc* file);
+N_NIMCALL(void, getlocaltime_95847)(time_t t, ttimeinfo95805* Result);
+N_NIMCALL(void, getgmtime_95853)(time_t t, ttimeinfo95805* Result);
 N_NIMCALL(NimStringDesc*, nfrmtFormatOpenArray)(NimStringDesc* formatstr, NimStringDesc** a, NI aLen0);
 N_NIMCALL(NimStringDesc*, subex_184691)(NimStringDesc* s);
 N_NIMCALL(NimStringDesc*, nstGet)(tstringtable122812* t, NimStringDesc* key);
 N_NIMCALL(NimStringDesc*, format_97821)(ttimeinfo95805* info, NimStringDesc* f);
+N_NIMCALL(time_t, timeinfototime_95859)(ttimeinfo95805* timeinfo);
+N_NIMCALL(NimStringDesc*, nimIntToStr)(NI x);
 static N_INLINE(void, popSafePoint)(void);
 N_NIMCALL(NIM_BOOL, isObj)(TNimType* obj, TNimType* subclass);
 static N_INLINE(E_Base*, getCurrentException)(void);
 static N_INLINE(void, popCurrentException)(void);
 N_NIMCALL(void, reraiseException)(void);
 static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src);
-N_NIMCALL(NimStringDesc*, saferstfiletohtml_190778)(NimStringDesc* filename);
-N_NIMCALL(NimStringDesc*, rstfiletohtml_190679)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, saferstfiletohtml_190782)(NimStringDesc* filename);
+N_NIMCALL(NimStringDesc*, rstfiletohtml_190683)(NimStringDesc* filename);
 N_NIMCALL(NimStringDesc*, xmlencode_187273)(NimStringDesc* s);
 static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_81240)(void);
 N_NIMCALL(NimStringDesc*, reprAny)(void* p_79003, TNimType* typ);
-N_NIMCALL(NimStringDesc*, addprenumberlines_190689)(NimStringDesc* content);
+N_NIMCALL(NimStringDesc*, addprenumberlines_190693)(NimStringDesc* content);
 N_NIMCALL(NI, nsuCountLines)(NimStringDesc* s);
-N_NIMCALL(NimStringDesc*, nimIntToStr)(NI x);
 N_NIMCALL(NimStringDesc*, nsuAlignString)(NimStringDesc* s, NI count, NIM_CHAR padding);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
 N_NIMCALL(void, get_global_html)(void* outputbuffer);
@@ -660,7 +662,31 @@ STRING_LITERAL(TMP173, "# This is the config file for the documentation generato
 "ackground-color: #ffff00;display: margin;\012  font-weight:bold;}*/"
 "\012\012</style>\012\012</head>\012<body>\012<div class=\"document\" id=\"documentId\""
 ">\012<h1 class=\"title\">$title</h1>\012$content\012<small>Last modified: $"
-"date $time UTC</small>\012</div>\012</body>\012</html>\012\"\"\"\012", 9073);
+"date $time UTC. Local time: $local_date $local_time.\012<div id=\"co"
+"unter\"></div>\012</small>\012</div>\012</body>\012<script type=\"text/javascr"
+"ipt\">\012// Time difference code from http://stackoverflow.com/q/11"
+"479170/172690\012function timeDifference(current, previous) {\012    v"
+"ar msPerMinute = 60 * 1000;\012    var msPerHour = msPerMinute * 60"
+";\012    var msPerDay = msPerHour * 24;\012    var msPerMonth = msPerD"
+"ay * 30;\012    var msPerYear = msPerDay * 365;\012\012    var elapsed = "
+"current - previous;\012\012    if (elapsed < msPerMinute) {\012         r"
+"eturn Math.round(elapsed/1000) + \' seconds ago\';\012    } else if ("
+"elapsed < msPerHour) {\012         return Math.round(elapsed/msPerM"
+"inute) + \' minutes ago\';\012    } else if (elapsed < msPerDay ) {\012 "
+"        return Math.round(elapsed/msPerHour ) + \' hours ago\';\012  "
+"  } else if (elapsed < msPerMonth) {\012         return \'approximat"
+"ely \' + Math.round(elapsed/msPerDay) + \' days ago\';\012    } else i"
+"f (elapsed < msPerYear) {\012         return \'approximately \' + Mat"
+"h.round(elapsed/msPerMonth) + \' months ago\';\012    } else {\012      "
+"   return \'approximately \' + Math.round(elapsed/msPerYear ) + \' "
+"years ago\';\012    }\012}\012\012// Timer base code taken from http://stacko"
+"verflow.com/a/11876480/172690\012window.onload = function() {\012    v"
+"ar fileTime = new Date($fileTime);\012\011var ctr = document.getElemen"
+"tById(\"counter\");\012\012    function incrementCounter() {\012\011\011var nowTi"
+"me = new Date();\012\011\011var relTime = timeDifference(nowTime, fileTim"
+"e)\012\011\011ctr.innerHTML = relTime;\012\011\011// Update ourselves in the futur"
+"e, every five seconds.\012\011\011setTimeout(incrementCounter, 5000);\012   "
+" }\012\012    incrementCounter();\012}\012</script>\012</html>\012\"\"\"\012", 10611);
 STRING_LITERAL(TMP186, "Asking for \'", 12);
 STRING_LITERAL(TMP187, "\'", 1);
 STRING_LITERAL(TMP188, "Global is \'", 11);
@@ -671,26 +697,29 @@ STRING_LITERAL(TMP700, "title", 5);
 STRING_LITERAL(TMP701, "date", 4);
 STRING_LITERAL(TMP754, "yyyy-MM-dd", 10);
 STRING_LITERAL(TMP755, "time", 4);
-STRING_LITERAL(TMP756, "HH:MM", 5);
-STRING_LITERAL(TMP757, "content", 7);
-STRING_LITERAL(TMP758, "<html><body><h1>Error for ", 26);
-STRING_LITERAL(TMP759, "</h1></body></html>", 19);
-STRING_LITERAL(TMP760, "<html><body><h1>OS error for ", 29);
-STRING_LITERAL(TMP761, "<html><body><h1>I/O error for ", 30);
-STRING_LITERAL(TMP762, "<html><body><h1>Out of memory!</h1></body></html>", 49);
-STRING_LITERAL(TMP769, "Could not read ", 15);
-STRING_LITERAL(TMP770, "!!!", 3);
-STRING_LITERAL(TMP771, "<html><body><b>Sorry! Error parsing ", 36);
-STRING_LITERAL(TMP772, " with version 0.4.1.</b><p>If possible please report it at <a h"
+STRING_LITERAL(TMP756, "HH:mm", 5);
+STRING_LITERAL(TMP757, "local_date", 10);
+STRING_LITERAL(TMP758, "local_time", 10);
+STRING_LITERAL(TMP759, "fileTime", 8);
+STRING_LITERAL(TMP760, "content", 7);
+STRING_LITERAL(TMP761, "<html><body><h1>Error for ", 26);
+STRING_LITERAL(TMP762, "</h1></body></html>", 19);
+STRING_LITERAL(TMP763, "<html><body><h1>OS error for ", 29);
+STRING_LITERAL(TMP764, "<html><body><h1>I/O error for ", 30);
+STRING_LITERAL(TMP765, "<html><body><h1>Out of memory!</h1></body></html>", 49);
+STRING_LITERAL(TMP772, "Could not read ", 15);
+STRING_LITERAL(TMP773, "!!!", 3);
+STRING_LITERAL(TMP774, "<html><body><b>Sorry! Error parsing ", 36);
+STRING_LITERAL(TMP775, " with version 0.4.1.</b><p>If possible please report it at <a h"
 "ref=\"https://github.com/gradha/quicklook-rest-with-nimrod/issues"
 "\">https://github.com/gradha/quicklook-rest-with-nimrod/issues</a"
 "><p>", 195);
-STRING_LITERAL(TMP795, " with message \'", 15);
-STRING_LITERAL(TMP796, "\'</p><p>Displaying raw contents of file anyway:</p><p><pre>", 59);
-STRING_LITERAL(TMP797, " ", 1);
-STRING_LITERAL(TMP798, "<br>", 4);
-STRING_LITERAL(TMP799, "</pre></p></body></html>", 24);
-STRING_LITERAL(TMP800, "Uh oh, wrong API usage", 22);
+STRING_LITERAL(TMP798, " with message \'", 15);
+STRING_LITERAL(TMP799, "\'</p><p>Displaying raw contents of file anyway:</p><p><pre>", 59);
+STRING_LITERAL(TMP800, " ", 1);
+STRING_LITERAL(TMP801, "<br>", 4);
+STRING_LITERAL(TMP802, "</pre></p></body></html>", 24);
+STRING_LITERAL(TMP803, "Uh oh, wrong API usage", 22);
 globalstate190018 g_190025;
 extern TSafePoint* exchandler_15043;
 extern TNimType NTI148013; /* TRstParseOption */
@@ -1022,12 +1051,14 @@ N_NIMCALL(NimStringDesc*, rststringtohtml_190344)(NimStringDesc* content, NimStr
 	NimStringDesc* LOC6;
 	trstnode147011* rst;
 	NimStringDesc* moddesc;
-	ttimeinfo95805 lastmod;
-	time_t LOC7;
+	time_t lastmod;
+	ttimeinfo95805 lastmodlocal;
+	ttimeinfo95805 lastmodgmt;
 	NimStringDesc* title;
+	NimStringDesc* LOC7;
 	NimStringDesc* LOC8;
-	NimStringDesc* LOC9;
-	TY190666 LOC10;
+	TY190669 LOC9;
+	time_t LOC10;
 	result = 0;
 	parseoptions = 4;
 	memset((void*)&generator, 0, sizeof(generator));
@@ -1048,27 +1079,38 @@ N_NIMCALL(NimStringDesc*, rststringtohtml_190344)(NimStringDesc* content, NimStr
 	result = rawNewString(30000);
 	moddesc = rawNewString(30000);
 	renderrsttoout_172543(&generator, rst, &moddesc);
-	LOC7 = 0;
-	LOC7 = nosgetLastModificationTime(filename);
-	chckNil((void*)&lastmod);
-	memset((void*)&lastmod, 0, sizeof(lastmod));
-	lastmod.Sup.m_type = (&NTI95805);
-	getgmtime_95853(LOC7, &lastmod);
+	lastmod = nosgetLastModificationTime(filename);
+	chckNil((void*)&lastmodlocal);
+	memset((void*)&lastmodlocal, 0, sizeof(lastmodlocal));
+	lastmodlocal.Sup.m_type = (&NTI95805);
+	getlocaltime_95847(lastmod, &lastmodlocal);
+	chckNil((void*)&lastmodgmt);
+	memset((void*)&lastmodgmt, 0, sizeof(lastmodgmt));
+	lastmodgmt.Sup.m_type = (&NTI95805);
+	getgmtime_95853(lastmod, &lastmodgmt);
 	title = copyString(generator.Meta[(((NU8) 1))- 0]);
+	LOC7 = 0;
+	LOC7 = nstGet(g_190025.Config, ((NimStringDesc*) &TMP699));
 	LOC8 = 0;
-	LOC8 = nstGet(g_190025.Config, ((NimStringDesc*) &TMP699));
-	LOC9 = 0;
-	LOC9 = subex_184691(LOC8);
-	memset((void*)LOC10, 0, sizeof(LOC10));
-	LOC10[0] = copyString(((NimStringDesc*) &TMP700));
-	LOC10[1] = copyString(title);
-	LOC10[2] = copyString(((NimStringDesc*) &TMP701));
-	LOC10[3] = format_97821(&lastmod, ((NimStringDesc*) &TMP754));
-	LOC10[4] = copyString(((NimStringDesc*) &TMP755));
-	LOC10[5] = format_97821(&lastmod, ((NimStringDesc*) &TMP756));
-	LOC10[6] = copyString(((NimStringDesc*) &TMP757));
-	LOC10[7] = copyString(moddesc);
-	result = nfrmtFormatOpenArray(LOC9, LOC10, 8);
+	LOC8 = subex_184691(LOC7);
+	memset((void*)LOC9, 0, sizeof(LOC9));
+	LOC9[0] = copyString(((NimStringDesc*) &TMP700));
+	LOC9[1] = copyString(title);
+	LOC9[2] = copyString(((NimStringDesc*) &TMP701));
+	LOC9[3] = format_97821(&lastmodgmt, ((NimStringDesc*) &TMP754));
+	LOC9[4] = copyString(((NimStringDesc*) &TMP755));
+	LOC9[5] = format_97821(&lastmodgmt, ((NimStringDesc*) &TMP756));
+	LOC9[6] = copyString(((NimStringDesc*) &TMP757));
+	LOC9[7] = format_97821(&lastmodlocal, ((NimStringDesc*) &TMP754));
+	LOC9[8] = copyString(((NimStringDesc*) &TMP758));
+	LOC9[9] = format_97821(&lastmodlocal, ((NimStringDesc*) &TMP756));
+	LOC9[10] = copyString(((NimStringDesc*) &TMP759));
+	LOC10 = 0;
+	LOC10 = timeinfototime_95859(&lastmodlocal);
+	LOC9[11] = nimIntToStr((NI64)(LOC10 * 1000));
+	LOC9[12] = copyString(((NimStringDesc*) &TMP760));
+	LOC9[13] = copyString(moddesc);
+	result = nfrmtFormatOpenArray(LOC8, LOC9, 14);
 	return result;
 }
 
@@ -1087,7 +1129,7 @@ static N_INLINE(void, popCurrentException)(void) {
 	asgnRef((void**) &currexception_15045, (*currexception_15045).parent);
 }
 
-N_NIMCALL(NimStringDesc*, nimfiletohtml_190799)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, nimfiletohtml_190803)(NimStringDesc* filename) {
 	NimStringDesc* result;
 	TSafePoint TMP98;
 	result = 0;
@@ -1136,9 +1178,9 @@ appendString(source, LOC6);
 			TMP98.status = 0;
 			LOC9 = 0;
 			LOC9 = rawNewString(filename->Sup.len + 45);
-appendString(LOC9, ((NimStringDesc*) &TMP758));
+appendString(LOC9, ((NimStringDesc*) &TMP761));
 appendString(LOC9, filename);
-appendString(LOC9, ((NimStringDesc*) &TMP759));
+appendString(LOC9, ((NimStringDesc*) &TMP762));
 			result = LOC9;
 			popCurrentException();
 		}
@@ -1147,9 +1189,9 @@ appendString(LOC9, ((NimStringDesc*) &TMP759));
 			TMP98.status = 0;
 			LOC11 = 0;
 			LOC11 = rawNewString(filename->Sup.len + 48);
-appendString(LOC11, ((NimStringDesc*) &TMP760));
+appendString(LOC11, ((NimStringDesc*) &TMP763));
 appendString(LOC11, filename);
-appendString(LOC11, ((NimStringDesc*) &TMP759));
+appendString(LOC11, ((NimStringDesc*) &TMP762));
 			result = LOC11;
 			popCurrentException();
 		}
@@ -1158,15 +1200,15 @@ appendString(LOC11, ((NimStringDesc*) &TMP759));
 			TMP98.status = 0;
 			LOC13 = 0;
 			LOC13 = rawNewString(filename->Sup.len + 49);
-appendString(LOC13, ((NimStringDesc*) &TMP761));
+appendString(LOC13, ((NimStringDesc*) &TMP764));
 appendString(LOC13, filename);
-appendString(LOC13, ((NimStringDesc*) &TMP759));
+appendString(LOC13, ((NimStringDesc*) &TMP762));
 			result = LOC13;
 			popCurrentException();
 		}
 		else 		if (isObj(getCurrentException()->Sup.m_type, (&NTI2859))) {
 			TMP98.status = 0;
-			result = copyString(((NimStringDesc*) &TMP762));
+			result = copyString(((NimStringDesc*) &TMP765));
 			popCurrentException();
 		}
 	}
@@ -1197,7 +1239,7 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 	(*dest) = src;
 }
 
-N_NIMCALL(NimStringDesc*, rstfiletohtml_190679)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, rstfiletohtml_190683)(NimStringDesc* filename) {
 	NimStringDesc* result;
 	NimStringDesc* LOC1;
 	result = 0;
@@ -1229,7 +1271,7 @@ static N_INLINE(NimStringDesc*, getcurrentexceptionmsg_81240)(void) {
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, addprenumberlines_190689)(NimStringDesc* content) {
+N_NIMCALL(NimStringDesc*, addprenumberlines_190693)(NimStringDesc* content) {
 	NimStringDesc* result;
 	NI maxlines;
 	NI LOC1;
@@ -1256,7 +1298,7 @@ N_NIMCALL(NimStringDesc*, addprenumberlines_190689)(NimStringDesc* content) {
 	result = resizeString(result, LOC4->Sup.len + 0);
 appendString(result, LOC4);
 	result = resizeString(result, 1);
-appendString(result, ((NimStringDesc*) &TMP797));
+appendString(result, ((NimStringDesc*) &TMP800));
 	while (1) {
 		if (!(i < (NI64)(content->Sup.len - 1))) goto LA5;
 		result = addChar(result, content->data[i]);
@@ -1285,7 +1327,7 @@ appendString(result, ((NimStringDesc*) &TMP797));
 			result = resizeString(result, LOC14->Sup.len + 0);
 appendString(result, LOC14);
 			result = resizeString(result, 1);
-appendString(result, ((NimStringDesc*) &TMP797));
+appendString(result, ((NimStringDesc*) &TMP800));
 		}
 		break;
 		default:
@@ -1307,21 +1349,21 @@ appendString(result, ((NimStringDesc*) &TMP797));
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, saferstfiletohtml_190778)(NimStringDesc* filename) {
+N_NIMCALL(NimStringDesc*, saferstfiletohtml_190782)(NimStringDesc* filename) {
 	NimStringDesc* result;
-	TSafePoint TMP763;
+	TSafePoint TMP766;
 	result = 0;
-	pushSafePoint(&TMP763);
-	TMP763.status = setjmp(TMP763.context);
-	if (TMP763.status == 0) {
-		result = rstfiletohtml_190679(filename);
+	pushSafePoint(&TMP766);
+	TMP766.status = setjmp(TMP766.context);
+	if (TMP766.status == 0) {
+		result = rstfiletohtml_190683(filename);
 		popSafePoint();
 	}
 	else {
 		popSafePoint();
 		{
 			NimStringDesc* volatile content;
-			TSafePoint TMP764;
+			TSafePoint TMP767;
 			E_Base* volatile e;
 			NimStringDesc* volatile msg;
 			NimStringDesc* LOC9;
@@ -1330,11 +1372,11 @@ N_NIMCALL(NimStringDesc*, saferstfiletohtml_190778)(NimStringDesc* filename) {
 			NimStringDesc* LOC12;
 			NimStringDesc* LOC13;
 			NimStringDesc* LOC14;
-			TMP763.status = 0;
+			TMP766.status = 0;
 			content = 0;
-			pushSafePoint(&TMP764);
-			TMP764.status = setjmp(TMP764.context);
-			if (TMP764.status == 0) {
+			pushSafePoint(&TMP767);
+			TMP767.status = setjmp(TMP767.context);
+			if (TMP767.status == 0) {
 				NimStringDesc* LOC5;
 				LOC5 = 0;
 				LOC5 = readfile_11842(filename);
@@ -1345,17 +1387,17 @@ N_NIMCALL(NimStringDesc*, saferstfiletohtml_190778)(NimStringDesc* filename) {
 				popSafePoint();
 				if (isObj(getCurrentException()->Sup.m_type, (&NTI2827))) {
 					NimStringDesc* LOC8;
-					TMP764.status = 0;
+					TMP767.status = 0;
 					LOC8 = 0;
 					LOC8 = rawNewString(filename->Sup.len + 18);
-appendString(LOC8, ((NimStringDesc*) &TMP769));
+appendString(LOC8, ((NimStringDesc*) &TMP772));
 appendString(LOC8, filename);
-appendString(LOC8, ((NimStringDesc*) &TMP770));
+appendString(LOC8, ((NimStringDesc*) &TMP773));
 					content = LOC8;
 					popCurrentException();
 				}
 			}
-			if (TMP764.status != 0) reraiseException();
+			if (TMP767.status != 0) reraiseException();
 			e = getCurrentException();
 			msg = getcurrentexceptionmsg_81240();
 			LOC9 = 0;
@@ -1366,24 +1408,24 @@ appendString(LOC8, ((NimStringDesc*) &TMP770));
 			LOC12 = 0;
 			LOC12 = xmlencode_187273(msg);
 			LOC13 = 0;
-			LOC13 = addprenumberlines_190689(content);
+			LOC13 = addprenumberlines_190693(content);
 			LOC14 = 0;
-			LOC14 = nsuReplaceStr(LOC13, ((NimStringDesc*) &TMP107), ((NimStringDesc*) &TMP798));
+			LOC14 = nsuReplaceStr(LOC13, ((NimStringDesc*) &TMP107), ((NimStringDesc*) &TMP801));
 			LOC9 = rawNewString(LOC10->Sup.len + LOC11->Sup.len + LOC12->Sup.len + LOC14->Sup.len + 329);
-appendString(LOC9, ((NimStringDesc*) &TMP771));
+appendString(LOC9, ((NimStringDesc*) &TMP774));
 appendString(LOC9, LOC10);
-appendString(LOC9, ((NimStringDesc*) &TMP772));
+appendString(LOC9, ((NimStringDesc*) &TMP775));
 appendString(LOC9, LOC11);
-appendString(LOC9, ((NimStringDesc*) &TMP795));
+appendString(LOC9, ((NimStringDesc*) &TMP798));
 appendString(LOC9, LOC12);
-appendString(LOC9, ((NimStringDesc*) &TMP796));
-appendString(LOC9, LOC14);
 appendString(LOC9, ((NimStringDesc*) &TMP799));
+appendString(LOC9, LOC14);
+appendString(LOC9, ((NimStringDesc*) &TMP802));
 			result = LOC9;
 			popCurrentException();
 		}
 	}
-	if (TMP763.status != 0) reraiseException();
+	if (TMP766.status != 0) reraiseException();
 	return result;
 }
 
@@ -1399,12 +1441,12 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename) {
 	goto LA3;
 	LA2: ;
 	{
-		asgnRefNoCycle((void**) &g_190025.Lastcconversion, nimfiletohtml_190799(filename));
+		asgnRefNoCycle((void**) &g_190025.Lastcconversion, nimfiletohtml_190803(filename));
 	}
 	goto LA4;
 	LA3: ;
 	{
-		asgnRefNoCycle((void**) &g_190025.Lastcconversion, saferstfiletohtml_190778(filename));
+		asgnRefNoCycle((void**) &g_190025.Lastcconversion, saferstfiletohtml_190782(filename));
 	}
 	LA4: ;
 	result = g_190025.Lastcconversion->Sup.len;
@@ -1414,7 +1456,7 @@ N_NIMCALL(NI, txt_to_rst)(NCSTRING inputfilename) {
 N_NIMCALL(void, get_global_html)(void* outputbuffer) {
 	{
 		if (!g_190025.Lastcconversion == 0) goto LA3;
-		quit_82283(((NimStringDesc*) &TMP800), 1);
+		quit_82283(((NimStringDesc*) &TMP803), 1);
 	}
 	LA3: ;
 	memcpy(outputbuffer, ((void*) (&g_190025.Lastcconversion->data[0])), g_190025.Lastcconversion->Sup.len);
