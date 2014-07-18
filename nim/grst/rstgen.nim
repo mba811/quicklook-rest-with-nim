@@ -780,8 +780,9 @@ proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
 
 proc parseCodeBlockParams(d: PDoc, n: PRstNode): CodeBlockParams =
   ## Iterates over all code block fields and returns processed params.
-  assert n.kind == rnFieldList
   result.startLine = 1
+  if n.isNil: return
+  assert n.kind == rnFieldList
   for son in n.sons: d.parseCodeBlockField(son, result)
 
 proc buildLinesHTMLTable(params: CodeBlockParams, code: string):
