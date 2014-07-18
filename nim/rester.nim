@@ -143,6 +143,7 @@ proc rst_string_to_html*(content, filename: string): string =
     "time", last_mod_gmt.format("HH:mm"),
     "local_date", last_mod_local.format("yyyy-MM-dd"),
     "local_time", last_mod_local.format("HH:mm"),
+    "fileTime", $(int(last_mod_local.timeInfoToTime) * 1000),
     "content", MOD_DESC]
 
 
