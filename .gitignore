@@ -27,5 +27,6 @@ xcuserdata/
 /nim/rester
 /nim/rester.html
 /nim/test.rst
+/tests/code_blocks/code_blocks.html
 /tests/include/*.html
 /tests/include/test_include
