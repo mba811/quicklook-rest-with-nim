@@ -5,7 +5,8 @@ Quicklook reST with Nimrod changes log
 v0.4.1, ????-??-??
 ------------------
 
-* Nothing yet.
+* `Added support for code directive
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/33>`_.
 
 v0.4.0, 2014-02-28
 ------------------
