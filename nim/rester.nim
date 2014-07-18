@@ -5,7 +5,7 @@ import grst/rstgen, os, grst/rst, strutils,
 ## <https://github.com/gradha/quicklook-rest-with-nimrod>`_.
 
 const
-  rest_default_config = slurp("nimdoc.cfg")
+  rest_default_config = slurp("embedded_nimdoc.cfg")
   versionStr* = "0.4.1" ## Module version as a string.
   versionInt* = (major: 0, minor: 4, maintenance: 1) ## \
   ## Module version as an integer tuple.
