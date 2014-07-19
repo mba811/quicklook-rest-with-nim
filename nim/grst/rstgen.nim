@@ -67,13 +67,13 @@ type
     numberLines: bool ## True if the renderer has to show line numbers.
     startLine: int ## The starting line of the code block, by default 1.
     langStr: string ## Input string used to specify the language.
-    lang: TSourceLanguage ## Type of highlighting, by default nimrod.
+    lang: TSourceLanguage ## Type of highlighting, by default none.
 
 
 proc init(p: var CodeBlockParams) =
   ## Default initialisation of CodeBlockParams to sane values.
   p.startLine = 1
-  p.lang = langNimrod
+  p.lang = langNone
   p.langStr = ""
 
 proc initRstGenerator*(g: var TRstGenerator, target: TOutputTarget,
@@ -776,6 +776,9 @@ proc renderSmiley(d: PDoc, n: PRstNode, result: var string) =
   
 proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
   ## Parses useful fields which can appear before a code block.
+  ##
+  ## This supports the special ``default-language`` internal string generated
+  ## by the ``rst`` module to communicate a specific default language.
   case n.getArgument.toLower
   of "number-lines":
     params.numberLines = true
@@ -783,8 +786,11 @@ proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
     var number: int
     if parseInt(n.getFieldValue, number) > 0:
       params.startLine = number
+  of "default-language":
+    params.langStr = n.getFieldValue.strip
+    params.lang = params.langStr.getSourceLanguage
   else:
-    d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getFieldValue)
+    d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getArgument)
 
 proc parseCodeBlockParams(d: PDoc, n: PRstNode): CodeBlockParams =
   ## Iterates over all code block fields and returns processed params.
