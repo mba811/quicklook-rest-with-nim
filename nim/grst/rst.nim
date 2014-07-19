@@ -878,7 +878,10 @@ proc parseUntilNewline(p: var TRstParser, father: PRstNode) =
     of tkEof, tkIndent: break
   
 proc parseSection(p: var TRstParser, result: PRstNode)
-proc parseField(p: var TRstParser): PRstNode = 
+proc parseField(p: var TRstParser): PRstNode =
+  ## Returns a parsed rnField node.
+  ##
+  ## rnField nodes have two children nodes, a rnFieldName and a rnFieldBody.
   result = newRstNode(rnField)
   var col = p.tok[p.idx].col
   var fieldname = newRstNode(rnFieldName)
@@ -894,7 +897,11 @@ proc parseField(p: var TRstParser): PRstNode =
   add(result, fieldname)
   add(result, fieldbody)
 
-proc parseFields(p: var TRstParser): PRstNode = 
+proc parseFields(p: var TRstParser): PRstNode =
+  ## Parses fields for a section or directive block.
+  ##
+  ## This proc may return nil if the parsing doesn't find anything of value,
+  ## otherwise it will return a node of rnFieldList type with children.
   result = nil
   var atStart = p.idx == 0 and p.tok[0].symbol == ":"
   if (p.tok[p.idx].kind == tkIndent) and (p.tok[p.idx + 1].symbol == ":") or
@@ -1401,7 +1408,16 @@ type
   TDirFlags = set[TDirFlag]
   TSectionParser = proc (p: var TRstParser): PRstNode {.nimcall.}
 
-proc parseDirective(p: var TRstParser, flags: TDirFlags): PRstNode = 
+proc parseDirective(p: var TRstParser, flags: TDirFlags): PRstNode =
+  ## Parses arguments and options for a directive block.
+  ##
+  ## A directive block will always have three sons: the arguments for the
+  ## directive (rnDirArg), the options (rnFieldList) and the block
+  ## (rnLineBlock). This proc parses the two first nodes, the block is left to
+  ## the outer `parseDirective` call.
+  ##
+  ## Both rnDirArg and rnFieldList children nodes might be nil, so you need to
+  ## check them before accessing.
   result = newRstNode(rnDirective)
   var args: PRstNode = nil
   var options: PRstNode = nil
@@ -1435,6 +1451,9 @@ proc indFollows(p: TRstParser): bool =
   
 proc parseDirective(p: var TRstParser, flags: TDirFlags, 
                     contentParser: TSectionParser): PRstNode = 
+  ## Returns a generic rnDirective tree.
+  ##
+  ## The children are rnDirArg, rnFieldList and rnLineBlock. Any might be nil.
   result = parseDirective(p, flags)
   if not isNil(contentParser) and indFollows(p): 
     pushInd(p, p.tok[p.idx].ival)
@@ -1488,7 +1507,19 @@ proc dirInclude(p: var TRstParser): PRstNode =
       #  InternalError("Too many binary zeros in include file")
       result = parseDoc(q)
 
-proc dirCodeBlock(p: var TRstParser): PRstNode = 
+proc dirCodeBlock(p: var TRstParser, nimrodExtension = false): PRstNode =
+  ## Parses a code block.
+  ##
+  ## Code blocks are rnDirective trees with a `kind` of rnCodeBlock. See the
+  ## description of ``parseDirective`` for further structure information.
+  ##
+  ## Code blocks can come in two forms, the standard `code directive
+  ## <http://docutils.sourceforge.net/docs/ref/rst/directives.html#code>`_ and
+  ## the nimrod extension ``.. code-block::``. If the block is an extension, we
+  ## want the default language syntax highlighting to be Nimrod, so we create a
+  ## fake internal field to comminicate with the generator. The field is named
+  ## ``default-language``, which is unlikely to collide with a field specified
+  ## by any random rst input file.
   result = parseDirective(p, {hasArg, hasOptions}, parseLiteralBlock)
   var filename = strip(getFieldValue(result, "file"))
   if filename != "": 
@@ -1497,6 +1528,20 @@ proc dirCodeBlock(p: var TRstParser): PRstNode =
     var n = newRstNode(rnLiteralBlock)
     add(n, newRstNode(rnLeaf, readFile(path)))
     result.sons[2] = n
+
+  # Extend the field block if we are using our custom extension.
+  if nimrodExtension:
+    # Create a field block if the input block didn't have any.
+    if result.sons[1].isNil: result.sons[1] = newRstNode(rnFieldList)
+    assert result.sons[1].kind == rnFieldList
+    # Hook the extra field and specify the Nimrod language as value.
+    var extraNode = newRstNode(rnField)
+    extraNode.add(newRstNode(rnFieldName))
+    extraNode.add(newRstNode(rnFieldBody))
+    extraNode.sons[0].add(newRstNode(rnLeaf, "default-language"))
+    extraNode.sons[1].add(newRstNode(rnLeaf, "Nimrod"))
+    result.sons[1].add(extraNode)
+
   result.kind = rnCodeBlock
 
 proc dirContainer(p: var TRstParser): PRstNode = 
@@ -1580,7 +1625,8 @@ proc parseDotDot(p: var TRstParser): PRstNode =
         result = dirRaw(p)
       else:
         rstMessage(p, meInvalidDirective, d)
-    of dkCode, dkCodeBlock: result = dirCodeBlock(p)
+    of dkCode: result = dirCodeBlock(p)
+    of dkCodeBlock: result = dirCodeBlock(p, nimrodExtension = true)
     of dkIndex: result = dirIndex(p)
     else: rstMessage(p, meInvalidDirective, d)
     popInd(p)

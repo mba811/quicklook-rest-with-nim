@@ -5,7 +5,8 @@ Quicklook reST with Nimrod changes log
 v0.4.3, ????-??-??
 ------------------
 
-* Nothing yet.
+* `Changed default language syntax highlight based on rest directive
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/36>`_.
 
 v0.4.2, 2014-07-18
 ------------------
