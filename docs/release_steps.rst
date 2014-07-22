@@ -54,3 +54,6 @@ QuickLook reST with Nimrod release steps
 * Close the dummy release issue and related milestone.
 * Announce at `http://forum.nimrod-lang.org/t/317
   <http://forum.nimrod-lang.org/t/317>`_.
+* Contact quicklookplugins to update
+  http://www.quicklookplugins.com/2014/07/20/restructuredtext-rest/, or maybe
+  just add a comment saying there is a new version.
