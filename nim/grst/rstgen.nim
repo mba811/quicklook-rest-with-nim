@@ -856,7 +856,7 @@ proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
   if params.lang == langNone:
     if len(params.langStr) > 0:
       d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, params.langStr)
-    result.add(m.text)
+    for letter in m.text: escChar(d.target, result, letter)
   else:
     var g: TGeneralTokenizer
     initGeneralTokenizer(g, m.text)
