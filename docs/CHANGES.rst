@@ -7,6 +7,8 @@ v0.4.3, ????-??-??
 
 * `Changed default language syntax highlight based on rest directive
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/36>`_.
+* `Fixed HTML code blocks not being escaped
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/38>`_.
 
 v0.4.2, 2014-07-18
 ------------------
