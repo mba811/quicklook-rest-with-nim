@@ -9,6 +9,8 @@ v0.4.3, ????-??-??
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/36>`_.
 * `Fixed HTML code blocks not being escaped
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/38>`_.
+* `Added code block syntax highlighting
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/20>`_
 
 v0.4.2, 2014-07-18
 ------------------
