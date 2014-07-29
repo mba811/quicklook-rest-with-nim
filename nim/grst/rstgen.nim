@@ -60,7 +60,8 @@ type
     seenIndexTerms: TTable[string, int] ## \
     ## Keeps count of same text index terms to generate different identifiers
     ## for hyperlinks. See renderIndexTerm proc for details.
-  
+    unknownLangs*: bool ## Set to true if unknown code block langs are found.
+
   PDoc = var TRstGenerator ## Alias to type less.
 
   CodeBlockParams = object ## Stores code block params.
@@ -856,7 +857,12 @@ proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
   if params.lang == langNone:
     if len(params.langStr) > 0:
       d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, params.langStr)
-    for letter in m.text: escChar(d.target, result, letter)
+      d.unknownLangs = true
+      result.add("""<code class="language-""" &
+        params.langStr.to_lower.strip & """">""")
+    for letter in m.text.strip: escChar(d.target, result, letter)
+    if len(params.langStr) > 0:
+      result.add("</code>")
   else:
     var g: TGeneralTokenizer
     initGeneralTokenizer(g, m.text)
