@@ -120,6 +120,18 @@ expect bugs and `report them
 <https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
 
 
+Code blocks syntax highlight
+============================
+
+When code blocks are found which specify a programming language, if the
+language is supported by `Nimrod's highlite module
+<http://nimrod-lang.org/highlite.html>`_ they will be rendered statically in
+Nimrod, generating plain HTML+CSS. Unsupported languages will use the `Prism
+syntax highlighter <http://prismjs.com>`_. This increases the size of the
+generated HTML and may not be as precise as a proper syntax highlighter, but
+seems to work overall pretty well.
+
+
 Plans for the future
 ====================
 
@@ -130,6 +142,8 @@ Plans for the future
 * More automatic install from within Xcode.
 * Binary install through DMG files.
 * Customizable CSS for previewed HTML.
+* Reimplement something like `Pygments <http://pygments.org>`_ for code block
+  syntax highlighting.
 
 
 Git branches
