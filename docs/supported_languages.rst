@@ -11,9 +11,9 @@ the `Prism syntax highlighter <http://prismjs.com>`_. This increases the size
 of the generated HTML and may not be as precise as a proper syntax highlighter,
 but seems to work overall pretty well.
 
-The list of supported languages by Nimrod is:
+The list of languages supported natively by Nimrod is:
 
-* TODO
+.. include:: nimrod_supported_langs_list.rst
 
 The list of supported languages through prism.js is:
 

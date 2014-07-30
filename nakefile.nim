@@ -1,5 +1,5 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester, md5, sequtils, algorithm
+  rester, md5, sequtils, algorithm, packages/docutils/highlite
 
 const
   rester_src = "nim"/"rester.nim"
@@ -18,6 +18,8 @@ const
   prism_js_start = "languages="
   prism_js_out = "docs"/"prism_supported_langs_list.rst"
   prism_blacklist = ["clike", "css-extras", "php-extras"]
+  nimrod_list_out = "docs"/"nimrod_supported_langs_list.rst"
+  nimrod_blacklist = ["none"]
 
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
@@ -90,6 +92,14 @@ proc update_lang_list() =
   # The proc takes the prism.js file and reads the first line which has a
   # speciic URL request format. From this the list of supported language is
   # recovered and some entries which don't make sense are stripped.
+  #
+  # For the nimrod list the constants from the highlight module are dumped
+  # inconditionally.
+  var langs = filter_it(@sourceLanguageToStr, not (it in nimrod_blacklist))
+  langs.sort(system.cmp)
+  langs.map_it("* " & it & "\n")
+  nimrod_list_out.write_file(langs.join)
+
   if not prism_js_out.needs_refresh(prism_js_in): return
 
   assert prism_js_in.exists_file
@@ -100,20 +110,13 @@ proc update_lang_list() =
     line = to_seq(lines(prism_js_in))[0]
     first = line.find(prism_js_start) + prism_js_start.len
     last = line.find(" ", first)
-  var
-    langs = line[first .. <last].split('+')
+
+  langs = line[first .. <last].split('+')
 
   # Remove bad items.
-  for bad in prism_blacklist:
-    var f = 0
-    while f < langs.len:
-      if langs[f] == bad:
-        system.delete(langs, f)
-      else:
-        f.inc
-
+  langs = filter_it(langs, not (it in prism_blacklist))
   langs.sort(system.cmp)
-  langs.mapIt("* " & it & "\n")
+  langs.map_it("* " & it & "\n")
   prism_js_out.write_file(langs.join)
 
 
