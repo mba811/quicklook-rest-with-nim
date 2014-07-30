@@ -129,7 +129,8 @@ language is supported by `Nimrod's highlite module
 Nimrod, generating plain HTML+CSS. Unsupported languages will use the `Prism
 syntax highlighter <http://prismjs.com>`_. This increases the size of the
 generated HTML and may not be as precise as a proper syntax highlighter, but
-seems to work overall pretty well.
+seems to work overall pretty well. You can read the list of supported languages
+in `docs/supported_languages.rst <docs/supported_languages.rst>`_.
 
 
 Plans for the future
