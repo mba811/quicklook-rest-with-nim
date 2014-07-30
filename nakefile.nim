@@ -22,6 +22,7 @@ const
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
     "docs"/"CHANGES", "LICENSE", "README", "docindex",
+    "docs"/"supported_languages",
     quick_readme.change_file_ext("")]
 
 proc copyDirWithPermissions*(source, dest: string) =
