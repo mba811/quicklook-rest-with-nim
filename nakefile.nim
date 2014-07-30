@@ -13,7 +13,8 @@ const
   zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
   xcodebuild_exe = "xcodebuild"
   zip_exe = "zip"
-  quick_readme = "docs"/"dist"/"readme.rst"
+  dist_readme = "docs"/"dist"/"readme.rst"
+  dist_example = "docs"/"dist"/"example.rst"
   prism_js_in = "nim"/"prism.js"
   prism_js_start = "languages="
   prism_js_out = "docs"/"prism_supported_langs_list.rst"
@@ -22,10 +23,10 @@ const
   nimrod_blacklist = ["none"]
 
 let
-  rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
+  rst_files = concat(@["docs"/"debugging_quicklook", "docs"/"release_steps",
     "docs"/"CHANGES", "LICENSE", "README", "docindex",
-    "docs"/"supported_languages",
-    quick_readme.change_file_ext("")]
+    "docs"/"supported_languages"],
+    map_it([dist_example, dist_readme], string, it.change_file_ext("")))
 
 proc copyDirWithPermissions*(source, dest: string) =
   ## Copies a directory from `source` to `dest`. If this fails, `EOS` is raised.
@@ -190,8 +191,9 @@ proc dist() =
   doAssert dest_generator.exists_dir
 
   # Generate instructions.
-  let quick_readme_html = quick_readme.rst_file_to_html
-  write_file(zip_base/"readme.html", quick_readme_html)
+  let dist_readme_html = dist_readme.rst_file_to_html
+  write_file(zip_base/"readme.html", dist_readme_html)
+  write_file(zip_base/"example.rst", dist_example.read_file)
 
   # Archive.
   with_dir dist_dir:
@@ -226,4 +228,5 @@ task "clean", "Removes temporal files, mainly":
   echo "All files cleaned"
 
 task "dist", "Build distribution packages for GitHub":
+  doc()
   dist()

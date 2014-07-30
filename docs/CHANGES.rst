@@ -13,6 +13,8 @@ v0.4.3, ????-??-??
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/20>`_.
 * `Documented list of languages with syntax highlighting
   <https://github.com/gradha/quicklook-rest-with-nimrod/issues/40>`_.
+* `Added rst example to binary distribution
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/39>`_.
 
 v0.4.2, 2014-07-18
 ------------------
