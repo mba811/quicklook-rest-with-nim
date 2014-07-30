@@ -1,5 +1,5 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester, md5
+  rester, md5, sequtils, algorithm
 
 const
   rester_src = "nim"/"rester.nim"
@@ -14,6 +14,10 @@ const
   xcodebuild_exe = "xcodebuild"
   zip_exe = "zip"
   quick_readme = "docs"/"dist"/"readme.rst"
+  prism_js_in = "nim"/"prism.js"
+  prism_js_start = "languages="
+  prism_js_out = "docs"/"prism_supported_langs_list.rst"
+  prism_blacklist = ["clike", "css-extras", "php-extras"]
 
 let
   rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
@@ -79,7 +83,42 @@ iterator all_rst_files(): tuple[src, dest: string] =
     r.dest = rst_name & ".html"
     yield r
 
+proc update_lang_list() =
+  # Special proc which generates a specific rst file for inclusion.
+  #
+  # The proc takes the prism.js file and reads the first line which has a
+  # speciic URL request format. From this the list of supported language is
+  # recovered and some entries which don't make sense are stripped.
+  if not prism_js_out.needs_refresh(prism_js_in): return
+
+  assert prism_js_in.exists_file
+  #let THE WEIRD BUG CRASHING DEVEL
+  #  buffer = read_file(prism_js_in)
+  #  line = to_seq(lines(buffer))[0]
+  let
+    line = to_seq(lines(prism_js_in))[0]
+    first = line.find(prism_js_start) + prism_js_start.len
+    last = line.find(" ", first)
+  var
+    langs = line[first .. <last].split('+')
+
+  # Remove bad items.
+  for bad in prism_blacklist:
+    var f = 0
+    while f < langs.len:
+      if langs[f] == bad:
+        system.delete(langs, f)
+      else:
+        f.inc
+
+  langs.sort(system.cmp)
+  langs.mapIt("* " & it & "\n")
+  prism_js_out.write_file(langs.join)
+
+
 proc doc() =
+  update_lang_list()
+
   # Generate html files from the rst docs.
   for rst_file, html_file in all_rst_files():
     if not html_file.needs_refresh(rst_file): continue
@@ -101,6 +140,7 @@ proc check_doc() =
       echo output
 
 proc clean() =
+  prism_js_out.remove_file
   for path in walkDirRec("."):
     let (dir, name, ext) = splitFile(path)
     if ext == ".html":
