@@ -62,10 +62,10 @@ static N_INLINE(void, addxmlchar_187262)(NimStringDesc** dest, NIM_CHAR c);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
-STRING_LITERAL(TMP768, "&amp;", 5);
-STRING_LITERAL(TMP769, "&lt;", 4);
-STRING_LITERAL(TMP770, "&gt;", 4);
-STRING_LITERAL(TMP771, "&quot;", 6);
+STRING_LITERAL(TMP778, "&amp;", 5);
+STRING_LITERAL(TMP779, "&lt;", 4);
+STRING_LITERAL(TMP780, "&gt;", 4);
+STRING_LITERAL(TMP781, "&quot;", 6);
 tstringtable122812* gcookies_188077;
 
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
@@ -78,25 +78,25 @@ static N_INLINE(void, addxmlchar_187262)(NimStringDesc** dest, NIM_CHAR c) {
 	case 38:
 	{
 		(*dest) = resizeString((*dest), 5);
-appendString((*dest), ((NimStringDesc*) &TMP768));
+appendString((*dest), ((NimStringDesc*) &TMP778));
 	}
 	break;
 	case 60:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP769));
+appendString((*dest), ((NimStringDesc*) &TMP779));
 	}
 	break;
 	case 62:
 	{
 		(*dest) = resizeString((*dest), 4);
-appendString((*dest), ((NimStringDesc*) &TMP770));
+appendString((*dest), ((NimStringDesc*) &TMP780));
 	}
 	break;
 	case 34:
 	{
 		(*dest) = resizeString((*dest), 6);
-appendString((*dest), ((NimStringDesc*) &TMP771));
+appendString((*dest), ((NimStringDesc*) &TMP781));
 	}
 	break;
 	default:

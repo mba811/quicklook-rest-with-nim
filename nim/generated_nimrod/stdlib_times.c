@@ -253,79 +253,79 @@ NIM_CONST TY96452 weekdays_96451 = {((NU8) 6),
 ((NU8) 5)}
 ;
 STRING_LITERAL(TMP85, "UTC", 3);
-STRING_LITERAL(TMP702, "", 0);
-STRING_LITERAL(TMP703, "d", 1);
-STRING_LITERAL(TMP704, "dd", 2);
-STRING_LITERAL(TMP705, "ddd", 3);
-STRING_LITERAL(TMP706, "dddd", 4);
-STRING_LITERAL(TMP707, "h", 1);
-STRING_LITERAL(TMP708, "hh", 2);
-STRING_LITERAL(TMP709, "H", 1);
-STRING_LITERAL(TMP710, "HH", 2);
-STRING_LITERAL(TMP711, "m", 1);
-STRING_LITERAL(TMP712, "mm", 2);
-STRING_LITERAL(TMP713, "M", 1);
-STRING_LITERAL(TMP714, "MM", 2);
-STRING_LITERAL(TMP715, "MMM", 3);
-STRING_LITERAL(TMP716, "MMMM", 4);
-STRING_LITERAL(TMP717, "s", 1);
-STRING_LITERAL(TMP718, "ss", 2);
-STRING_LITERAL(TMP719, "t", 1);
-STRING_LITERAL(TMP720, "tt", 2);
-STRING_LITERAL(TMP721, "y", 1);
-STRING_LITERAL(TMP722, "yy", 2);
-STRING_LITERAL(TMP723, "yyy", 3);
-STRING_LITERAL(TMP724, "yyyy", 4);
-STRING_LITERAL(TMP725, "yyyyy", 5);
-STRING_LITERAL(TMP726, "z", 1);
-STRING_LITERAL(TMP727, "zz", 2);
-STRING_LITERAL(TMP728, "zzz", 3);
-STRING_LITERAL(TMP729, "ZZZ", 3);
-STRING_LITERAL(TMP730, "0", 1);
-STRING_LITERAL(TMP731, "Monday", 6);
-STRING_LITERAL(TMP732, "Tuesday", 7);
-STRING_LITERAL(TMP733, "Wednesday", 9);
-STRING_LITERAL(TMP734, "Thursday", 8);
-STRING_LITERAL(TMP735, "Friday", 6);
-STRING_LITERAL(TMP736, "Saturday", 8);
-STRING_LITERAL(TMP737, "Sunday", 6);
-NIM_CONST TY97639 lookup_97638 = {((NimStringDesc*) &TMP731),
-((NimStringDesc*) &TMP732),
-((NimStringDesc*) &TMP733),
-((NimStringDesc*) &TMP734),
-((NimStringDesc*) &TMP735),
-((NimStringDesc*) &TMP736),
-((NimStringDesc*) &TMP737)}
-;
-STRING_LITERAL(TMP738, "January", 7);
-STRING_LITERAL(TMP739, "February", 8);
-STRING_LITERAL(TMP740, "March", 5);
-STRING_LITERAL(TMP741, "April", 5);
-STRING_LITERAL(TMP742, "May", 3);
-STRING_LITERAL(TMP743, "June", 4);
-STRING_LITERAL(TMP744, "July", 4);
-STRING_LITERAL(TMP745, "August", 6);
-STRING_LITERAL(TMP746, "September", 9);
-STRING_LITERAL(TMP747, "October", 7);
-STRING_LITERAL(TMP748, "November", 8);
-STRING_LITERAL(TMP749, "December", 8);
-NIM_CONST TY97655 lookup_97654 = {((NimStringDesc*) &TMP738),
+STRING_LITERAL(TMP708, "", 0);
+STRING_LITERAL(TMP709, "d", 1);
+STRING_LITERAL(TMP710, "dd", 2);
+STRING_LITERAL(TMP711, "ddd", 3);
+STRING_LITERAL(TMP712, "dddd", 4);
+STRING_LITERAL(TMP713, "h", 1);
+STRING_LITERAL(TMP714, "hh", 2);
+STRING_LITERAL(TMP715, "H", 1);
+STRING_LITERAL(TMP716, "HH", 2);
+STRING_LITERAL(TMP717, "m", 1);
+STRING_LITERAL(TMP718, "mm", 2);
+STRING_LITERAL(TMP719, "M", 1);
+STRING_LITERAL(TMP720, "MM", 2);
+STRING_LITERAL(TMP721, "MMM", 3);
+STRING_LITERAL(TMP722, "MMMM", 4);
+STRING_LITERAL(TMP723, "s", 1);
+STRING_LITERAL(TMP724, "ss", 2);
+STRING_LITERAL(TMP725, "t", 1);
+STRING_LITERAL(TMP726, "tt", 2);
+STRING_LITERAL(TMP727, "y", 1);
+STRING_LITERAL(TMP728, "yy", 2);
+STRING_LITERAL(TMP729, "yyy", 3);
+STRING_LITERAL(TMP730, "yyyy", 4);
+STRING_LITERAL(TMP731, "yyyyy", 5);
+STRING_LITERAL(TMP732, "z", 1);
+STRING_LITERAL(TMP733, "zz", 2);
+STRING_LITERAL(TMP734, "zzz", 3);
+STRING_LITERAL(TMP735, "ZZZ", 3);
+STRING_LITERAL(TMP736, "0", 1);
+STRING_LITERAL(TMP737, "Monday", 6);
+STRING_LITERAL(TMP738, "Tuesday", 7);
+STRING_LITERAL(TMP739, "Wednesday", 9);
+STRING_LITERAL(TMP740, "Thursday", 8);
+STRING_LITERAL(TMP741, "Friday", 6);
+STRING_LITERAL(TMP742, "Saturday", 8);
+STRING_LITERAL(TMP743, "Sunday", 6);
+NIM_CONST TY97639 lookup_97638 = {((NimStringDesc*) &TMP737),
+((NimStringDesc*) &TMP738),
 ((NimStringDesc*) &TMP739),
 ((NimStringDesc*) &TMP740),
 ((NimStringDesc*) &TMP741),
 ((NimStringDesc*) &TMP742),
-((NimStringDesc*) &TMP743),
-((NimStringDesc*) &TMP744),
+((NimStringDesc*) &TMP743)}
+;
+STRING_LITERAL(TMP744, "January", 7);
+STRING_LITERAL(TMP745, "February", 8);
+STRING_LITERAL(TMP746, "March", 5);
+STRING_LITERAL(TMP747, "April", 5);
+STRING_LITERAL(TMP748, "May", 3);
+STRING_LITERAL(TMP749, "June", 4);
+STRING_LITERAL(TMP750, "July", 4);
+STRING_LITERAL(TMP751, "August", 6);
+STRING_LITERAL(TMP752, "September", 9);
+STRING_LITERAL(TMP753, "October", 7);
+STRING_LITERAL(TMP754, "November", 8);
+STRING_LITERAL(TMP755, "December", 8);
+NIM_CONST TY97655 lookup_97654 = {((NimStringDesc*) &TMP744),
 ((NimStringDesc*) &TMP745),
 ((NimStringDesc*) &TMP746),
 ((NimStringDesc*) &TMP747),
 ((NimStringDesc*) &TMP748),
-((NimStringDesc*) &TMP749)}
+((NimStringDesc*) &TMP749),
+((NimStringDesc*) &TMP750),
+((NimStringDesc*) &TMP751),
+((NimStringDesc*) &TMP752),
+((NimStringDesc*) &TMP753),
+((NimStringDesc*) &TMP754),
+((NimStringDesc*) &TMP755)}
 ;
-STRING_LITERAL(TMP750, "PM", 2);
-STRING_LITERAL(TMP751, "AM", 2);
-STRING_LITERAL(TMP752, ":00", 3);
-STRING_LITERAL(TMP753, "Invalid format string: ", 23);
+STRING_LITERAL(TMP756, "PM", 2);
+STRING_LITERAL(TMP757, "AM", 2);
+STRING_LITERAL(TMP758, ":00", 3);
+STRING_LITERAL(TMP759, "Invalid format string: ", 23);
 NIM_CONST TY96473 weekdays_96472 = {((NI8) 1),
 ((NI8) 2),
 ((NI8) 3),
@@ -659,70 +659,70 @@ static N_INLINE(void, asgnRefNoCycle)(void** dest, void* src) {
 N_NIMCALL(void, formattoken_97666)(ttimeinfo95805* info, NimStringDesc* token, NimStringDesc** buf) {
 	switch (hashString(token) & 31) {
 	case 0: 
-if (eqStrings(token, ((NimStringDesc*) &TMP702))) goto LA28;
+if (eqStrings(token, ((NimStringDesc*) &TMP708))) goto LA28;
 break;
 	case 1: 
-if (eqStrings(token, ((NimStringDesc*) &TMP712))) goto LA10;
+if (eqStrings(token, ((NimStringDesc*) &TMP718))) goto LA10;
 break;
 	case 5: 
-if (eqStrings(token, ((NimStringDesc*) &TMP703))) goto LA1;
+if (eqStrings(token, ((NimStringDesc*) &TMP709))) goto LA1;
 break;
 	case 6: 
-if (eqStrings(token, ((NimStringDesc*) &TMP720))) goto LA18;
+if (eqStrings(token, ((NimStringDesc*) &TMP726))) goto LA18;
 break;
 	case 7: 
-if (eqStrings(token, ((NimStringDesc*) &TMP729))) goto LA27;
+if (eqStrings(token, ((NimStringDesc*) &TMP735))) goto LA27;
 break;
 	case 8: 
-if (eqStrings(token, ((NimStringDesc*) &TMP721))) goto LA19;
+if (eqStrings(token, ((NimStringDesc*) &TMP727))) goto LA19;
 break;
 	case 10: 
-if (eqStrings(token, ((NimStringDesc*) &TMP707))) goto LA5;
-if (eqStrings(token, ((NimStringDesc*) &TMP713))) goto LA11;
-if (eqStrings(token, ((NimStringDesc*) &TMP714))) goto LA12;
-if (eqStrings(token, ((NimStringDesc*) &TMP718))) goto LA16;
-if (eqStrings(token, ((NimStringDesc*) &TMP722))) goto LA20;
+if (eqStrings(token, ((NimStringDesc*) &TMP713))) goto LA5;
+if (eqStrings(token, ((NimStringDesc*) &TMP719))) goto LA11;
+if (eqStrings(token, ((NimStringDesc*) &TMP720))) goto LA12;
+if (eqStrings(token, ((NimStringDesc*) &TMP724))) goto LA16;
+if (eqStrings(token, ((NimStringDesc*) &TMP728))) goto LA20;
 break;
 	case 12: 
-if (eqStrings(token, ((NimStringDesc*) &TMP715))) goto LA13;
+if (eqStrings(token, ((NimStringDesc*) &TMP721))) goto LA13;
 break;
 	case 14: 
-if (eqStrings(token, ((NimStringDesc*) &TMP728))) goto LA26;
+if (eqStrings(token, ((NimStringDesc*) &TMP734))) goto LA26;
 break;
 	case 15: 
-if (eqStrings(token, ((NimStringDesc*) &TMP706))) goto LA4;
-if (eqStrings(token, ((NimStringDesc*) &TMP719))) goto LA17;
+if (eqStrings(token, ((NimStringDesc*) &TMP712))) goto LA4;
+if (eqStrings(token, ((NimStringDesc*) &TMP725))) goto LA17;
 break;
 	case 20: 
-if (eqStrings(token, ((NimStringDesc*) &TMP725))) goto LA23;
+if (eqStrings(token, ((NimStringDesc*) &TMP731))) goto LA23;
 break;
 	case 21: 
-if (eqStrings(token, ((NimStringDesc*) &TMP704))) goto LA2;
-if (eqStrings(token, ((NimStringDesc*) &TMP711))) goto LA9;
+if (eqStrings(token, ((NimStringDesc*) &TMP710))) goto LA2;
+if (eqStrings(token, ((NimStringDesc*) &TMP717))) goto LA9;
 break;
 	case 22: 
-if (eqStrings(token, ((NimStringDesc*) &TMP717))) goto LA15;
-if (eqStrings(token, ((NimStringDesc*) &TMP727))) goto LA25;
+if (eqStrings(token, ((NimStringDesc*) &TMP723))) goto LA15;
+if (eqStrings(token, ((NimStringDesc*) &TMP733))) goto LA25;
 break;
 	case 24: 
-if (eqStrings(token, ((NimStringDesc*) &TMP709))) goto LA7;
+if (eqStrings(token, ((NimStringDesc*) &TMP715))) goto LA7;
 break;
 	case 25: 
-if (eqStrings(token, ((NimStringDesc*) &TMP710))) goto LA8;
+if (eqStrings(token, ((NimStringDesc*) &TMP716))) goto LA8;
 break;
 	case 28: 
-if (eqStrings(token, ((NimStringDesc*) &TMP716))) goto LA14;
+if (eqStrings(token, ((NimStringDesc*) &TMP722))) goto LA14;
 break;
 	case 29: 
-if (eqStrings(token, ((NimStringDesc*) &TMP723))) goto LA21;
+if (eqStrings(token, ((NimStringDesc*) &TMP729))) goto LA21;
 break;
 	case 30: 
-if (eqStrings(token, ((NimStringDesc*) &TMP726))) goto LA24;
+if (eqStrings(token, ((NimStringDesc*) &TMP732))) goto LA24;
 break;
 	case 31: 
-if (eqStrings(token, ((NimStringDesc*) &TMP705))) goto LA3;
-if (eqStrings(token, ((NimStringDesc*) &TMP708))) goto LA6;
-if (eqStrings(token, ((NimStringDesc*) &TMP724))) goto LA22;
+if (eqStrings(token, ((NimStringDesc*) &TMP711))) goto LA3;
+if (eqStrings(token, ((NimStringDesc*) &TMP714))) goto LA6;
+if (eqStrings(token, ((NimStringDesc*) &TMP730))) goto LA22;
 break;
 	}
 	goto LA29;
@@ -741,7 +741,7 @@ appendString((*buf), LOC32);
 		{
 			if (!(((NI) ((*info).Monthday)) < 10)) goto LA36;
 			(*buf) = resizeString((*buf), 1);
-appendString((*buf), ((NimStringDesc*) &TMP730));
+appendString((*buf), ((NimStringDesc*) &TMP736));
 		}
 		LA36: ;
 		LOC38 = 0;
@@ -953,13 +953,13 @@ appendString((*buf), LOC101);
 		{
 			if (!(12 <= ((NI) ((*info).Hour)))) goto LA111;
 			(*buf) = resizeString((*buf), 2);
-appendString((*buf), ((NimStringDesc*) &TMP750));
+appendString((*buf), ((NimStringDesc*) &TMP756));
 		}
 		goto LA109;
 		LA111: ;
 		{
 			(*buf) = resizeString((*buf), 2);
-appendString((*buf), ((NimStringDesc*) &TMP751));
+appendString((*buf), ((NimStringDesc*) &TMP757));
 		}
 		LA109: ;
 	}
@@ -1186,7 +1186,7 @@ appendString((*buf), LOC187);
 			}
 			LA194: ;
 			atindex = (NI64)((*buf)->Sup.len - (NI64)(LOC192->Sup.len - LOC193));
-			insert_84001(buf, ((NimStringDesc*) &TMP730), atindex);
+			insert_84001(buf, ((NimStringDesc*) &TMP736), atindex);
 		}
 		LA190: ;
 	}
@@ -1202,7 +1202,7 @@ appendString((*buf), LOC187);
 		LOC201 = nimIntToStr(hrs);
 		LOC200 = rawNewString(LOC201->Sup.len + 3);
 appendString(LOC200, LOC201);
-appendString(LOC200, ((NimStringDesc*) &TMP752));
+appendString(LOC200, ((NimStringDesc*) &TMP758));
 		(*buf) = resizeString((*buf), LOC200->Sup.len + 0);
 appendString((*buf), LOC200);
 		{
@@ -1216,7 +1216,7 @@ appendString((*buf), LOC200);
 			LOC207 = nimIntToStr(hrs);
 			LOC206 = rawNewString(LOC207->Sup.len + 3);
 appendString(LOC206, LOC207);
-appendString(LOC206, ((NimStringDesc*) &TMP752));
+appendString(LOC206, ((NimStringDesc*) &TMP758));
 			LOC208 = 0;
 			{
 				if (!(hrs < 0)) goto LA211;
@@ -1229,7 +1229,7 @@ appendString(LOC206, ((NimStringDesc*) &TMP752));
 			}
 			LA209: ;
 			atindex = (NI64)((*buf)->Sup.len - (NI64)(LOC206->Sup.len - LOC208));
-			insert_84001(buf, ((NimStringDesc*) &TMP730), atindex);
+			insert_84001(buf, ((NimStringDesc*) &TMP736), atindex);
 		}
 		LA204: ;
 	}
@@ -1253,7 +1253,7 @@ appendString((*buf), (*info).Tzname);
 		(*e_97794).Sup.Sup.Sup.m_type = (&NTI2855);
 		LOC217 = 0;
 		LOC217 = rawNewString(token->Sup.len + 23);
-appendString(LOC217, ((NimStringDesc*) &TMP753));
+appendString(LOC217, ((NimStringDesc*) &TMP759));
 appendString(LOC217, token);
 		asgnRefNoCycle((void**) &(*e_97794).Sup.Sup.message, LOC217);
 		raiseException((E_Base*)e_97794, "EInvalidValue");
@@ -1266,9 +1266,9 @@ N_NIMCALL(NimStringDesc*, format_97821)(ttimeinfo95805* info, NimStringDesc* f) 
 	NI i;
 	NimStringDesc* currentf;
 	result = 0;
-	result = copyString(((NimStringDesc*) &TMP702));
+	result = copyString(((NimStringDesc*) &TMP708));
 	i = 0;
-	currentf = copyString(((NimStringDesc*) &TMP702));
+	currentf = copyString(((NimStringDesc*) &TMP708));
 	while (1) {
 		switch (((NU8)(f->data[i]))) {
 		case 32:
@@ -1284,7 +1284,7 @@ N_NIMCALL(NimStringDesc*, format_97821)(ttimeinfo95805* info, NimStringDesc* f) 
 		case 44:
 		{
 			formattoken_97666(info, currentf, &result);
-			currentf = copyString(((NimStringDesc*) &TMP702));
+			currentf = copyString(((NimStringDesc*) &TMP708));
 			{
 				if (!((NU8)(f->data[i]) == (NU8)(0))) goto LA5;
 				goto LA1;
@@ -1330,7 +1330,7 @@ N_NIMCALL(NimStringDesc*, format_97821)(ttimeinfo95805* info, NimStringDesc* f) 
 			{
 				formattoken_97666(info, currentf, &result);
 				i -= 1;
-				currentf = copyString(((NimStringDesc*) &TMP702));
+				currentf = copyString(((NimStringDesc*) &TMP708));
 			}
 			LA16: ;
 		}
