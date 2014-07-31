@@ -8,8 +8,8 @@ const
   rest_default_config = slurp("embedded_nimdoc.cfg")
   prism_js = "<script>" & slurp("prism.js") & "</script>"
   prism_css = slurp("prism.css")
-  versionStr* = "0.4.4" ## Module version as a string.
-  versionInt* = (major: 0, minor: 4, maintenance: 4) ## \
+  versionStr* = "0.4.5" ## Module version as a string.
+  versionInt* = (major: 0, minor: 4, maintenance: 5) ## \
   ## Module version as an integer tuple.
   ##
   ## Major versions changes mean a break in API backwards compatibility, either
