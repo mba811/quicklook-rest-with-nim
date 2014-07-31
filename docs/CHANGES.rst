@@ -2,6 +2,20 @@
 Quicklook reST with Nimrod changes log
 ======================================
 
+v0.4.4, 2014-07-31
+------------------
+
+* `Changed default language syntax highlight based on rest directive
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/36>`_.
+* `Fixed HTML code blocks not being escaped
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/38>`_.
+* `Added code block syntax highlighting
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/20>`_.
+* `Documented list of languages with syntax highlighting
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/40>`_.
+* `Added rst example to binary distribution
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/39>`_.
+
 v0.4.2, 2014-07-18
 ------------------
 

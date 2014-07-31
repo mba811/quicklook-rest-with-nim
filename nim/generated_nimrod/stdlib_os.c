@@ -23,7 +23,6 @@
 #include <sys/time.h>
 
 #include <crt_externs.h>
-
 typedef struct TY113211 TY113211;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct TGenericSeq TGenericSeq;
@@ -242,8 +241,8 @@ N_NIMCALL(NimStringDesc*, nosjoinPath)(NimStringDesc* head, NimStringDesc* tail)
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 static N_INLINE(void, appendChar)(NimStringDesc* dest, NIM_CHAR c);
-N_NIMCALL(NI, findenvvar_113805)(NimStringDesc* key);
-N_NIMCALL(void, getenvvarsc_113402)(void);
+N_NIMCALL(NI, findenvvar_113804)(NimStringDesc* key);
+N_NIMCALL(void, getenvvarsc_113404)(void);
 N_NIMCALL(void, nimGCvisit)(void* d, NI op);
 N_NIMCALL(void, TMP228)(void* p, NI op);
 N_NIMCALL(void*, newSeqRC1)(TNimType* typ, NI len);
@@ -636,66 +635,70 @@ N_NIMCALL(void, TMP228)(void* p, NI op) {
 	}
 }
 
-N_NIMCALL(void, getenvvarsc_113402)(void) {
+N_NIMCALL(void, getenvvarsc_113404)(void) {
 	{
+		NCSTRING* genv;
+		NCSTRING** LOC5;
 		NI i;
 		if (!!(envcomputed_113210)) goto LA3;
 		if (environment_113212) nimGCunrefNoCycle(environment_113212);
 		environment_113212 = (TY113211*) newSeqRC1((&NTI113211), 0);
+		LOC5 = 0;
+		LOC5 = _NSGetEnviron();
+		genv = (*LOC5);
 		i = 0;
-		char **environ = _NSGetEnviron();
 		while (1) {
-			NimStringDesc* LOC10;
 			NimStringDesc* LOC11;
+			NimStringDesc* LOC12;
 			{
-				if (!(environ[(i)- 0] == NIM_NIL)) goto LA8;
-				goto LA5;
+				if (!(genv[(i)- 0] == NIM_NIL)) goto LA9;
+				goto LA6;
 			}
-			LA8: ;
-			LOC10 = 0;
-			LOC10 = cstrToNimstr(environ[(i)- 0]);
-			environment_113212 = (TY113211*) incrSeq(&(environment_113212)->Sup, sizeof(NimStringDesc*));
+			LA9: ;
 			LOC11 = 0;
-			LOC11 = environment_113212->data[environment_113212->Sup.len-1]; environment_113212->data[environment_113212->Sup.len-1] = copyStringRC1(LOC10);
-			if (LOC11) nimGCunrefNoCycle(LOC11);
+			LOC11 = cstrToNimstr(genv[(i)- 0]);
+			environment_113212 = (TY113211*) incrSeq(&(environment_113212)->Sup, sizeof(NimStringDesc*));
+			LOC12 = 0;
+			LOC12 = environment_113212->data[environment_113212->Sup.len-1]; environment_113212->data[environment_113212->Sup.len-1] = copyStringRC1(LOC11);
+			if (LOC12) nimGCunrefNoCycle(LOC12);
 			i += 1;
-		} LA5: ;
+		} LA6: ;
 		envcomputed_113210 = NIM_TRUE;
 	}
 	LA3: ;
 }
 
-N_NIMCALL(NI, findenvvar_113805)(NimStringDesc* key) {
+N_NIMCALL(NI, findenvvar_113804)(NimStringDesc* key) {
 	NI result;
 	NimStringDesc* temp;
 	NimStringDesc* LOC1;
-	NI i_113820;
-	NI HEX3Atmp_113821;
-	NI res_113823;
+	NI i_113819;
+	NI HEX3Atmp_113820;
+	NI res_113822;
 	result = 0;
-	getenvvarsc_113402();
+	getenvvarsc_113404();
 	LOC1 = 0;
 	LOC1 = rawNewString(key->Sup.len + 1);
 appendString(LOC1, key);
 appendChar(LOC1, 61);
 	temp = LOC1;
-	i_113820 = 0;
-	HEX3Atmp_113821 = 0;
-	HEX3Atmp_113821 = (environment_113212->Sup.len-1);
-	res_113823 = 0;
+	i_113819 = 0;
+	HEX3Atmp_113820 = 0;
+	HEX3Atmp_113820 = (environment_113212->Sup.len-1);
+	res_113822 = 0;
 	while (1) {
-		if (!(res_113823 <= HEX3Atmp_113821)) goto LA2;
-		i_113820 = res_113823;
+		if (!(res_113822 <= HEX3Atmp_113820)) goto LA2;
+		i_113819 = res_113822;
 		{
 			NIM_BOOL LOC5;
 			LOC5 = 0;
-			LOC5 = nsuStartsWith(environment_113212->data[i_113820], temp);
+			LOC5 = nsuStartsWith(environment_113212->data[i_113819], temp);
 			if (!LOC5) goto LA6;
-			result = i_113820;
+			result = i_113819;
 			goto BeforeRet;
 		}
 		LA6: ;
-		res_113823 += 1;
+		res_113822 += 1;
 	} LA2: ;
 	result = -1;
 	goto BeforeRet;
@@ -703,11 +706,11 @@ appendChar(LOC1, 61);
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, getenv_113834)(NimStringDesc* key) {
+N_NIMCALL(NimStringDesc*, getenv_113833)(NimStringDesc* key) {
 	NimStringDesc* result;
 	NI i;
 	result = 0;
-	i = findenvvar_113805(key);
+	i = findenvvar_113804(key);
 	{
 		NI LOC5;
 		if (!(0 <= i)) goto LA3;

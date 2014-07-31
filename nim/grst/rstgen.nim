@@ -60,13 +60,22 @@ type
     seenIndexTerms: TTable[string, int] ## \
     ## Keeps count of same text index terms to generate different identifiers
     ## for hyperlinks. See renderIndexTerm proc for details.
-  
+    unknownLangs*: bool ## Set to true if unknown code block langs are found.
+
   PDoc = var TRstGenerator ## Alias to type less.
 
   CodeBlockParams = object ## Stores code block params.
     numberLines: bool ## True if the renderer has to show line numbers.
     startLine: int ## The starting line of the code block, by default 1.
+    langStr: string ## Input string used to specify the language.
+    lang: TSourceLanguage ## Type of highlighting, by default none.
 
+
+proc init(p: var CodeBlockParams) =
+  ## Default initialisation of CodeBlockParams to sane values.
+  p.startLine = 1
+  p.lang = langNone
+  p.langStr = ""
 
 proc initRstGenerator*(g: var TRstGenerator, target: TOutputTarget,
                        config: PStringTable, filename: string,
@@ -768,6 +777,9 @@ proc renderSmiley(d: PDoc, n: PRstNode, result: var string) =
   
 proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
   ## Parses useful fields which can appear before a code block.
+  ##
+  ## This supports the special ``default-language`` internal string generated
+  ## by the ``rst`` module to communicate a specific default language.
   case n.getArgument.toLower
   of "number-lines":
     params.numberLines = true
@@ -775,15 +787,31 @@ proc parseCodeBlockField(d: PDoc, n: PRstNode, params: var CodeBlockParams) =
     var number: int
     if parseInt(n.getFieldValue, number) > 0:
       params.startLine = number
+  of "default-language":
+    params.langStr = n.getFieldValue.strip
+    params.lang = params.langStr.getSourceLanguage
   else:
-    d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getFieldValue)
+    d.msgHandler(d.filename, 1, 0, mwUnsupportedField, n.getArgument)
 
 proc parseCodeBlockParams(d: PDoc, n: PRstNode): CodeBlockParams =
   ## Iterates over all code block fields and returns processed params.
-  result.startLine = 1
-  if n.isNil: return
-  assert n.kind == rnFieldList
-  for son in n.sons: d.parseCodeBlockField(son, result)
+  ##
+  ## Also processes the argument of the directive as the default language. This
+  ## is done last so as to override any internal communication field variables.
+  result.init
+  if n.isNil:
+    return
+  assert n.kind == rnCodeBlock
+  assert(not n.sons[2].isNil)
+
+  # Parse the field list for rendering parameters if there are any.
+  if not n.sons[1].isNil:
+    for son in n.sons[1].sons: d.parseCodeBlockField(son, result)
+
+  # Parse the argument and override the language.
+  result.langStr = strip(getArgument(n))
+  if result.langStr != "":
+    result.lang = getSourceLanguage(result.langStr)
 
 proc buildLinesHTMLTable(params: CodeBlockParams, code: string):
     tuple[beginTable, endTable: string] =
@@ -809,30 +837,37 @@ proc buildLinesHTMLTable(params: CodeBlockParams, code: string):
   result.endTable = "</pre></td></tr></tbody></table>"
 
 proc renderCodeBlock(d: PDoc, n: PRstNode, result: var string) =
+  ## Renders a code block, appending it to `result`.
+  ##
+  ## If the code block uses the number-lines option, a table will be generated
+  ## with two columns, the first being a list of numbers and the second the
+  ## code block itself. The code block can use syntax highlighting, which
+  ## depends on the directive argument specified by the rst input, and may also
+  ## come from the parser through the internal default-lang option to
+  ## differentiate between a plain code block and nimrod's code block.
+  assert n.kind == rnCodeBlock
   if n.sons[2] == nil: return
-  var params = d.parseCodeBlockParams(n.sons[1])
+  var params = d.parseCodeBlockParams(n)
   var m = n.sons[2].sons[0]
   assert m.kind == rnLeaf
-  var langstr = strip(getArgument(n))
-  var lang: TSourceLanguage
-  if langstr == "":
-    #lang = langNimrod         # default language
-    lang = langNone         # default language
-  else:
-    lang = getSourceLanguage(langstr)
 
   let (blockStart, blockEnd) = params.buildLinesHTMLTable(m.text)
 
   dispA(d.target, result, blockStart, "\\begin{rstpre}\n", [])
-  if lang == langNone:
-    if len(langstr) > 0:
-      d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, langstr)
-    result.add(m.text)
+  if params.lang == langNone:
+    if len(params.langStr) > 0:
+      d.msgHandler(d.filename, 1, 0, mwUnsupportedLanguage, params.langStr)
+      d.unknownLangs = true
+      result.add("""<code class="language-""" &
+        params.langStr.to_lower.strip & """">""")
+    for letter in m.text.strip: escChar(d.target, result, letter)
+    if len(params.langStr) > 0:
+      result.add("</code>")
   else:
     var g: TGeneralTokenizer
     initGeneralTokenizer(g, m.text)
     while true: 
-      getNextToken(g, lang)
+      getNextToken(g, params.lang)
       case g.kind
       of gtEof: break 
       of gtNone, gtWhitespace: 

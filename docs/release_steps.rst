@@ -3,7 +3,7 @@ QuickLook reST with Nimrod release steps
 ========================================
 
 * Create new milestone with version number (``vXXX``) at
-  https://github.com/gradha/quicklook-rest-with-nimrod/issues/milestones.
+  https://github.com/gradha/quicklook-rest-with-nimrod/milestones.
 * Create new dummy issue `Release versionname` and assign to that milestone.
 * Annotate the release issue with the Nimrod commit used to compile sources,
   and Xcode version too.
@@ -54,3 +54,6 @@ QuickLook reST with Nimrod release steps
 * Close the dummy release issue and related milestone.
 * Announce at `http://forum.nimrod-lang.org/t/317
   <http://forum.nimrod-lang.org/t/317>`_.
+* Contact quicklookplugins to update
+  http://www.quicklookplugins.com/2014/07/20/restructuredtext-rest/, or maybe
+  just add a comment saying there is a new version.

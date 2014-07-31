@@ -6,8 +6,10 @@ import grst/rstgen, os, grst/rst, strutils,
 
 const
   rest_default_config = slurp("embedded_nimdoc.cfg")
-  versionStr* = "0.4.2" ## Module version as a string.
-  versionInt* = (major: 0, minor: 4, maintenance: 2) ## \
+  prism_js = "<script>" & slurp("prism.js") & "</script>"
+  prism_css = slurp("prism.css")
+  versionStr* = "0.4.4" ## Module version as a string.
+  versionInt* = (major: 0, minor: 4, maintenance: 4) ## \
   ## Module version as an integer tuple.
   ##
   ## Major versions changes mean a break in API backwards compatibility, either
@@ -144,6 +146,8 @@ proc rst_string_to_html*(content, filename: string): string =
     "local_date", last_mod_local.format("yyyy-MM-dd"),
     "local_time", last_mod_local.format("HH:mm"),
     "fileTime", $(int(last_mod_local.timeInfoToTime) * 1000),
+    "prism_js", if GENERATOR.unknownLangs: prism_js else: "",
+    "prism_css", if GENERATOR.unknownLangs: prism_css else: "",
     "content", MOD_DESC]
 
 

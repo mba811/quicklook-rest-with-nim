@@ -1,5 +1,5 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester, md5
+  rester, md5, sequtils, algorithm, packages/docutils/highlite
 
 const
   rester_src = "nim"/"rester.nim"
@@ -13,12 +13,20 @@ const
   zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
   xcodebuild_exe = "xcodebuild"
   zip_exe = "zip"
-  quick_readme = "docs"/"dist"/"readme.rst"
+  dist_readme = "docs"/"dist"/"readme.rst"
+  dist_example = "docs"/"dist"/"example.rst"
+  prism_js_in = "nim"/"prism.js"
+  prism_js_start = "languages="
+  prism_js_out = "docs"/"prism_supported_langs_list.rst"
+  prism_blacklist = ["clike", "css-extras", "php-extras"]
+  nimrod_list_out = "docs"/"nimrod_supported_langs_list.rst"
+  nimrod_blacklist = ["none"]
 
 let
-  rst_files = @["docs"/"debugging_quicklook", "docs"/"release_steps",
+  rst_files = concat(@["docs"/"debugging_quicklook", "docs"/"release_steps",
     "docs"/"CHANGES", "LICENSE", "README", "docindex",
-    quick_readme.change_file_ext("")]
+    "docs"/"supported_languages"],
+    map_it([dist_example, dist_readme], string, it.change_file_ext("")))
 
 proc copyDirWithPermissions*(source, dest: string) =
   ## Copies a directory from `source` to `dest`. If this fails, `EOS` is raised.
@@ -79,7 +87,43 @@ iterator all_rst_files(): tuple[src, dest: string] =
     r.dest = rst_name & ".html"
     yield r
 
+proc update_lang_list() =
+  # Special proc which generates a specific rst file for inclusion.
+  #
+  # The proc takes the prism.js file and reads the first line which has a
+  # speciic URL request format. From this the list of supported language is
+  # recovered and some entries which don't make sense are stripped.
+  #
+  # For the nimrod list the constants from the highlight module are dumped
+  # inconditionally.
+  var langs = filter_it(@sourceLanguageToStr, not (it in nimrod_blacklist))
+  langs.sort(system.cmp)
+  langs.map_it("* " & it & "\n")
+  nimrod_list_out.write_file(langs.join)
+
+  if not prism_js_out.needs_refresh(prism_js_in): return
+
+  assert prism_js_in.exists_file
+  #let THE WEIRD BUG CRASHING DEVEL
+  #  buffer = read_file(prism_js_in)
+  #  line = to_seq(lines(buffer))[0]
+  let
+    line = to_seq(lines(prism_js_in))[0]
+    first = line.find(prism_js_start) + prism_js_start.len
+    last = line.find(" ", first)
+
+  langs = line[first .. <last].split('+')
+
+  # Remove bad items.
+  langs = filter_it(langs, not (it in prism_blacklist))
+  langs.sort(system.cmp)
+  langs.map_it("* " & it & "\n")
+  prism_js_out.write_file(langs.join)
+
+
 proc doc() =
+  update_lang_list()
+
   # Generate html files from the rst docs.
   for rst_file, html_file in all_rst_files():
     if not html_file.needs_refresh(rst_file): continue
@@ -101,6 +145,7 @@ proc check_doc() =
       echo output
 
 proc clean() =
+  prism_js_out.remove_file
   for path in walkDirRec("."):
     let (dir, name, ext) = splitFile(path)
     if ext == ".html":
@@ -146,8 +191,9 @@ proc dist() =
   doAssert dest_generator.exists_dir
 
   # Generate instructions.
-  let quick_readme_html = quick_readme.rst_file_to_html
-  write_file(zip_base/"readme.html", quick_readme_html)
+  let dist_readme_html = dist_readme.rst_file_to_html
+  write_file(zip_base/"readme.html", dist_readme_html)
+  write_file(zip_base/"example.rst", dist_example.read_file)
 
   # Archive.
   with_dir dist_dir:
@@ -182,4 +228,5 @@ task "clean", "Removes temporal files, mainly":
   echo "All files cleaned"
 
 task "dist", "Build distribution packages for GitHub":
+  doc()
   dist()
