@@ -203,9 +203,9 @@ N_NIMCALL(void, TMP143)(void* p, NI op) {
 	}
 }
 
-N_NIMCALL(void, inittable_172108)(NI initialsize_172113, ttable172052* Result) {
+N_NIMCALL(void, inittable_172121)(NI initialsize_172126, ttable172052* Result) {
 	(*Result).Counter = 0;
-	unsureAsgnRef((void**) &(*Result).Data, (tkeyvaluepairseq172055*) newSeq((&NTI172055), initialsize_172113));
+	unsureAsgnRef((void**) &(*Result).Data, (tkeyvaluepairseq172055*) newSeq((&NTI172055), initialsize_172126));
 }
 
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b) {

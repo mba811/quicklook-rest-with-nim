@@ -3,7 +3,7 @@ QuickLook reST with Nimrod release steps
 ========================================
 
 * Create new milestone with version number (``vXXX``) at
-  https://github.com/gradha/quicklook-rest-with-nimrod/issues/milestones.
+  https://github.com/gradha/quicklook-rest-with-nimrod/milestones.
 * Create new dummy issue `Release versionname` and assign to that milestone.
 * Annotate the release issue with the Nimrod commit used to compile sources,
   and Xcode version too.
