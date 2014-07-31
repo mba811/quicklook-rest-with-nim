@@ -2,7 +2,7 @@
 Quicklook reST with Nimrod changes log
 ======================================
 
-v0.4.3, ????-??-??
+v0.4.4, 2014-07-31
 ------------------
 
 * `Changed default language syntax highlight based on rest directive
