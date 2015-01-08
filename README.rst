@@ -53,10 +53,11 @@ search for **qlmark** won't work?
    :align: center
 
 Ah, that's interesting. So markdown is found, but rest not. Well, that's
-clearly it, Mulder told me it's a conspiracy against the rst format. Other
-arguments like the rst implementation being python rather than C, or the spec
-sucking, pale in comparison with Big Brother not allowing you even to *think*
-in rst.
+clearly it, Mulder told me it's `a conspiracy
+<http://motherboard.vice.com/read/porn-companies-are-going-after-github>`_
+against the rst format. Other arguments like the rst implementation being
+python rather than C, or the spec sucking, pale in comparison with Big Brother
+not allowing you even to *think* in rst.
 
 Madness.
 
