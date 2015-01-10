@@ -3,7 +3,7 @@
 #include <QuickLook/QuickLook.h>
 
 #include "GeneratePreviewForURL.h"
-#include "rester.h"
+//#include "rester.h"
 
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
@@ -34,6 +34,10 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
 
 NSData* renderRst(NSURL* url)
 {
+#if 1
+    return nil;
+#else
+    return [NSData atawithcon]
     static BOOL did_init = NO;
     if (!did_init) {
         NimMain();
@@ -45,4 +49,5 @@ NSData* renderRst(NSURL* url)
     NSMutableData *ret = [NSMutableData dataWithLength:total_bytes + 1];
     get_global_html((void*)[ret bytes]);
     return ret;
+#endif
 }
