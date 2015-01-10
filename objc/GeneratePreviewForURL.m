@@ -3,7 +3,7 @@
 #include <QuickLook/QuickLook.h>
 
 #include "GeneratePreviewForURL.h"
-//#include "rester.h"
+#include "lazy_rest_c_api.h"
 
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
@@ -34,20 +34,23 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
 
 NSData* renderRst(NSURL* url)
 {
-#if 1
-    return nil;
-#else
-    return [NSData atawithcon]
     static BOOL did_init = NO;
     if (!did_init) {
         NimMain();
+        lr_set_global_rst_options("parser.enable.raw.directive = t");
         did_init = YES;
     }
+    NSString* ext = [[url path] pathExtension];
     char *path = (char*)[[url path] UTF8String];
-    const long long total_bytes = txt_to_rst(path);
+    char *html = 0;
+    if ([@"rst" isEqualToString:ext] || [@"rest" isEqualToString:ext]) {
+        // Treat input as restructured text.
+        html = lr_safe_rst_file_to_html(path, NULL, NULL);
+    } else {
+        // Treat input as a source file.
+        html = lr_source_file_to_html(path, NULL, 1, NULL);
+    }
 
-    NSMutableData *ret = [NSMutableData dataWithLength:total_bytes + 1];
-    get_global_html((void*)[ret bytes]);
+    NSData *ret = [NSData dataWithBytes:html length:strlen(html)];
     return ret;
-#endif
 }
