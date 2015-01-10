@@ -6,7 +6,8 @@ const
   public_name = "QuickLook reStructuredText"
   dist_dir = "dist"
   xarchive_ext = ".xcarchive"
-  environ_c_file = "nim"/"generated_nimrod"/"stdlib_os.c"
+  environ_c_file = "external"/
+    "lazy_rest-0.2.0-c-sources-macosx-amd64-release"/"os.c"
   zip_base = dist_dir/"quicklook-rest-with-nimrod-" & version_str
   xarchive_generator_path =
     "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
