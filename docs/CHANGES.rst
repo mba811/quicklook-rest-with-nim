@@ -5,7 +5,14 @@ Quicklook reST with Nimrod changes log
 v0.4.5, ????-??-??
 ------------------
 
-* Nothing yet.
+* `Moved rester module into lazy_rest babel package
+  <https://github.com/gradha/quicklook-rest-with-nimrod/issues/42>`_. The usage
+  of ``lazy_rest`` brings `several improvements
+  <https://github.com/gradha/lazy_rest/blob/v0.2.0/docs/changes.rst>`_, with
+  the most important being:
+
+  * Avoid hanging on infinite recursive include directive.
+  * Improved rendering of line numbered source blocks.
 
 v0.4.4, 2014-07-31
 ------------------
