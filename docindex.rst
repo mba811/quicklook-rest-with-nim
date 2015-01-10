@@ -16,7 +16,3 @@ files you need to run ``nake doc`` at the root of the project:
   * `docs/supported_languages.rst <docs/supported_languages.rst>`_.
   * `docs/dist/example.rst <docs/dist/example.rst>`_.
   * `docs/dist/readme.rst <docs/dist/readme.rst>`_.
-
-* API:
-
-  * `nim/rester.nim <nim/rester.nim>`_.

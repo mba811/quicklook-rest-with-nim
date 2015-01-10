@@ -11,7 +11,9 @@ QuickLook reST with Nimrod release steps
 * Update version numbers:
 
   * Modify `README.rst <../README.rst>`_ (s/development/stable/).
-  * Modify `nim/rester.nim <../nim/rester.nim>`_.
+  * Modify `nakefile.nim <../nakefile.nim>`_.
+  * Modify `quicklook-rest-with-nimrod.nimble
+    <../quicklook-rest-with-nimrod.nimble>`_.
   * Update `docs/CHANGES.rst <CHANGES.rst>`_ with list of changes and
     version/number.
 
@@ -44,7 +46,9 @@ QuickLook reST with Nimrod release steps
 * Increase version numbers, at least maintenance (stable version + 0.0.1):
 
   * Modify `README.rst <../README.rst>`_.
-  * Modify `nim/rester.nim <../nim/rester.nim>`_.
+  * Modify `nakefile.nim <../nakefile.nim>`_.
+  * Modify `quicklook-rest-with-nimrod.nimble
+    <../quicklook-rest-with-nimrod.nimble>`_.
   * Add to `docs/CHANGES.rst <CHANGES.rst>`_ development version with unknown
     date.
 
