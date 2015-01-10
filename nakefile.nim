@@ -1,13 +1,13 @@
 import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
-  rester, md5, sequtils, algorithm, packages/docutils/highlite
+  md5, sequtils, algorithm, lazy_rest, lazy_rest_pkg/lhighlite
 
 const
-  rester_src = "nim"/"rester.nim"
+  version_str = "0.4.5"
   public_name = "QuickLook reStructuredText"
   dist_dir = "dist"
   xarchive_ext = ".xcarchive"
   environ_c_file = "nim"/"generated_nimrod"/"stdlib_os.c"
-  zip_base = dist_dir/"quicklook-rest-with-nimrod-" & rester.version_str
+  zip_base = dist_dir/"quicklook-rest-with-nimrod-" & version_str
   xarchive_generator_path =
     "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
   zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
@@ -133,8 +133,6 @@ proc doc() =
       change_rst_links_to_html(html_file)
       echo rst_file & " -> " & html_file
 
-  if not shell("nimrod doc --verbosity:0", rester_src):
-    quit("Could not generate HTML API doc for " & rester_src)
 
 proc check_doc() =
   for rst_file, html_file in all_rst_files():
@@ -161,7 +159,7 @@ proc dist() =
   assert xcodebuild_exe.len > 0, "No xcodebuild command found"
   echo "Building archive…"
   let dest_archive = dist_dir/public_name &
-    "-v" & rester.version_str & xarchive_ext
+    "-v" & version_str & xarchive_ext
   dist_dir.remove_dir
   dist_dir.create_dir
 
@@ -209,7 +207,7 @@ Add the following notes to the release info:
 
 [See the changes log](https://github.com/gradha/quicklook-rest-with-nimrod/blob/v$1/docs/CHANGES.rst).
 
-Binary MD5 checksums:""" % [rester.version_str]
+Binary MD5 checksums:""" % [version_str]
   for filename in walk_files(dist_dir/"*.zip"):
     let v = filename.read_file.get_md5
     echo "* ``", v, "`` ", filename.extract_filename

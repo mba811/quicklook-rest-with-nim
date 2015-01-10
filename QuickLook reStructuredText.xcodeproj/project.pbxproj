@@ -7,34 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D512319119795AAF00DB868E /* highlite.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317519795AAF00DB868E /* highlite.c */; };
-		D512319219795AAF00DB868E /* logging.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317619795AAF00DB868E /* logging.c */; };
-		D512319319795AAF00DB868E /* nimbase.h in Headers */ = {isa = PBXBuildFile; fileRef = D512317719795AAF00DB868E /* nimbase.h */; };
-		D512319419795AAF00DB868E /* rester.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317819795AAF00DB868E /* rester.c */; };
-		D512319519795AAF00DB868E /* rester.h in Headers */ = {isa = PBXBuildFile; fileRef = D512317919795AAF00DB868E /* rester.h */; };
-		D512319619795AAF00DB868E /* rst.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317A19795AAF00DB868E /* rst.c */; };
-		D512319719795AAF00DB868E /* rstast.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317B19795AAF00DB868E /* rstast.c */; };
-		D512319819795AAF00DB868E /* rstgen.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317C19795AAF00DB868E /* rstgen.c */; };
-		D512319919795AAF00DB868E /* stdlib_algorithm.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317D19795AAF00DB868E /* stdlib_algorithm.c */; };
-		D512319A19795AAF00DB868E /* stdlib_cgi.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317E19795AAF00DB868E /* stdlib_cgi.c */; };
-		D512319B19795AAF00DB868E /* stdlib_cookies.c in Sources */ = {isa = PBXBuildFile; fileRef = D512317F19795AAF00DB868E /* stdlib_cookies.c */; };
-		D512319C19795AAF00DB868E /* stdlib_hashes.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318019795AAF00DB868E /* stdlib_hashes.c */; };
-		D512319D19795AAF00DB868E /* stdlib_json.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318119795AAF00DB868E /* stdlib_json.c */; };
-		D512319E19795AAF00DB868E /* stdlib_lexbase.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318219795AAF00DB868E /* stdlib_lexbase.c */; };
-		D512319F19795AAF00DB868E /* stdlib_math.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318319795AAF00DB868E /* stdlib_math.c */; };
-		D51231A019795AAF00DB868E /* stdlib_os.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318419795AAF00DB868E /* stdlib_os.c */; };
-		D51231A119795AAF00DB868E /* stdlib_parsecfg.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318519795AAF00DB868E /* stdlib_parsecfg.c */; };
-		D51231A219795AAF00DB868E /* stdlib_parseutils.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318619795AAF00DB868E /* stdlib_parseutils.c */; };
-		D51231A319795AAF00DB868E /* stdlib_posix.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318719795AAF00DB868E /* stdlib_posix.c */; };
-		D51231A419795AAF00DB868E /* stdlib_sequtils.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318819795AAF00DB868E /* stdlib_sequtils.c */; };
-		D51231A519795AAF00DB868E /* stdlib_streams.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318919795AAF00DB868E /* stdlib_streams.c */; };
-		D51231A619795AAF00DB868E /* stdlib_strtabs.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318A19795AAF00DB868E /* stdlib_strtabs.c */; };
-		D51231A719795AAF00DB868E /* stdlib_strutils.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318B19795AAF00DB868E /* stdlib_strutils.c */; };
-		D51231A819795AAF00DB868E /* stdlib_subexes.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318C19795AAF00DB868E /* stdlib_subexes.c */; };
-		D51231A919795AAF00DB868E /* stdlib_system.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318D19795AAF00DB868E /* stdlib_system.c */; };
-		D51231AA19795AAF00DB868E /* stdlib_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318E19795AAF00DB868E /* stdlib_tables.c */; };
-		D51231AB19795AAF00DB868E /* stdlib_times.c in Sources */ = {isa = PBXBuildFile; fileRef = D512318F19795AAF00DB868E /* stdlib_times.c */; };
-		D51231AC19795AAF00DB868E /* stdlib_unicode.c in Sources */ = {isa = PBXBuildFile; fileRef = D512319019795AAF00DB868E /* stdlib_unicode.c */; };
 		D58AA20E185B23BB00DBEAC7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA20D185B23BB00DBEAC7 /* QuickLook.framework */; };
 		D58AA210185B23BB00DBEAC7 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA20F185B23BB00DBEAC7 /* ApplicationServices.framework */; };
 		D58AA212185B23BB00DBEAC7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58AA211185B23BB00DBEAC7 /* CoreServices.framework */; };
@@ -70,34 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D512317519795AAF00DB868E /* highlite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = highlite.c; sourceTree = "<group>"; };
-		D512317619795AAF00DB868E /* logging.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = logging.c; sourceTree = "<group>"; };
-		D512317719795AAF00DB868E /* nimbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nimbase.h; sourceTree = "<group>"; };
-		D512317819795AAF00DB868E /* rester.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rester.c; sourceTree = "<group>"; };
-		D512317919795AAF00DB868E /* rester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rester.h; sourceTree = "<group>"; };
-		D512317A19795AAF00DB868E /* rst.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rst.c; sourceTree = "<group>"; };
-		D512317B19795AAF00DB868E /* rstast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rstast.c; sourceTree = "<group>"; };
-		D512317C19795AAF00DB868E /* rstgen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rstgen.c; sourceTree = "<group>"; };
-		D512317D19795AAF00DB868E /* stdlib_algorithm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_algorithm.c; sourceTree = "<group>"; };
-		D512317E19795AAF00DB868E /* stdlib_cgi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_cgi.c; sourceTree = "<group>"; };
-		D512317F19795AAF00DB868E /* stdlib_cookies.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_cookies.c; sourceTree = "<group>"; };
-		D512318019795AAF00DB868E /* stdlib_hashes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_hashes.c; sourceTree = "<group>"; };
-		D512318119795AAF00DB868E /* stdlib_json.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_json.c; sourceTree = "<group>"; };
-		D512318219795AAF00DB868E /* stdlib_lexbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_lexbase.c; sourceTree = "<group>"; };
-		D512318319795AAF00DB868E /* stdlib_math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_math.c; sourceTree = "<group>"; };
-		D512318419795AAF00DB868E /* stdlib_os.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_os.c; sourceTree = "<group>"; };
-		D512318519795AAF00DB868E /* stdlib_parsecfg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_parsecfg.c; sourceTree = "<group>"; };
-		D512318619795AAF00DB868E /* stdlib_parseutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_parseutils.c; sourceTree = "<group>"; };
-		D512318719795AAF00DB868E /* stdlib_posix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_posix.c; sourceTree = "<group>"; };
-		D512318819795AAF00DB868E /* stdlib_sequtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_sequtils.c; sourceTree = "<group>"; };
-		D512318919795AAF00DB868E /* stdlib_streams.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_streams.c; sourceTree = "<group>"; };
-		D512318A19795AAF00DB868E /* stdlib_strtabs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_strtabs.c; sourceTree = "<group>"; };
-		D512318B19795AAF00DB868E /* stdlib_strutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_strutils.c; sourceTree = "<group>"; };
-		D512318C19795AAF00DB868E /* stdlib_subexes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_subexes.c; sourceTree = "<group>"; };
-		D512318D19795AAF00DB868E /* stdlib_system.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_system.c; sourceTree = "<group>"; };
-		D512318E19795AAF00DB868E /* stdlib_tables.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_tables.c; sourceTree = "<group>"; };
-		D512318F19795AAF00DB868E /* stdlib_times.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_times.c; sourceTree = "<group>"; };
-		D512319019795AAF00DB868E /* stdlib_unicode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdlib_unicode.c; sourceTree = "<group>"; };
 		D58AA20A185B23BB00DBEAC7 /* QuickLook reStructuredText.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickLook reStructuredText.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AA20D185B23BB00DBEAC7 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		D58AA20F185B23BB00DBEAC7 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
@@ -107,8 +51,6 @@
 		D58AA219185B23BB00DBEAC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D58AA21F185B23BB00DBEAC7 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		D58AA221185B23BB00DBEAC7 /* QuickLook reStructuredText-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickLook reStructuredText-Prefix.pch"; sourceTree = "<group>"; };
-		D58AA228185B823000DBEAC7 /* nimdoc.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; name = nimdoc.cfg; path = nim/nimdoc.cfg; sourceTree = "<group>"; };
-		D58AA229185B823000DBEAC7 /* rester.nim */ = {isa = PBXFileReference; lastKnownFileType = text; name = rester.nim; path = nim/rester.nim; sourceTree = "<group>"; };
 		D58AA22B185B824700DBEAC7 /* xcode_prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = xcode_prebuild.sh; sourceTree = "<group>"; };
 		D58AA234185B880A00DBEAC7 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		D58AA235185B880A00DBEAC7 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
@@ -151,7 +93,6 @@
 		D58AA1FF185B23BB00DBEAC7 = {
 			isa = PBXGroup;
 			children = (
-				D58AA227185B822100DBEAC7 /* nim */,
 				D58AA215185B23BB00DBEAC7 /* objc */,
 				D58AA22A185B824700DBEAC7 /* scripts */,
 				D58AA20C185B23BB00DBEAC7 /* Frameworks */,
@@ -203,58 +144,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D58AA227185B822100DBEAC7 /* nim */ = {
-			isa = PBXGroup;
-			children = (
-				D58AA23A185B89B900DBEAC7 /* generated_nimrod */,
-				D58AA228185B823000DBEAC7 /* nimdoc.cfg */,
-				D58AA229185B823000DBEAC7 /* rester.nim */,
-			);
-			name = nim;
-			sourceTree = "<group>";
-		};
 		D58AA22A185B824700DBEAC7 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
 				D58AA22B185B824700DBEAC7 /* xcode_prebuild.sh */,
 			);
 			path = scripts;
-			sourceTree = "<group>";
-		};
-		D58AA23A185B89B900DBEAC7 /* generated_nimrod */ = {
-			isa = PBXGroup;
-			children = (
-				D512317519795AAF00DB868E /* highlite.c */,
-				D512317619795AAF00DB868E /* logging.c */,
-				D512317719795AAF00DB868E /* nimbase.h */,
-				D512317819795AAF00DB868E /* rester.c */,
-				D512317919795AAF00DB868E /* rester.h */,
-				D512317A19795AAF00DB868E /* rst.c */,
-				D512317B19795AAF00DB868E /* rstast.c */,
-				D512317C19795AAF00DB868E /* rstgen.c */,
-				D512317D19795AAF00DB868E /* stdlib_algorithm.c */,
-				D512317E19795AAF00DB868E /* stdlib_cgi.c */,
-				D512317F19795AAF00DB868E /* stdlib_cookies.c */,
-				D512318019795AAF00DB868E /* stdlib_hashes.c */,
-				D512318119795AAF00DB868E /* stdlib_json.c */,
-				D512318219795AAF00DB868E /* stdlib_lexbase.c */,
-				D512318319795AAF00DB868E /* stdlib_math.c */,
-				D512318419795AAF00DB868E /* stdlib_os.c */,
-				D512318519795AAF00DB868E /* stdlib_parsecfg.c */,
-				D512318619795AAF00DB868E /* stdlib_parseutils.c */,
-				D512318719795AAF00DB868E /* stdlib_posix.c */,
-				D512318819795AAF00DB868E /* stdlib_sequtils.c */,
-				D512318919795AAF00DB868E /* stdlib_streams.c */,
-				D512318A19795AAF00DB868E /* stdlib_strtabs.c */,
-				D512318B19795AAF00DB868E /* stdlib_strutils.c */,
-				D512318C19795AAF00DB868E /* stdlib_subexes.c */,
-				D512318D19795AAF00DB868E /* stdlib_system.c */,
-				D512318E19795AAF00DB868E /* stdlib_tables.c */,
-				D512318F19795AAF00DB868E /* stdlib_times.c */,
-				D512319019795AAF00DB868E /* stdlib_unicode.c */,
-			);
-			name = generated_nimrod;
-			path = nim/generated_nimrod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +159,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D512319319795AAF00DB868E /* nimbase.h in Headers */,
 				D58AA262185B8B7D00DBEAC7 /* GeneratePreviewForURL.h in Headers */,
-				D512319519795AAF00DB868E /* rester.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,35 +299,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D512319A19795AAF00DB868E /* stdlib_cgi.c in Sources */,
 				D58AA220185B23BB00DBEAC7 /* main.c in Sources */,
-				D512319919795AAF00DB868E /* stdlib_algorithm.c in Sources */,
-				D512319B19795AAF00DB868E /* stdlib_cookies.c in Sources */,
-				D512319119795AAF00DB868E /* highlite.c in Sources */,
-				D512319719795AAF00DB868E /* rstast.c in Sources */,
-				D51231A919795AAF00DB868E /* stdlib_system.c in Sources */,
-				D51231A119795AAF00DB868E /* stdlib_parsecfg.c in Sources */,
-				D51231A319795AAF00DB868E /* stdlib_posix.c in Sources */,
-				D512319C19795AAF00DB868E /* stdlib_hashes.c in Sources */,
-				D51231A019795AAF00DB868E /* stdlib_os.c in Sources */,
-				D51231A819795AAF00DB868E /* stdlib_subexes.c in Sources */,
-				D51231A219795AAF00DB868E /* stdlib_parseutils.c in Sources */,
 				D58AA236185B880A00DBEAC7 /* GeneratePreviewForURL.m in Sources */,
-				D51231AB19795AAF00DB868E /* stdlib_times.c in Sources */,
-				D512319619795AAF00DB868E /* rst.c in Sources */,
-				D512319F19795AAF00DB868E /* stdlib_math.c in Sources */,
-				D51231A619795AAF00DB868E /* stdlib_strtabs.c in Sources */,
-				D51231AA19795AAF00DB868E /* stdlib_tables.c in Sources */,
-				D512319D19795AAF00DB868E /* stdlib_json.c in Sources */,
-				D51231AC19795AAF00DB868E /* stdlib_unicode.c in Sources */,
-				D51231A519795AAF00DB868E /* stdlib_streams.c in Sources */,
-				D51231A419795AAF00DB868E /* stdlib_sequtils.c in Sources */,
-				D512319E19795AAF00DB868E /* stdlib_lexbase.c in Sources */,
-				D512319219795AAF00DB868E /* logging.c in Sources */,
-				D512319419795AAF00DB868E /* rester.c in Sources */,
-				D51231A719795AAF00DB868E /* stdlib_strutils.c in Sources */,
 				D58AA237185B880A00DBEAC7 /* GenerateThumbnailForURL.m in Sources */,
-				D512319819795AAF00DB868E /* rstgen.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
