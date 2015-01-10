@@ -2,4 +2,5 @@
 * C#
 * C++
 * Java
+* Nim
 * Nimrod

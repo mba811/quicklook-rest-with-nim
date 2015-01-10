@@ -15,7 +15,6 @@ const
   zip_exe = "zip"
   dist_readme = "docs"/"dist"/"readme.rst"
   dist_example = "docs"/"dist"/"example.rst"
-  prism_js_in = "nim"/"prism.js"
   prism_js_start = "languages="
   prism_js_out = "docs"/"prism_supported_langs_list.rst"
   prism_blacklist = ["clike", "css-extras", "php-extras"]
@@ -87,6 +86,30 @@ iterator all_rst_files(): tuple[src, dest: string] =
     r.dest = rst_name & ".html"
     yield r
 
+
+proc prism_js_in(): string =
+  ## Returns the path to the prism js file.
+  ##
+  ## This will be a path to the lazy_rest embedded file, which is presumed to
+  ## be the same as the one used by the external pregenerated C sources. If
+  ## something goes wrong, this proc will quit.
+  #prism_js_in = "nim"/"prism.js"
+  let (output, code) = exec_cmd_ex("nimble path lazy_rest")
+  if code != 0:
+    quit("Warning, ``nimble path lazy_rest`` returned non zero!")
+
+  for raw_line in output.split_lines:
+    let dir = raw_line.strip
+    if dir.exists_dir:
+      result = dir/"resources"/"prism.js"
+      if result.exists_file:
+        return
+      else:
+        quit("Didn't find " & result)
+
+  quit("No sensible value returned by nimble?")
+
+
 proc update_lang_list() =
   # Special proc which generates a specific rst file for inclusion.
   #
@@ -101,14 +124,14 @@ proc update_lang_list() =
   langs.map_it("* " & it & "\n")
   nimrod_list_out.write_file(langs.join)
 
-  if not prism_js_out.needs_refresh(prism_js_in): return
+  if not prism_js_out.needs_refresh(prism_js_in()): return
 
-  assert prism_js_in.exists_file
+  assert prism_js_in().exists_file
   #let THE WEIRD BUG CRASHING DEVEL
-  #  buffer = read_file(prism_js_in)
+  #  buffer = read_file(prism_js_in())
   #  line = to_seq(lines(buffer))[0]
   let
-    line = to_seq(lines(prism_js_in))[0]
+    line = to_seq(lines(prism_js_in()))[0]
     first = line.find(prism_js_start) + prism_js_start.len
     last = line.find(" ", first)
 
