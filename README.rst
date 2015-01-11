@@ -1,14 +1,14 @@
-==========================
-QuickLook reST with Nimrod
-==========================
+==============================
+QuickLook reST with Nim readme
+==============================
 
 `Quick Look <https://en.wikipedia.org/wiki/QuickLook>`_ is a quick preview
 feature developed by Apple. `ReST, or reStructuredText
 <http://docutils.sourceforge.net>`_ is a text processing system for
-transforming plaintext documentation into other formats. `Nimrod is a
-programming language <http://nimrod-code.org>`_. And now that I've introduced
-everybody, this project is a fusion of all of them to provide a reST QuickLook
-viewer implemented in Nimrod.
+transforming plaintext documentation into other formats. `Nim is a programming
+language <http://nim-lang.org>`_. And now that I've introduced everybody, this
+project is a fusion of all of them to provide a reST QuickLook viewer
+implemented in Nim.
 
 There are alternative python implementations like
 `https://github.com/cluther/qlrest <https://github.com/cluther/qlrest>`_, which
@@ -25,12 +25,12 @@ versions for two reasons:
       :align: right
 
    Performance. Processing this very readme file with python on my machine
-   takes 0.5 seconds, but 0.02 seconds with nimrod (as measured from the
+   takes 0.5 seconds, but 0.02 seconds with Nim (as measured from the
    command line in a non reproducible test). Do believe me, python is slow,
    maybe you should `stop using it <http://knowyourmeme.com/memes/stahp>`_ and
-   pick a better language.  By the way, the animal on the right is Nimrod's
+   pick a better language.  By the way, the animal on the right is Nim's
    mascot, a `badass honey badger
-   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_. Nimrod doesn't care about
+   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_. Nim doesn't care about
    your Python being slow and eats it fearlessly.
 
 
@@ -80,7 +80,7 @@ From source code
 
 Check out the repository and open the project file with Xcode. The project has
 been tested on MacOSX 10.8 and Xcode 5.0.2. You don't need anything else, since
-the project includes the pre generated C files by Nimrod. Simply select the
+the project includes the pre generated C files by Nim. Simply select the
 QuickLook target and build it. Once built, right click on the
 ``Product->QuickLook reStructuredText.qlgenerator`` and select ``Show in
 Finder``. Now you can move that plugin somewhere useful, like
@@ -91,15 +91,15 @@ Now you can press space on ``rst`` or ``rest`` files from the Finder and if
 everything goes well you should see an HTML preview. Note that this version of
 the software is incomplete, and some files might not render for example due to
 missing directives. Please report them with the `issue tracker
-<https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
+<https://github.com/gradha/quicklook-rest-with-nim/issues>`_.
 
 Binary installation
 -------------------
 
 If you trust binaries and random strangers on the internet, you can go to
-`https://github.com/gradha/quicklook-rest-with-nimrod/releases
-<https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_ and download
-any of the ``.zip`` files attached to a specific release. They contain just the
+`https://github.com/gradha/quicklook-rest-with-nim/releases
+<https://github.com/gradha/quicklook-rest-with-nim/releases>`_ and download any
+of the ``.zip`` files attached to a specific release. They contain just the
 plugin which you can move to ``~/Library/QuickLook``. After that, run
 ``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you should be
 able to see ``.rst`` and ``.nim`` files as rendered HTML.
@@ -118,20 +118,20 @@ Changes
 This is development version 0.4.5. For a list of changes see the
 `docs/CHANGES.rst file <docs/CHANGES.rst>`_. The software is not complete,
 expect bugs and `report them
-<https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_.
+<https://github.com/gradha/quicklook-rest-with-nim/issues>`_.
 
 
 Code blocks syntax highlight
 ============================
 
 When code blocks are found which specify a programming language, if the
-language is supported by `Nimrod's highlite module
-<http://nimrod-lang.org/highlite.html>`_ they will be rendered statically in
-Nimrod, generating plain HTML+CSS. Unsupported languages will use the `Prism
-syntax highlighter <http://prismjs.com>`_. This increases the size of the
-generated HTML and may not be as precise as a proper syntax highlighter, but
-seems to work overall pretty well. You can read the list of supported languages
-in `docs/supported_languages.rst <docs/supported_languages.rst>`_.
+language is supported by `Nim's highlite module
+<http://nim-lang.org/highlite.html>`_ they will be rendered statically in Nim,
+generating plain HTML+CSS. Unsupported languages will use the `Prism syntax
+highlighter <http://prismjs.com>`_. This increases the size of the generated
+HTML and may not be as precise as a proper syntax highlighter, but seems to
+work overall pretty well. You can read the list of supported languages in
+`docs/supported_languages.rst <docs/supported_languages.rst>`_.
 
 
 Plans for the future
@@ -160,7 +160,7 @@ branch.
 Feedback
 ========
 
-You can send me feedback through `github's issue tracker
-<https://github.com/gradha/quicklook-rest-with-nimrod/issues>`_. I also take a
-look from time to time to `Nimrod's forums <http://forum.nimrod-code.org>`_
-where you can talk to other nimrod programmers.
+You can send me feedback through `GitHub's issue tracker
+<https://github.com/gradha/quicklook-rest-with-nim/issues>`_. I also take a
+look from time to time to `Nim's forum <http://forum.nim-lang.org>`_
+where you can talk to other Nim programmers.
