@@ -4,7 +4,6 @@ import bb_nake, bb_os, times, osproc, htmlparser, xmltree, strtabs, strutils,
 const
   version_str = "0.4.5"
   public_name = "QuickLook reStructuredText"
-  dist_dir = "dist"
   xarchive_ext = ".xcarchive"
   environ_c_file = "external"/
     "lazy_rest-0.2.0-c-sources-macosx-amd64-release"/"os.c"
@@ -12,7 +11,6 @@ const
   xarchive_generator_path =
     "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
   xcodebuild_exe = "xcodebuild"
-  zip_exe = "zip"
   dist_readme = "docs"/"dist"/"readme.rst"
   dist_example = "docs"/"dist"/"example.rst"
   prism_js_start = "languages="
@@ -133,6 +131,8 @@ proc doc() =
       change_rst_links_to_html(html_file)
       echo rst_file & " -> " & html_file
 
+  echo "All docs generated."
+
 
 proc check_doc() =
   for rst_file, html_file in all_rst_files():
@@ -142,6 +142,9 @@ proc check_doc() =
       echo "Failed python processing of " & rst_file
       echo output
 
+  echo "All docs checked"
+
+
 proc clean() =
   prism_js_out.remove_file
   for path in dot_walk_dir_rec("."):
@@ -150,9 +153,24 @@ proc clean() =
       echo "Removing ", path
       path.removeFile()
 
+  dist_dir.remove_dir
+  echo "All files cleaned"
+
+
+proc md5() =
+  ## Inspects files in zip and generates markdown for github.
+  let templ = """
+Add the following notes to the release info:
+
+[See the changes log](https://github.com/gradha/quicklook-rest-with-nim/blob/v$1/docs/CHANGES.rst).
+
+Binary MD5 checksums:""" % [version_str]
+  show_md5_for_github(templ)
+
 
 proc dist() =
   ## Builds the distribution files.
+  doc()
   # Verify that environ patch is present in C source code.
   assert environ_c_file.read_file.find("_NSGetEnviron") > 0
 
@@ -194,30 +212,11 @@ proc dist() =
   zip_base.pack_dir
   when defined(macosx): shell("open " & dist_dir)
 
-  echo """
-
-Add the following notes to the release info:
-
-[See the changes log](https://github.com/gradha/quicklook-rest-with-nim/blob/v$1/docs/CHANGES.rst).
-
-Binary MD5 checksums:""" % [version_str]
-  for filename in walk_files(dist_dir/"*.zip"):
-    let v = filename.read_file.get_md5
-    echo "* ``", v, "`` ", filename.extract_filename
+  md5()
 
 
-task "doc", "Generates export API docs for for the modules":
-  doc()
-  echo "All done"
-
-task "check_doc", "Validates rst format for a subset of documentation":
-  check_doc()
-  echo "All docs checked"
-
-task "clean", "Removes temporal files, mainly":
-  clean()
-  echo "All files cleaned"
-
-task "dist", "Build distribution packages for GitHub":
-  doc()
-  dist()
+task "doc", "Generates export API docs for for the modules": doc()
+task "check_doc", "Validates rst format for some rst files": check_doc()
+task "clean", "Removes temporal files, mainly": clean()
+task "dist", "Build distribution packages for GitHub": dist()
+task "md5", "Computes md5 of files found in dist subdirectory.": md5()
