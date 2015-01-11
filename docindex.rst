@@ -1,9 +1,9 @@
-==============================================
-QuickLook reST with Nimrod documentation index
-==============================================
+===========================================
+QuickLook reST with Nim documentation index
+===========================================
 
-Available documentation files for `Quicklook reST with Nimrod
-<https://github.com/gradha/quicklook-rest-with-nimrod>`_. To obtain these HTML
+Available documentation files for `Quicklook reST with Nim
+<https://github.com/gradha/quicklook-rest-with-nim>`_. To obtain these HTML
 files you need to run ``nake doc`` at the root of the project:
 
 * Text:

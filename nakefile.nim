@@ -8,7 +8,7 @@ const
   xarchive_ext = ".xcarchive"
   environ_c_file = "external"/
     "lazy_rest-0.2.0-c-sources-macosx-amd64-release"/"os.c"
-  zip_base = dist_dir/"quicklook-rest-with-nimrod-" & version_str
+  zip_base = dist_dir/"quicklook-rest-with-nim-" & version_str
   xarchive_generator_path =
     "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
   zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
@@ -19,8 +19,8 @@ const
   prism_js_start = "languages="
   prism_js_out = "docs"/"prism_supported_langs_list.rst"
   prism_blacklist = ["clike", "css-extras", "php-extras"]
-  nimrod_list_out = "docs"/"nimrod_supported_langs_list.rst"
-  nimrod_blacklist = ["none"]
+  nim_list_out = "docs"/"nim_supported_langs_list.rst"
+  nim_blacklist = ["none"]
 
 let
   rst_files = concat(@["docs"/"debugging_quicklook", "docs"/"release_steps",
@@ -118,12 +118,12 @@ proc update_lang_list() =
   # speciic URL request format. From this the list of supported language is
   # recovered and some entries which don't make sense are stripped.
   #
-  # For the nimrod list the constants from the highlight module are dumped
+  # For the nim list the constants from the highlight module are dumped
   # inconditionally.
-  var langs = filter_it(@sourceLanguageToStr, not (it in nimrod_blacklist))
+  var langs = filter_it(@sourceLanguageToStr, not (it in nim_blacklist))
   langs.sort(system.cmp)
   langs.map_it("* " & it & "\n")
-  nimrod_list_out.write_file(langs.join)
+  nim_list_out.write_file(langs.join)
 
   if not prism_js_out.needs_refresh(prism_js_in()): return
 
@@ -229,7 +229,7 @@ proc dist() =
 
 Add the following notes to the release info:
 
-[See the changes log](https://github.com/gradha/quicklook-rest-with-nimrod/blob/v$1/docs/CHANGES.rst).
+[See the changes log](https://github.com/gradha/quicklook-rest-with-nim/blob/v$1/docs/CHANGES.rst).
 
 Binary MD5 checksums:""" % [version_str]
   for filename in walk_files(dist_dir/"*.zip"):

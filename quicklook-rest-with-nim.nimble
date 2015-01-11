@@ -1,5 +1,5 @@
 [Package]
-name         = "quicklook-rest-with-nimrod"
+name         = "quicklook-rest-with-nim"
 version      = "0.4.5"
 author       = "Grzegorz Adam Hankiewicz"
 description  = "Quicklook plugin to render rst files."

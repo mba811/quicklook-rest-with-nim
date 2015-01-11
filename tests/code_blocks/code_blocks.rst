@@ -5,12 +5,12 @@ Hello code blocks!
 Extension code-block
 ====================
 
-This should be a `code block`:code: in Nimrod:
+This should be a `code block`:code: in Nim:
 
 .. code-block::
     :number-lines: -33
 
-    echo "Hey nimrod!"
+    echo "Hey nim!"
     if a < b:
         # Blah blah
         echo "Cool, right?"
@@ -35,13 +35,13 @@ Now comes a standard directive block:
     10 print "awesome"
     20 goto 10
 
-The following standard block can also use Nimrod syntax highlighting,
+The following standard block can also use Nim syntax highlighting,
 essentially duplicating the ``code-block`` extension:
 
-.. code:: nimrod
+.. code:: nim
     :number-lines: 42
 
-    echo "Hey nimrod!"
+    echo "Hey nim!"
     if a < b:
         # Blah blah
         echo "Cool, right?"
