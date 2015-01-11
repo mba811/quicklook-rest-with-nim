@@ -14,6 +14,9 @@ v0.4.5, ????-??-??
   * Avoid hanging on infinite recursive include directive.
   * Improved rendering of line numbered source blocks.
 
+* `Updated Nimrod references to Nim
+  <https://github.com/gradha/quicklook-rest-with-nim/issues/45>`_.
+
 v0.4.4, 2014-07-31
 ------------------
 
