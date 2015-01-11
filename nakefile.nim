@@ -1,4 +1,4 @@
-import nake, os, times, osproc, htmlparser, xmltree, strtabs, strutils,
+import bb_nake, bb_os, times, osproc, htmlparser, xmltree, strtabs, strutils,
   md5, sequtils, algorithm, lazy_rest, lazy_rest_pkg/lhighlite
 
 const
@@ -11,7 +11,6 @@ const
   zip_base = dist_dir/"quicklook-rest-with-nim-" & version_str
   xarchive_generator_path =
     "Products"/"Library"/"QuickLook"/public_name & ".qlgenerator"
-  zip_name = "QuickLook.reStructuredText.qlgenerator.zip"
   xcodebuild_exe = "xcodebuild"
   zip_exe = "zip"
   dist_readme = "docs"/"dist"/"readme.rst"
@@ -28,23 +27,13 @@ let
     "docs"/"supported_languages"],
     map_it([dist_example, dist_readme], string, it.change_file_ext("")))
 
-proc copyDirWithPermissions*(source, dest: string) =
-  ## Copies a directory from `source` to `dest`. If this fails, `EOS` is raised.
-  createDir(dest)
-  for kind, path in walkDir(source):
-    var noSource = path.substr(source.len()+1)
-    case kind
-    of pcFile:
-      copyFileWithPermissions(path, dest / noSource)
-    of pcDir:
-      copyDirWithPermissions(path, dest / noSource)
-    else: discard
 
 proc rst2html(filename: string): bool =
   let output = safe_rst_file_to_html(filename)
   if output.len > 0:
     writeFile(filename.changeFileExt("html"), output)
     result = true
+
 
 proc change_rst_links_to_html(html_file: string) =
   ## Opens the file, iterates hrefs and changes them to .html if they are .rst.
@@ -61,19 +50,6 @@ proc change_rst_links_to_html(html_file: string) =
 
   if DID_CHANGE:
     writeFile(html_file, $html)
-
-proc needs_refresh(target: string, src: varargs[string]): bool =
-  assert len(src) > 0, "Pass some parameters to check for"
-  var targetTime: float
-  try:
-    targetTime = toSeconds(getLastModificationTime(target))
-  except EOS:
-    return true
-
-  for s in src:
-    let srcTime = toSeconds(getLastModificationTime(s))
-    if srcTime > targetTime:
-      return true
 
 
 iterator all_rst_files(): tuple[src, dest: string] =
@@ -168,7 +144,7 @@ proc check_doc() =
 
 proc clean() =
   prism_js_out.remove_file
-  for path in walkDirRec("."):
+  for path in dot_walk_dir_rec("."):
     let (dir, name, ext) = splitFile(path)
     if ext == ".html":
       echo "Removing ", path
@@ -199,18 +175,15 @@ proc dist() =
   doAssert exists_dir(dest_archive/xarchive_generator_path)
 
   # Package xarchive into a zip.
-  let zip_xarchive = public_name & xarchive_ext & ".zip"
-  with_dir dist_dir:
-    discard exec_process(zip_exe, args = ["-9r", zip_xarchive,
-      dest_archive.extract_filename], options = exec_options)
-  doAssert exists_file(dist_dir/zip_xarchive)
+  dest_archive.pack_dir(do_remove = false)
 
   # Prepare zip directory.
   zip_base.create_dir
   let dest_generator = zip_base/extract_filename(xarchive_generator_path)
-  copy_dir_with_permissions(dest_archive/xarchive_generator_path,
-    dest_generator)
+  move_file(dest_archive/xarchive_generator_path, dest_generator)
+
   doAssert dest_generator.exists_dir
+  dest_archive.remove_dir
 
   # Generate instructions.
   let dist_readme_html = dist_readme.rst_file_to_html
@@ -218,12 +191,8 @@ proc dist() =
   write_file(zip_base/"example.rst", dist_example.read_file)
 
   # Archive.
-  with_dir dist_dir:
-    discard exec_process(zip_exe, args = ["-9r", zip_name,
-      zip_base.extract_filename], options = exec_options)
-  doAssert exists_file(dist_dir/zip_name)
-
-  discard exec_cmd("open " & dist_dir)
+  zip_base.pack_dir
+  when defined(macosx): shell("open " & dist_dir)
 
   echo """
 
