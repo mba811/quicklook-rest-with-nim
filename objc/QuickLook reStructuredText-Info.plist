@@ -13,7 +13,7 @@
 			<array>
 				<string>net.sourceforge.docutils</string>
 				<string>org.vim.rst-file</string>
-				<string>org.nimrod-lang.nim</string>
+				<string>org.nim-lang.nim</string>
 			</array>
 		</dict>
 	</array>
@@ -22,7 +22,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>es.elhaso.nimrod.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>es.elhaso.nim.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -88,11 +88,11 @@
 		</dict>
 		<dict>
 			<key>UTTypeIdentifier</key>
-			<string>org.nimrod-lang.nim</string>
+			<string>org.nim-lang.nim</string>
 			<key>UTTypeReferenceURL</key>
-			<string>http://nimrod-lang.org/</string>
+			<string>http://nim-lang.org/</string>
 			<key>UTTypeDescription</key>
-			<string>Nimrod source file</string>
+			<string>Nim source file</string>
 			<key>UTTypeIconFile</key>
 			<string>public.text.icns</string>
 			<key>UTTypeConformsTo</key>
