@@ -1,6 +1,6 @@
 [Package]
 name         = "quicklook-rest-with-nim"
-version      = "0.4.6"
+version      = "0.4.7"
 author       = "Grzegorz Adam Hankiewicz"
 description  = "Quicklook plugin to render rst files."
 license      = "MIT"
