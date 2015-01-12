@@ -2,7 +2,7 @@
 Quicklook reST with Nim changes log
 ===================================
 
-v0.4.5, ????-??-??
+v0.4.6, 2015-01-12
 ------------------
 
 * `Moved rester module into lazy_rest babel package

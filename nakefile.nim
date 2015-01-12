@@ -2,7 +2,7 @@ import bb_nake, bb_os, times, osproc, htmlparser, xmltree, strtabs, strutils,
   md5, sequtils, algorithm, lazy_rest, lazy_rest_pkg/lhighlite
 
 const
-  version_str = "0.4.5"
+  version_str = "0.4.6"
   public_name = "QuickLook reStructuredText"
   xarchive_ext = ".xcarchive"
   environ_c_file = "external"/
