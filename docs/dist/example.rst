@@ -10,9 +10,10 @@ include images, even if they are from the `interblag <http://xkcd.com/181/>`_!
 
 .. image:: http://gradha.github.io/i/Feed-icon.svg
 
-Don't try to click that RSS icon, though, it's just an image.  By the way, this
-plugin has been written in the `Nim programming language
-<http://nim-lang.org>`_. See how awesome Nim code looks:
+Don't try to click that RSS icon, though, it's just an image (OS X versions
+previous to Mavericks won't include network resources, so you will get a
+placeholder icon).  By the way, this plugin has been written in the `Nim
+programming language <http://nim-lang.org>`_. See how awesome Nim code looks:
 
 .. code:: nim
     :number-lines:
