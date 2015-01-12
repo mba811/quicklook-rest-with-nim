@@ -24,7 +24,7 @@ v0.4.6, 2015-01-12
 * `Upgraded nakefile with bb_nake
   <https://github.com/gradha/quicklook-rest-with-nim/issues/46>`_.
 * `Added note about Yosemite problems
-  <https://github.com/gradha/quicklook-rest-with-nim/issues/47>`_
+  <https://github.com/gradha/quicklook-rest-with-nim/issues/47>`_.
 
 v0.4.4, 2014-07-31
 ------------------
