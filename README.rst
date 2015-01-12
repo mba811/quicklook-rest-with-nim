@@ -85,7 +85,9 @@ QuickLook target and build it. Once built, right click on the
 ``Product->QuickLook reStructuredText.qlgenerator`` and select ``Show in
 Finder``. Now you can move that plugin somewhere useful, like
 ``~/Library/QuickLook`` and run ``qlmanage -r`` to reset Quick Look or
-logout/reboot/whatever.
+logout/reboot/whatever. **NOTE**: On OSX 10.10 Yosemite the plugin won't work
+from your home directory, you **have** to install it into
+``/Library/QuickLook`` until this issue is fixed.
 
 Now you can press space on ``rst`` or ``rest`` files from the Finder and if
 everything goes well you should see an HTML preview. Note that this version of
@@ -100,9 +102,11 @@ If you trust binaries and random strangers on the internet, you can go to
 `https://github.com/gradha/quicklook-rest-with-nim/releases
 <https://github.com/gradha/quicklook-rest-with-nim/releases>`_ and download any
 of the ``.zip`` files attached to a specific release. They contain just the
-plugin which you can move to ``~/Library/QuickLook``. After that, run
-``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you should be
-able to see ``.rst`` and ``.nim`` files as rendered HTML.
+plugin which you can move to ``~/Library/QuickLook``.  **NOTE**: On OSX 10.10
+Yosemite the plugin won't work from your home directory, you **have** to
+install it into ``/Library/QuickLook`` until this issue is fixed.  After that,
+run ``qlmanage -r`` to reset Quick Look or logout/reboot/whatever and you
+should be able to see ``.rst`` and ``.nim`` files as rendered HTML.
 
 The plugin should work on all MacOSX versions since Snow Leopard (10.6), though
 on Snow Leopard it seems to have threading issues where the first attempt to
